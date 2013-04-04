@@ -65,7 +65,7 @@ module Dashboard
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
-    config.middleware.insert_before(Rack::Lock, Rack::LiveReload, :host => 'etm.dev') if Rails.env == 'development'
+    config.middleware.insert_before(Rack::Lock, Rack::LiveReload, :host => 'dashboard.dev') if Rails.env == 'development'
 
     config.generators do |g|
       g.test_framework :rspec, fixture: false

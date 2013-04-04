@@ -1,9 +1,12 @@
 class WelcomeController < ApplicationController
   def index
-    sample_size = 10
-    R.eval "x <- rnorm(#{sample_size})"
-    R.eval "sd(x)"
+    script = ''
+    file = File.new("#{Rails.root}/app/r-scripts/test.r", "r")
+    while (line = file.gets)
+      script << line
+    end
+    file.close
+    R.eval script
     @lorem = R.pull 'x'
-    # @lorem = "Hello without R"
   end
 end
