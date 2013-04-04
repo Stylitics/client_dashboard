@@ -1,1 +1,6 @@
-<h1><%= @lorem %></h1>
+<% if @lorem %>
+  <h1>These are first days ids from Stylitics SQL</h1>
+  <code><%= @lorem %></code>
+<% else %>
+  <h1>No R script present.</h1>
+<% end %>
