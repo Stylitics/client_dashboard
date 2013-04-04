@@ -1,0 +1,3 @@
+== Welcome to Stylitics Dashboard
+
+This is just a quick drafting stage.
