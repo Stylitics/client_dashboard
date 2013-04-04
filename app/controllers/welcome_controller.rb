@@ -1,6 +1,9 @@
 class WelcomeController < ApplicationController
   def index
     sample_size = 10
-    @lorem = "Hello without R"
+    R.eval "x <- rnorm(#{sample_size})"
+    R.eval "sd(x)"
+    @lorem = R.pull 'x'
+    # @lorem = "Hello without R"
   end
 end
