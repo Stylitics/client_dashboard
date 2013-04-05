@@ -2,13 +2,14 @@ source 'https://rubygems.org'
 ruby "1.9.3"
 
 gem 'rails', '3.2.12'
-gem 'pg'
+gem 'mongoid', '~> 3.0.0'
 
 gem 'unicorn'
 gem 'foreman'
 
 gem 'jquery-rails'
 gem 'turbolinks'
+# we'll see if this is cooler than pjax
 
 gem 'cache_digests'
 gem 'dalli'
@@ -37,7 +38,7 @@ group :production do
 end
 
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
+  gem 'sass-rails', '~> 3.2.3'
   gem 'compass-rails'
   gem 'coffee-rails', '~> 3.2.1'
 
@@ -47,10 +48,12 @@ end
 group :test, :development do
   gem 'spork'
   gem 'rspec-rails', '~> 2.12.2'
+  gem 'mongoid-rspec'
   gem 'capybara'
   gem 'factory_girl_rails'
   gem 'guard-rspec'
   gem 'guard-spork'
+  gem 'guard-pow'
   gem 'guard-livereload'
   gem 'rack-livereload'
   # heroku doesn't run with these

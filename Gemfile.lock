@@ -110,6 +110,8 @@ GEM
       em-websocket (>= 0.2.0)
       guard (>= 1.5.0)
       multi_json (~> 1.0)
+    guard-pow (1.0.0)
+      guard (>= 1.1)
     guard-rspec (2.5.2)
       guard (>= 1.1)
       rspec (~> 2.11)
@@ -141,6 +143,16 @@ GEM
       treetop (~> 1.4.8)
     method_source (0.8.1)
     mime-types (1.22)
+    mongoid (3.0.23)
+      activemodel (~> 3.1)
+      moped (~> 1.2)
+      origin (~> 1.0)
+      tzinfo (~> 0.3.22)
+    mongoid-rspec (1.7.0)
+      mongoid (>= 3.0.1)
+      rake
+      rspec (>= 2.9)
+    moped (1.4.5)
     multi_json (1.7.2)
     net-scp (1.1.0)
       net-ssh (>= 2.6.5)
@@ -151,6 +163,7 @@ GEM
       net-ssh (>= 2.6.5)
     newrelic_rpm (3.6.0.78)
     nokogiri (1.5.9)
+    origin (1.0.11)
     orm_adapter (0.4.0)
     pdf-reader (1.3.2)
       Ascii85 (~> 1.0.0)
@@ -158,7 +171,6 @@ GEM
       hashery (~> 2.0)
       ruby-rc4
       ttfunk
-    pg (0.15.0)
     polyglot (0.3.3)
     prawn (1.0.0.rc2)
       afm
@@ -283,13 +295,15 @@ DEPENDENCIES
   friendly_id (~> 4.0.9)
   growl
   guard-livereload
+  guard-pow
   guard-rspec
   guard-spork
   jquery-rails
   kaminari
+  mongoid (~> 3.0.0)
+  mongoid-rspec
   newrelic_rpm
   nokogiri
-  pg
   prawn (~> 1.0.0.rc2)
   pry-rails
   rack-livereload

@@ -375,7 +375,7 @@ query <- function(pop) {
 
 createAndLoadSample <- function(pop) {
   drv <- dbDriver("PostgreSQL")
-  con <- dbConnect(drv, dbname = "stylitics-dev", user="david", password="")
+  con <- dbConnect(drv, host='localhost', port='5432', dbname = "stylitics-dev", user="catalystww", password="")
   st <- query(pop)
   fQuery <- dbSendQuery(con, statement=query(pop))
   fQueryFrame <- fetch(fQuery, n = -1)
@@ -414,7 +414,7 @@ trendSearch <- function(sString, interval, activeChoice) {
              WHERE count_table.count >= ", activeChoice, sep="")
 
   drv <- dbDriver("PostgreSQL") # get id's of all active users and write them into an "active_users" table
-  con <- dbConnect(drv, dbname = "stylitics-dev", user="david", password="")
+  con <- dbConnect(drv, host='localhost', port='5432', dbname = "stylitics-dev", user="catalystww", password="")
   activeUsrsDB <- dbSendQuery(con, statement=activeUsrStatement)
   activeUsrsDF <- fetch(activeUsrsDB, n = -1)
   dbWriteTable(con, "active_users", activeUsrsDF, overwrite=TRUE)
@@ -436,7 +436,7 @@ trendSearch <- function(sString, interval, activeChoice) {
           " ORDER BY series.date ", sep="")
 
   drv <- dbDriver("PostgreSQL")
-  con <- dbConnect(drv, dbname = "stylitics-dev", user="david", password="")
+  con <- dbConnect(drv, host='localhost', port='5432', dbname = "stylitics-dev", user="catalystww", password="")
   addedItemsCountDB <- dbSendQuery(con, statement=addedItemsCountStatement)
   addedItemsCountDF <- fetch(addedItemsCountDB, n = -1)
   dbDisconnect(con)
@@ -459,7 +459,7 @@ trendSearch <- function(sString, interval, activeChoice) {
              ORDER BY series.date", sep="")
 
   drv <- dbDriver("PostgreSQL") # num of specific items added each period by active users
-  con <- dbConnect(drv, dbname = "stylitics-dev", user="david", password="")
+  con <- dbConnect(drv, host='localhost', port='5432', dbname = "stylitics-dev", user="catalystww", password="")
   specificAddedItemsCountDB <- dbSendQuery(con, statement=specificAddedItemsCountStatement)
   specificAddedItemsCountDF <- fetch(specificAddedItemsCountDB, n = -1)
   dbDisconnect(con)
@@ -478,7 +478,7 @@ trendSearch <- function(sString, interval, activeChoice) {
                              ) AS specific_item
              ON series.date=date_trunc('week', specific_item.ct) ", sep="")
   drv <- dbDriver("PostgreSQL") # users that added each period by active users
-  con <- dbConnect(drv, dbname = "stylitics-dev", user="david", password="")
+  con <- dbConnect(drv, host='localhost', port='5432', dbname = "stylitics-dev", user="catalystww", password="")
   usersWithSpecificAddedItemsDB <- dbSendQuery(con, statement=usersWithSpecificAddedItemsStatement)
   usersWithSpecificAddedItemsDF <- fetch(usersWithSpecificAddedItemsDB, n = -1)
   dbWriteTable(con, "users_with_specific_item", usersWithSpecificAddedItemsDF, overwrite=TRUE)
@@ -534,7 +534,7 @@ trendSearch <- function(sString, interval, activeChoice) {
                  ORDER BY series.date ", sep="")
 
   drv <- dbDriver("PostgreSQL")
-  con <- dbConnect(drv, dbname = "stylitics-dev", user="david", password="")
+  con <- dbConnect(drv, host='localhost', port='5432', dbname = "stylitics-dev", user="catalystww", password="")
   wornItemsCountDB <- dbSendQuery(con, statement=wornItemsCountStatement)
   wornItemsCountDF <- fetch(wornItemsCountDB, n = -1)
   dbDisconnect(con)
