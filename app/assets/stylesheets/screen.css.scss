@@ -1,3 +1,21 @@
+@import "partials/normalize";
+
+// We support: IE9+, FF3.6+, Chrome;
+$legacy-support-for-ie: false;
+$legacy-support-for-ie8: false;
+
+@import "compass/utilities";
+
+@import "compass/css3";
+
+@import "partials/base";
+ 
+@import "blueprint";
+
+@import "partials/main";
+
+
+/*
 // This import applies a global reset to any page that imports this stylesheet.
 @import "blueprint/reset";
 
@@ -52,4 +70,4 @@ body.two-col {
     // true means it's the last column in the row
     @include column($content-columns, true);
   }
-}
+}*/

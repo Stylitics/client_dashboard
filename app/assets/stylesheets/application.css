@@ -3,4 +3,6 @@
  *= require_self
  *= require screen
  *= require welcome
+ *= require smoothness/jquery-ui.min
+ *= require smoothness/jquery.ui.theme
  */
