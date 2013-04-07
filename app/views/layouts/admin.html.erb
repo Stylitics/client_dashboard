@@ -21,12 +21,9 @@
     </div>
     <div class="menu">
       <ul>
-        <li><%= link_to 'Home', root_path %></li>
-        <li><a href="#">Catalog</a></li>
-        <li><a href="#">Segments</a></li>
-        <li><a href="#">Competitors</a></li>
-        <li><a href="#">Trends</a></li>
-        <li><a href="#">Local</a></li>
+        <li><%= link_to 'Home', admin_root_path %></li>
+        <li class="<%= 'active' if request[:controller] == 'admin/users' %>"><%= link_to 'Users', admin_users_path %></li>
+        <li class="<%= 'active' if request[:controller] == 'admin/r_scripts' %>"><%= link_to 'R Scripts', admin_r_scripts_path %></li>
       </ul>
     </div>
   </div>

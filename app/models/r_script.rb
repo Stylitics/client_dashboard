@@ -4,11 +4,14 @@ class RScript
   include Mongoid::Paranoia
   include Mongoid::Versioning
 
+  field :name, type: String
+  field :template, type: String
   field :code, type: String
+  field :status, type: Integer
 
-  belongs_to :user
+  validates_presence_of :name, :template
 
-  validates_presence_of :user_id, :content
+  attr_accessible :name, :template, :code, :status
 
-  attr_accessible :code, :user_id
+  default_scope order_by(name: :asc)
 end

@@ -13,5 +13,4 @@ Quick steps MAC OS X:
 6. use rvm to install ruby-1.9.3-p362
 7. use gem to install bundler
 8. run bundler install to setup the rest of the gems
-9. rake db:create && rake db:migrate
-10. use pow from http://pow.cx/ as webserver in development
+9. use pow from http://pow.cx/ as webserver in development

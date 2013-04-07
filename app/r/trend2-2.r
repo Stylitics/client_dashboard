@@ -20,6 +20,9 @@
 # end of shared zone
 
 library(RPostgreSQL)
+library(lubridate)
+library(xlsx)
+library(rjson)
 
 # mean of non-zero values
 nzmean <- function(x) {
@@ -394,7 +397,8 @@ query <- function(pop) {
 }
 
 
-createAndLoadSample <- function(pop) {
+# this is an unnecessary rudiment. There used to be more things done by this function
+createSample <- function(pop) {
   drv <- dbDriver("PostgreSQL")
   con <- dbConnect(drv, host='localhost', port='5432', dbname = "stylitics-dev", user="catalystww", password="")
   st <- query(pop)
@@ -407,13 +411,6 @@ createAndLoadSample <- function(pop) {
   limitedQueryFrame <- fQueryFrame[1:10,]
   limitedQueryFrame <- limitedQueryFrame[,!(names(limitedQueryFrame) %in% c("ct"))] # exclude the created_at field
   return(limitedQueryFrame)
-}
-
-# this is an unnecessary rudiment. There used to be more things done by this function
-createSample <- function(p) {
-
-  createAndLoadSample(p)
-
 }
 
 
@@ -669,10 +666,7 @@ trendPlot <- function(sString, interval,
 }
 
 
-library(RPostgreSQL)
-library(lubridate)
-library(xlsx)
-library(rjson)
+
 
 
 # Create a sample based on the following parameters. A table called "selected_items" is added to the DB
@@ -684,31 +678,75 @@ names(population) <- c("gender", "ageRange", "studentOpt", "locationOpt", "expen
                        "colorTxt", "brandTxt", "startDateTxt", "endDateTxt", "retailerTxt", "patternTxt",
                        "fabricTxt")
 
-population$gender <- "Female"
-population$ageRange <- c(10,100) # 73
-population$studentOpt <- "All"
-population$locationOpt <- "All"
-population$expensiveOpt <- "All"
-population$priceRange <- c("0", "100000")
-population$influencerOpt <- "Include"
-population$staffOpt <- "Include"
-population$styleOpt <- "All"
-population$eventType <- "All"
-population$colorOpt <- "All"
-population$retailerOpt <- "All"
-population$brandOpt <- "All"
-population$patternOpt <- "All"
-population$fabricOpt <- "All"
-population$sortOpt <- "User ID"
-population$studentOpt <- "All"
-population$styleTxt <- ""
-population$colorTxt <- ""
-population$brandTxt <- ""
-population$startDateTxt <- as.Date(now() - months(6))
-population$endDateTxt <- as.Date(now())
-population$retailerTxt <- ""
-population$patternTxt <- ""
-population$fabricTxt <- ""
+# population$gender <- "Female"
+# population$ageRange <- c(10,100) # 73
+# population$studentOpt <- "All"
+# population$locationOpt <- "All"
+# population$expensiveOpt <- "All"
+# population$priceRange <- c("0", "100000")
+# population$influencerOpt <- "Include"
+# population$staffOpt <- "Include"
+# population$styleOpt <- "All"
+# population$eventType <- "All"
+# population$colorOpt <- "All"
+# population$retailerOpt <- "All"
+# population$brandOpt <- "All"
+# population$patternOpt <- "All"
+# population$fabricOpt <- "All"
+# population$sortOpt <- "User ID"
+# population$studentOpt <- "All"
+# population$styleTxt <- ""
+# population$colorTxt <- ""
+# population$brandTxt <- ""
+# population$startDateTxt <- as.Date(now() - months(6))
+# population$endDateTxt <- as.Date(now())
+# population$retailerTxt <- ""
+# population$patternTxt <- ""
+# population$fabricTxt <- ""
+
+
+# With the exception of numbers all parameters have to be passed as strings in double quotes, i.e. "some_string"
+# If an array of (say, 2) strings is passed then it must to be of the form c("string1","string2")
+population$gender <- {{gender}} # "All"/"Male"/"Female"; default: "All"
+population$ageRange <- c({{loAge}},{{hiAge}}) # "loAge" must be less than "hiAge", and both positive integers; 
+                                              # default: loAge=10, hiAge=100
+population$studentOpt <- {{studentOpt}} # "All"/"Student"/"Not a student"; default: "All"
+population$locationOpt <- {{locationOpt}} # "All"/"NYC"/"LA"/"DC"/"SF"/"Dallas"/"Chicago"; default: "All"
+population$expensiveOpt <- {{expensiveOpt}} # "All"/"Items with no price"/"Items over $3,000". 
+                                            # It can be an array of strings, containing both values; default: "All"
+population$priceRange <- c({{loPrice}}, {{hiPrice}}) # "loPrice" must be less than "hiPrice", and both positive integers
+                                                     # default: loPrice=0, hiPrice=10000
+population$influencerOpt <- {{influencerOpt}} # "Include"/"Exclude"/"Only influencers"; default: "Include"
+population$staffOpt <- {{staffOpt}}  # "Include"/"Exclude"; default: "Include"
+population$startDateTxt <- {{startDateTxt}} # start date in the yyyy-mm-dd format; default: 6 months prior to today
+population$endDateTxt <- {{endDateTxt}} # end date in the yyyy-mm-dd format; default: today's date
+population$eventType <- {{eventType}} # "Bought"/"Added"/"Worn"/"Last worn"; default: "Added"
+population$styleTxt <- {{styleTxt}} # This should be a string of words (limit of 10) in the following format
+                                    # c("string1", "string2"). If there is only one string, then it has to be as "string1"
+                                    # Default: ""
+population$styleOpt <- {{styleOpt}} # "All"/"Include"/"Exclude"; default: "All"
+population$colorTxt <- {{colorTxt}} # This should be a string of words (limit of 10) in the following format
+                                    # c("string1", "string2"). If there is only one string, then it has to be as "string1"
+                                    # Default: "pink"
+population$colorOpt <- {{colorOpt}} # "All"/"Include"/"Exclude"; default: "All"
+population$retailerTxt <- {{retailerTxt}} # This should be a string of words (limit of 10) in the following format
+# c("string1", "string2"). If there is only one string, then it has to be as "string1"
+# Default: ""
+population$retailerOpt <- {{retailerOpt}} # "All"/"Include"/"Exclude"; default: "All"
+population$brandTxt <- {{brandTxt}} # This should be a string of words (limit of 10) in the following format
+                                    # c("string1", "string2"). If there is only one string, then it has to be as "string1"
+                                    # Default: ""
+population$brandOpt <- {{brandOpt}} # "All"/"Include"/"Exclude"; default: "All"
+population$patternTxt <- {{patternTxt}} # This should be a string of words (limit of 10) in the following format
+                                        # c("string1", "string2"). If there is only one string, then it has to be as "string1"
+                                        # Default: ""
+population$patternOpt <- {{patternOpt}} # "All"/"Include"/"Exclude"; default: "All"
+population$fabricTxt <- {{fabricTxt}} # This should be a string of words (limit of 10) in the following format
+                                      # c("string1", "string2"). If there is only one string, then it has to be as "string1"
+                                      # Default: ""
+population$fabricOpt <- {{fabricOpt}} # "All"/"Include"/"Exclude"; default: "All"
+population$sortOpt <- {{sortOpt}} # "User ID"/"Item ID"/"Style"/"Color"/"Retailer"/"Brand"/"Pattern"/"Fabric"
+                                  # Default: "User ID"
 
 lQuery <- createSample(p=population)
 

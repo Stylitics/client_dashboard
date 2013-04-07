@@ -26,8 +26,6 @@ class User
   field :first_name, type: String, default: ''
   field :last_name, type: String, default: ''
 
-  has_many :r_scripts
-
   validates_presence_of :email, :first_name, :last_name
   validates_presence_of :password, :on => :create
   validates_uniqueness_of :email
