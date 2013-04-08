@@ -21,6 +21,6 @@ class RScriptRun
 
     stdin, stdout, stderr = Open3.popen3("Rscript '#{Rails.root}/tmp/runs/#{id}.r'")
     self.update_attributes  output: stdout.readlines,
-                            err: stderr.readlines
+                            err: stderr.readlines.join('')
   end
 end
