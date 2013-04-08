@@ -2,17 +2,11 @@
 <html>
 <head>
   <title><%= yield :title %> ~ Client Dashboard</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
+  <%= stylesheet_link_tag    "back", :media => "all" %>
+  <%= javascript_include_tag "back" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<% flash.each do |name, msg| %>
-  <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
-    <%= msg %>
-  </div>
-<% end %>
 
 <div class="container">
   <div class="header">
@@ -28,29 +22,19 @@
     </div>
   </div>
   <div class="content">
-    <div class="left">
-      <div class="title">
-        <h2>Filter segment</h2>
-        <h2 class="alternate">or choose a saved one</h2>
+    <% flash.each do |name, msg| %>
+      <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+        <%= msg %>
       </div>
-      <div class="filters">
-        <div class="slider"></div>
-        <hr>
-        <div class="calendar"><input name="datepicker" type="text" class="datepicker" size="10" /></div>
-        <hr>
-        <div class="checkbox"><input name="checkbox" type="checkbox" id="checkbox" value="checkbox" /> <label for="checkbox"><span></span>Checkbox</label></div>
-        <hr>
-        <div class="radio">
-          <input name="radio" type="radio" id="radio1" value="radio1" /> <label for="radio1"><span></span>Radio1</label>
-          <input name="radio" type="radio" id="radio2" value="radio2" /> <label for="radio2"><span></span>Radio2</label>
-        </div>
-      </div>
-    </div>
-    <div class="center">
+    <% end %>
+
+    <h1><%= yield :title %></h1>
+
+    <div class="wide">
       <%= yield %>
     </div>
     <div class="right">
-      &nbsp;
+      <%= yield :sidebar %>
     </div>
   </div>
 </div>
