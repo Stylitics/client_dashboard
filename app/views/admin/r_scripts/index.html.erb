@@ -1,1 +1,13 @@
 <% title 'R Scripts' %>
+
+<%= link_to '+ New R Script', new_admin_r_script_path %>
+
+<ul>
+<% @r_scripts.each do |r_script| %>
+  <li>
+    <%= link_to r_script.name, [:admin, r_script] %>
+  </li>
+<% end %>
+</ul>
+
+<%= link_to '+ New R Script', new_admin_r_script_path %>

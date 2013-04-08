@@ -3,6 +3,7 @@ ruby "2.0.0"
 
 gem 'rails', '3.2.12'
 gem 'mongoid', '~> 3.0.0'
+gem 'mongoid_slug'
 
 gem 'unicorn'
 gem 'foreman'
@@ -27,11 +28,6 @@ gem 'kaminari'
 gem 'prawn', '~> 1.0.0.rc2'
 
 gem 'devise'
-
-gem 'babosa', '0.3.9'
-gem 'friendly_id', '~> 4.0.9'
-
-gem 'rinruby'
 
 group :production do
   gem 'newrelic_rpm'
