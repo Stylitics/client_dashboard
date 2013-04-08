@@ -38,6 +38,9 @@ group :assets do
   gem 'compass-rails'
   gem 'coffee-rails', '~> 3.2.1'
 
+  gem 'bootstrap-sass', '~> 2.3.1.0'
+  gem 'font-awesome-sass-rails'
+
   gem 'uglifier', '>= 1.0.3'
 end
 

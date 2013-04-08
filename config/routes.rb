@@ -4,6 +4,7 @@ Dashboard::Application.routes.draw do
   namespace :admin do
     resources :users
     resources :r_scripts
+    resources :r_script_runs
 
     root to: 'dashboard#index'
   end

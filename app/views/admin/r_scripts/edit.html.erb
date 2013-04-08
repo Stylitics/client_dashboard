@@ -1,1 +1,10 @@
 <% title "Edit R Script: #{@r_script.name}" %>
+
+<%= simple_form_for [:admin, @r_script], :html => { class: 'form-horizontal' } do |f| %>
+  <%= render 'form', f: f %>
+
+  <div class="form-actions">
+    <%= f.submit 'Edit' %> |
+    <%= link_to 'Cancel', admin_r_script_path(@r_script) %>
+  </div>
+<% end %>

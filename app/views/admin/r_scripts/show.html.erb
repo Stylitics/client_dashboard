@@ -1,1 +1,61 @@
 <% title "R Script: #{@r_script.name}" %>
+
+<%= link_to 'Edit', edit_admin_r_script_path(@r_script) %> |
+<%= link_to 'Destroy', admin_r_script_path(@r_script), method: :delete, confirm: 'Are you sure you wanna destroy this script?', class: 'btn btn-danger' %>
+
+<% if @r_script.runs.last.present? %>
+  <div class="well">
+    <h3>Output</h3>
+    <pre class="brush: js"><%= @r_script.runs.last.output %></pre>
+    <h3>ERR</h3>
+    <pre class="brush: plain"><%= @r_script.runs.last.err %></pre>
+  </div>
+<% end %>
+
+<pre class="brush: r"><%= @r_script.code %></pre>
+
+<%= content_for :sidebar do %>
+  <%= simple_form_for [:admin, @r_script_run] do |f| %>
+    <%= f.input :r_script_id, as: :hidden %>
+    <h3>Variables</h3>
+    <ul>
+      <% @r_script.variables.each do |v| %>
+        <li>
+          <%= f.input v.to_sym, label: v %>
+        </li>
+      <% end %>
+    </ul>
+    <div class="form-actions">
+      <%= f.submit 'Run Script', confirm: 'Are you sure you wanna run this script?' %>
+    </div>
+  <% end %>
+  <% if @r_script.sources.any? %>
+    <hr>
+    <h3>Sources</h3>
+    <ul id="sources">
+      <% @r_script.sources.each_with_index do |source, index| %>
+        <li id="source_<%= index %>">
+          <h4>
+            <%= link_to '#', class: 'reorder btn btn-mini' do %>
+              <i class="icon-reorder"></i>
+            <% end %>
+            <%= source.name %> |
+            <%= link_to 'Show', "#code-#{source.id}", data: { toggle: 'modal' }, class: 'btn btn-mini' %>
+          </h4>
+          <div id="code-<%= source.id %>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+              <h3 id="myModalLabel"><%= source.name %></h3>
+            </div>
+            <div class="modal-body">
+              <pre class="brush: r"><%= source.code %></pre>
+            </div>
+            <div class="modal-footer">
+              <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+            </div>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+<% end %>

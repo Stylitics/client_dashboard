@@ -2,17 +2,11 @@
 <html>
 <head>
   <title><%= yield :title %> ~ Client Dashboard</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
+  <%= stylesheet_link_tag    "back", :media => "all" %>
+  <%= javascript_include_tag "back" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<% flash.each do |name, msg| %>
-  <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
-    <%= msg %>
-  </div>
-<% end %>
 
 <div class="container">
   <div class="header">
@@ -28,11 +22,19 @@
     </div>
   </div>
   <div class="content">
-    <div class="center-and-left">
+    <% flash.each do |name, msg| %>
+      <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+        <%= msg %>
+      </div>
+    <% end %>
+
+    <h1><%= yield :title %></h1>
+
+    <div class="wide">
       <%= yield %>
     </div>
     <div class="right">
-      RRR
+      <%= yield :sidebar %>
     </div>
   </div>
 </div>
