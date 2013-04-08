@@ -1,11 +1,122 @@
-// Here is where you can define your constants for your application and to configure the blueprint framework.
-// Feel free to delete these if you want keep the defaults:
-
 $blueprint_grid_columns: 60;
 $blueprint_grid_width: 10px;
-/*$blueprint-grid-margin: 10px;
 
+$color_background: #eeefef;
+$image_form_ui: "checkbox_radio";
+$image_form_ui_ext: ".png";
 
-// Use this to calculate the width based on the total width.
-// Or you can set $blueprint-grid-width to a fixed value and unset $blueprint-container-size -- it will be calculated for you.
-$blueprint-grid-width: ($blueprint-container-size + $blueprint-grid-margin) / $blueprint-grid-columns - $blueprint-grid-margin;*/
+@mixin formStyle($x,$y,$color) {
+	display:inline-block;
+	width:24px;
+	height:24px;
+	margin:-1px 4px 0 0;
+	vertical-align:middle;
+	background:image-url($image_form_ui+$color+$image_form_ui_ext) $x $y no-repeat;
+	cursor:pointer;
+}
+
+label {
+	cursor: pointer;
+}
+
+input[type="checkbox"], input[type="radio"] {
+    display:none;
+}
+
+.filters input[type="checkbox"] + label, .filters input[type="radio"] + label {
+    display:block;
+}
+
+//PINK
+
+input[type="checkbox"] + label span {
+	@include formStyle(-30px,-32px,"");
+}
+
+input[type="checkbox"]:checked + label span {
+	@include formStyle(-30px,-5px,"");
+}
+
+input[type="radio"] + label span {
+	@include formStyle(-5px,-32px,"");
+}
+
+input[type="radio"]:checked + label span {
+	@include formStyle(-5px,-5px,"");
+}
+
+//GREEN
+
+input[type="checkbox"] + label span {
+	@include formStyle(-30px,-32px,"_green");
+}
+
+input.green[type="checkbox"]:checked + label span {
+	@include formStyle(-30px,-5px,"_green");
+}
+
+input.green[type="radio"] + label span {
+	@include formStyle(-5px,-32px,"_green");
+}
+
+input.green[type="radio"]:checked + label span {
+	@include formStyle(-5px,-5px,"_green");
+}
+
+//PURPLE
+
+input.purple[type="checkbox"] + label span {
+	@include formStyle(-30px,-32px,"_purple");
+}
+
+input.purple[type="checkbox"]:checked + label span {
+	@include formStyle(-30px,-5px,"_purple");
+}
+
+input.purple[type="radio"] + label span {
+	@include formStyle(-5px,-32px,"_purple");
+}
+
+input.purple[type="radio"]:checked + label span {
+	@include formStyle(-5px,-5px,"_purple");
+}
+
+//ORANGE
+
+input.orange[type="checkbox"] + label span {
+	@include formStyle(-30px,-32px,"_orange");
+}
+
+input.orange[type="checkbox"]:checked + label span {
+	@include formStyle(-30px,-5px,"_orange");
+}
+
+input.orange[type="radio"] + label span {
+	@include formStyle(-5px,-32px,"_orange");
+}
+
+input.orange[type="radio"]:checked + label span {
+	@include formStyle(-5px,-5px,"_orange");
+}
+
+//BLUE
+
+input.blue[type="checkbox"] + label span {
+	@include formStyle(-30px,-32px,"_blue");
+
+	&:checked {
+		@include formStyle(-30px,-5px,"_blue");
+	}
+}
+
+input.blue[type="checkbox"]:checked + label span {
+	@include formStyle(-30px,-5px,"_blue");
+}
+
+input.blue[type="radio"] + label span {
+	@include formStyle(-5px,-32px,"_blue");
+}
+
+input.blue[type="radio"]:checked + label span {
+	@include formStyle(-5px,-5px,"_blue");
+}
