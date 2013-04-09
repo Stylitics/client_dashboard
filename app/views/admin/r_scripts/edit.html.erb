@@ -1,10 +1,13 @@
 <% title "Edit R Script: #{@r_script.name}" %>
 
-<%= simple_form_for [:admin, @r_script], :html => { class: 'form-horizontal' } do |f| %>
-  <%= render 'form', f: f %>
+<div class="form-styled">
+	<%= simple_form_for [:admin, @r_script] do |f| %>
+	  	<%= render 'form', f: f %>
 
-  <div class="form-actions">
-    <%= f.submit 'Update' %> |
-    <%= link_to 'Cancel', admin_r_script_path(@r_script) %>
-  </div>
-<% end %>
+		<div class="actions">
+			<%= link_to 'Update', "#", class: "submitter-anchor btn btn-success" %>
+			<%= f.submit 'Update', class: "hide submitter" %> |
+			<%= link_to 'Cancel', admin_r_script_path(@r_script), class: "btn btn-danger" %>
+		</div>
+	<% end %>
+</div>

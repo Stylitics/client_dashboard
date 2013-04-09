@@ -1,4 +1,4 @@
-<%= f.input :name %>
+<%= f.input :name, label: false, input_html: { placeholder: 'Name' } %>
 
 <ul id="r-script-sources">
   <%= f.fields_for :sources do |s| %>

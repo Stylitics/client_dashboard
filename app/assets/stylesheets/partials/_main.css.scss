@@ -4,6 +4,11 @@ body {
 	font-size: 14px;
 }
 
+body .modal {
+    width: 1150px;
+    margin-left: -575px;
+}
+
 a {
 	text-decoration: none;
 	color:inherit;
@@ -28,6 +33,26 @@ h3 {
 	margin-bottom: 5px;
 }
 
+fieldset {
+	@include column(43,true);
+	border: none;
+	border-top: 1px solid #CCCCCC;
+	margin: 0;
+	padding: 10px 0px;
+}
+
+.fieldset-left {
+	@include column(14);
+}
+
+.fieldset-right {
+	@include column(29, true);
+	textarea {
+		width: span(27);
+		height: 200px;
+	}
+}
+
 .container {
 	@include container;
 }
@@ -49,16 +74,23 @@ h3 {
 	background: image-url("pattern.png");
 }
 
-.datepicker {
+
+input[type="text"], input[type="password"], textarea {
 	border:1px solid #999999;
 	background:#FFFFFF;
-	width:120px;
 	padding:10px 10px;
 	display:block;
 	color:#999999;
-	font-family:"proxima_novaregular_italic";
-	background: image-url("calendar.png") no-repeat 110px;
+	font-family:"proxima_novaregular";
+
+	.datepicker {
+		font-family:"proxima_novaregular_italic";
+		width:120px;
+		background: image-url("calendar.png") no-repeat 110px;
+	}
+
 }
+
 
 .header {
 	@include column(60,true);
@@ -136,5 +168,20 @@ h3 {
 	}
 	.right {
 		@include column(13,true);
+	}
+}
+
+.form-styled {
+	background: #f0f0f0;
+	padding: 10px;
+
+	.actions {
+		margin-top:20px;
+	}
+}
+
+.syntaxhighlighter {
+	.toolbar {
+		display:none;
 	}
 }
