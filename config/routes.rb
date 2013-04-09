@@ -3,7 +3,9 @@ Dashboard::Application.routes.draw do
 
   namespace :admin do
     resources :users
-    resources :r_scripts
+    resources :r_scripts do
+      delete :clear, on: :member
+    end
     resources :r_script_runs
 
     root to: 'dashboard#index'

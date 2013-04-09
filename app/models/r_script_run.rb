@@ -15,7 +15,7 @@ class RScriptRun
 
     code = r_script.code
     code.scan(/\{\{(.*?)\}\}/).each do |v|
-      code.gsub("{{#{v[0]}}}", v[0])
+      code.gsub("{{#{v[0].camelize(:lower)}}}", v[0])
     end
     File.open("#{Rails.root}/tmp/runs/#{id}.r", 'w') {|f| f.write(code) }
 

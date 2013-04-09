@@ -14,4 +14,4 @@ $ ->
     $(this).before($(this).data('fields').replace(regexp, time))
     event.preventDefault()
 
-  SyntaxHighlighter.all()
+  SyntaxHighlighter.highlight()
