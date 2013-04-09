@@ -5,6 +5,11 @@ set :domain, "catalin@198.199.70.50"
 # set :deploy_to, "/apps/code/#{application}"
 set :deploy_to, "/apps/#{application}"
 
+# Load RVM's capistrano plugin.
+require "rvm/capistrano"
+
+set :rvm_ruby_string, '2.0.0'
+
 set :scm, :git
 
 ssh_options[:paranoid] = false
