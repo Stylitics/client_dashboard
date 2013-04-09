@@ -2,7 +2,6 @@ set :application, "dashboard"
 set :repository,  "git@github.com:Stylitics/client_dashboard.git"
 set :domain, "catalin@198.199.70.50"
 
-# set :deploy_to, "/apps/code/#{application}"
 set :deploy_to, "/apps/#{application}"
 
 set :scm, :git
@@ -10,9 +9,7 @@ set :scm, :git
 ssh_options[:paranoid] = false
 ssh_options[:forward_agent] = true
 
-# vps1-4 @ trisme
-# set :rake, "/usr/local/bin/rake"
-set :rake, "/usr/bin/rake"
+set :rake, "/usr/local/rvm/gems/ruby-2.0.0-p0@global/bin/rake"
 
 set :user, "catalin"
 set :runner, nil
