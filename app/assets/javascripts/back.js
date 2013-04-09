@@ -1,4 +1,5 @@
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require bootstrap
 //= require admin/sh/shCore
@@ -10,3 +11,4 @@
 //= require admin/sh/shBrushXml
 //= require admin
 //= require admin/r_scripts
+//= require turbolinks

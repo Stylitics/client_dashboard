@@ -4,15 +4,20 @@
 <%= link_to 'Destroy', admin_r_script_path(@r_script), method: :delete, confirm: 'Are you sure you wanna destroy this script?', class: 'btn btn-danger' %>
 
 <% if @r_script.runs.last.present? %>
+  <h3>Output</h3>
   <div class="well">
-    <h3>Output</h3>
     <pre class="brush: js"><%= @r_script.runs.last.output %></pre>
-    <h3>ERR</h3>
+  </div>
+  <h3>ERR</h3>
+  <div class="well">
     <pre class="brush: plain"><%= @r_script.runs.last.err %></pre>
   </div>
 <% end %>
 
-<pre class="brush: r"><%= @r_script.code %></pre>
+<h3>Code</h3>
+<div class="well">
+  <pre class="brush: r"><%= @r_script.code %></pre>
+</div>
 
 <%= content_for :sidebar do %>
   <%= simple_form_for [:admin, @r_script_run] do |f| %>
@@ -26,7 +31,8 @@
       <% end %>
     </ul>
     <div class="form-actions">
-      <%= f.submit 'Run Script', confirm: 'Are you sure you wanna run this script?' %>
+      <%= f.submit 'Run Script', confirm: 'Are you sure you wanna run this script?' %> |
+      <%= link_to 'Clear all runs', clear_admin_r_script_path(@r_script), method: :delete, confirm: 'This will clear all runs for this script.', class: 'btn btn-danger' %>
     </div>
   <% end %>
   <% if @r_script.sources.any? %>
@@ -57,5 +63,6 @@
         </li>
       <% end %>
     </ul>
+    <%= link_to 'Pack these sources', admin_r_script_path(@r_script), method: :put, confirm: 'Are you sure you wanna pack these sources?', class: 'btn' %>
   <% end %>
 <% end %>
