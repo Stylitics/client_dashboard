@@ -15,3 +15,7 @@ $ ->
     event.preventDefault()
 
   SyntaxHighlighter.highlight()
+
+  $(".submitter-anchor").click (e) ->
+    e.preventDefault()
+    $(this).parents('form').find(".submitter").click()
