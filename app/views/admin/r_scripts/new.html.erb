@@ -1,10 +1,13 @@
 <% title 'New R Script' %>
 
-<%= simple_form_for [:admin, @r_script], :html => { class: 'form-horizontal' } do |f| %>
-  <%= render partial: 'form', locals: { f: f } %>
+<div class="form-styled">
+	<%= simple_form_for [:admin, @r_script] do |f| %>
+		<%= render partial: 'form', locals: { f: f } %>
 
-  <div class="form-actions">
-    <%= f.submit 'Add' %> |
-    <%= link_to 'Cancel', admin_r_scripts_path %>
-  </div>
-<% end %>
+		<div class="actions">
+			<%= link_to 'Add', "#", class: "submitter-anchor btn btn-success" %>
+			<%= f.submit 'Add', class: "hide submitter" %> |
+			<%= link_to 'Cancel', admin_r_scripts_path, class: "btn btn-danger" %>
+		</div>
+	<% end %>
+</div>

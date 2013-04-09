@@ -1,7 +1,9 @@
 <% title "R Script: #{@r_script.name}" %>
 
-<%= link_to 'Edit', edit_admin_r_script_path(@r_script) %> |
+<div class="wide" style="text-align:right;">
+<%= link_to 'Edit', edit_admin_r_script_path(@r_script), class: 'btn'  %> |
 <%= link_to 'Destroy', admin_r_script_path(@r_script), method: :delete, confirm: 'Are you sure you wanna destroy this script?', class: 'btn btn-danger' %>
+</div>
 
 <% if @r_script.runs.last.present? %>
   <h3>Output</h3>
@@ -14,55 +16,54 @@
   </div>
 <% end %>
 
-<h3>Code</h3>
-<div class="well">
-  <pre class="brush: r"><%= @r_script.code %></pre>
-</div>
+<pre class="brush: r"><%= @r_script.code %></pre>
 
 <%= content_for :sidebar do %>
-  <%= simple_form_for [:admin, @r_script_run] do |f| %>
-    <%= f.input :r_script_id, as: :hidden %>
-    <h3>Variables</h3>
-    <ul>
-      <% @r_script.variables.each do |v| %>
-        <li>
-          <%= f.input v.to_sym, label: v %>
-        </li>
-      <% end %>
-    </ul>
-    <div class="form-actions">
-      <%= f.submit 'Run Script', confirm: 'Are you sure you wanna run this script?' %> |
-      <%= link_to 'Clear all runs', clear_admin_r_script_path(@r_script), method: :delete, confirm: 'This will clear all runs for this script.', class: 'btn btn-danger' %>
-    </div>
-  <% end %>
-  <% if @r_script.sources.any? %>
-    <hr>
-    <h3>Sources</h3>
-    <ul id="sources">
-      <% @r_script.sources.each_with_index do |source, index| %>
-        <li id="source_<%= index %>">
-          <h4>
-            <%= link_to '#', class: 'reorder btn btn-mini' do %>
-              <i class="icon-reorder"></i>
-            <% end %>
-            <%= source.name %> |
-            <%= link_to 'Show', "#code-#{source.id}", data: { toggle: 'modal' }, class: 'btn btn-mini' %>
-          </h4>
-          <div id="code-<%= source.id %>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-              <h3 id="myModalLabel"><%= source.name %></h3>
+  <div class="form-styled">
+    <%= simple_form_for [:admin, @r_script_run] do |f| %>
+      <h2>Variables</h2>
+      <%= f.input :r_script_id, as: :hidden %>
+      <ul>
+        <% @r_script.variables.each do |v| %>
+          <li>
+            <%= f.input v.to_sym, label: v %>
+          </li>
+        <% end %>
+      </ul>
+      <div class="actions">
+        <%= link_to 'Run Script', "#", class: "submitter-anchor btn btn-success" %>
+        <%= f.submit 'Run Script', class: "hide submitter", confirm: 'Are you sure you want to run this script?' %>
+        <%= link_to 'Clear all runs', clear_admin_r_script_path(@r_script), method: :delete, confirm: 'This will clear all runs for this script.', class: 'btn btn-danger' %>
+      </div>
+    <% end %>
+    <% if @r_script.sources.any? %>
+      <hr>
+      <h2>Sources</h2>
+      <ul id="sources">
+        <% @r_script.sources.each_with_index do |source, index| %>
+          <li id="source_<%= index %>">
+            <h4>
+              <%= link_to '#', class: 'reorder btn btn-mini' do %>
+                <i class="icon-reorder"></i>
+              <% end %>
+              <%= link_to 'Show', "#code-#{source.id}", data: { toggle: 'modal' }, class: 'btn btn-mini' %>
+              <%= source.name %>
+            </h4>
+            <div id="code-<%= source.id %>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="myModalLabel"><%= source.name %></h3>
+              </div>
+              <div class="modal-body">
+                <pre class="brush: r"><%= source.code %></pre>
+              </div>
+              <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+              </div>
             </div>
-            <div class="modal-body">
-              <pre class="brush: r"><%= source.code %></pre>
-            </div>
-            <div class="modal-footer">
-              <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-            </div>
-          </div>
-        </li>
-      <% end %>
-    </ul>
-    <%= link_to 'Pack these sources', admin_r_script_path(@r_script), method: :put, confirm: 'Are you sure you wanna pack these sources?', class: 'btn' %>
-  <% end %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
 <% end %>

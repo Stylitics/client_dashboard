@@ -1,6 +1,10 @@
 <fieldset>
-  <%= f.input :name %>
-  <%= f.input :code, as: :text %>
-  <%= f.hidden_field :_destroy %>
-  <%= link_to "remove", '#', class: "remove_fields" %>
+	<div class="fieldset-left">
+		<%= f.input :name, label: false, input_html: { placeholder: 'Source Name' } %>
+		<%= f.hidden_field :_destroy %>
+		<%= link_to "Remove", '#', class: "remove_fields btn btn-inverse" %>
+	</div>
+	<div class="fieldset-right">
+		<%= f.input :code, as: :text, label: false, input_html: { placeholder: 'Source Code' } %>
+	</div>
 </fieldset>
