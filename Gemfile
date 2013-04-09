@@ -21,8 +21,6 @@ gem 'dalli'
 
 gem 'simple_form'
 
-gem 'capistrano'
-
 gem 'rmagick'
 gem 'carrierwave'
 gem 'nokogiri'
@@ -74,4 +72,5 @@ end
 group :development do
   gem 'rack-mini-profiler'
   gem 'pry-rails'
+  gem 'capistrano'
 end
