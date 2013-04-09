@@ -15,3 +15,4 @@
 //= require jquery-ui
 //= require d3.v3.min
 //= require scripts
+//= require dashboard
