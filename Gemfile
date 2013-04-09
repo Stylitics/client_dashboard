@@ -44,6 +44,8 @@ group :assets do
   gem 'font-awesome-sass-rails'
 
   gem 'uglifier', '>= 1.0.3'
+
+  gem 'therubyracer', :platforms => :ruby
 end
 
 group :test, :development do
