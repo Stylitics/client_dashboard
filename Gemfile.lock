@@ -102,7 +102,6 @@ GEM
       thor (>= 0.13.6)
     formatador (0.2.4)
     fssm (0.2.10)
-    growl (1.0.3)
     guard (1.7.0)
       formatador (>= 0.2.4)
       listen (>= 0.6.0)
@@ -221,7 +220,6 @@ GEM
       thor (>= 0.14.6, < 2.0)
     raindrops (0.10.0)
     rake (10.0.4)
-    rb-fsevent (0.9.3)
     rdoc (3.12.2)
       json (~> 1.4)
     ref (1.0.4)
@@ -310,7 +308,6 @@ DEPENDENCIES
   factory_girl_rails
   font-awesome-sass-rails
   foreman
-  growl
   guard-livereload
   guard-pow
   guard-rspec
@@ -328,7 +325,6 @@ DEPENDENCIES
   rack-livereload
   rack-mini-profiler
   rails (= 3.2.12)
-  rb-fsevent
   rmagick
   rspec-rails (~> 2.12.2)
   rvm-capistrano

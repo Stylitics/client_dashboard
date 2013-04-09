@@ -63,8 +63,8 @@ group :test, :development do
   gem 'guard-livereload'
   gem 'rack-livereload'
   # heroku doesn't run with these
-  gem 'rb-fsevent', require: false if RUBY_PLATFORM =~ /darwin/i
-  gem 'growl', require: false if RUBY_PLATFORM =~ /darwin/i
+  # gem 'rb-fsevent', require: false if RUBY_PLATFORM =~ /darwin/i
+  # gem 'growl', require: false if RUBY_PLATFORM =~ /darwin/i
 end
 
 group :test do
