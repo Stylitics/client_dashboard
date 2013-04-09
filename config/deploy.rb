@@ -38,3 +38,14 @@ end
 
 after "deploy", "create_assets_symlink"
 after "deploy:migrations", "create_assets_symlink"
+
+require 'bundler/capistrano'
+
+namespace :rvm do
+  desc 'Trust rvmrc file'
+  task :trust_rvmrc do
+    run "rvm rvmrc trust #{current_release}"
+  end
+end
+
+after "deploy:update_code", "rvm:trust_rvmrc"
