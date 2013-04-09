@@ -19,8 +19,16 @@ class Admin::RScriptsController < AdminController
 
   def show
     @r_script = RScript.find(params[:id])
-    @r_script_run = RScriptRun.new(r_script_id: @r_script.id)
-    @r_script.variables.each{|v| @r_script_run[v.to_sym] = ''}
+    @r_script_run = @r_script.last_run
+    @r_script.variables.each do |v|
+      @r_script_run[v.underscore.to_sym] = '' if @r_script_run[v.to_sym].blank?
+    end
+  end
+
+  def clear
+    @r_script = RScript.find(params[:id])
+    @r_script.runs.destroy_all
+    redirect_to :back, notice: 'Runs for this script have been cleared.'
   end
 
   def edit

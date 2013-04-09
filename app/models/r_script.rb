@@ -26,7 +26,15 @@ class RScript
   before_validation :update_code_from_sources
 
   def variables
-    code.scan(/\{\{(.*?)\}\}/).collect{|v| v[0]}
+    code.scan(/\{\{(.*?)\}\}/).collect{|v| v[0].underscore}
+  end
+
+  def last_run
+    if runs.any?
+      runs.last
+    else
+      RScriptRun.new(r_script_id: id)
+    end
   end
 
 private

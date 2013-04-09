@@ -9,7 +9,9 @@ gem 'unicorn'
 gem 'foreman'
 
 gem 'jquery-rails'
+
 gem 'turbolinks'
+gem 'jquery-turbolinks'
 # we'll see if this is cooler than pjax
 
 gem 'cache_digests'
