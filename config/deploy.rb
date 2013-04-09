@@ -1,23 +1,20 @@
-set :application, "dashboard"
-set :repository,  "git@github.com:Stylitics/client_dashboard.git"
-set :domain, "catalin@198.199.70.50"
+# RVM bootstrap
+require 'capistrano/ext/multistage'
+require 'bundler/capistrano'
+require 'rvm/capistrano'
 
-# set :deploy_to, "/apps/code/#{application}"
+set :rvm_bin_path, "/usr/local/rvm/bin"
+set :rvm_type, :user
+
+set :stages, %w(production staging)
+set :default_stage, 'staging'
+
 set :deploy_to, "/apps/#{application}"
-
-# Load RVM's capistrano plugin.
-require "rvm/capistrano"
-
-set :rvm_ruby_string, '2.0.0'
 
 set :scm, :git
 
 ssh_options[:paranoid] = false
 ssh_options[:forward_agent] = true
-
-# vps1-4 @ trisme
-# set :rake, "/usr/local/bin/rake"
-set :rake, "/usr/local/bin/rake"
 
 set :user, "catalin"
 set :runner, nil

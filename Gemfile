@@ -22,6 +22,7 @@ gem 'dalli'
 gem 'simple_form'
 
 gem 'capistrano'
+gem 'rvm-capistrano'
 
 gem 'rmagick'
 gem 'carrierwave'
