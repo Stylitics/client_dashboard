@@ -293,6 +293,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  Ascii85 (~> 1.0.2)
   bootstrap-sass (~> 2.3.1.0)
   cache_digests
   capistrano

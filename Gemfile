@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 ruby "2.0.0"
 
+gem "Ascii85", "~> 1.0.2"
+
 gem 'rails', '3.2.12'
 gem 'mongoid', '~> 3.0.0'
 gem 'mongoid_slug'
