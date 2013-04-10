@@ -2,5 +2,6 @@
 
 FactoryGirl.define do
   factory :r_script do
+    name 'Trend Line'
   end
 end

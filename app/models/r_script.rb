@@ -8,7 +8,6 @@ class RScript
   field :name, type: String
   field :code, type: String
   field :running_code, type: String
-  field :status, type: Integer
 
   validates_presence_of :name, :code
 
@@ -30,11 +29,14 @@ class RScript
   end
 
   def last_run
-    if runs.any?
-      runs.last
-    else
-      RScriptRun.new(r_script_id: id)
+    unless runs.any?
+      runs << RScriptRun.new(r_script_id: id)
     end
+    runs.last
+  end
+
+  def activate!(mode = true)
+    self.update_attribute :running_code, mode == true ? code : nil
   end
 
 private

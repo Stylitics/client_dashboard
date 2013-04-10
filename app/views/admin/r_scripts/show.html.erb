@@ -1,8 +1,9 @@
 <% title "R Script: #{@r_script.name}" %>
 
 <div class="wide" style="text-align:right;">
-<%= link_to 'Edit', edit_admin_r_script_path(@r_script), class: 'btn'  %>
-<%= link_to 'Destroy', admin_r_script_path(@r_script), method: :delete, confirm: 'Are you sure you wanna destroy this script?', class: 'btn btn-danger' %>
+  <%= link_to 'Activate this script', activate_admin_r_script_path(@r_script), method: :put, class: 'btn btn-success', confirm: 'Are  you sure you wanna activate this script?'  %>
+  <%= link_to 'Edit', edit_admin_r_script_path(@r_script), class: 'btn'  %>
+  <%= link_to 'Destroy', admin_r_script_path(@r_script), method: :delete, confirm: 'Are you sure you wanna destroy this script?', class: 'btn btn-danger' %>
 </div>
 
 <% if @r_script.runs.last.present? %>

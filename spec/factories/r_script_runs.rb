@@ -2,6 +2,5 @@
 
 FactoryGirl.define do
   factory :r_script_run do
-    output "MyString"
   end
 end

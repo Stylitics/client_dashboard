@@ -31,6 +31,12 @@ class Admin::RScriptsController < AdminController
     redirect_to :back, notice: 'Runs for this script have been cleared.'
   end
 
+  def activate
+    @r_script = RScript.find(params[:id])
+    @r_script.activate!
+    redirect_to :back, notice: 'This script have been activated.'
+  end
+
   def edit
     @r_script = RScript.find(params[:id])
   end
