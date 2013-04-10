@@ -1,5 +1,24 @@
 <% title 'Home' %>
 
+<style type="text/css">
+  .axis path,
+  .axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+  }
+
+  .x.axis path {
+    display: none;
+  }
+
+  .line {
+    fill: none;
+    stroke: steelblue;
+    stroke-width: 1.5px;
+  }
+</style>
+
 <%= content_for :sidebar do %>
   <div class="title">
     <h2>Filter segment</h2>
@@ -61,8 +80,8 @@
   </div>
 <% end %>
 
-<input name="selector1" class="green" type="checkbox" id="selector1" value="selector1" checked="checked" /> <label for="selector1"><span></span>Selector1</label>
-<input name="selector2" class="blue" type="checkbox" id="selector2" value="selector2" checked="checked" /> <label for="selector2"><span></span>Selector2</label>
+<input name="selector1" class="green" type="checkbox" id="selector1" value="selector1" checked="checked" /> <label for="selector1"><span></span>Adjusted Specific Items Added</label>
+<input name="selector2" class="blue" type="checkbox" id="selector2" value="selector2" checked="checked" /> <label for="selector2"><span></span>Adjusted Specific Wearings</label>
 <div class="temp_chart" id="dashboard-chart">
 	&nbsp;
 </div>
