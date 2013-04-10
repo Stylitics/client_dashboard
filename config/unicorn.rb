@@ -25,7 +25,7 @@ if env == "production"
   working_directory "/apps/dashboard/current"
 
   # feel free to point this anywhere accessible on the filesystem
-  user 'deployer', 'staff'
+  user 'catalin', 'catalin'
   shared_path = "/apps/dashboard/shared"
 
   stderr_path "#{shared_path}/log/unicorn.stderr.log"
