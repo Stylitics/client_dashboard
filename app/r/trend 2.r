@@ -811,7 +811,7 @@ trnd <- trendSearch(interval=interval, activeChoice=minItems, sString=watchedTre
 trnd$dates <- as.character(trnd$dates)
 trndJSON <- toJSON(trnd)
 
-fileConn <- file("/Users/ducky/Desktop/whatever_file_name_you_need.json")
+fileConn <- file("/tmp/runs/temp.json")
 writeLines(trndJSON, fileConn)
 close(fileConn)
 

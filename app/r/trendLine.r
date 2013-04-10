@@ -1,3 +1,9 @@
+hostVar <- '{{hostVar}}'
+portVar <- {{portVar}}
+dbnameVar <- '{{dbnameVar}}'
+userVar <- '{{userVar}}'
+passwordVar <- '{{passwordVar}}'
+
 library(RPostgreSQL)
 
 # mean of non-zero values
@@ -375,7 +381,7 @@ query <- function(pop) {
 
 createAndLoadSample <- function(pop) {
   drv <- dbDriver("PostgreSQL")
-  con <- dbConnect(drv, host='localhost', port='5432', dbname = "stylitics-dev", user="catalystww", password="")
+  con <- dbConnect(drv, host = hostVar, port = portVar, dbname = dbnameVar, user = userVar, password = passwordVar)
   st <- query(pop)
   fQuery <- dbSendQuery(con, statement=query(pop))
   fQueryFrame <- fetch(fQuery, n = -1)
@@ -414,7 +420,7 @@ trendSearch <- function(sString, interval, activeChoice) {
              WHERE count_table.count >= ", activeChoice, sep="")
 
   drv <- dbDriver("PostgreSQL") # get id's of all active users and write them into an "active_users" table
-  con <- dbConnect(drv, host='localhost', port='5432', dbname = "stylitics-dev", user="catalystww", password="")
+  con <- dbConnect(drv, host = hostVar, port = portVar, dbname = dbnameVar, user = userVar, password = passwordVar)
   activeUsrsDB <- dbSendQuery(con, statement=activeUsrStatement)
   activeUsrsDF <- fetch(activeUsrsDB, n = -1)
   dbWriteTable(con, "active_users", activeUsrsDF, overwrite=TRUE)
@@ -436,7 +442,7 @@ trendSearch <- function(sString, interval, activeChoice) {
           " ORDER BY series.date ", sep="")
 
   drv <- dbDriver("PostgreSQL")
-  con <- dbConnect(drv, host='localhost', port='5432', dbname = "stylitics-dev", user="catalystww", password="")
+  con <- dbConnect(drv, host = hostVar, port = portVar, dbname = dbnameVar, user = userVar, password = passwordVar)
   addedItemsCountDB <- dbSendQuery(con, statement=addedItemsCountStatement)
   addedItemsCountDF <- fetch(addedItemsCountDB, n = -1)
   dbDisconnect(con)
@@ -459,7 +465,7 @@ trendSearch <- function(sString, interval, activeChoice) {
              ORDER BY series.date", sep="")
 
   drv <- dbDriver("PostgreSQL") # num of specific items added each period by active users
-  con <- dbConnect(drv, host='localhost', port='5432', dbname = "stylitics-dev", user="catalystww", password="")
+  con <- dbConnect(drv, host = hostVar, port = portVar, dbname = dbnameVar, user = userVar, password = passwordVar)
   specificAddedItemsCountDB <- dbSendQuery(con, statement=specificAddedItemsCountStatement)
   specificAddedItemsCountDF <- fetch(specificAddedItemsCountDB, n = -1)
   dbDisconnect(con)
@@ -478,7 +484,7 @@ trendSearch <- function(sString, interval, activeChoice) {
                              ) AS specific_item
              ON series.date=date_trunc('week', specific_item.ct) ", sep="")
   drv <- dbDriver("PostgreSQL") # users that added each period by active users
-  con <- dbConnect(drv, host='localhost', port='5432', dbname = "stylitics-dev", user="catalystww", password="")
+  con <- dbConnect(drv, host = hostVar, port = portVar, dbname = dbnameVar, user = userVar, password = passwordVar)
   usersWithSpecificAddedItemsDB <- dbSendQuery(con, statement=usersWithSpecificAddedItemsStatement)
   usersWithSpecificAddedItemsDF <- fetch(usersWithSpecificAddedItemsDB, n = -1)
   dbWriteTable(con, "users_with_specific_item", usersWithSpecificAddedItemsDF, overwrite=TRUE)
@@ -506,7 +512,7 @@ trendSearch <- function(sString, interval, activeChoice) {
                  ORDER BY series.date ", sep="")
 
   drv <- dbDriver("PostgreSQL")
-  con <- dbConnect(drv, host='localhost', port='5432', dbname = "stylitics-dev", user="catalystww", password="")
+  con <- dbConnect(drv, host = hostVar, port = portVar, dbname = dbnameVar, user = userVar, password = passwordVar)
   specificWornItemsCountDB <- dbSendQuery(con, statement=specificWornItemsCountStatement)
   specificWornItemsCountDF <- fetch(specificWornItemsCountDB, n = -1)
   dbDisconnect(con)
@@ -534,7 +540,7 @@ trendSearch <- function(sString, interval, activeChoice) {
                  ORDER BY series.date ", sep="")
 
   drv <- dbDriver("PostgreSQL")
-  con <- dbConnect(drv, host='localhost', port='5432', dbname = "stylitics-dev", user="catalystww", password="")
+  con <- dbConnect(drv, host = hostVar, port = portVar, dbname = dbnameVar, user = userVar, password = passwordVar)
   wornItemsCountDB <- dbSendQuery(con, statement=wornItemsCountStatement)
   wornItemsCountDF <- fetch(wornItemsCountDB, n = -1)
   dbDisconnect(con)
