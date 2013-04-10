@@ -4,7 +4,7 @@ class RScriptRun
   include Mongoid::Paranoia
 
   field :output, type: String
-  field :result, type: String
+  field :err, type: String
 
   attr_accessible :output, :err, :r_script_id
 
