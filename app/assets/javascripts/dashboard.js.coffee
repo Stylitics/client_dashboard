@@ -44,6 +44,6 @@ $ ->
 
     $('#selector1').click () ->
       if $(this).is(':checked') == true
-        window.path.attr("stroke-dasharray", window.totalLength + " " + window.totalLength).attr("stroke-dashoffset", window.totalLength).transition().duration(1000).ease("linear").attr "stroke-dashoffset", 0
+        window.path.attr("stroke-dasharray", window.totalLength + " " + window.totalLength).attr("stroke-dashoffset", window.totalLength).transition().duration(500).ease("linear").attr "stroke-dashoffset", 0
       else
-        window.path.transition().duration(300).ease("linear").attr "stroke-dashoffset", window.totalLength
+        window.path.transition().duration(100).ease("linear").attr "stroke-dashoffset", window.totalLength
