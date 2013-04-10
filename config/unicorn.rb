@@ -16,6 +16,8 @@ preload_app true
 # nuke workers after 30 seconds instead of 60 seconds (the default)
 timeout 30
 
+shared_path = "/apps/dashboard/shared"
+
 pid "#{shared_path}/pids/unicorn.dashboard.pid"
 
 # Production specific settings
@@ -26,7 +28,6 @@ if env == "production"
 
   # feel free to point this anywhere accessible on the filesystem
   user 'deployer', 'staff'
-  shared_path = "/apps/dashboard/shared"
 
   stderr_path "#{shared_path}/log/unicorn.stderr.log"
   stdout_path "#{shared_path}/log/unicorn.stdout.log"
