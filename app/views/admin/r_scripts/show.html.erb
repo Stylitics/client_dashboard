@@ -32,7 +32,7 @@
       </ul>
       <div class="actions">
         <%= link_to 'Run Script', "#", class: "submitter-anchor btn btn-success" %>
-        <%= f.submit 'Run Script', class: "hide submitter", confirm: 'Are you sure you want to run this script?' %>
+        <%= f.submit 'Run Script', class: "hide submitter" %>
         <%= link_to 'Clear all runs', clear_admin_r_script_path(@r_script), method: :delete, confirm: 'This will clear all runs for this script.', class: 'btn btn-danger' %>
       </div>
     <% end %>

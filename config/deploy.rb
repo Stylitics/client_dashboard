@@ -40,6 +40,7 @@ end
 desc "Create symlinks"
 task :create_assets_symlink do
   invoke_command "cd /apps/#{application}/current/public/ && ln -s /apps/#{application}/uploads uploads", :via => run_method
+  invoke_command "cd /apps/#{application}/current/tmp/ && mkdir runs", :via => run_method
 end
 
 after "deploy", "create_assets_symlink"
