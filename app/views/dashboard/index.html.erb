@@ -104,6 +104,28 @@
   </div>
 <% end %>
 
+<%= content_for :sidebar_r do %>
+  <div class="icon-l">&nbsp;</div>
+  <div class="icon-d">&nbsp;</div>
+  <div class="icon-e">&nbsp;</div>
+  <div class="icon-f">&nbsp;</div>
+  <div class="icon-q">&nbsp;</div>
+  <div class="sidebar">
+    <div class="stats">
+      Next 15 Days<br /><br /><span class="big-number">55</span><span class="big-percent">%</span>
+      <div class="bar-container">
+        <div class="bar bck-green" style="width:55%">&nbsp;</div>
+      </div>
+    </div>
+    <div class="stats">
+      Next 30 Days<br /><br /><span class="big-number">13</span><span class="big-percent">%</span>
+      <div class="bar-container">
+        <div class="bar bck-red" style="width:13%">&nbsp;</div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
 <input name="selector1" class="green" type="checkbox" id="selector1" value="selector1" checked="checked" /> <label for="selector1"><span></span>Adjusted Specific Items Added</label>
 <input name="selector2" class="blue" type="checkbox" id="selector2" value="selector2" checked="checked" /> <label for="selector2"><span></span>Adjusted Specific Wearings</label>
 <div class="temp_chart" id="dashboard-chart" data-json="<%= chart_path("trend", format: :json) %>"></div>

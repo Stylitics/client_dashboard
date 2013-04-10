@@ -1,9 +1,18 @@
 $blueprint_grid_columns: 60;
 $blueprint_grid_width: 10px;
 
-$color_background: #eeefef;
 $image_form_ui: "checkbox_radio";
 $image_form_ui_ext: ".png";
+
+$sprite-icons: "icons.png";
+
+$color_background: #eeefef;
+$color_blue: #2aa0b2;
+$color_green: #8d9c00;
+$color_orange: #e38100;
+$color_purple: #460a3f;
+$color_red: #9c0037;
+$color_pink: #b61c52;
 
 @mixin formStyle($x,$y,$color) {
 	display:inline-block;
@@ -13,6 +22,15 @@ $image_form_ui_ext: ".png";
 	vertical-align:middle;
 	background:image-url($image_form_ui+$color+$image_form_ui_ext) $x $y no-repeat;
 	cursor:pointer;
+}
+
+@mixin sprite($image, $x, $y, $w, $h, $mr) {
+	background: image-url($image) no-repeat $x $y;
+	width: $w;
+	height: $h;
+	display: block;
+	float: left;
+	margin-right: $mr;
 }
 
 label {

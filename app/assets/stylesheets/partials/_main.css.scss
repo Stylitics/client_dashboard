@@ -33,6 +33,8 @@ h3 {
 	margin-bottom: 5px;
 }
 
+label {display: inline;}
+
 fieldset {
 	@include column(43,true);
 	border: none;
@@ -57,21 +59,13 @@ fieldset {
 	@include container;
 }
 
-.temp_03 {
-	background: image-url("temp_03.png") no-repeat;
-	height:500px;
-}
-
-.temp_07 {
-	background: image-url("temp_07.png") no-repeat;
-	height:300px;
-}
-
 .temp_chart {
 	width: span(30);
 	// border: 2px solid #999999;
 	height: 400px;
 }
+
+
 
 
 input[type="text"], input[type="password"], textarea {
@@ -88,6 +82,77 @@ input[type="text"], input[type="password"], textarea {
 		background: image-url("calendar.png") no-repeat 110px;
 	}
 
+}
+
+.icon-q {
+	@include sprite($sprite-icons, -5px, 0, 31px, 30px, 0px);
+}
+.icon-f{
+	@include sprite($sprite-icons, 0, -43px, 31px, 30px, 22px);
+}
+.icon-l {
+	@include sprite($sprite-icons, -82px, -43px, 31px, 30px, 22px);
+}
+.icon-e {
+	@include sprite($sprite-icons, -120px, -43px, 31px, 30px, 22px);
+}
+.icon-d {
+	@include sprite($sprite-icons, -41px, -43px, 30px, 30px, 22px);
+}
+
+
+.big-number {
+	@include opacity(0.3);
+	font-family:"proxima_novabold";
+	font-size:48px;
+}
+.big-percent {
+	@include opacity(0.3);
+	font-size:24px;
+}
+
+.bar-container {
+	margin-top:10px;
+	width:98%;
+	height:10px;
+	background:#999999;
+}
+
+.bar {
+	height:10px;
+	background:#333333;
+}
+
+.bck-blue {
+	background-color: $color_blue;
+}
+.bck-green {
+	background-color: $color_green;
+}
+.bck-orange {
+	background-color: $color_orange;
+}
+.bck-purple {
+	background-color: $color_purple;
+}
+.bck-red {
+	background-color: $color_red;
+}
+.bck-pink {
+	background-color: $color_pink;
+}
+
+.icon-s {
+	@include sprite($sprite-icons, -47px, 0, 27px, 26px, 10px);
+}
+.icon-seg{
+	@include sprite($sprite-icons, -3px, -87px, 33px, 32px, 10px);
+}
+.icon-sty {
+	@include sprite($sprite-icons, -43px, -87px, 36px, 32px, 10px);
+}
+.icon-c {
+	@include sprite($sprite-icons, -94px, -85px, 39px, 36px, 10px);
 }
 
 
@@ -167,6 +232,21 @@ input[type="text"], input[type="password"], textarea {
 	}
 	.right {
 		@include column(13,true);
+
+		.sidebar {
+			@include column(12,true);
+			background: #f0f0f0;
+			padding: 10px;
+			margin-top: 10px;
+		}
+		.stats {
+			@include column(6);
+			text-align:center;
+
+			&:last-child {
+				@include column(6,true);
+			}
+		}
 	}
 }
 
