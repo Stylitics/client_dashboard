@@ -23,7 +23,7 @@ role :db,  domain
 namespace :deploy do
   desc "Zero-downtime restart of Unicorn"
   task :restart, :except => { :no_release => true } do
-    run "kill -s USR2 `cat tmp/unicorn.dashboard.pid`" if File.exists?("#{current_path}/tmp/unicorn.dashboard.pid")
+    run "kill -s USR2 `cat #{shared_path}/pids/unicorn.dashboard.pid`" if File.exists?("#{current_path}/tmp/unicorn.dashboard.pid")
   end
 
   desc "Start unicorn"
@@ -33,7 +33,7 @@ namespace :deploy do
 
   desc "Stop unicorn"
   task :stop, :except => { :no_release => true } do
-    run "kill -s QUIT `cat tmp/unicorn.dashboard.pid`" if File.exists?("#{current_path}/tmp/unicorn.dashboard.pid")
+    run "kill -s QUIT `cat #{shared_path}/pids/unicorn.dashboard.pid`" if File.exists?("#{current_path}/tmp/unicorn.dashboard.pid")
   end
 end
 

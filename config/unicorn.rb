@@ -1,6 +1,6 @@
 # config/unicorn.rb
 # Set environment to development unless something else is specified
-env = 'production'
+env = ENV["RAILS_ENV"] || "development"
 
 # See http://unicorn.bogomips.org/Unicorn/Configurator.html for complete
 # documentation.
@@ -8,7 +8,7 @@ worker_processes 4
 
 # listen on both a Unix domain socket and a TCP port,
 # we use a shorter backlog for quicker failover when busy
-listen "tmp/dashboard.socket", :backlog => 64
+listen "/tmp/dashboard.socket", :backlog => 64
 
 # Preload our app for more speed
 preload_app true
@@ -16,7 +16,7 @@ preload_app true
 # nuke workers after 30 seconds instead of 60 seconds (the default)
 timeout 30
 
-pid "tmp/unicorn.dashboard.pid"
+pid "#{shared_path}/pids/unicorn.dashboard.pid"
 
 # Production specific settings
 if env == "production"
@@ -25,7 +25,7 @@ if env == "production"
   working_directory "/apps/dashboard/current"
 
   # feel free to point this anywhere accessible on the filesystem
-  user 'catalin', 'catalin'
+  user 'deployer', 'staff'
   shared_path = "/apps/dashboard/shared"
 
   stderr_path "#{shared_path}/log/unicorn.stderr.log"
@@ -41,7 +41,7 @@ before_fork do |server, worker|
 
   # Before forking, kill the master process that belongs to the .oldbin PID.
   # This enables 0 downtime deploys.
-  old_pid = "tmp/unicorn.dashboard.pid.oldbin"
+  old_pid = "#{shared_path}/pids/unicorn.dashboard.pid.oldbin"
   if File.exists?(old_pid) && server.pid != old_pid
     begin
       Process.kill("QUIT", File.read(old_pid).to_i)
