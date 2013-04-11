@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'proxima_novablack';
-    src: url('proximanova-black.eot');
-    src: url('proximanova-black.eot?#iefix') format('embedded-opentype'),
-         url('proximanova-black.woff') format('woff'),
-         url('proximanova-black.ttf') format('truetype'),
-         url('proximanova-black.svg#proxima_novablack') format('svg');
+    src: asset-url('proximanova-black.eot', font);
+    src: asset-url('proximanova-black.eot?#iefix', font) format('embedded-opentype'),
+         asset-url('proximanova-black.woff', font) format('woff'),
+         asset-url('proximanova-black.ttf', font) format('truetype'),
+         asset-url('proximanova-black.svg#proxima_novablack', font) format('svg');
     font-weight: normal;
     font-style: normal;
 
@@ -120,11 +120,11 @@
 
 @font-face {
     font-family: 'proxima_novathin';
-    src: url('proximanova-thin.eot');
-    src: url('proximanova-thin.eot?#iefix') format('embedded-opentype'),
-         url('proximanova-thin.woff') format('woff'),
-         url('proximanova-thin.ttf') format('truetype'),
-         url('proximanova-thin.svg#proxima_novathin') format('svg');
+    src: asset-url('proximanova-thin.eot', font);
+    src: asset-url('proximanova-thin.eot?#iefix', font) format('embedded-opentype'),
+         asset-url('proximanova-thin.woff', font) format('woff'),
+         asset-url('proximanova-thin.ttf', font) format('truetype'),
+         asset-url('proximanova-thin.svg#proxima_novathin', font) format('svg');
     font-weight: normal;
     font-style: normal;
 

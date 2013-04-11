@@ -61,6 +61,7 @@ module Dashboard
 
     # Enable the asset pipeline
     config.assets.enabled = true
+    config.assets.paths << "#{Rails.root}/app/assets/fonts"
     config.assets.precompile += ['back.js', 'back.css']
     # config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
 
