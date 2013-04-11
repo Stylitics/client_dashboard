@@ -8,7 +8,6 @@ class RScript
   field :name, type: String
   field :code, type: String
   field :running_code, type: String
-  field :status, type: Integer
 
   validates_presence_of :name, :code
 
@@ -17,6 +16,7 @@ class RScript
   default_scope order_by(name: :asc)
 
   has_many :runs, :class_name => 'RScriptRun'
+  has_many :charts
 
   embeds_many :sources, class_name: 'RScriptSource'
   accepts_nested_attributes_for :sources, allow_destroy: true
@@ -30,11 +30,14 @@ class RScript
   end
 
   def last_run
-    if runs.any?
-      runs.last
-    else
-      RScriptRun.new(r_script_id: id)
+    unless runs.any?
+      runs << RScriptRun.new(r_script_id: id)
     end
+    runs.last
+  end
+
+  def activate!(mode = true)
+    self.update_attribute :running_code, mode == true ? code : nil
   end
 
 private
