@@ -16,6 +16,7 @@ class RScript
   default_scope order_by(name: :asc)
 
   has_many :runs, :class_name => 'RScriptRun'
+  has_many :charts
 
   embeds_many :sources, class_name: 'RScriptSource'
   accepts_nested_attributes_for :sources, allow_destroy: true

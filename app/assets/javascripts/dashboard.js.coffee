@@ -28,7 +28,7 @@ $ ->
 
     adjustedSpecificItemsAdded = []
     adjustedSpecificWearings = []
-    d3.json '/51648265fda8939a22000007.json', (data) ->
+    d3.json $("#dashboard-chart").data('json'), (data) ->
       xAxis.ticks(data.dates.length)
 
       bg = svg.append("g").attr("width", 590).attr("height", screenHeight);

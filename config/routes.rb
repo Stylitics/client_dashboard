@@ -12,5 +12,7 @@ Dashboard::Application.routes.draw do
     root to: 'dashboard#index'
   end
 
+  resources :charts
+
   root :to => 'dashboard#index'
 end

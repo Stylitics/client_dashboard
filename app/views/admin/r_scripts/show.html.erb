@@ -1,7 +1,11 @@
 <% title "R Script: #{@r_script.name}" %>
 
 <div class="wide" style="text-align:right;">
-  <%= link_to 'Activate this script', activate_admin_r_script_path(@r_script), method: :put, class: 'btn btn-success', confirm: 'Are  you sure you wanna activate this script?'  %>
+  <% if @r_script.running_code.blank? %>
+    <%= link_to 'Activate this script', activate_admin_r_script_path(@r_script), method: :put, class: 'btn btn-success', confirm: 'Are  you sure you wanna activate this script?'  %>
+  <% else %>
+    <%= link_to 'DeActivate this script', activate_admin_r_script_path(@r_script, m: 0), method: :put, class: 'btn btn-success', confirm: 'Are  you sure you wanna activate this script?'  %>
+  <% end %>
   <%= link_to 'Edit', edit_admin_r_script_path(@r_script), class: 'btn'  %>
   <%= link_to 'Destroy', admin_r_script_path(@r_script), method: :delete, confirm: 'Are you sure you wanna destroy this script?', class: 'btn btn-danger' %>
 </div>
