@@ -42,6 +42,16 @@
 	color: #222222;
 	font-weight: bold;
 }
+.ui-slider .ui-widget-header {
+	border: 0;
+	background: #b61c52;
+}
+.ui-slider.ui-widget {
+	height:4px;
+	border:0;
+	background:#CCCCCC;
+	border-radius: 0px;
+}
 .ui-widget-header a {
 	color: #222222;
 }
@@ -56,6 +66,7 @@
 	font-weight: normal;
 	color: #555555;
 }
+
 .ui-state-default a,
 .ui-state-default a:link,
 .ui-state-default a:visited {
@@ -93,6 +104,13 @@
 .ui-state-active a:visited {
 	color: #212121;
 	text-decoration: none;
+}
+
+.ui-slider .ui-state-default,  .ui-slider .ui-state-hover, .ui-slider .ui-state-active{
+	border: 0;
+	width:19px;
+	height:19px;
+	background: url(images/checkbox_radio.png) no-repeat -7px -61px;
 }
 
 /* Interaction Cues
