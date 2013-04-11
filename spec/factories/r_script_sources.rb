@@ -2,5 +2,6 @@
 
 FactoryGirl.define do
   factory :r_script_source do
+
   end
 end
