@@ -129,38 +129,58 @@ input[type="text"], input[type="password"], textarea {
 	background-color: $color_blue;
 	color:#FFFFFF;
 }
+.col-blue {
+	color:$color_blue;
+}
 .bck-green {
 	background-color: $color_green;
 	color:#FFFFFF;
+}
+.col-green {
+	color:$color_green;
 }
 .bck-orange {
 	background-color: $color_orange;
 	color:#FFFFFF;
 }
+.col-orange {
+	color:$color_orange;
+}
 .bck-purple {
 	background-color: $color_purple;
 	color:#FFFFFF;
+}
+.col-purple {
+	color:$color_purple;
 }
 .bck-red {
 	background-color: $color_red;
 	color:#FFFFFF;
 }
+.col-red {
+	color:$color_red;
+}
 .bck-pink {
 	background-color: $color_pink;
 	color:#FFFFFF;
 }
-
+.col-pink {
+	color:$color_pink;
+}
 .icon-s {
 	@include sprite($sprite-icons, -47px, 0, 27px, 26px, 10px);
 }
 .icon-seg{
 	@include sprite($sprite-icons, -3px, -87px, 33px, 32px, 10px);
+	margin:10px;
 }
 .icon-sty {
 	@include sprite($sprite-icons, -43px, -87px, 36px, 32px, 10px);
+	margin:10px;
 }
 .icon-c {
 	@include sprite($sprite-icons, -94px, -85px, 39px, 36px, 10px);
+	margin:10px;
 }
 
 
@@ -237,6 +257,49 @@ input[type="text"], input[type="password"], textarea {
 	}
 	.wide2 {
 		@include column(44, true);
+		margin-top:10px;
+
+		.bottom-container {
+			@include column(14);
+			background:#f7f7f7;
+			border: 1px solid #999999;
+			border-bottom: none;
+			margin-right:24px;
+
+			&:last-child {
+				margin-right:0px;
+			}
+
+			.bottom-title {
+				@include column(14,true);
+				border-bottom:1px solid #999999;
+
+				h2 {
+					margin-top:18px;
+				}
+			}
+
+			.bottom-content {
+				@include column(14,true);
+				border-bottom:1px solid #999999;
+				padding:10px 0 10px 0;
+				background:#FFFFFF;
+
+				.bottom-label {
+					@include column(7,true);
+					margin-left:10px;
+					padding-top:3px;
+				}
+
+				.bottom-value {
+					@include column(6,true);
+					float:right;
+					text-align:right;
+					margin-right:10px;
+					font-size:18px;
+				}
+			}
+		}
 	}
 	.right {
 		@include column(13,true);
