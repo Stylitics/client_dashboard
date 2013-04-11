@@ -66,7 +66,9 @@ fieldset {
 }
 
 
-
+input[type="button"],input[type="submit"] {
+	border:0;
+}
 
 input[type="text"], input[type="password"], textarea {
 	border:1px solid #999999;
@@ -125,21 +127,27 @@ input[type="text"], input[type="password"], textarea {
 
 .bck-blue {
 	background-color: $color_blue;
+	color:#FFFFFF;
 }
 .bck-green {
 	background-color: $color_green;
+	color:#FFFFFF;
 }
 .bck-orange {
 	background-color: $color_orange;
+	color:#FFFFFF;
 }
 .bck-purple {
 	background-color: $color_purple;
+	color:#FFFFFF;
 }
 .bck-red {
 	background-color: $color_red;
+	color:#FFFFFF;
 }
 .bck-pink {
 	background-color: $color_pink;
+	color:#FFFFFF;
 }
 
 .icon-s {
@@ -245,6 +253,34 @@ input[type="text"], input[type="password"], textarea {
 
 			&:last-child {
 				@include column(6,true);
+			}
+		}
+
+		.sidebar-form, .sidebar-stats {
+			@include column(12,true);
+			margin-top:10px;
+			margin-bottom:10px;
+		}
+
+		.textarea-container {
+			@include column(12,true);
+			background:#cfcfcf;
+			margin-top:10px;
+
+			textarea {
+				width:208px;
+				border-radius:0;
+			}
+
+			.textarea-base1 {
+				@include column(6,true);
+				padding:4px 0 0 4px;
+			}
+
+			.textarea-base2 {
+				@include column(6,true);
+				float:right;
+				text-align:right;
 			}
 		}
 	}
