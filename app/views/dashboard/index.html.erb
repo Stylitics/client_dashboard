@@ -49,58 +49,61 @@
     <h2 class="alternate"><%= link_to "or choose a saved one", "" %></h2>
   </div>
   <div class="filters">
-    <div class="filter_element">
-      <h3>Gender</h3>
-      <input name="gender" type="radio" id="gender_all" value="all" checked="checked" /> <label for="gender_all"><span></span>All</label>
-      <input name="gender" type="radio" id="gender_male" value="male" /> <label for="gender_male"><span></span>Male</label>
-      <input name="gender" type="radio" id="gender_female" value="female" /> <label for="gender_female"><span></span>Female</label>
-    </div>
-    <div class="filter_element">
-      <h3>Age Range</h3>
-      <div class="slider"></div>
-    </div>
-    <div class="filter_element">
-      <h3>Student</h3>
-      <input name="student" type="radio" id="student_all" value="all" checked="checked" /> <label for="student_all"><span></span>All</label>
-      <input name="student" type="radio" id="student_yes" value="yes" /> <label for="student_yes"><span></span>Yes</label>
-      <input name="student" type="radio" id="student_no" value="no" /> <label for="student_no"><span></span>No</label>
-    </div>
-    <div class="filter_element">
-      <h3>Location</h3>
-      <input name="location[]" type="checkbox" id="location_all" value="all" checked="checked" /> <label for="location_all"><span></span>All</label>
-      <input name="location[]" type="checkbox" id="location_nyc" value="nyc" /> <label for="location_nyc"><span></span>NYC</label>
-      <input name="location[]" type="checkbox" id="location_la" value="la" /> <label for="location_la"><span></span>LA</label>
-      <input name="location[]" type="checkbox" id="location_dc" value="dc" /> <label for="location_dc"><span></span>DC</label>
-      <input name="location[]" type="checkbox" id="location_sf" value="sf" /> <label for="location_sf"><span></span>SF</label>
-      <input name="location[]" type="checkbox" id="location_dallas" value="dallas" /> <label for="location_dallas"><span></span>Dallas</label>
-      <input name="location[]" type="checkbox" id="location_chicago" value="chicago" /> <label for="location_chicago"><span></span>Chicago</label>
-    </div>
-    <div class="filter_element">
-      <h3>High Price</h3>
-      <input name="price" type="radio" id="price_all" value="all" checked="checked" /> <label for="price_all"><span></span>All</label>
-      <input name="price" type="radio" id="price_no_price" value="no_price" /> <label for="price_no_price"><span></span>Items with no price</label>
-      <input name="price" type="radio" id="price_over_3000" value="over_3000" /> <label for="price_over_3000"><span></span>Items priced over $3,000</label>
-    </div>
-    <div class="filter_element">
-      <h3>Price</h3>
-      <div class="slider"></div>
-    </div>
-    <div class="filter_element">
-      <h3>Influencer</h3>
-      <input name="influencer" type="radio" id="influencer_include" value="include" checked="checked" /> <label for="influencer_include"><span></span>Include</label>
-      <input name="influencer" type="radio" id="influencer_exclude" value="exclude" /> <label for="influencer_exclude"><span></span>Exclude</label>
-      <input name="influencer" type="radio" id="influencer_only" value="only" /> <label for="influencer_only"><span></span>Only influencers</label>
-    </div>
-    <div class="filter_element">
-      <h3>Staff</h3>
-      <input name="staff" type="radio" id="staff_include" value="include" checked="checked" /> <label for="staff_include"><span></span>Include</label>
-      <input name="staff" type="radio" id="staff_exclude" value="exclude" /> <label for="staff_exclude"><span></span>Exclude</label>
-    </div>
-    <div class="filter_element">
-      <h3>Date Range</h3>
-      <label for="date_start">From:</label><input name="date_start" class="datepicker" type="text" id="date_start" placeholder="dd/mm/yyyy" />
-      <label for="date_end">To:</label><input name="date_end" class="datepicker" type="text" id="date_end" placeholder="dd/mm/yyyy" />
-    </div>
+      <div class="filter_element">
+        <h3>Gender</h3>
+        <input name="gender" type="radio" id="gender_all" value="all" checked="checked" /> <label for="gender_all"><span></span>All</label>
+        <input name="gender" type="radio" id="gender_male" value="male" /> <label for="gender_male"><span></span>Male</label>
+        <input name="gender" type="radio" id="gender_female" value="female" /> <label for="gender_female"><span></span>Female</label>
+      </div>
+      <div class="filter_element">
+        <h3>Age Range</h3>
+        <div class="slider"></div>
+      </div>
+      <div class="filter_element">
+        <h3>Student</h3>
+        <input name="student" type="radio" id="student_all" value="all" checked="checked" /> <label for="student_all"><span></span>All</label>
+        <input name="student" type="radio" id="student_yes" value="yes" /> <label for="student_yes"><span></span>Yes</label>
+        <input name="student" type="radio" id="student_no" value="no" /> <label for="student_no"><span></span>No</label>
+      </div>
+      <div class="filter_element">
+        <h3>Location</h3>
+        <input name="location[]" type="checkbox" id="location_all" value="all" checked="checked" /> <label for="location_all"><span></span>All</label>
+        <input name="location[]" type="checkbox" id="location_nyc" value="nyc" /> <label for="location_nyc"><span></span>NYC</label>
+        <input name="location[]" type="checkbox" id="location_la" value="la" /> <label for="location_la"><span></span>LA</label>
+        <input name="location[]" type="checkbox" id="location_dc" value="dc" /> <label for="location_dc"><span></span>DC</label>
+        <input name="location[]" type="checkbox" id="location_sf" value="sf" /> <label for="location_sf"><span></span>SF</label>
+        <input name="location[]" type="checkbox" id="location_dallas" value="dallas" /> <label for="location_dallas"><span></span>Dallas</label>
+        <input name="location[]" type="checkbox" id="location_chicago" value="chicago" /> <label for="location_chicago"><span></span>Chicago</label>
+      </div>
+      <div class="filter_element">
+        <h3>High Price</h3>
+        <input name="price" type="radio" id="price_all" value="all" checked="checked" /> <label for="price_all"><span></span>All</label>
+        <input name="price" type="radio" id="price_no_price" value="no_price" /> <label for="price_no_price"><span></span>Items with no price</label>
+        <input name="price" type="radio" id="price_over_3000" value="over_3000" /> <label for="price_over_3000"><span></span>Items priced over $3,000</label>
+      </div>
+      <div class="filter_element">
+        <h3>Price</h3>
+        <div class="slider"></div>
+      </div>
+      <div class="filter_element">
+        <h3>Influencer</h3>
+        <input name="influencer" type="radio" id="influencer_include" value="include" checked="checked" /> <label for="influencer_include"><span></span>Include</label>
+        <input name="influencer" type="radio" id="influencer_exclude" value="exclude" /> <label for="influencer_exclude"><span></span>Exclude</label>
+        <input name="influencer" type="radio" id="influencer_only" value="only" /> <label for="influencer_only"><span></span>Only influencers</label>
+      </div>
+      <div class="filter_element">
+        <h3>Staff</h3>
+        <input name="staff" type="radio" id="staff_include" value="include" checked="checked" /> <label for="staff_include"><span></span>Include</label>
+        <input name="staff" type="radio" id="staff_exclude" value="exclude" /> <label for="staff_exclude"><span></span>Exclude</label>
+      </div>
+      <div class="filter_element">
+        <h3>Date Range</h3>
+        <label for="date_start">From:</label><input name="date_start" class="datepicker" type="text" id="date_start" placeholder="dd/mm/yyyy" />
+        <label for="date_end">To:</label><input name="date_end" class="datepicker" type="text" id="date_end" placeholder="dd/mm/yyyy" />
+      </div>
+      <div class="filter_element">
+        <input type="submit" class="bck-pink" id="show-me" value="Show me" />
+      </div>
   </div>
 <% end %>
 
