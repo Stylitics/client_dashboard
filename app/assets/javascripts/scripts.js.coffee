@@ -1,11 +1,26 @@
 $ ->
-	$(".slider").slider
+	$("#age-filter #min").html(18)
+	$("#age-filter #max").html(70)
+	$("#age-filter .slider").slider
+		range: true
+		min: 18
+		max: 70
+		values: [18, 70]
+		slide: (event, ui) ->
+			$("#age-filter #min").html(ui.values[0])
+			$("#age-filter #max").html(ui.values[1])
+
+	$("#price-filter #min").html(100)
+	$("#price-filter #max").html(400)
+	$("#price-filter .slider").slider
 		range: true
 		min: 0
 		max: 500
-		values: [75, 300]
+		values: [100, 400]
 		slide: (event, ui) ->
-			console.log ui.values[0] + "<< >>" + ui.values[1]
+			$("#price-filter #min").html(ui.values[0])
+			$("#price-filter #max").html(ui.values[1])
+
 
 	$(".datepicker").datepicker()
 	$(".datepicker").datepicker "option", "showAnim", "fadeIn"

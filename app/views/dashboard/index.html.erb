@@ -50,7 +50,7 @@
 <% end %>
 
 <%= content_for :sidebar do %>
-  <div class="sidebar">
+  <div class="sidebar" id="sidebar">
     <div class="title">
       <h2>Filter segment </h2>
       <h2 class="alternate"><%= link_to "or choose a saved one", "" %></h2>
@@ -65,8 +65,8 @@
           <input name="gender" type="radio" id="gender_male" value="male" /> <label for="gender_male"><span></span>Male</label>
           <input name="gender" type="radio" id="gender_female" value="female" /> <label for="gender_female"><span></span>Female</label>
         </div>
-        <div class="filter_element">
-          <h3>Age Range</h3>
+        <div class="filter_element" id="age-filter">
+          <h3>Age Range <span class="col-pink"><span id="min"></span> - <span id="max"></span></span></h3>
           <div class="slider"></div>
         </div>
         <div class="filter_element">
@@ -91,8 +91,8 @@
           <input name="price" type="radio" id="price_no_price" value="no_price" /> <label for="price_no_price"><span></span>Items with no price</label>
           <input name="price" type="radio" id="price_over_3000" value="over_3000" /> <label for="price_over_3000"><span></span>Items priced over $3,000</label>
         </div>
-        <div class="filter_element">
-          <h3>Price</h3>
+        <div class="filter_element" id="price-filter">
+          <h3>Price <span class="col-pink"><span id="min"></span> - <span id="max"></span></span></h3>
           <div class="slider"></div>
         </div>
         <div class="filter_element">

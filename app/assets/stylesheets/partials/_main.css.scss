@@ -183,7 +183,6 @@ input[type="text"], input[type="password"], textarea {
 	margin:10px;
 }
 
-
 .header {
 	@include column(60,true);
 	padding:10px 20px 0px 20px;
@@ -232,7 +231,7 @@ input[type="text"], input[type="password"], textarea {
 	border-radius:0px;
 }
 
-.content {
+.inner-content {
 	@include column(58,true);
 	background:#FFFFFF;
 	min-height:400px;
@@ -246,16 +245,18 @@ input[type="text"], input[type="password"], textarea {
 	}
 
 	.left {
-		@include column(13);
-		overflow:hidden;
+		@include column(14, true);
 		position:absolute;
 		display:none;
 		
 		.sidebar {
-			@include column(12,true);
+			@include column(13,true);
 			display:none;
 			background: #f0f0f0;
 			padding: 10px;
+			overflow-y:scroll;
+			overflow-x:hidden;
+			height:600px;
 		}
 
 		.title {
