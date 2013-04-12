@@ -31,10 +31,13 @@
     </div>
   </div>
   <div class="content">
+    <div class="left-controls">
+      <%= yield :left_controls %>
+    </div>
     <div class="left">
       <%= yield :sidebar %>
     </div>
-    <div class="center">
+    <div class="wide">
       <%= yield %>
     </div>
     <div class="right">

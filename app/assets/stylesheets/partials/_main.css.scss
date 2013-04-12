@@ -225,16 +225,38 @@ input[type="text"], input[type="password"], textarea {
 	}
 }
 
+.container {
+	overflow:visible;
+}
+.btn {
+	border-radius:0px;
+}
+
 .content {
 	@include column(58,true);
 	background:#FFFFFF;
 	min-height:400px;
 	padding:10px 20px 10px 20px;
+	position:relative;
+
+	.left-controls {
+		@include column(2);
+		position:absolute;
+		left:-50px;
+	}
 
 	.left {
 		@include column(13);
-		background: #f0f0f0;
-		padding: 10px;
+		overflow:hidden;
+		position:absolute;
+		display:none;
+		
+		.sidebar {
+			@include column(12,true);
+			display:none;
+			background: #f0f0f0;
+			padding: 10px;
+		}
 
 		.title {
 			@include column(13, true);
@@ -245,6 +267,7 @@ input[type="text"], input[type="password"], textarea {
 			margin-bottom:20px;
 
 			.filter_element {
+				@include column(12,true);
 				margin-bottom: 20px;
 			}
 		}
@@ -253,7 +276,10 @@ input[type="text"], input[type="password"], textarea {
 		@include column(31);
 	}
 	.wide {
-		@include column(44);
+		@include column(45);
+	}
+	.wide3 {
+		@include column(60, true);
 	}
 	.wide2 {
 		@include column(44, true);
@@ -264,7 +290,7 @@ input[type="text"], input[type="password"], textarea {
 			background:#f7f7f7;
 			border: 1px solid #999999;
 			border-bottom: none;
-			margin-right:24px;
+			margin-right:20px;
 
 			&:last-child {
 				margin-right:0px;
