@@ -1,7 +1,9 @@
 class @TrendLineChart
   constructor: (dashboard_wrapper) ->
-    window.trend_chart = dc.compositeChart("#dashboard-chart");
-    window.weekly_chart = dc.compositeChart("#weekly-chart");
+    trend_chart = dc.compositeChart("#dashboard-chart");
+    weekly_chart = dc.compositeChart("#weekly-chart");
+    top_asid = dc.dataTable("#top-asid")
+    top_asw = dc.dataTable("#top-asw")
 
     dateFormat = d3.time.format("%Y-%m-%d")
     parseDate = dateFormat.parse
@@ -72,6 +74,32 @@ class @TrendLineChart
             value = 0  if isNaN(value)
             dateFormat(d.key) + "\n" + numberFormat(value)
           )]).xAxis()
+
+      top_asid.dimension(weeks).group((d) ->
+        d.asid
+      ).size(5).columns([(d) ->
+        d.date
+      , (d) ->
+        d.asid
+      ]).sortBy((d) ->
+        d.asid
+      ).order(d3.ascending).renderlet((table) ->
+        table.selectAll("#top-asid").classed("info", true)
+        table.selectAll(".dc-table-group").remove()
+      )
+
+      top_asw.dimension(weeks).group((d) ->
+        d.asw
+      ).size(5).columns([(d) ->
+        d.date
+      , (d) ->
+        d.asid
+      ]).sortBy((d) ->
+        d.asw
+      ).order(d3.ascending).renderlet((table) ->
+        table.selectAll("#top-asw").classed("info", true)
+        table.selectAll(".dc-table-group").remove()
+      )
 
       dc.renderAll()
 
