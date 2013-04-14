@@ -59,12 +59,15 @@ fieldset {
 	@include container;
 }
 
-.temp_chart {
-	width: span(30);
-	// border: 2px solid #999999;
+.big_chart {
+	width: span(44);
 	height: 400px;
 }
 
+.small_chart {
+	width: span(44);
+	height: 100px;
+}
 
 input[type="button"],input[type="submit"] {
 	border:0;
@@ -248,7 +251,7 @@ input[type="text"], input[type="password"], textarea {
 		@include column(14, true);
 		position:absolute;
 		display:none;
-		
+
 		.sidebar {
 			@include column(13,true);
 			display:none;
