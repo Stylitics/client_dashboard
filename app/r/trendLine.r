@@ -1,5 +1,5 @@
 hostVar <- '{{hostVar}}'
-portVar <- {{portVar}}
+portVar <- '{{portVar}}'
 dbnameVar <- '{{dbnameVar}}'
 userVar <- '{{userVar}}'
 passwordVar <- '{{passwordVar}}'

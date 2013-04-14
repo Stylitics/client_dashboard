@@ -4,6 +4,7 @@ class Admin::RScriptRunsController < ApplicationController
     r_script_run.accessible = :all
     r_script_run.attributes = params[:r_script_run]
     r_script_run.save
+    r_script_run.generate_script
     r_script_run.run_script
     redirect_to :back, notice: "Script has been executed. You can view the results bellow."
   end
@@ -13,6 +14,7 @@ class Admin::RScriptRunsController < ApplicationController
     r_script_run.accessible = :all
     r_script_run.attributes = params[:r_script_run]
     r_script_run.save
+    r_script_run.generate_script
     r_script_run.run_script
     redirect_to :back, notice: "Script has been executed. You can view the results bellow."
   end

@@ -13,6 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
-//= require d3.v3.min
+//= require d3
+//= require crossfilter
+//= require dc
 //= require scripts
+//= require trendLineChart
 //= require dashboard
