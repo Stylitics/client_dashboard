@@ -30,7 +30,7 @@ class @TrendLineChart
         w.asw
       )
 
-      trend_chart.width(870).height(400).transitionDuration(1000).margins(
+      trend_chart.width(920).height(400).transitionDuration(1000).margins(
           top: 10
           right: 50
           bottom: 25
@@ -49,7 +49,7 @@ class @TrendLineChart
             dateFormat(d.key) + "\n" + numberFormat(value)
           )]).xAxis()
 
-        weekly_chart.width(870).height(100).transitionDuration(1000).margins(
+        weekly_chart.width(920).height(100).transitionDuration(1000).margins(
           top: 10
           right: 50
           bottom: 25
@@ -63,17 +63,9 @@ class @TrendLineChart
             )
           ).compose([dc.lineChart(trend_chart).group(asid_weeks_group).valueAccessor((d) ->
             d.value
-          ).renderArea(false).title((d) ->
-            value = d.value
-            value = 0  if isNaN(value)
-            dateFormat(d.key) + "\n" + numberFormat(value)
-          ), dc.lineChart(trend_chart).group(asw_weeks_group).valueAccessor((d) ->
+          ).renderArea(false), dc.lineChart(trend_chart).group(asw_weeks_group).valueAccessor((d) ->
             d.value
-          ).renderArea(false).title((d) ->
-            value = d.value
-            value = 0  if isNaN(value)
-            dateFormat(d.key) + "\n" + numberFormat(value)
-          )]).xAxis()
+          ).renderArea(false)]).xAxis()
 
       top_asid.dimension(weeks).group((d) ->
         d.asid
@@ -102,6 +94,9 @@ class @TrendLineChart
       )
 
       dc.renderAll()
+
+      trend_chart.focus([new Date("2012-01-01"), new Date("2014-04-01")])
+      weekly_chart.focus([new Date("2012-01-01"), new Date("2014-04-01")])
 
       # ).renderArea(false).stack(asw_weeks_group, (d) ->
       #   d.value
