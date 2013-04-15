@@ -18,10 +18,12 @@
         <li><%= link_to 'Home', admin_root_path %></li>
         <li class="<%= 'active' if request[:controller] == 'admin/users' %>"><%= link_to 'Users', admin_users_path %></li>
         <li class="<%= 'active' if request[:controller] == 'admin/r_scripts' %>"><%= link_to 'R Scripts', admin_r_scripts_path %></li>
+
+        <li><%= link_to "logout", destroy_user_session_path, method: :delete %></li>
       </ul>
     </div>
   </div>
-  <div class="content">
+  <div class="inner-content">
     <% flash.each do |name, msg| %>
       <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
         <%= msg %>
