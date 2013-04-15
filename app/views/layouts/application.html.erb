@@ -16,11 +16,9 @@
 
 <div class="container">
   <div class="header">
-    <div class="logo">
-      &nbsp;
-    </div>
     <div class="menu">
       <ul>
+        <li class="active"><a href="#" id="open-filters"><i id="open-filter-icon" class="icon-chevron-right"></i></a></li>
         <li class="<%= "active" if request[:action] == "index" %>"><%= link_to 'Home', root_path %></li>
         <li><a href="#">Catalog</a></li>
         <li><a href="#">Segments</a></li>
@@ -29,11 +27,11 @@
         <li><a href="#">Local</a></li>
       </ul>
     </div>
+    <div class="logo">
+      &nbsp;
+    </div>
   </div>
   <div class="inner-content">
-    <div class="left-controls">
-      <%= yield :left_controls %>
-    </div>
     <div class="left">
       <%= yield :sidebar %>
     </div>

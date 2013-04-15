@@ -41,6 +41,10 @@ input[type="checkbox"], input[type="radio"] {
     display:none;
 }
 
+.radio, .checkbox {
+  padding-left: 0px;
+}
+
 .filters input[type="checkbox"] + label, .filters input[type="radio"] + label {
     display:block;
 }

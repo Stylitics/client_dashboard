@@ -9,7 +9,7 @@ body .modal {
     margin-left: -575px;
 }
 
-a {
+a, a:hover {
 	text-decoration: none;
 	color:inherit;
 }
@@ -188,16 +188,21 @@ input[type="text"], input[type="password"], textarea {
 
 .header {
 	@include column(60,true);
-	padding:10px 20px 0px 20px;
+	padding:0px 20px 0px 20px;
 
-	margin-top: 10px;
 	.logo {
-		@include column(26);
-		background: image-url("stylitics-logo.png") no-repeat;
-		height: 92px;
+		@include column(10);
+		background: image-url("stylitics-logo.png") no-repeat center;
+		height: 60px;
+		float:right;
 	}
 	.menu {
-		@include column(60, true);
+		@include column(50, true);
+		margin-top:25px;
+
+		i {
+			height:10px;
+		}
 		li {
 			@include background-image(linear-gradient(#3a3a3a, #1f1f1f));
 			float: left;
