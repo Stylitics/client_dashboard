@@ -16,6 +16,7 @@
 //= require d3
 //= require crossfilter
 //= require dc
+//= require accounting
 //= require scripts
 //= require trend_line_chart
 //= require dashboard
