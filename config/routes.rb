@@ -12,7 +12,11 @@ Dashboard::Application.routes.draw do
     root to: 'dashboard#index'
   end
 
-  resources :charts
+  resources :charts do
+    resources :chart_runs
+  end
+
+  get "/trends" => "dashboard#trends", as: :trends
 
   root :to => 'dashboard#index'
 end

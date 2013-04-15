@@ -21,11 +21,11 @@
     </div>
     <div class="menu">
       <ul>
-        <li class="active"><%= link_to 'Home', root_path %></li>
+        <li class="<%= "active" if request[:action] == "index" %>"><%= link_to 'Home', root_path %></li>
         <li><a href="#">Catalog</a></li>
         <li><a href="#">Segments</a></li>
         <li><a href="#">Competitors</a></li>
-        <li><a href="#">Trends</a></li>
+        <li class="<%= "active" if request[:action] == "trends" %>"><%= link_to "Trends", trends_path %></li>
         <li><a href="#">Local</a></li>
       </ul>
     </div>

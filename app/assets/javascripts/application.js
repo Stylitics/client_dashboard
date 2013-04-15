@@ -17,5 +17,5 @@
 //= require crossfilter
 //= require dc
 //= require scripts
-//= require trendLineChart
+//= require trend_line_chart
 //= require dashboard

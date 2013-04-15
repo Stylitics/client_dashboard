@@ -1,95 +1,109 @@
 class @TrendLineChart
   constructor: (dashboard_wrapper) ->
-    screenWidth = $('#dashboard-chart').data('width')
-    screenHeight = $('#dashboard-chart').data('height')
-    svg = d3.select("#dashboard-chart").append("svg").attr("width", screenWidth).attr("height", screenHeight).append("g")
+    trend_chart = dc.compositeChart("#dashboard-chart");
+    weekly_chart = dc.compositeChart("#weekly-chart");
+    top_asid = dc.dataTable("#top-asid")
+    top_asw = dc.dataTable("#top-asw")
 
-    svg.append('svg:defs').append('svg:pattern').attr('id', 'pattern').attr('patternUnits', 'userSpaceOnUse').attr('width', '6').attr('height', '6').append('svg:image').attr('xlink:href', '/assets/pattern.png').attr('x', 0).attr('y', 0).attr('width', 6).attr('height', 6)
+    dateFormat = d3.time.format("%Y-%m-%d")
+    parseDate = dateFormat.parse
+    numberFormat = d3.format(".6f")
 
-    svg.append('svg:defs').append('svg:pattern').attr('id', 'pattern-d').attr('patternUnits', 'userSpaceOnUse').attr('width', '6').attr('height', '6').append('svg:image').attr('xlink:href', '/assets/pattern-d.png').attr('x', 0).attr('y', 0).attr('width', 6).attr('height', 6)
+    d3.json $("#dashboard-chart").data('json'), (json_data) ->
+      json_data.forEach (e) ->
+        e.dd = parseDate(e.date)
+        e.week = d3.time.week(e.dd)
+        e.asid = parseFloat(e.adjustedSpecificItemsAdded)
+        e.asw = parseFloat(e.adjustedSpecificWearings)
 
-    parseDate = d3.time.format("%Y-%m-%d").parse
+      data = crossfilter(json_data)
 
-    d3.json $("#dashboard-chart").data('json'), (data) ->
+      weeks = data.dimension((d) ->
+        d.week
+      )
 
-      #     adjusted_specific_items_added = []
-#     adjusted_specific_wearings = []
+      asid_weeks_group = weeks.group().reduceSum((w) ->
+        w.asid
+      )
 
-#     bg = @svg.append("g").attr("width", @screenWidth).attr("height", @screenHeight)
+      asw_weeks_group = weeks.group().reduceSum((w) ->
+        w.asw
+      )
 
-#     @data.dates.forEach (d, i) ->
-#       if i % 2 == 0
-#         bgClass = "even"
-#       else
-#         bgClass = "odd"
+      trend_chart.width(920).height(400).transitionDuration(1000).margins(
+          top: 10
+          right: 50
+          bottom: 25
+          left: 40
+        ).dimension(weeks).group(asid_weeks_group).x(d3.time.scale().domain([new Date("2010-01-01"), new Date("2014-01-01")])).round(d3.time.week.round).xUnits(d3.time.weeks).elasticY(true).renderHorizontalGridLines(true).renderVerticalGridLines(true).brushOn(false).compose([dc.lineChart(trend_chart).group(asid_weeks_group).valueAccessor((d) ->
+            d.value
+          ).renderArea(false).title((d) ->
+            value = d.value
+            value = 0  if isNaN(value)
+            dateFormat(d.key) + "\n" + numberFormat(value)
+          ), dc.lineChart(trend_chart).group(asw_weeks_group).valueAccessor((d) ->
+            d.value
+          ).renderArea(false).title((d) ->
+            value = d.value
+            value = 0  if isNaN(value)
+            dateFormat(d.key) + "\n" + numberFormat(value)
+          )]).xAxis()
 
-#
+        weekly_chart.width(920).height(100).transitionDuration(1000).margins(
+          top: 10
+          right: 50
+          bottom: 25
+          left: 40
+        ).dimension(weeks).group(asid_weeks_group).x(d3.time.scale().domain([new Date("2010-01-01"), new Date("2014-01-01")])).round(d3.time.week.round).xUnits(d3.time.weeks).elasticY(true).renderHorizontalGridLines(true).brushOn(true).renderlet((chart) ->
+            chart.select("g.y").style("display", "none")
+            trend_chart.filter(chart.filter())
+          ).on("filtered", (chart) ->
+            dc.events.trigger(() ->
+              trend_chart.focus(chart.filter())
+            )
+          ).compose([dc.lineChart(trend_chart).group(asid_weeks_group).valueAccessor((d) ->
+            d.value
+          ).renderArea(false), dc.lineChart(trend_chart).group(asw_weeks_group).valueAccessor((d) ->
+            d.value
+          ).renderArea(false)]).xAxis()
 
-#       adjusted_specific_items_added.push [parseDate(d), data.adjustedSpecificItemsAdded[i]]
+      top_asid.dimension(weeks).group((d) ->
+        d.asid
+      ).size(5).columns([(d) ->
+        d.date
+      , (d) ->
+        d.asid
+      ]).sortBy((d) ->
+        d.asid
+      ).order(d3.ascending).renderlet((table) ->
+        table.selectAll("#top-asid").classed("info", true)
+        table.selectAll(".dc-table-group").remove()
+      )
 
-#       adjusted_specific_wearings.push [parseDate(d), data.adjustedSpecificWearings[i]]
+      top_asw.dimension(weeks).group((d) ->
+        d.asw
+      ).size(5).columns([(d) ->
+        d.date
+      , (d) ->
+        d.asid
+      ]).sortBy((d) ->
+        d.asw
+      ).order(d3.ascending).renderlet((table) ->
+        table.selectAll("#top-asw").classed("info", true)
+        table.selectAll(".dc-table-group").remove()
+      )
 
-#       bg.append("rect").attr("width", 590 / data.dates.length).attr("height", screenHeight - 40).attr("transform", "translate(" + ((590 / data.dates.length) * i + i) + ", 0)").attr("class", bgClass).attr()
+      dc.renderAll()
 
-#     @adjusted_specific_items_added = adjusted_specific_items_added
-#     @adjusted_specific_wearings = adjusted_specific_wearings
+      trend_chart.focus([new Date("2012-01-01"), new Date("2014-04-01")])
+      weekly_chart.focus([new Date("2012-01-01"), new Date("2014-04-01")])
 
-#   setup_axis: (data_set) ->
-#     @svg.append("g").attr("class", "x axis")
-#     x = d3.time.scale().range([0, @screenWidth])
-#     y = d3.scale.linear().range([@screenHeight - 50, 0])
+      # ).renderArea(false).stack(asw_weeks_group, (d) ->
+      #   d.value
+      # ).title((d) ->
 
-#     xAxis = d3.svg.axis().scale(x).orient("bottom")
-#     yAxis = d3.svg.axis().scale(y).orient("left")
-
-#     line = d3.svg.line().interpolate("basis").x((d) ->
-#       x d[0]
-#     ).y((d) ->
-#       y d[1]
-#     )
-
-#     xAxis.ticks(@data.dates.length)
-
-#     x.domain d3.extent(@adjusted_specific_items_added, (d) ->
-#       d[0]
-#     )
-
-#     if data_set == ['adjusted_specific_items_added', 'adjusted_specific_wearings'] or data_set == undefined
-#       y.domain d3.extent(@adjusted_specific_items_added.concat(@adjusted_specific_wearings), (d) ->
-#         d[1]
-#       )
-#     else
-#       y.domain d3.extent(@[data_set], (d) ->
-#         d[1]
-#       )
-
-#     @svg.append("g").attr("class", "x axis").attr("transform", "translate(0, " + (@screenHeight - 40) + ")").call(xAxis).selectAll("text").style("text-anchor", "end").attr("dx", "-.8em").attr("dy", ".15em").attr("transform", (d) ->
-#         return "rotate(-65)"
-#       )
-#     @svg.append("g").attr("class", "y axis").call(yAxis).selectAll("text").style("text-anchor", "end").attr("dx", "3.5em")
-
-#     @pathB = @svg.append("g").attr("transform", "translate(0, 10)").append("path").datum(@adjusted_specific_items_added).attr("class", "line line-blue").attr("d", line)
-
-#     @pathG = @svg.append("g").attr("transform", "translate(0, 10)").append("path").datum(@adjusted_specific_wearings).attr("class", "line line-green").attr("d", line)
-
-#     @totalLength = @pathG.node().getTotalLength()
-
-#     @pathB.attr("stroke-dasharray", @totalLength + " " + @totalLength).attr("stroke-dashoffset", @totalLength).transition().duration(1000).ease("linear").attr "stroke-dashoffset", 0
-
-#     @pathG.attr("stroke-dasharray", @totalLength + " " + @totalLength).attr("stroke-dashoffset", @totalLength).transition().duration(1000).ease("linear").attr "stroke-dashoffset", 0
-
-    #   $('#selector1').click () ->
-    #     if $(this).is(':checked') == true
-    #       trend_line_chart.pathG.attr("stroke-dasharray", trend_line_chart.totalLength + " " + trend_line_chart.totalLength).attr("stroke-dashoffset", trend_line_chart.totalLength).transition().duration(500).ease("linear").attr "stroke-dashoffset", 0
-    #     else
-    #       trend_line_chart.pathG.transition().duration(100).ease("linear").attr "stroke-dashoffset", trend_line_chart.totalLength
-
-    #     trend_line_chart.setup_axis('adjusted_specific_items_added')
-
-    #   $('#selector2').click () ->
-    #     if $(this).is(':checked') == true
-    #       trend_line_chart.pathB.attr("stroke-dasharray", trend_line_chart.totalLength + " " + trend_line_chart.totalLength).attr("stroke-dashoffset", trend_line_chart.totalLength).transition().duration(500).ease("linear").attr "stroke-dashoffset", 0
-    #     else
-    #       trend_line_chart.pathB.transition().duration(100).ease("linear").attr "stroke-dashoffset", trend_line_chart.totalLength
-
-    #     trend_line_chart.setup_axis('adjusted_specific_wearings')
+      $("#selector1, #selector2").click () ->
+        if $(this).is(":checked") == false
+          $(".sub._" + $(this).data("id")).hide()
+        else
+          $(".sub._" + $(this).data("id")).show()

@@ -13,6 +13,7 @@ class Chart
   attr_accessible :name, :result
 
   belongs_to :r_script
+  has_many :runs, :class_name => 'ChartRun'
 
   slug :name
 end
