@@ -4,6 +4,11 @@
 
 $ ->
   $("label.radio").prepend("<span></span>")
+  $("label.radio").each (i, label) ->
+    input = $(label).find("input")
+    input.insertBefore(label)
+    $(label).attr("for", input.attr("id"))
+    # input.remove()
 
   if $('#dashboard-chart').length
     trend_line_chart = new TrendLineChart('dashboard-chart')
