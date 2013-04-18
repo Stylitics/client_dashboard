@@ -14,6 +14,8 @@ $legacy-support-for-ie8: false;
 
 @import "partials/main";
 
+@import "partials/dc";
+
 /*
 // This import applies a global reset to any page that imports this stylesheet.
 @import "blueprint/reset";
