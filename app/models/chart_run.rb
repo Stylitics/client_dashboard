@@ -4,7 +4,6 @@ class ChartRun
   include Mongoid::Paranoia
 
   field :output, type: String
-  field :query, type: String
 
   attr_accessible :output, :chart_id
 

@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 Dashboard::Application.routes.draw do
   devise_for :users
 
@@ -13,10 +15,14 @@ Dashboard::Application.routes.draw do
   end
 
   resources :charts do
-    resources :chart_runs
+    resources :chart_runs do
+      get :check, on: :member
+    end
   end
 
   get "/trends" => "dashboard#trends", as: :trends
 
   root :to => 'dashboard#index'
+
+  mount Sidekiq::Web, at: '/sidekiq'
 end

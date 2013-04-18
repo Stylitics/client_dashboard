@@ -3,8 +3,8 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $ ->
-  if $('#dashboard-chart').length
-    trend_line_chart = new TrendLineChart('dashboard-chart')
+  if $('#trend-line-chart').length
+    trend_line_chart = new TrendLineChart()
 
     $("label.radio").prepend("<span></span>")
     $("label.radio").each (i, label) ->

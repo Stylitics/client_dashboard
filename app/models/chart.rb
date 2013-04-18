@@ -7,6 +7,7 @@ class Chart
 
   field :name, type: String
   field :result, type: String
+  field :is_running, type: Boolean
 
   validates_presence_of :name
 
@@ -16,4 +17,15 @@ class Chart
   has_many :runs, :class_name => 'ChartRun'
 
   slug :name
+
+  def last_run
+    unless runs.any?
+      runs << ChartRun.new(chart_id: id)
+    end
+    runs.last
+  end
+
+  def is_running?
+    is_running == true
+  end
 end

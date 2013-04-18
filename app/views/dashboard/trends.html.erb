@@ -228,7 +228,7 @@
 <% end %>
 
 <%= content_for :sidebar do %>
-  <%= simple_form_for [@chart, @chart_run] do |f| %>
+  <%= simple_form_for [@chart, @chart_run], html: { remote: true, data: { id: @chart_run.id.to_s }, id: "trend-chart-filter-form" } do |f| %>
     <div class="sidebar" id="sidebar">
       <div class="title">
         <h2>Filter segment </h2>
@@ -248,15 +248,15 @@
         </div>
         <div class="filter_element">
           <h3>Student</h3>
-          <%= f.input :student, as: :radio, collection: ["All", "Yes", "No"], label: false %>
+          <%= f.input :student_opt, as: :radio, collection: ["All", "Yes", "No"], label: false %>
         </div>
         <div class="filter_element">
           <h3>Location</h3>
-          <%= f.input :location, as: :check_boxes, collection: ["All", "NYC", "LA", "DC", "SF", "Dallas", "Chicago"], label: false %>
+          <%= f.input :location_opt, as: :check_boxes, collection: ["All", "NYC", "LA", "DC", "SF", "Dallas", "Chicago"], label: false %>
         </div>
         <div class="filter_element">
           <h3>High Price</h3>
-          <%= f.input :price, as: :radio, collection: [["All", "all"], ["Items with no price", "no_price"], ["Items priced $3,000", "price_over_3000"]], label: false %>
+          <%= f.input :price, as: :radio, collection: [["All", "All"], ["Items with no price", "no_price"], ["Items priced $3,000", "price_over_3000"]], label: false %>
         </div>
         <div class="filter_element" id="price-filter">
           <h3>Price <span class="col-pink"><span id="min"></span> - <span id="max"></span></span></h3>
@@ -264,11 +264,11 @@
         </div>
         <div class="filter_element">
           <h3>Influencer</h3>
-          <%= f.input :influencer, as: :radio, collection: ["Include", "Exclude", "Only influencers"], label: false %>
+          <%= f.input :influencer_opt, as: :radio, collection: ["Include", "Exclude", "Only influencers"], label: false %>
         </div>
         <div class="filter_element">
           <h3>Staff</h3>
-          <%= f.input :staff, as: :radio, collection: ["Include", "Exclude"], label: false %>
+          <%= f.input :staff_opt, as: :radio, collection: ["Include", "Exclude"], label: false %>
         </div>
         <!-- <div class="filter_element">
           <h3>Date Range</h3>
@@ -432,11 +432,18 @@
   </div>
 <% end %>
 
-<input name="selector1" class="green" type="checkbox" id="selector1" value="selector1" checked="checked" data-id="0" /> <label for="selector1"><span></span>Adjusted Specific Items Added</label>
-<input name="selector2" class="blue" type="checkbox" id="selector2" value="selector2" checked="checked" data-id="1" /> <label for="selector2"><span></span>Adjusted Specific Wearings</label>
-<div class="big_chart" id="dashboard-chart" data-json="<%= chart_path("trend-line", format: :json) %>">
-  <span>Trend line</span>
-  <a class="reset" href="javascript:weekly_chart.filterAll(); dc.redrawAll();" style="display: none;">[reset]</a>
+<div class="big_chart" id="trend-line-chart" data-json="<%= chart_path("trend-line", format: :json) %>">
+  <h1><%= yield :title %></h1>
+  <div id="trend-chart-placeholder" class="hide alert alert-warning">No data yet available... Try again in a few moments.</div>
+  <div id="trend-chart-progress" class="hide alert alert-success" style="position:absolute">
+    New data is processed in the background. As soon as it's available it will be pushed to this chart.
+    <a href="#" class="close" data-dismiss="alert">×</a>
+  </div>
+  <div id="trend-chart-toggles" class="hide">
+    <input name="selector1" class="green" type="checkbox" id="selector1" value="selector1" checked="checked" data-id="0" /> <label for="selector1"><span></span>Adjusted Specific Items Added</label>
+  <input name="selector2" class="blue" type="checkbox" id="selector2" value="selector2" checked="checked" data-id="1" /> <label for="selector2"><span></span>Adjusted Specific Wearings</label>
+    <a class="reset" id="trend-reset-link" href="#" style="display: none;">[reset]</a>
+  </div>
 </div>
-<div class="small_chart" id="weekly-chart"></div>
+<div class="small_chart" id="weekly-chart" style="margin-top: 10px"></div>
 <p class="muted pull-right" style="margin-right: 15px; margin-bottom: 10px;">you can select a time range to zoom in</p>

@@ -188,7 +188,7 @@ input[type="text"], input[type="password"], textarea {
 
 .header {
 	@include column(60,true);
-	padding:0px 20px 0px 20px;
+	padding:0px 20px 0px 0px;
 
 	.logo {
 		@include column(10);
