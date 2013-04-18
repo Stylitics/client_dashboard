@@ -19,10 +19,7 @@ class Chart
   slug :name
 
   def last_run
-    unless runs.any?
-      runs << ChartRun.new(chart_id: id)
-    end
-    runs.last
+    runs.desc("id").last
   end
 
   def is_running?

@@ -12,6 +12,15 @@ class RScriptRun
 
   def generate_script
     code = r_script.code
+
+    # SQL connection
+    code.gsub!("{!hostVar!}", SQL_HOST)
+    code.gsub!("{!portVar!}", SQL_PORT.to_s)
+    code.gsub!("{!dbnameVar!}", SQL_DB)
+    code.gsub!("{!userVar!}", SQL_USER)
+    code.gsub!("{!passVar!}", SQL_PASS)
+    # end SQL connection
+
     code.scan(/\{\{(.*?)\}\}/).each do |v|
       code.gsub!("{{#{v[0].camelize(:lower)}}}", self[v[0].camelize(:lower).underscore.to_sym])
     end
