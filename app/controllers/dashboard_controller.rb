@@ -14,12 +14,12 @@ class DashboardController < ApplicationController
       @chart_run[:lo_age] = 10.to_s
       @chart_run[:hi_age] = 100.to_s
       @chart_run[:student_opt] = "All"
-      @chart_run[:location_opt] = "All"
+      @chart_run[:location_opt] = ["All"]
       @chart_run[:lo_price] = 0.to_s
       @chart_run[:hi_price] = 100000.to_s
       @chart_run[:influencer_opt] = "Include"
       @chart_run[:staff_opt] = "Include"
-      @chart_run[:style_opt] = "Include"
+      @chart_run[:style_opt] = "All"
       @chart_run[:event_type] = "All"
       @chart_run[:color_opt] = "All"
       @chart_run[:retailer_opt] = "All"
