@@ -14,6 +14,10 @@ a, a:hover {
 	color:inherit;
 }
 
+ul {
+	list-style-type: none;
+}
+
 h2 {
 	font-family: "proxima_novathin";
 	font-size: 24px;
@@ -33,39 +37,31 @@ h3 {
 	margin-bottom: 5px;
 }
 
+.profiler-results {
+	display:none;
+}
+
 label {display: inline;}
 
 fieldset {
-	@include column(43,true);
 	border: none;
 	border-top: 1px solid #CCCCCC;
 	margin: 0;
 	padding: 10px 0px;
 }
 
-.fieldset-left {
-	@include column(14);
-}
-
 .fieldset-right {
-	@include column(29, true);
 	textarea {
 		width: span(27);
 		height: 200px;
 	}
 }
 
-.container {
-	@include container;
-}
-
 .big_chart {
-	width: span(44);
 	height: 400px;
 }
 
 .small_chart {
-	width: span(44);
 	height: 100px;
 }
 
@@ -186,116 +182,153 @@ input[type="text"], input[type="password"], textarea {
 	margin:10px;
 }
 
-.header {
-	@include column(60,true);
+.container-header {
+	$zen-column-count: 2;
+	$zen-gutter-width: 10px;
+	@include zen-grid-container;
+
+	width: 99%;
+	margin: 0 auto;
 	padding:0px 20px 0px 20px;
+	.container-menu {
+		@include zen-grid-item(1, 1);
+		.menu {
+			width:900px;
+			margin-top:25px;
 
-	.logo {
-		@include column(10);
-		background: image-url("stylitics-logo.png") no-repeat center;
-		height: 60px;
-		float:right;
-	}
-	.menu {
-		@include column(50, true);
-		margin-top:25px;
+			i {
+				height:10px;
+			}
+			li {
+				@include background-image(linear-gradient(#3a3a3a, #1f1f1f));
+				float: left;
+				border: 1px solid #333333;
+				border-bottom: none;
+				color:#FFFFFF;
+				text-transform: uppercase;
+				margin-right: 10px;
+				font-size: 14px;
 
-		i {
-			height:10px;
+				&:hover {
+					background:#FFFFFF;
+					color: #333333;
+				}
+
+				&.active {
+					background:#FFFFFF;
+					color: #333333;
+				}
+
+				a {
+					font-family: "proxima_novalight";
+					display:block;
+					padding: 10px 20px;
+				}
+			}
 		}
-		li {
-			@include background-image(linear-gradient(#3a3a3a, #1f1f1f));
-			float: left;
-			border: 1px solid #333333;
-			border-bottom: none;
-			color:#FFFFFF;
-			text-transform: uppercase;
-			margin-right: 10px;
-			font-size: 14px;
-
-			&:hover {
-				background:#FFFFFF;
-				color: #333333;
-			}
-
-			&.active {
-				background:#FFFFFF;
-				color: #333333;
-			}
-
-			a {
-				font-family: "proxima_novalight";
-				display:block;
-				padding: 10px 20px;
-			}
+	}
+	.container-logo {
+		@include zen-grid-item(1, 2);
+		.logo {
+			width:100px;
+			background: image-url("stylitics-logo.png") no-repeat center;
+			height: 60px;
+			float:right;
 		}
 	}
 }
 
-.container {
-	overflow:visible;
-}
 .btn {
 	border-radius:0px;
 }
 
-.inner-content {
-	@include column(58,true);
-	background:#FFFFFF;
-	min-height:400px;
-	padding:10px 20px 10px 20px;
-	position:relative;
+.container-content-one {
+	$zen-column-count: 1;
+	$zen-gutter-width: 10px;
+	@include zen-grid-container;
 
-	.left-controls {
-		@include column(2);
-		position:absolute;
-		left:-50px;
-	}
+	width: 100%;
+	margin: 0 auto;
 
-	.left {
-		@include column(14, true);
-		position:absolute;
-		display:none;
+	.middle {
+		background:#FFFFFF;
+		min-height:700px;
+		padding:10px 20px 10px 20px;
 
-		.sidebar {
-			@include column(13,true);
-			display:none;
-			background: #f0f0f0;
-			padding: 10px;
-			overflow-y:scroll;
-			overflow-x:hidden;
-			height:600px;
+		.left {
+			width:400px;
+			float:left;
+
+			.sidebar {
+				display:none;
+				background: #f0f0f0;
+				padding: 10px;
+				overflow-y:scroll;
+				overflow-x:hidden;
+				height:600px;
+
+				.title {
+					margin-bottom:20px;
+				}
+				.filters {
+					margin-bottom:20px;
+
+					.filter_element {
+						margin-bottom: 20px;
+					}
+				}
+			}	
 		}
 
-		.title {
-			@include column(13, true);
-			margin-bottom:20px;
+		.wide {
+			width:900px;
+			float:left;
 		}
-		.filters {
-			@include column(13, true);
-			margin-bottom:20px;
+		.right {
+			width:400px;
+			float:left;
+			.sidebar {
+				background: #f0f0f0;
+				padding: 10px;
+				margin-top: 10px;
+			}
+			.stats {
+				text-align:center;
+			}
 
-			.filter_element {
-				@include column(12,true);
-				margin-bottom: 20px;
+			.sidebar-form, .sidebar-stats {
+				margin-top:10px;
+				margin-bottom:10px;
+			}
+
+			.textarea-container {
+				background:#cfcfcf;
+				margin-top:10px;
+
+				textarea {
+					width:208px;
+					border-radius:0;
+				}
+
+				.textarea-base1 {
+					padding:4px 0 0 4px;
+				}
+
+				.textarea-base2 {
+					float:right;
+					text-align:right;
+				}
 			}
 		}
 	}
-	.center {
-		@include column(31);
-	}
-	.wide {
-		@include column(45);
-	}
-	.wide3 {
-		@include column(60, true);
-	}
-	.wide2 {
-		@include column(44, true);
+
+	.bottom {
+		@include zen-grid-item(1, 1);
 		margin-top:10px;
 
 		.bottom-container {
-			@include column(14);
+			width:400px;
+			float:left;
 			background:#f7f7f7;
 			border: 1px solid #999999;
 			border-bottom: none;
@@ -306,79 +339,30 @@ input[type="text"], input[type="password"], textarea {
 			}
 
 			.bottom-title {
-				@include column(14,true);
 				border-bottom:1px solid #999999;
 
 				h2 {
+					float:left;
 					margin-top:18px;
 				}
 			}
 
 			.bottom-content {
-				@include column(14,true);
 				border-bottom:1px solid #999999;
 				padding:20px 0 20px 0;
 				background:#FFFFFF;
 
 				.bottom-label {
-					@include column(7,true);
 					margin-left:10px;
 					padding-top:3px;
 				}
 
 				.bottom-value {
-					@include column(6,true);
 					float:right;
 					text-align:right;
 					margin-right:10px;
 					font-size:18px;
 				}
-			}
-		}
-	}
-	.right {
-		@include column(13,true);
-
-		.sidebar {
-			@include column(12,true);
-			background: #f0f0f0;
-			padding: 10px;
-			margin-top: 10px;
-		}
-		.stats {
-			@include column(6);
-			text-align:center;
-
-			&:last-child {
-				@include column(6,true);
-			}
-		}
-
-		.sidebar-form, .sidebar-stats {
-			@include column(12,true);
-			margin-top:10px;
-			margin-bottom:10px;
-		}
-
-		.textarea-container {
-			@include column(12,true);
-			background:#cfcfcf;
-			margin-top:10px;
-
-			textarea {
-				width:208px;
-				border-radius:0;
-			}
-
-			.textarea-base1 {
-				@include column(6,true);
-				padding:4px 0 0 4px;
-			}
-
-			.textarea-base2 {
-				@include column(6,true);
-				float:right;
-				text-align:right;
 			}
 		}
 	}

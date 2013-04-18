@@ -14,8 +14,8 @@
   </div>
 <% end %>
 
-<div class="container">
-  <div class="header">
+<div class="container-header">
+  <div class="container-menu">
     <div class="menu">
       <ul>
         <li class="active"><a href="#" id="open-filters"><i id="open-filter-icon" class="icon-chevron-right"></i></a></li>
@@ -27,11 +27,15 @@
         <li><a href="#">Local</a></li>
       </ul>
     </div>
+  </div>
+  <div class="container-logo">
     <div class="logo">
       &nbsp;
     </div>
   </div>
-  <div class="inner-content">
+</div>
+<div class="container-content-one">   
+  <div class="middle">
     <div class="left">
       <%= yield :sidebar %>
     </div>
@@ -41,9 +45,11 @@
     <div class="right">
       <%= yield :sidebar_r %>
     </div>
-    <div class="wide2">
-      <%= yield :bottom %>
-    </div>
+  </div>
+</div>
+<div class="container-content-one">
+  <div class="bottom">
+    <%= yield :bottom %>
   </div>
 </div>
 

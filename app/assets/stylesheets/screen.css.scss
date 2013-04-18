@@ -7,10 +7,10 @@ $legacy-support-for-ie8: false;
 @import "compass/utilities";
 
 @import "compass/css3";
+ 
+@import "zen";
 
 @import "partials/base";
- 
-@import "blueprint";
 
 @import "partials/main";
 
