@@ -6,6 +6,8 @@ class ChartRunsController < ApplicationController
     new_chart_run.output = ""
     chart.runs << new_chart_run
 
+    chart_run.accessible = :all
+    params[:chart_run][:location_opt] = params[:chart_run][:location_opt].join(",") if params[:chart_run][:location_opt].present?
     chart_run.update_attributes params[:chart_run]
 
     TrendLineWorker.perform_async(chart_run.id)

@@ -28,6 +28,8 @@ $ ->
       slide: (event, ui) ->
         $("#age-filter #min").html(ui.values[0])
         $("#age-filter #max").html(ui.values[1])
+        $("#chart_run_lo_age").val(ui.values[0])
+        $("#chart_run_hi_age").val(ui.values[1])
 
     $("#price-filter #min").html(0)
     $("#price-filter #max").html(100000)
@@ -39,8 +41,11 @@ $ ->
       slide: (event, ui) ->
         $("#price-filter #min").html(accounting.formatMoney(ui.values[0], "$", 0))
         $("#price-filter #max").html(accounting.formatMoney(ui.values[1], "$", 0))
+        $("#chart_run_lo_price").val(ui.values[0])
+        $("#chart_run_hi_price").val(ui.values[1])
     $("#price-filter #min").html(accounting.formatMoney(0, "$", 0))
     $("#price-filter #max").html(accounting.formatMoney(100000, "$", 0))
 
-    # $(".datepicker").datepicker()
-    # $(".datepicker").datepicker "option", "showAnim", "fadeIn"
+    $(".datepicker").datepicker
+      dateFormat: "yy-mm-dd"
+      showAnim: "fadeIn"

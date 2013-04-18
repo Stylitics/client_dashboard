@@ -8,39 +8,16 @@ class TrendLineWorker
 
     code = chart.r_script.code
 
-    # temp
-    code.gsub!("{{hostVar}}", "localhost")
-    code.gsub!("{{portVar}}", "5432")
-    code.gsub!("{{dbnameVar}}", "stylitics-dev")
-    code.gsub!("{{userVar}}", "catalystww")
-    code.gsub!("{{passVar}}", "")
-
-    code.gsub!("{{loAge}}", "10")
-    code.gsub!("{{hiAge}}", "100")
-    code.gsub!("{{loPrice}}", "0")
-    code.gsub!("{{hiPrice}}", "100000")
-    code.gsub!("{{startDateTxt}}", "2013-01-01")
-    code.gsub!("{{endDateTxt}}", "2013-04-01")
-    code.gsub!("{{expensiveOpt}}", "Include")
-    code.gsub!("{{styleOpt}}", "All")
-    code.gsub!("{{eventType}}", "All")
-    code.gsub!("{{colorOpt}}", "All")
-    code.gsub!("{{retailerOpt}}", "All")
-    code.gsub!("{{brandOpt}}", "All")
-    code.gsub!("{{patternOpt}}", "All")
-    code.gsub!("{{fabricOpt}}", "All")
-    code.gsub!("{{sortOpt}}", "User ID")
-
-    code.gsub!("{{styleTxt}}", "")
-    code.gsub!("{{colorTxt}}", "")
-    code.gsub!("{{brandTxt}}", "")
-    code.gsub!("{{retailerTxt}}", "")
-    code.gsub!("{{patternTxt}}", "")
-    code.gsub!("{{fabricTxt}}", "")
-    # end temp
+    # SQL connection
+    code.gsub!("{!hostVar!}", SQL_HOST)
+    code.gsub!("{!portVar!}", SQL_PORT.to_s)
+    code.gsub!("{!dbnameVar!}", SQL_DB)
+    code.gsub!("{!userVar!}", SQL_USER)
+    code.gsub!("{!passVar!}", SQL_PASS)
+    # end SQL connection
 
     code.scan(/\{\{(.*?)\}\}/).each do |v|
-      code.gsub!("{{#{v[0].camelize(:lower)}}}", chart_run[v[0].camelize(:lower).underscore.to_sym])
+      code.gsub!("{{#{v[0].camelize(:lower)}}}", chart_run[v[0].camelize(:lower).underscore.to_sym].to_s)
     end
 
     code.gsub!('{#json_output#}', "#{Rails.root}/tmp/runs/#{chart_run.id}.json")
