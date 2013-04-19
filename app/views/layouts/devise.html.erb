@@ -8,7 +8,14 @@
 </head>
 <body>
 
-<% flash.each do |name, msg| %>
+<div class="container">
+  <div class="header">
+    <div class="logo">
+      &nbsp;
+    </div>
+  </div>
+  <div class="inner-content-small">
+	<% flash.each do |name, msg| %>
   <div class="alert alert-<%= name == :notice ? "success" : "error" %> flash-<%= name == :notice ? "success" : "error" %> hide">
     <%= msg %>
   </div>
