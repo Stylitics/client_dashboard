@@ -19,3 +19,15 @@ $ ->
   $(".submitter-anchor").click (e) ->
     e.preventDefault()
     $(this).parents('form').find(".submitter").click()
+
+  $("label.radio").prepend("<span></span>")
+  $("label.radio").each (i, label) ->
+    input = $(label).find("input")
+    input.insertBefore(label)
+    $(label).attr("for", input.attr("id"))
+
+  $("label.checkbox").prepend("<span></span>")
+  $("label.checkbox").each (i, label) ->
+    input = $(label).find("input")
+    input.insertBefore(label)
+    $(label).attr("for", input.attr("id"))
