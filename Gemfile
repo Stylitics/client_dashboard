@@ -41,6 +41,8 @@ group :production do
 end
 
 gem 'coffee-rails', '~> 3.2.1'
+gem 'uglifier', '>= 1.0.3'
+gem 'therubyracer', :platforms => :ruby
 
 group :assets do
   gem 'sass-rails', '~> 3.2.3'
@@ -48,10 +50,6 @@ group :assets do
 
   gem 'bootstrap-sass', '~> 2.3.1.0'
   gem 'font-awesome-sass-rails'
-
-  gem 'uglifier', '>= 1.0.3'
-
-  gem 'therubyracer', :platforms => :ruby
 end
 
 group :test, :development do
