@@ -39,4 +39,28 @@ class DashboardController < ApplicationController
       @chart.runs << @chart_run
     end
   end
+
+  def brandshare
+
+  end
+
+  def top25brands
+
+  end
+
+  def top25retailers
+
+  end
+
+  def top10colorspatternsstyles
+
+  end
+
+  def outfitstreamlookup
+
+  end
+
+  def weathervizualizations
+
+  end
 end

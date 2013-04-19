@@ -19,12 +19,14 @@
     <div class="menu">
       <ul>
         <li class="active"><a href="#" id="open-filters"><i id="open-filter-icon" class="icon-chevron-right"></i></a></li>
-        <li class="<%= "active" if request[:action] == "index" %>"><%= link_to 'Home', root_path %></li>
-        <li><a href="#">Catalog</a></li>
-        <li><a href="#">Segments</a></li>
-        <li><a href="#">Competitors</a></li>
+        <!--<li class="<%= "active" if request[:action] == "index" %>"><%= link_to 'Home', root_path %></li>-->
         <li class="<%= "active" if request[:action] == "trends" %>"><%= link_to "Trends", trends_path %></li>
-        <li><a href="#">Local</a></li>
+        <li class="<%= "active" if request[:action] == "brandshare" %>"><%= link_to "Brand Share", brandshare_path %></li>
+        <li class="<%= "active" if request[:action] == "top25brands" %>"><%= link_to "25 Brands", top25brands_path %></li>
+        <li class="<%= "active" if request[:action] == "top25retailers" %>"><%= link_to "25 Retailers", top25retailers_path %></li>
+        <li class="<%= "active" if request[:action] == "top10colorspatternsstyles" %>"><%= link_to "Top 10", top10colorspatternsstyles_path %></li>
+        <li class="<%= "active" if request[:action] == "outfitstreamlookup" %>"><%= link_to "Outfit stream", outfitstreamlookup_path %></li>
+        <li class="<%= "active" if request[:action] == "weathervisualizations" %>"><%= link_to "Weather", weathervisualizations_path %></li>
       </ul>
     </div>
     <div class="logo">

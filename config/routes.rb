@@ -21,6 +21,12 @@ Dashboard::Application.routes.draw do
   end
 
   get "/trends" => "dashboard#trends", as: :trends
+  get "/brand-share" => "dashboard#brandshare", as: :brandshare
+  get "/top-25-brands" => "dashboard#top25brands", as: :top25brands
+  get "/top-25-retailers" => "dashboard#top25retailers", as: :top25retailers
+  get "/top-10-colors-patterns-styles" => "dashboard#top10colorspatternsstyles", as: :top10colorspatternsstyles
+  get "/outfit-stream-lookup" => "dashboard#outfitstreamlookup", as: :outfitstreamlookup
+  get "/weather-visualizations" => "dashboard#weathervisualizations", as: :weathervisualizations
 
   root :to => 'dashboard#index'
 
