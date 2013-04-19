@@ -17,7 +17,7 @@ class TrendLineWorker
     # end SQL connection
 
     code.scan(/\{\{(.*?)\}\}/).each do |v|
-      code.gsub!("{{#{v[0].camelize(:lower)}}}", chart_run[v[0].camelize(:lower).underscore.to_sym].to_s)
+      code.gsub!("{{#{v[0].camelize(:lower)}}}", chart_run[v[0].camelize(:lower).underscore.to_sym])
     end
 
     code.gsub!('{#json_output#}', "#{Rails.root}/tmp/runs/#{chart_run.id}.json")
