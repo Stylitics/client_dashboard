@@ -76,7 +76,7 @@ class @TrendLineChart
 
         top_asid.dimension(weeks).group((d) ->
           d.asid
-        ).size(5).columns([(d) ->
+        ).columns([(d) ->
           d.date
         , (d) ->
           d.asid
@@ -89,7 +89,7 @@ class @TrendLineChart
 
         top_asw.dimension(weeks).group((d) ->
           d.asw
-        ).size(5).columns([(d) ->
+        ).columns([(d) ->
           d.date
         , (d) ->
           d.asid
@@ -99,6 +99,8 @@ class @TrendLineChart
           table.selectAll("#top-asw").classed("info", true)
           table.selectAll(".dc-table-group").remove()
         )
+
+        #.size(5)
 
         dc.renderAll()
 
