@@ -19,5 +19,6 @@
 //= require accounting
 //= require bootstrap-alert
 //= require scripts
+//= require vanila_trend_line_chart
 //= require trend_line_chart
 //= require dashboard

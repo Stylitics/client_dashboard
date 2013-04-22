@@ -4,6 +4,7 @@
  *= require fonts/stylesheet
  *= require bootstrap_and_overrides
  *= require screen
+ *= require charts
  *= require smoothness/jquery-ui.min
  *= require smoothness/jquery.ui.theme.custom
  */

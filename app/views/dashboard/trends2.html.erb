@@ -159,6 +159,38 @@
   <div class="wide3">
     <div class="bottom-container">
       <div class="bottom-title">
+        <div class="icon-c">&nbsp;</div>
+        <h2>Adjusted Specific Items Added</h2>
+      </div>
+      <div class="bottom-content">
+        <table id="top-asid" class="table table-hover">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+    </div>
+    <div class="bottom-container">
+      <div class="bottom-title">
+        <div class="icon-sty">&nbsp;</div>
+        <h2>Adjusted Specific Wearings</h2>
+      </div>
+      <div class="bottom-content">
+        <table id="top-asw" class="table table-hover">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+    </div>
+    <div class="bottom-container">
+      <div class="bottom-title">
         <div class="icon-seg">&nbsp;</div>
         <h2>SEGMENTS</h2>
       </div>
@@ -236,11 +268,14 @@
   </div>
 <% end %>
 
-<div class="big_chart" id="trend-line-chart" data-json="<%= chart_path("trend-line", format: :json) %>" data-pattern-odd="<%= asset_path "pattern.png" %>" data-pattern-even="<%= asset_path "pattern-d.png" %>" style="margin-bottom: 100px">
+<div class="big_chart" id="trend-line-chart-2" data-json="<%= chart_path("trend-line", format: :json) %>" data-start-date="<%= @chart_run[:start_date_txt] %>" data-end-date="<%= @chart_run[:end_date_txt] %>">
   <h1><%= yield :title %></h1>
   <div id="trend-chart-placeholder" class="hide alert alert-warning">No data yet available... Try again in a few moments.</div>
-  <div id="trend-chart-toggles">
+  <div id="trend-chart-toggles" class="hide">
     <input name="selector1" class="green" type="checkbox" id="selector1" value="selector1" checked="checked" data-id="0" /> <label for="selector1"><span></span>Adjusted Specific Items Added</label>
   <input name="selector2" class="blue" type="checkbox" id="selector2" value="selector2" checked="checked" data-id="1" /> <label for="selector2"><span></span>Adjusted Specific Wearings</label>
+    <a class="reset" id="trend-reset-link" href="#" style="display: none;">[reset]</a>
   </div>
 </div>
+<div class="small_chart" id="weekly-chart" style="margin-top: 10px"></div>
+<p class="muted pull-right" style="margin-right: 15px; margin-bottom: 10px;">you can select a time range to zoom in</p>

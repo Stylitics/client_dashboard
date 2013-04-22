@@ -1,6 +1,6 @@
 class @TrendLineChart
   constructor: () ->
-    trend_chart = dc.compositeChart("#trend-line-chart");
+    trend_chart = dc.compositeChart("#trend-line-chart-2");
     weekly_chart = dc.compositeChart("#weekly-chart");
     top_asid = dc.dataTable("#top-asid")
     top_asw = dc.dataTable("#top-asw")
@@ -9,7 +9,7 @@ class @TrendLineChart
     parseDate = dateFormat.parse
     numberFormat = d3.format(".6f")
 
-    d3.json $("#trend-line-chart").data('json'), (json_data) ->
+    d3.json $("#trend-line-chart-2").data('json'), (json_data) ->
       # console.log(json_data)
       if json_data.data == "empty"
         $("#trend-chart-toggles").addClass("hide")
@@ -42,7 +42,7 @@ class @TrendLineChart
             right: 50
             bottom: 25
             left: 40
-          ).dimension(weeks).group(asid_weeks_group).x(d3.time.scale().domain([new Date($("#trend-line-chart").data("start-date")), new Date($("#trend-line-chart").data("end-date"))])).round(d3.time.week.round).xUnits(d3.time.weeks).elasticY(true).renderHorizontalGridLines(true).renderVerticalGridLines(true).brushOn(false).compose([dc.lineChart(trend_chart).group(asid_weeks_group).valueAccessor((d) ->
+          ).dimension(weeks).group(asid_weeks_group).x(d3.time.scale().domain([new Date($("#trend-line-chart-2").data("start-date")), new Date($("#trend-line-chart-2").data("end-date"))])).round(d3.time.week.round).xUnits(d3.time.weeks).elasticY(true).renderHorizontalGridLines(true).renderVerticalGridLines(true).brushOn(false).compose([dc.lineChart(trend_chart).group(asid_weeks_group).valueAccessor((d) ->
               d.value
             ).renderArea(false).title((d) ->
               value = d.value
@@ -61,7 +61,7 @@ class @TrendLineChart
             right: 50
             bottom: 25
             left: 40
-          ).dimension(weeks).group(asid_weeks_group).x(d3.time.scale().domain([new Date($("#trend-line-chart").data("start-date")), new Date($("#trend-line-chart").data("end-date"))])).round(d3.time.week.round).xUnits(d3.time.weeks).elasticY(true).renderHorizontalGridLines(true).brushOn(true).renderlet((chart) ->
+          ).dimension(weeks).group(asid_weeks_group).x(d3.time.scale().domain([new Date($("#trend-line-chart-2").data("start-date")), new Date($("#trend-line-chart-2").data("end-date"))])).round(d3.time.week.round).xUnits(d3.time.weeks).elasticY(true).renderHorizontalGridLines(true).brushOn(true).renderlet((chart) ->
               chart.select("g.y").style("display", "none")
               trend_chart.filter(chart.filter())
             ).on("filtered", (chart) ->

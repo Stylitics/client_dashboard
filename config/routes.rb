@@ -21,6 +21,7 @@ Dashboard::Application.routes.draw do
   end
 
   get "/trends" => "dashboard#trends", as: :trends
+  get "/trends2" => "dashboard#trends2", as: :trends2
   get "/brand-share" => "dashboard#brandshare", as: :brandshare
   get "/top-25-brands" => "dashboard#top25brands", as: :top25brands
   get "/top-25-retailers" => "dashboard#top25retailers", as: :top25retailers
