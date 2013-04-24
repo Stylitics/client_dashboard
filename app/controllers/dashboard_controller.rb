@@ -10,7 +10,7 @@ class DashboardController < ApplicationController
     else
       @chart_run = ChartRun.new
       @chart_run.accessible = :all
-      @chart_run[:gender] = "All"
+      @chart_run[:gender_opt] = "All"
       @chart_run[:lo_age] = 10.to_s
       @chart_run[:hi_age] = 100.to_s
       @chart_run[:student_opt] = "All"
@@ -47,7 +47,7 @@ class DashboardController < ApplicationController
     else
       @chart_run = ChartRun.new
       @chart_run.accessible = :all
-      @chart_run[:gender] = "All"
+      @chart_run[:gender_opt] = "All"
       @chart_run[:lo_age] = 10.to_s
       @chart_run[:hi_age] = 100.to_s
       @chart_run[:student_opt] = "All"
