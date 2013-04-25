@@ -111,6 +111,14 @@
           <%= f.input :start_date_txt, as: :string, input_html: { placeholder: "yyyy-mm-dd", class: "datepicker" }, label: "From:" %>
           <%= f.input :end_date_txt, as: :string, input_html: { placeholder: "yyyy-mm-dd", class: "datepicker" }, label: "To:" %>
         </div>
+        <div class="filter_element">
+          <h3>AttribVal</h3>
+          <%= f.input :attrib_val, as: :string, label: false %>
+        </div>
+        <div class="filter_element">
+          <h3>AttribNameVal</h3>
+          <%= f.input :attrib_name_val, as: :string, label: false %>
+        </div>
       </div>
       <div style="clear:left">&nbsp;</div>
     </div>

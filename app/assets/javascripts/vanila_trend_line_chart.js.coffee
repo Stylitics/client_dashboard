@@ -39,7 +39,7 @@ class @VanilaTrendLineChart
           bgClass = "odd"
         adjustedSpecificItemsAdded.push [parseDate(d.date), d.adjustedSpecificItemsAdded]
         adjustedSpecificWearings.push [parseDate(d.date), d.adjustedSpecificWearings]
-        bg.append("rect").attr("width", 920 / data.length).attr("height", screenHeight).attr("transform", "translate(" + ((920 / data.length) * i) + ", 0)").attr("class", bgClass).attr()
+        bg.append("rect").attr("width", 920 / (data.length - 1)).attr("height", screenHeight).attr("transform", "translate(" + ((920 / (data.length - 1)) * i - 1) + ", 0)").attr("class", bgClass).attr()
 
       x.domain d3.extent(adjustedSpecificItemsAdded, (d) ->
         d[0]
