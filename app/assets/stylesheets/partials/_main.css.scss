@@ -123,6 +123,7 @@ fieldset {
 	.title-container {
 		@include column(58,true);
 
+
 		.title {
 			@include column(37);
 			padding: 20px 0px 20px 20px;
@@ -153,6 +154,29 @@ fieldset {
 
 	.filters-container {
 		display: none;
+
+		.define-your-segment{
+			@include column(36,true);
+			padding: 20px 20px 20px 20px;
+			background:#CCCCCC;
+		}
+
+		.filter-your-results {
+			@include column(20,true);
+			padding: 20px 0px 20px 10px;
+			background:#bdbdbd;
+		}
+
+		.segment {
+			@include column(36,true);
+			padding: 20px 20px 20px 20px;
+			
+			.segment-left {
+				border-right: 1px solid #CCCCCC;
+				@include column(17,true);
+				padding-right:20px;
+			}
+		}
 	}
 }
 

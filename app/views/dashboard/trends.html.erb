@@ -6,125 +6,6 @@
   </div>
 <% end %>
 
-<%= content_for :sidebar do %>
-  <%= simple_form_for [@chart, @chart_run], html: { remote: true, data: { id: @chart_run.id.to_s }, id: "trend-chart-filter-form" } do |f| %>
-    <div class="sidebar" id="sidebar">
-      <div class="title">
-        <h2>Filter segment </h2>
-        <h2 class="alternate"><%= link_to "or choose a saved one", "" %></h2>
-        <div class="filter_element">
-          <input type="submit" class="bck-pink" id="show-me" value="Show me" />
-          <span id="filter-loading" class="hide">Loading...</span>
-        </div>
-      </div>
-      <div class="filters">
-        <div class="filter_element">
-          <h3>Gender</h3>
-          <%= f.input :gender_opt, as: :radio_buttons, collection: ["All", "Male", "Female"], label: false %>
-        </div>
-        <div class="filter_element" id="age-filter">
-          <h3>Age Range <span class="col-pink"><span id="min"></span> - <span id="max"></span></span></h3>
-          <div class="slider"></div>
-          <%= f.input :lo_age, as: :hidden %>
-          <%= f.input :hi_age, as: :hidden %>
-        </div>
-        <div class="filter_element">
-          <h3>Student</h3>
-          <%= f.input :student_opt, as: :radio_buttons, collection: ["All", "Yes", "No"], label: false %>
-        </div>
-        <div class="filter_element">
-          <h3>Location</h3>
-          <%= f.input :location_opt, as: :check_boxes, collection: ["All", "NYC", "LA", "DC", "SF", "Dallas", "Chicago"], label: false %>
-        </div>
-        <div class="filter_element" id="price-filter">
-          <h3>Price <span class="col-pink"><span id="min"></span> - <span id="max"></span></span></h3>
-          <div class="slider"></div>
-          <%= f.input :lo_price, as: :hidden %>
-          <%= f.input :hi_price, as: :hidden %>
-        </div>
-        <div class="filter_element">
-          <h3>Influencer</h3>
-          <%= f.input :influencer_opt, as: :radio_buttons, collection: ["Include", "Exclude", "Only influencers"], label: false %>
-        </div>
-        <div class="filter_element">
-          <h3>Staff</h3>
-          <%= f.input :staff_opt, as: :radio_buttons, collection: ["Include", "Exclude"], label: false %>
-        </div>
-        <div class="filter_element">
-          <h3>Style</h3>
-          <%= f.input :style_opt, as: :radio_buttons, collection: ["All", "Include", "Exclude"], label: false %>
-        </div>
-        <div class="filter_element">
-          <h3>Event</h3>
-          <%= f.input :event_type, as: :radio_buttons, collection: ["All", "Bought", "Added", "Worn", "Last Worn"], label: false %>
-        </div>
-        <div class="filter_element">
-          <h3>Color</h3>
-          <%= f.input :color_opt, as: :radio_buttons, collection: ["All", "Include", "Exclude"], label: false %>
-        </div>
-        <div class="filter_element">
-          <h3>Retailer</h3>
-          <%= f.input :retailer_opt, as: :radio_buttons, collection: ["All", "Include", "Exclude"], label: false %>
-        </div>
-        <div class="filter_element">
-          <h3>Brand</h3>
-          <%= f.input :brand_opt, as: :radio_buttons, collection: ["All", "Include", "Exclude"], label: false %>
-        </div>
-        <div class="filter_element">
-          <h3>Pattern</h3>
-          <%= f.input :pattern_opt, as: :radio_buttons, collection: ["All", "Include", "Exclude"], label: false %>
-        </div>
-        <div class="filter_element">
-          <h3>Fabric</h3>
-          <%= f.input :fabric_opt, as: :radio_buttons, collection: ["All", "Include", "Exclude"], label: false %>
-        </div>
-        <div class="filter_element">
-          <h3>Sort</h3>
-          <%= f.input :sort_opt, as: :radio_buttons, collection: ["User ID", "Item ID", "Style", "Color", "Retailer", "Brand", "Pattern", "Fabric"], label: false %>
-        </div>
-        <div class="filter_element">
-          <h3>Style TXT</h3>
-          <%= f.input :style_txt, as: :string, label: false %>
-        </div>
-        <div class="filter_element">
-          <h3>Color TXT</h3>
-          <%= f.input :color_txt, as: :string, label: false %>
-        </div>
-        <div class="filter_element">
-          <h3>Brand TXT</h3>
-          <%= f.input :brand_txt, as: :string, label: false %>
-        </div>
-        <div class="filter_element">
-          <h3>Retailer TXT</h3>
-          <%= f.input :retailer_txt, as: :string, label: false %>
-        </div>
-        <div class="filter_element">
-          <h3>Pattern TXT</h3>
-          <%= f.input :pattern_txt, as: :string, label: false %>
-        </div>
-        <div class="filter_element">
-          <h3>Fabric TXT</h3>
-          <%= f.input :fabric_txt, as: :string, label: false %>
-        </div>
-        <div class="filter_element">
-          <h3>Date Range</h3>
-          <%= f.input :start_date_txt, as: :string, input_html: { placeholder: "yyyy-mm-dd", class: "datepicker" }, label: "From:" %>
-          <%= f.input :end_date_txt, as: :string, input_html: { placeholder: "yyyy-mm-dd", class: "datepicker" }, label: "To:" %>
-        </div>
-        <div class="filter_element">
-          <h3>AttribVal</h3>
-          <%= f.input :attrib_val, as: :string, label: false %>
-        </div>
-        <div class="filter_element">
-          <h3>AttribNameVal</h3>
-          <%= f.input :attrib_name_val, as: :string, label: false %>
-        </div>
-      </div>
-      <div style="clear:left">&nbsp;</div>
-    </div>
-  <% end %>
-<% end %>
-
 <%= content_for :sidebar_r do %>
   <div class="icon-l">&nbsp;</div>
   <div class="icon-d">&nbsp;</div>
@@ -180,7 +61,129 @@
     </div>
 
     <div class="filters-container" id="filters-container">
-      &nbsp;
+      <div class="define-your-segment">
+        <h2>Define your segment</h2>
+      </div>
+      <div class="filter-your-results">
+        <h2>Filter your results</h2>
+      </div>
+      <div class="segment">
+        <div class="segment-left">
+          <%= simple_form_for [@chart, @chart_run], html: { remote: true, data: { id: @chart_run.id.to_s }, id: "trend-chart-filter-form" } do |f| %>
+          <div class="filters">
+            <div class="filter_element">
+              <input type="submit" class="bck-pink" id="show-me" value="Show me" />
+              <span id="filter-loading" class="hide">Loading...</span>
+            </div>
+            <div class="filter_element">
+              <h3>Gender</h3>
+              <%= f.input :gender_opt, as: :radio_buttons, collection: ["All", "Male", "Female"], label: false %>
+            </div>
+            <div class="filter_element" id="age-filter">
+              <h3>Age Range <span class="col-pink"><span id="min"></span> - <span id="max"></span></span></h3>
+              <div class="slider"></div>
+              <%= f.input :lo_age, as: :hidden %>
+              <%= f.input :hi_age, as: :hidden %>
+            </div>
+            <div class="filter_element">
+              <h3>Student</h3>
+              <%= f.input :student_opt, as: :radio_buttons, collection: ["All", "Yes", "No"], label: false %>
+            </div>
+            <div class="filter_element">
+              <h3>Location</h3>
+              <%= f.input :location_opt, as: :check_boxes, collection: ["All", "NYC", "LA", "DC", "SF", "Dallas", "Chicago"], label: false %>
+            </div>
+            <div class="filter_element" id="price-filter">
+              <h3>Price <span class="col-pink"><span id="min"></span> - <span id="max"></span></span></h3>
+              <div class="slider"></div>
+              <%= f.input :lo_price, as: :hidden %>
+              <%= f.input :hi_price, as: :hidden %>
+            </div>
+            <div class="filter_element">
+              <h3>Influencer</h3>
+              <%= f.input :influencer_opt, as: :radio_buttons, collection: ["Include", "Exclude", "Only influencers"], label: false %>
+            </div>
+            <div class="filter_element">
+              <h3>Staff</h3>
+              <%= f.input :staff_opt, as: :radio_buttons, collection: ["Include", "Exclude"], label: false %>
+            </div>
+            <div class="filter_element">
+              <h3>Style</h3>
+              <%= f.input :style_opt, as: :radio_buttons, collection: ["All", "Include", "Exclude"], label: false %>
+            </div>
+            <div class="filter_element">
+              <h3>Event</h3>
+              <%= f.input :event_type, as: :radio_buttons, collection: ["All", "Bought", "Added", "Worn", "Last Worn"], label: false %>
+            </div>
+            <div class="filter_element">
+              <h3>Color</h3>
+              <%= f.input :color_opt, as: :radio_buttons, collection: ["All", "Include", "Exclude"], label: false %>
+            </div>
+            <div class="filter_element">
+              <h3>Retailer</h3>
+              <%= f.input :retailer_opt, as: :radio_buttons, collection: ["All", "Include", "Exclude"], label: false %>
+            </div>
+            <div class="filter_element">
+              <h3>Brand</h3>
+              <%= f.input :brand_opt, as: :radio_buttons, collection: ["All", "Include", "Exclude"], label: false %>
+            </div>
+            <div class="filter_element">
+              <h3>Pattern</h3>
+              <%= f.input :pattern_opt, as: :radio_buttons, collection: ["All", "Include", "Exclude"], label: false %>
+            </div>
+            <div class="filter_element">
+              <h3>Fabric</h3>
+              <%= f.input :fabric_opt, as: :radio_buttons, collection: ["All", "Include", "Exclude"], label: false %>
+            </div>
+            <div class="filter_element">
+              <h3>Sort</h3>
+              <%= f.input :sort_opt, as: :radio_buttons, collection: ["User ID", "Item ID", "Style", "Color", "Retailer", "Brand", "Pattern", "Fabric"], label: false %>
+            </div>
+            <div class="filter_element">
+              <h3>Style TXT</h3>
+              <%= f.input :style_txt, as: :string, label: false %>
+            </div>
+            <div class="filter_element">
+              <h3>Color TXT</h3>
+              <%= f.input :color_txt, as: :string, label: false %>
+            </div>
+            <div class="filter_element">
+              <h3>Brand TXT</h3>
+              <%= f.input :brand_txt, as: :string, label: false %>
+            </div>
+            <div class="filter_element">
+              <h3>Retailer TXT</h3>
+              <%= f.input :retailer_txt, as: :string, label: false %>
+            </div>
+            <div class="filter_element">
+              <h3>Pattern TXT</h3>
+              <%= f.input :pattern_txt, as: :string, label: false %>
+            </div>
+            <div class="filter_element">
+              <h3>Fabric TXT</h3>
+              <%= f.input :fabric_txt, as: :string, label: false %>
+            </div>
+            <div class="filter_element">
+              <h3>Date Range</h3>
+              <%= f.input :start_date_txt, as: :string, input_html: { placeholder: "yyyy-mm-dd", class: "datepicker" }, label: "From:" %>
+              <%= f.input :end_date_txt, as: :string, input_html: { placeholder: "yyyy-mm-dd", class: "datepicker" }, label: "To:" %>
+            </div>
+            <div class="filter_element">
+              <h3>AttribVal</h3>
+              <%= f.input :attrib_val, as: :string, label: false %>
+            </div>
+            <div class="filter_element">
+              <h3>AttribNameVal</h3>
+              <%= f.input :attrib_name_val, as: :string, label: false %>
+            </div>
+          </div>
+          <div style="clear:left">&nbsp;</div>
+          <% end %>
+        </div>
+        <div class="segment-right">
+          &nbsp;
+        </div>
+      </div>
     </div>
   </div>
 <% end %>
