@@ -15,3 +15,20 @@ $ ->
 				, 500
 			$("#open-filter-icon").removeClass('icon-chevron-right')
 			$("#open-filter-icon").addClass('icon-chevron-left')
+
+
+	$("#my-saved-segments").click (e) ->
+		e.preventDefault()
+		if $("#filters-container").is(":visible")
+			$("#filters-container").hide "slide",
+			direction: "top"
+			, 500, ->
+				$(".left").hide()
+			$(this).find('#icon').removeClass('icon-chevron-left')
+			$(this).find('#icon').addClass('icon-chevron-right')
+		else
+			$("#filters-container").show "slide",
+				direction: "top"
+				, 500
+			$(this).find('#icon').removeClass('icon-chevron-right')
+			$(this).find('#icon').addClass('icon-chevron-left')
