@@ -115,6 +115,47 @@ fieldset {
 	float:right;
 }
 
+.filters-zone {
+	@include column(58,true);
+	background: #f0f0f0;
+	margin-bottom: 20px;
+
+	.title-container {
+		@include column(58,true);
+
+		.title {
+			@include column(37);
+			padding: 20px 0px 20px 20px;
+		}
+
+		.title-buttons {
+			@include column(20,true);
+			
+			.change-filters {
+				@include column(8,true);
+
+				padding: 20px 0px 20px 0px;
+				border-right:1px solid #999999;
+			}
+
+			.my-saved-segments {
+				@include column(12,true);
+
+				@include background-image(linear-gradient(#ededed, #d4d4d4));
+				text-align: center;
+				padding: 20px 7px 20px 0px;
+				border: 1px solid #CCCCCC;
+				border-left: 1px solid #FFFFFF;
+				cursor: pointer;
+			}
+		}
+	}
+
+	.filters-container {
+		display: none;
+	}
+}
+
 .inner-content {
 	@include column(58,true);
 	background:#FFFFFF;
