@@ -241,6 +241,23 @@ fieldset {
 			border-right:1px solid #CCCCCC;
 		}
 	}
+	.third {
+		@include column(19, true);
+
+		h1 {
+			text-align: center;
+			margin-bottom: 20px;
+		}
+
+		&:first-child {
+			@include column(20, true);
+			border-right:1px solid #CCCCCC;
+		}
+
+		&:nth-child(2) {
+			border-right:1px solid #CCCCCC;
+		}
+	}
 	.wide3 {
 		@include column(60, true);
 	}
@@ -410,6 +427,23 @@ rect {
 	}
 }
 
+.top-item {
+	background: #efefef;
+	height:50px;
+	margin:10px;
+	padding: 10px;
+
+	.icon {
+		float:left;
+		width: 60px;
+		height: 50px;
+	}
+	.text {
+		height: 50px;
+		display:table-cell;
+		vertical-align:middle;
+	}
+}
 
 
 
