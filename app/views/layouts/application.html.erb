@@ -18,7 +18,6 @@
   <div class="header">
     <div class="menu">
       <ul>
-        <li class="active"><a href="#" id="open-filters"><i id="open-filter-icon" class="icon-chevron-right"></i></a></li>
         <!--<li class="<%= "active" if request[:action] == "index" %>"><%= link_to 'Home', root_path %></li>-->
         <li class="<%= "active" if request[:action] == "trends" %>"><%= link_to "Trends", trends_path %></li>
         <li class="<%= "active" if request[:action] == "trends2" %>"><%= link_to "Trends2", trends2_path %></li>
@@ -36,10 +35,46 @@
   </div>
   <div class="inner-content">
     <div class="wide2">
-      <%= yield :filters %>
+      <div class="filters-zone">
+    <div class="title-container">
+      <div class="title">
+        <h2>Currently Viewing: {placeholder}</h2>
+      </div>
+      <div class="title-buttons">
+        <div class="change-filters">
+          <h3 class="col-blue">Change Filters</h3>
+        </div>
+        <div class="my-saved-segments" id="my-saved-segments">
+          <h3 class="color-blue">My Saved Segments <i id="icon" class="icon-chevron-down"></i></h3>
+        </div>
+      </div>
     </div>
-    <div class="left">
-      <%= yield :sidebar %>
+
+    <div class="filters-container" id="filters-container">
+      <div class="define-your-segment">
+        <h2>Define your segment</h2>
+      </div>
+      <div class="filter-your-results">
+        <h2>Filter your results</h2>
+      </div>
+      <div class="segment">
+        <div class="segment-left">
+      <%= yield :filters %>
+      </div>
+        <div class="segment-right">
+          &nbsp;
+        </div>
+      </div>
+    </div>
+  </div>
+    </div>
+    <div class="full">
+      <div class="half">
+        <%= yield :half_1 %>
+      </div>
+      <div class="half">
+        <%= yield :half_2 %>
+      </div>
     </div>
     <div class="wide">
       <%= yield %>

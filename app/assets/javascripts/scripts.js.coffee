@@ -24,11 +24,13 @@ $ ->
 			direction: "top"
 			, 500, ->
 				$(".left").hide()
-			$(this).find('#icon').removeClass('icon-chevron-left')
-			$(this).find('#icon').addClass('icon-chevron-right')
+			$(this).find('#icon').removeClass('icon-chevron-up')
+			$(this).find('#icon').addClass('icon-chevron-down')
 		else
 			$("#filters-container").show "slide",
 				direction: "top"
 				, 500
-			$(this).find('#icon').removeClass('icon-chevron-right')
-			$(this).find('#icon').addClass('icon-chevron-left')
+			$(this).find('#icon').removeClass('icon-chevron-down')
+			$(this).find('#icon').addClass('icon-chevron-up')
+
+	$("#maps").tabs()
