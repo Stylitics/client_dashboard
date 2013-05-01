@@ -63,7 +63,7 @@ h2 {
 
 h3 {
 	font-family: "proxima_novathin";
-	font-size: 18px;
+	font-size: 20px;
 	color:#000000;
 	margin-bottom: 5px;
 }
@@ -78,13 +78,15 @@ input[type="button"],input[type="submit"] {
 	border:0;
 }
 
-input[type="email"], input[type="text"], input[type="password"], textarea {
+input[type="email"], input[type="text"], input[type="password"], textarea, .chzn-choices {
 	border:1px solid #999999;
 	background:#FFFFFF;
-	padding:10px 10px;
+	padding:5px 5px;
 	display:block;
 	color:#999999;
 	font-family:"proxima_novaregular";
+	@include border-radius(4px);
+	width: 240px;
 
 	.datepicker {
 		font-family:"proxima_novaregular_italic";

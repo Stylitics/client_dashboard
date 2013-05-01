@@ -34,3 +34,6 @@ $ ->
 			$(this).find('#icon').addClass('icon-chevron-up')
 
 	$("#maps").tabs()
+	$("#who").tabs()
+
+	$(".chosen").chosen()

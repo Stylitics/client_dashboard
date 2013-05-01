@@ -171,10 +171,52 @@ fieldset {
 			@include column(36,true);
 			padding: 20px 20px 20px 20px;
 			
-			.segment-left {
-				border-right: 1px solid #CCCCCC;
+			.segment-content {
 				@include column(17,true);
 				padding-right:20px;
+
+				&:first-child{
+					@include column(16);
+					border-right: 1px solid #CCCCCC;
+				}
+
+				.filter-element {
+					@include column(16,true);
+					margin-bottom: 20px;
+				}
+
+				.filter-big-element {
+					@include column(18,true);
+					margin-bottom: 20px;
+
+					.label-text {
+						@include column(4);
+
+						h2 {
+							margin-top: 14px;
+						}
+
+						h3 {
+							margin-top: 4px;
+						}
+					}
+					#who {
+						float:left;
+					}
+				}
+
+				.filter-small-element {
+					@include column(8);
+					margin-bottom: 20px;
+
+					&:after {
+						content: ".";
+					    display: block;
+					    height: 0;
+					    clear: both;
+					    visibility: hidden;
+					}
+				}
 			}
 		}
 	}
@@ -215,11 +257,6 @@ fieldset {
 		.filters {
 			@include column(13, true);
 			margin-bottom:20px;
-
-			.filter_element {
-				@include column(12,true);
-				margin-bottom: 20px;
-			}
 		}
 	}
 	.center {
@@ -379,8 +416,13 @@ rect {
 	fill: #1d8898;
 }
 
+.chzn-container {
+	width:270px !important;
+}
+
 .custom-tabs.ui-tabs{
 	border: 0;
+	background:none;
 
 	.ui-tabs-nav {
 		background: none;
@@ -399,7 +441,7 @@ rect {
 		
 		&.ui-state-active {
 			background:#6db2df;
-			border-color: #144463;
+			border: 1px solid #144463;
 		}
 
 		&:first-child {

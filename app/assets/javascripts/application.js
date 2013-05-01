@@ -18,6 +18,7 @@
 //= require dc
 //= require accounting
 //= require bootstrap-alert
+//= require chosen
 //= require scripts
 //= require vanila_trend_line_chart
 //= require trend_line_chart

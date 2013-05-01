@@ -3,6 +3,7 @@
  *= require_self
  *= require fonts/stylesheet
  *= require bootstrap_and_overrides
+ *= require chosen
  *= require screen
  *= require charts
  *= require smoothness/jquery-ui.min

@@ -58,11 +58,11 @@
         <h2>Filter your results</h2>
       </div>
       <div class="segment">
-        <div class="segment-left">
-      <%= yield :segment %>
-      </div>
-        <div class="segment-right">
-          &nbsp;
+        <div class="segment-content">
+          <%= yield :segment_left %>
+        </div>
+        <div class="segment-content">
+          <%= yield :segment_right %>
         </div>
       </div>
     </div>
