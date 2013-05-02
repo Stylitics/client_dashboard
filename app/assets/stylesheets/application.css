@@ -4,6 +4,7 @@
  *= require fonts/stylesheet
  *= require bootstrap_and_overrides
  *= require chosen
+ *= require jquery.horizontal.scroll
  *= require screen
  *= require charts
  *= require smoothness/jquery-ui.min

@@ -66,6 +66,10 @@ h3 {
 	font-size: 20px;
 	color:#000000;
 	margin-bottom: 5px;
+
+	&.bold {
+		font-family: "proxima_novabold";
+	}
 }
 
 label {display: inline;}

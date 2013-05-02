@@ -37,3 +37,5 @@ $ ->
 	$("#who").tabs()
 
 	$(".chosen").chosen()
+
+	$('#horiz_container_outer').horizontalScroll()

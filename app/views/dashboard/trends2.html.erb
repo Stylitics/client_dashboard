@@ -1,12 +1,6 @@
 <% title "Trends" %>
 
-<%= content_for :left_controls do %>
-  <div>
-    <a class="btn" href="#" id="open-filters"><i id="open-filter-icon" class="icon-chevron-right"></i></a>
-  </div>
-<% end %>
-
-<%= content_for :sidebar do %>
+<%= content_for :segment_left do %>
   <%= simple_form_for [@chart, @chart_run], html: { remote: true, data: { id: @chart_run.id.to_s }, id: "trend-chart-filter-form" } do |f| %>
     <div class="sidebar" id="sidebar">
       <div class="title">
@@ -56,7 +50,7 @@
         </div>
         <div class="filter_element">
           <h3>Event</h3>
-          <%= f.input :event_type, as: :radio_buttons, collection: ["All", "Bought", "Added", "Worn", "Last Worn"], label: false %>
+          <%= f.input :event_type, as: :radio_buttons, collection: ["All", "Bought", "Addings", "Worn", "Last Worn"], label: false %>
         </div>
         <div class="filter_element">
           <h3>Color</h3>
@@ -160,7 +154,7 @@
     <div class="bottom-container">
       <div class="bottom-title">
         <div class="icon-c">&nbsp;</div>
-        <h2>Adjusted Specific Items Added</h2>
+        <h2>Addings</h2>
       </div>
       <div class="bottom-content">
         <table id="top-asid" class="table table-hover">
@@ -176,7 +170,7 @@
     <div class="bottom-container">
       <div class="bottom-title">
         <div class="icon-sty">&nbsp;</div>
-        <h2>Adjusted Specific Wearings</h2>
+        <h2>Wearings</h2>
       </div>
       <div class="bottom-content">
         <table id="top-asw" class="table table-hover">
@@ -272,8 +266,8 @@
   <h1><%= yield :title %></h1>
   <div id="trend-chart-placeholder" class="hide alert alert-warning">No data yet available... Try again in a few moments.</div>
   <div id="trend-chart-toggles" class="hide">
-    <input name="selector1" class="green" type="checkbox" id="selector1" value="selector1" checked="checked" data-id="0" /> <label for="selector1"><span></span>Adjusted Specific Items Added</label>
-  <input name="selector2" class="blue" type="checkbox" id="selector2" value="selector2" checked="checked" data-id="1" /> <label for="selector2"><span></span>Adjusted Specific Wearings</label>
+    <input name="selector1" class="green" type="checkbox" id="selector1" value="selector1" checked="checked" data-id="0" /> <label for="selector1"><span></span>Addings</label>
+  <input name="selector2" class="blue" type="checkbox" id="selector2" value="selector2" checked="checked" data-id="1" /> <label for="selector2"><span></span>Wearings</label>
     <a class="reset" id="trend-reset-link" href="#" style="display: none;">[reset]</a>
   </div>
 </div>

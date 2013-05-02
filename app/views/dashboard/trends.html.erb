@@ -83,7 +83,7 @@
     </div>
     <div class="filter-small-element">
       <h3>Event</h3>
-      <%= f.input :event_type, as: :radio_buttons, collection: ["All", "Bought", "Added", "Worn", "Last Worn"], label: false %>
+      <%= f.input :event_type, as: :radio_buttons, collection: ["All", "Bought", "Addings", "Worn", "Last Worn"], label: false %>
     </div>
     <div class="filter-small-element">
       <h3>Color</h3>
@@ -134,11 +134,6 @@
       <%= f.input :fabric_txt, as: :string, label: false %>
     </div>
     <div class="filter-element">
-      <h3>Date Range</h3>
-      <%= f.input :start_date_txt, as: :string, input_html: { placeholder: "yyyy-mm-dd", class: "datepicker" }, label: "From:" %>
-      <%= f.input :end_date_txt, as: :string, input_html: { placeholder: "yyyy-mm-dd", class: "datepicker" }, label: "To:" %>
-    </div>
-    <div class="filter-element">
       <h3>AttribVal</h3>
       <%= f.input :attrib_val, as: :string, label: false %>
     </div>
@@ -158,7 +153,7 @@
         <div class="label-text"><h2>Who</h2></div>
         <div id="who" class="custom-tabs">
           <ul>
-            <li><a href="#who-1">Added</a></li>
+            <li><a href="#who-1">Addings</a></li>
             <li><a href="#who-2">Wore</a></li>
             <li><a href="#who-2">Bought</a></li>
           </ul>
@@ -171,37 +166,64 @@
         </div>
       </div>
       <div class="filter-big-element">
-        <div class="label-text"><h3>Test1</h3></div>
+        <div class="label-text"><h3>Brand</h3></div>
         <select data-placeholder="Choose" multiple="" class="chosen" tabindex="3">
-          <option value="United States" style="">United States</option> 
-          <option value="United Kingdom">United Kingdom</option> 
-          <option value="Afghanistan">Afghanistan</option> 
-          <option value="Aland Islands">Aland Islands</option> 
-          <option value="Albania">Albania</option> 
-          <option value="Algeria">Algeria</option> 
+          <optgroup label="Include">
+            <option value="All" selected="selected">All</option> 
+            <option value="GAP">GAP</option> 
+            <option value="Levi's">Levi's</option>
+          </optgroup>
+          <optgroup label="Exclude">
+            <option value="-GAP">-GAP</option> 
+            <option value="-Levi's">-Levi's</option>
+          </optgroup>
         </select>
       </div>
       <div class="filter-big-element">
-        <div class="label-text"><h3>Test2</h3></div>
+        <div class="label-text"><h3>Retailer</h3></div>
         <select data-placeholder="Choose" multiple="" class="chosen" tabindex="3">
-          <option value="United States" style="">United States</option> 
-          <option value="United Kingdom">United Kingdom</option> 
-          <option value="Afghanistan">Afghanistan</option> 
-          <option value="Aland Islands">Aland Islands</option> 
-          <option value="Albania">Albania</option> 
-          <option value="Algeria">Algeria</option> 
+          <optgroup label="Include">
+            <option value="All" selected="selected">All</option> 
+            <option value="GAP">GAP</option> 
+            <option value="Levi's">Levi's</option> 
+            <option value="Macy's">Macy's</option> 
+          </optgroup>
+          <optgroup label="Exclude">
+            <option value="-GAP">-GAP</option> 
+            <option value="-Levi's">-Levi's</option> 
+            <option value="-Macy's">-Macy's</option> 
+          </optgroup>
         </select>
       </div>
       <div class="filter-big-element">
-        <div class="label-text"><h3>Test3</h3></div>
+        <div class="label-text"><h3>Style</h3></div>
         <select data-placeholder="Choose" multiple="" class="chosen" tabindex="3">
-          <option value="United States" style="">United States</option> 
-          <option value="United Kingdom">United Kingdom</option> 
-          <option value="Afghanistan">Afghanistan</option> 
-          <option value="Aland Islands">Aland Islands</option> 
-          <option value="Albania">Albania</option> 
-          <option value="Algeria">Algeria</option> 
+          <optgroup label="Include">
+            <option value="All" selected="selected">All</option> 
+            <option value="Shirts">Shirts</option> 
+            <option value="Skirts">Skirts</option> 
+            <option value="Pants">Pants</option>
+          </optgroup>
+          <optgroup label="Exclude">
+            <option value="-Shirts">-Shirts</option> 
+            <option value="-Skirts">-Skirts</option> 
+            <option value="-Pants">-Pants</option>
+          </optgroup>
         </select>
+      </div>
+      <div class="filter-big-element" id="price-filter">
+        <div class="label-text"><h3>Price</h3></div>
+        <div class="content-value">
+          <div class="slider"></div>
+          <%= f.input :lo_price, as: :hidden %>
+          <%= f.input :hi_price, as: :hidden %>
+        </div>
+        <h3><span class="col-pink"><span id="min"></span> - <span id="max"></span></span></h3>
+      </div>
+      <div class="filter-big-element">
+        <div class="label-text"><h3>When</h3></div>
+        <%= f.input :start_date_txt, as: :string, input_html: { placeholder: "yyyy-mm-dd", class: "datepicker" }, label: false %>
+        <%= f.input :end_date_txt, as: :string, input_html: { placeholder: "yyyy-mm-dd", class: "datepicker" }, label: "to" %>
       </div>
     </div>
     <div style="clear:left">&nbsp;</div>
@@ -293,7 +315,7 @@
   <h1><%= yield :title %></h1>
   <div id="trend-chart-placeholder" class="hide alert alert-warning">No data yet available... Try again in a few moments.</div>
   <div id="trend-chart-toggles">
-    <input name="selector1" class="green" type="checkbox" id="selector1" value="selector1" checked="checked" data-id="0" /> <label for="selector1"><span></span>Adjusted Specific Items Added</label>
-  <input name="selector2" class="blue" type="checkbox" id="selector2" value="selector2" checked="checked" data-id="1" /> <label for="selector2"><span></span>Adjusted Specific Wearings</label>
+    <input name="selector1" class="green" type="checkbox" id="selector1" value="selector1" checked="checked" data-id="0" /> <label for="selector1"><span></span>Addings</label>
+  <input name="selector2" class="blue" type="checkbox" id="selector2" value="selector2" checked="checked" data-id="1" /> <label for="selector2"><span></span>Wearings</label>
   </div>
 </div>

@@ -200,6 +200,34 @@ fieldset {
 							margin-top: 4px;
 						}
 					}
+					
+					.content-value {
+						width: 260px;
+						float: left;
+						margin: 10px 0px 0px 6px;
+					}
+
+					.control-group {
+						float: left;
+						width: 130px;
+
+						label {
+							float: left;
+							margin-right: 10px;
+							width: 20px;
+							margin-top: 10px;
+						}
+					}
+
+					.controls {
+						float: left;
+						width: 100px;
+
+						input {
+							width: 100px;
+						}
+					}
+
 					#who {
 						float:left;
 					}
@@ -340,6 +368,23 @@ fieldset {
 					margin-right:10px;
 					font-size:18px;
 				}
+			}
+		}
+	}
+
+	.full {
+		.outfit-container {
+			width: 400px;
+
+			.outfit-title {
+				text-align:center;
+			}
+
+			.outfit-content {
+				margin: 0 auto;
+				height: 500px;
+				width: 380px;
+				background: #333333;
 			}
 		}
 	}
