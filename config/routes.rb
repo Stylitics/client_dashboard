@@ -8,6 +8,7 @@ Dashboard::Application.routes.draw do
     resources :r_scripts do
       delete :clear, on: :member
       put :activate, on: :member
+      get :preview, on: :member
     end
     resources :r_script_runs
 
