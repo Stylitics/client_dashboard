@@ -19,6 +19,11 @@
   <div class="well">
     <pre class="brush: js"><%= @r_script.runs.last.output %></pre>
   </div>
+  <h3>Generated Run</h3>
+  <%= link_to "View RAW file", preview_admin_r_script_path(@r_script), target: "_blank", class: "btn" %><br><br>
+  <div class="well">
+    <pre class="brush: js"><%= @r_script.runs.last.generated_script %></pre>
+  </div>
 <% end %>
 
 <pre class="brush: r"><%= @r_script.code %></pre>

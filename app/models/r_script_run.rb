@@ -5,8 +5,9 @@ class RScriptRun
 
   field :output, type: String
   field :err, type: String
+  field :generated_script, type: String
 
-  attr_accessible :output, :err, :r_script_id
+  attr_accessible :output, :err, :generated_script, :r_script_id
 
   belongs_to :r_script
 
@@ -29,6 +30,13 @@ class RScriptRun
   end
 
   def run_script
+    g = ""
+    f = File.new("#{Rails.root}/tmp/runs/#{r_script.id}.r", "r")
+    while (l = f.gets)
+      g << l
+    end
+    f.close
+
     e = system "Rscript '#{Rails.root}/tmp/runs/#{r_script.id}.r'"
 
     json_output = ''
@@ -40,7 +48,10 @@ class RScriptRun
       f.close
     end
 
-    self.update_attributes  output: JSON.pretty_generate(JSON.parse(json_output)),
-                            err: e
+    o = JSON.pretty_generate(JSON.parse(json_output)) rescue "{}"
+
+    self.update_attributes  output: o,
+                            err: e,
+                            generated_script: g
   end
 end

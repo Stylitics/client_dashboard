@@ -25,6 +25,11 @@ class Admin::RScriptsController < AdminController
     end
   end
 
+  def preview
+    @r_script = RScript.find(params[:id])
+    send_data @r_script.last_run.generated_script, filename: "#{@r_script.name.parameterize}.r"
+  end
+
   def clear
     @r_script = RScript.find(params[:id])
     @r_script.runs.destroy_all
