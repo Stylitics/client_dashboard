@@ -33,6 +33,7 @@ class DashboardController < ApplicationController
       @chart_run[:retailer_txt] = ""
       @chart_run[:pattern_txt] = ""
       @chart_run[:fabric_txt] = ""
+      @chart_run[:who] = "Addings"
 
       @chart_run[:attrib_val] = "color"
       @chart_run[:attrib_name_val] = "black"
