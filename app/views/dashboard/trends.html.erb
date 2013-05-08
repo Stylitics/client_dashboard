@@ -167,6 +167,10 @@
         </div>
         <h3><span class="col-pink"><span id="min"></span> - <span id="max"></span></span></h3>
       </div>
+      <div class="filter-small-element">
+        <h3>No Price</h3>
+        <%= f.input :noprice_opt, as: :radio_buttons, collection: ["Include", "Exclude"], label: false %>
+      </div>
       <div class="filter-big-element">
         <div class="label-text"><h3>When</h3></div>
         <%= f.input :start_date_txt, as: :string, input_html: { placeholder: "yyyy-mm-dd", class: "datepicker" }, label: false %>
