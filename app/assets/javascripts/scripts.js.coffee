@@ -36,6 +36,9 @@ $ ->
 	$("#maps").tabs()
 	$("#who").tabs()
 
+	$(".who").click ->
+      $('#chart_run_who').val($(this).html())
+
 	$(".chosen").chosen()
 
 	$('#horiz_container_outer').horizontalScroll()
