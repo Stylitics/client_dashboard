@@ -38,8 +38,9 @@
   </div>
 <% end %>
 
-<%= content_for :segment_left do %>
-  <%= simple_form_for [@chart, @chart_run], html: { remote: true, data: { id: @chart_run.id.to_s }, id: "trend-chart-filter-form" } do |f| %>
+<%= content_for :segment do %>
+<%= simple_form_for [@chart, @chart_run], html: { remote: true, data: { id: @chart_run.id.to_s }, id: "trend-chart-filter-form" } do |f| %>
+<div class="segment-content">
   <div class="filters">
     <div class="filter-element">
       <input type="submit" class="bck-pink" id="show-me" value="Show me" />
@@ -63,12 +64,6 @@
       <h3>Location</h3>
       <%= f.input :location_opt, as: :check_boxes, collection: ["All", "NYC", "LA", "DC", "SF", "Dallas", "Chicago"], label: false %>
     </div>
-    <div class="filter-element" id="price-filter">
-      <h3>Price <span class="col-pink"><span id="min"></span> - <span id="max"></span></span></h3>
-      <div class="slider"></div>
-      <%= f.input :lo_price, as: :hidden %>
-      <%= f.input :hi_price, as: :hidden %>
-    </div>
     <div class="filter-small-element">
       <h3>Influencer</h3>
       <%= f.input :influencer_opt, as: :radio_buttons, collection: ["Include", "Exclude", "Only influencers"], label: false %>
@@ -78,24 +73,12 @@
       <%= f.input :staff_opt, as: :radio_buttons, collection: ["Include", "Exclude"], label: false %>
     </div>
     <div class="filter-small-element">
-      <h3>Style</h3>
-      <%= f.input :style_opt, as: :radio_buttons, collection: ["All", "Include", "Exclude"], label: false %>
-    </div>
-    <div class="filter-small-element">
       <h3>Event</h3>
       <%= f.input :event_type, as: :radio_buttons, collection: ["All", "Bought", "Addings", "Worn", "Last Worn"], label: false %>
     </div>
     <div class="filter-small-element">
       <h3>Color</h3>
       <%= f.input :color_opt, as: :radio_buttons, collection: ["All", "Include", "Exclude"], label: false %>
-    </div>
-    <div class="filter-small-element">
-      <h3>Retailer</h3>
-      <%= f.input :retailer_opt, as: :radio_buttons, collection: ["All", "Include", "Exclude"], label: false %>
-    </div>
-    <div class="filter-small-element">
-      <h3>Brand</h3>
-      <%= f.input :brand_opt, as: :radio_buttons, collection: ["All", "Include", "Exclude"], label: false %>
     </div>
     <div class="filter-small-element">
       <h3>Pattern</h3>
@@ -143,19 +126,16 @@
     </div>
   </div>
   <div style="clear:left">&nbsp;</div>
-  <% end %>
-<% end %>
-
-<%= content_for :segment_right do %>
-  <%= simple_form_for [@chart, @chart_run], html: { remote: true, data: { id: @chart_run.id.to_s }, id: "trend-chart-filter2-form" } do |f| %>
+</div>
+<div class="segment-content">
     <div class="filters">
       <div class="filter-big-element">
         <div class="label-text"><h2>Who</h2></div>
         <div id="who" class="custom-tabs">
           <ul>
-            <li><a href="#who-1">Addings</a></li>
-            <li><a href="#who-2">Wore</a></li>
-            <li><a href="#who-2">Bought</a></li>
+            <li><a href="#who-1" class="who">Addings</a></li>
+            <li><a href="#who-2" class="who">Wore</a></li>
+            <li><a href="#who-2" class="who">Bought</a></li>
           </ul>
           <div id="who-1">
           </div>
@@ -164,52 +144,19 @@
           <div id="who-3">
           </div>
         </div>
+        <%= f.input :who, as: :hidden %>
       </div>
       <div class="filter-big-element">
         <div class="label-text"><h3>Brand</h3></div>
-        <select data-placeholder="Choose" multiple="" class="chosen" tabindex="3">
-          <optgroup label="Include">
-            <option value="All" selected="selected">All</option> 
-            <option value="GAP">GAP</option> 
-            <option value="Levi's">Levi's</option>
-          </optgroup>
-          <optgroup label="Exclude">
-            <option value="-GAP">-GAP</option> 
-            <option value="-Levi's">-Levi's</option>
-          </optgroup>
-        </select>
+        <%= f.input :brand_opt, as: :select, collection: ["All", "GAP", "Levi's"], label: false, input_html: { class: "chosen", multiple:"" } %>
       </div>
       <div class="filter-big-element">
         <div class="label-text"><h3>Retailer</h3></div>
-        <select data-placeholder="Choose" multiple="" class="chosen" tabindex="3">
-          <optgroup label="Include">
-            <option value="All" selected="selected">All</option> 
-            <option value="GAP">GAP</option> 
-            <option value="Levi's">Levi's</option> 
-            <option value="Macy's">Macy's</option> 
-          </optgroup>
-          <optgroup label="Exclude">
-            <option value="-GAP">-GAP</option> 
-            <option value="-Levi's">-Levi's</option> 
-            <option value="-Macy's">-Macy's</option> 
-          </optgroup>
-        </select>
+        <%= f.input :retailer_opt, as: :select, collection: ["All", "GAP", "Levi's"], label: false, input_html: { class: "chosen", multiple:"" } %>
       </div>
       <div class="filter-big-element">
         <div class="label-text"><h3>Style</h3></div>
-        <select data-placeholder="Choose" multiple="" class="chosen" tabindex="3">
-          <optgroup label="Include">
-            <option value="All" selected="selected">All</option> 
-            <option value="Shirts">Shirts</option> 
-            <option value="Skirts">Skirts</option> 
-            <option value="Pants">Pants</option>
-          </optgroup>
-          <optgroup label="Exclude">
-            <option value="-Shirts">-Shirts</option> 
-            <option value="-Skirts">-Skirts</option> 
-            <option value="-Pants">-Pants</option>
-          </optgroup>
-        </select>
+        <%= f.input :style_opt, as: :select, collection: ["All", "Shirts", "Skirts"], label: false, input_html: { class: "chosen", multiple:"" } %>
       </div>
       <div class="filter-big-element" id="price-filter">
         <div class="label-text"><h3>Price</h3></div>
@@ -220,6 +167,10 @@
         </div>
         <h3><span class="col-pink"><span id="min"></span> - <span id="max"></span></span></h3>
       </div>
+      <div class="filter-small-element">
+        <h3>No Price</h3>
+        <%= f.input :noprice_opt, as: :radio_buttons, collection: ["Include", "Exclude"], label: false %>
+      </div>
       <div class="filter-big-element">
         <div class="label-text"><h3>When</h3></div>
         <%= f.input :start_date_txt, as: :string, input_html: { placeholder: "yyyy-mm-dd", class: "datepicker" }, label: false %>
@@ -227,7 +178,8 @@
       </div>
     </div>
     <div style="clear:left">&nbsp;</div>
-  <% end %>
+</div>
+<% end %>
 <% end %>
 
 <%= content_for :bottom do %>

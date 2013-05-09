@@ -17,6 +17,7 @@ class DashboardController < ApplicationController
       @chart_run[:location_opt] = ["All"]
       @chart_run[:lo_price] = 0.to_s
       @chart_run[:hi_price] = 100000.to_s
+      @chart_run[:noprice_opt] = "Include"
       @chart_run[:influencer_opt] = "Include"
       @chart_run[:staff_opt] = "Include"
       @chart_run[:style_opt] = "All"
@@ -33,6 +34,7 @@ class DashboardController < ApplicationController
       @chart_run[:retailer_txt] = ""
       @chart_run[:pattern_txt] = ""
       @chart_run[:fabric_txt] = ""
+      @chart_run[:who] = "Addings"
 
       @chart_run[:attrib_val] = "color"
       @chart_run[:attrib_name_val] = "black"
