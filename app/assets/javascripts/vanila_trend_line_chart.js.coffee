@@ -51,7 +51,7 @@ class @VanilaTrendLineChart
         allY.sort (a, b) ->
           a - b
 
-        y.domain [0, allY[0][1] * 1.2]
+        y.domain [0, 100]
 
         svg.append("g").attr("class", "x axis").attr("transform", "translate(0, " + (screenHeight - 1) + ")").call(xAxis).selectAll("text").style("text-anchor", "end").attr("dx", "-.8em").attr("dy", ".15em")#.attr("transform", (d) ->
           #   return "rotate(-65)"
