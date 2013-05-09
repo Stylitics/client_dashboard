@@ -116,14 +116,6 @@
       <h3>Fabric TXT</h3>
       <%= f.input :fabric_txt, as: :string, label: false %>
     </div>
-    <div class="filter-element">
-      <h3>AttribVal</h3>
-      <%= f.input :attrib_val, as: :string, label: false %>
-    </div>
-    <div class="filter-element">
-      <h3>AttribNameVal</h3>
-      <%= f.input :attrib_name_val, as: :string, label: false %>
-    </div>
   </div>
   <div style="clear:left">&nbsp;</div>
 </div>
@@ -169,7 +161,7 @@
       </div>
       <div class="filter-small-element">
         <h3>No Price</h3>
-        <%= f.input :noprice_opt, as: :radio_buttons, collection: ["Include", "Exclude"], label: false %>
+        <%= f.input :no_price_opt, as: :radio_buttons, collection: ["Include", "Exclude"], label: false %>
       </div>
       <div class="filter-big-element">
         <div class="label-text"><h3>When</h3></div>
@@ -267,7 +259,7 @@
   <h1><%= yield :title %></h1>
   <div id="trend-chart-placeholder" class="hide alert alert-warning">No data yet available... Try again in a few moments.</div>
   <div id="trend-chart-toggles">
-    <input name="selector1" class="green" type="checkbox" id="selector1" value="selector1" checked="checked" data-id="0" /> <label for="selector1"><span></span>Addings</label>
-  <input name="selector2" class="blue" type="checkbox" id="selector2" value="selector2" checked="checked" data-id="1" /> <label for="selector2"><span></span>Wearings</label>
+    <input name="selector1" class="green" type="checkbox" id="selector1" value="selector1" checked="checked" data-id="0" /> <label for="selector1"><span></span>Worn</label>
+  <input name="selector2" class="blue" type="checkbox" id="selector2" value="selector2" checked="checked" data-id="1" /> <label for="selector2"><span></span>Added</label>
   </div>
 </div>

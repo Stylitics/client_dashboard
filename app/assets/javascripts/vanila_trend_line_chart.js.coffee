@@ -12,7 +12,7 @@ class @VanilaTrendLineChart
     y = d3.scale.linear().range([screenHeight, 0])
 
     xAxis = d3.svg.axis().scale(x).orient("bottom")
-    yAxis = d3.svg.axis().scale(y).orient("left")
+    yAxis = d3.svg.axis().scale(y).orient("right")
 
     parseDate = d3.time.format("%Y-%m-%d").parse
 
@@ -25,43 +25,48 @@ class @VanilaTrendLineChart
     totalLength = 0
     pathB = null
     pathG = null
-    adjustedSpecificItemsAdded = []
-    adjustedSpecificWearings = []
+    addedPercentage = []
+    wornPercentage = []
     d3.json $("#trend-line-chart").data('json'), (data) ->
-      xAxis.ticks(data.length)
+      if data.data != "empty"
+        xAxis.ticks(data.length)
 
-      bg = svg.append("g").attr("width", 920).attr("height", screenHeight)
+        bg = svg.append("g").attr("width", 920).attr("height", screenHeight)
 
-      data.forEach (d, i) ->
-        if i % 2 == 0
-          bgClass = "even"
-        else
-          bgClass = "odd"
-        adjustedSpecificItemsAdded.push [parseDate(d.date), d.adjustedSpecificItemsAdded]
-        adjustedSpecificWearings.push [parseDate(d.date), d.adjustedSpecificWearings]
-        bg.append("rect").attr("width", 920 / (data.length - 1)).attr("height", screenHeight).attr("transform", "translate(" + ((920 / (data.length - 1)) * i - 1) + ", 0)").attr("class", bgClass).attr()
+        data.forEach (d, i) ->
+          if i % 2 == 0
+            bgClass = "even"
+          else
+            bgClass = "odd"
+          addedPercentage.push [parseDate(d.date), d.addedPercentage]
+          wornPercentage.push [parseDate(d.date), d.wornPercentage]
+          bg.append("rect").attr("width", 920 / (data.length - 1)).attr("height", screenHeight).attr("transform", "translate(" + ((920 / (data.length - 1)) * i - 1) + ", 0)").attr("class", bgClass).attr()
 
-      x.domain d3.extent(adjustedSpecificItemsAdded, (d) ->
-        d[0]
-      )
-      y.domain d3.extent(adjustedSpecificItemsAdded.concat(adjustedSpecificWearings), (d) ->
-        d[1]
-      )
+        x.domain d3.extent(addedPercentage, (d) ->
+          d[0]
+        )
 
-      svg.append("g").attr("class", "x axis").attr("transform", "translate(0, " + (screenHeight - 1) + ")").call(xAxis).selectAll("text").style("text-anchor", "end").attr("dx", "-.8em").attr("dy", ".15em")#.attr("transform", (d) ->
-        #   return "rotate(-65)"
-        # )
-      svg.append("g").attr("class", "y axis").attr("transform", "translate(0, -40").call yAxis
+        # sort Y values
+        allY = addedPercentage.concat(wornPercentage)
+        allY.sort (a, b) ->
+          a - b
 
-      pathB = svg.append("g").append("path").datum(adjustedSpecificItemsAdded).attr("class", "line line-blue").attr("d", line)
+        y.domain [0, allY[0][1] * 1.2]
 
-      pathG = svg.append("g").append("path").datum(adjustedSpecificWearings).attr("class", "line line-green").attr("d", line)
+        svg.append("g").attr("class", "x axis").attr("transform", "translate(0, " + (screenHeight - 1) + ")").call(xAxis).selectAll("text").style("text-anchor", "end").attr("dx", "-.8em").attr("dy", ".15em")#.attr("transform", (d) ->
+          #   return "rotate(-65)"
+          # )
+        svg.append("g").attr("class", "y axis").attr("transform", "translate(0, -40").call yAxis
 
-      totalLength = pathG.node().getTotalLength()
+        pathB = svg.append("g").append("path").datum(addedPercentage).attr("class", "line line-blue").attr("d", line)
 
-      pathB.attr("stroke-dasharray", totalLength + " " + totalLength).attr("stroke-dashoffset", totalLength).transition().duration(1000).ease("linear").attr "stroke-dashoffset", 0
+        pathG = svg.append("g").append("path").datum(wornPercentage).attr("class", "line line-green").attr("d", line)
 
-      pathG.attr("stroke-dasharray", totalLength + " " + totalLength).attr("stroke-dashoffset", totalLength).transition().duration(1000).ease("linear").attr "stroke-dashoffset", 0
+        totalLength = pathB.node().getTotalLength()
+
+        pathB.attr("stroke-dasharray", totalLength + " " + totalLength).attr("stroke-dashoffset", totalLength).transition().duration(1000).ease("linear").attr "stroke-dashoffset", 0
+
+        pathG.attr("stroke-dasharray", totalLength + " " + totalLength).attr("stroke-dashoffset", totalLength).transition().duration(1000).ease("linear").attr "stroke-dashoffset", 0
 
     $('#selector1').click () ->
       if $(this).is(':checked') == true
