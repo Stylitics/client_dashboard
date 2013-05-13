@@ -11,4 +11,3 @@
 //= require admin/sh/shBrushXml
 //= require admin
 //= require admin/r_scripts
-//= require turbolinks

@@ -92,7 +92,7 @@
       <h3>Sort</h3>
       <%= f.input :sort_opt, as: :radio_buttons, collection: ["User ID", "Item ID", "Style", "Color", "Retailer", "Brand", "Pattern", "Fabric"], label: false %>
     </div>
-    <div class="filter-element">
+    <!-- <div class="filter-element">
       <h3>Style TXT</h3>
       <%= f.input :style_txt, as: :string, label: false %>
     </div>
@@ -115,7 +115,7 @@
     <div class="filter-element">
       <h3>Fabric TXT</h3>
       <%= f.input :fabric_txt, as: :string, label: false %>
-    </div>
+    </div> -->
   </div>
   <div style="clear:left">&nbsp;</div>
 </div>
@@ -170,6 +170,39 @@
       </div>
     </div>
     <div style="clear:left">&nbsp;</div>
+</div>
+<div class="segment-content last-segment">
+  <div class="filters">
+    <h2>Only show</h2>
+    <div class="filter-big-element">
+      <div class="label-text"><h3>Brand</h3></div>
+      <%= f.input :brand_search, as: :select, collection: ["All", "GAP", "Levi's", "Lorem", "Ipsum", "Dolor"], label: false, input_html: { class: "chosen", multiple:"" }, include_blank: true %>
+    </div>
+    <div class="filter-big-element">
+      <div class="label-text"><h3>Retailer</h3></div>
+      <%= f.input :retailer_search, as: :select, collection: ["", "GAP", "Levi's"], label: false, input_html: { class: "chosen", multiple:"" }, include_blank: true %>
+    </div>
+    <div class="filter-big-element">
+      <div class="label-text"><h3>Style</h3></div>
+      <%= f.input :style_search, as: :select, collection: ["", "Shirts", "Skirts"], label: false, input_html: { class: "chosen", multiple:"" }, include_blank: true %>
+    </div>
+    <div class="filter-big-element">
+      <div class="label-text"><h3>Color</h3></div>
+      <%= f.input :color_search, as: :select, collection: [""], label: false, input_html: { class: "chosen", multiple:"" }, include_blank: true %>
+    </div>
+    <div class="filter-big-element">
+      <div class="label-text"><h3>Pattern</h3></div>
+      <%= f.input :pattern_search, as: :select, collection: [""], label: false, input_html: { class: "chosen", multiple:"" }, include_blank: true %>
+    </div>
+    <div class="filter-big-element">
+      <div class="label-text"><h3>Fabric</h3></div>
+      <%= f.input :fabric_search, as: :select, collection: [""], label: false, input_html: { class: "chosen", multiple:"" }, include_blank: true %>
+    </div>
+    <div class="filter-big-element">
+      <div class="label-text"><h3>Event</h3></div>
+      <%= f.input :event_type_search, as: :select, collection: ["", "All", "Bought", "Addings", "Worn", "Last Worn"], label: false, input_html: { class: "chosen", multiple:"" }, include_blank: true %>
+    </div>
+  </div>
 </div>
 <% end %>
 <% end %>

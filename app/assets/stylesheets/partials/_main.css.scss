@@ -131,7 +131,7 @@ fieldset {
 
 		.title-buttons {
 			@include column(20,true);
-			
+
 			.change-filters {
 				@include column(8,true);
 
@@ -168,9 +168,9 @@ fieldset {
 		}
 
 		.segment {
-			@include column(36,true);
+			@include column(58,true);
 			padding: 20px 20px 20px 20px;
-			
+
 			.segment-content {
 				@include column(17,true);
 				padding-right:20px;
@@ -200,7 +200,7 @@ fieldset {
 							margin-top: 4px;
 						}
 					}
-					
+
 					.content-value {
 						width: 260px;
 						float: left;
@@ -246,6 +246,9 @@ fieldset {
 					}
 				}
 			}
+		}
+		.last-segment {
+			margin-left: 30px;
 		}
 	}
 }
@@ -483,7 +486,7 @@ rect {
 		border-radius: 0;
 		@include background-image(linear-gradient(#d7d8d8, #efefef));
 		margin: 0em;
-		
+
 		&.ui-state-active {
 			background:#6db2df;
 			border: 1px solid #144463;

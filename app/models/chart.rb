@@ -21,8 +21,4 @@ class Chart
   def last_run
     runs.desc("id").last
   end
-
-  def is_running?
-    is_running == true
-  end
 end
