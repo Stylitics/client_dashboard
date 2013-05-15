@@ -184,7 +184,7 @@
     </div>
     <div class="filter-big-element">
       <div class="label-text"><h3>Style</h3></div>
-      <%= f.input :style_search, as: :select, collection: ["", "Skinny Jeans", "Trench Coat", "Jean Jacket", "Blazer", "Polo Shirt"], label: false, input_html: { class: "chosen", multiple:"" }, include_blank: true %>
+      <%= f.input :style_search, as: :select, collection: @styles_collection, label: false, input_html: { class: "chosen", multiple:"" }, include_blank: true %>
     </div>
     <div class="filter-big-element">
       <div class="label-text"><h3>Color</h3></div>

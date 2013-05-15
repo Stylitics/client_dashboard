@@ -53,12 +53,21 @@ class DashboardController < ApplicationController
     end
 
     @brands_collection = ["All", "GAP", "Levi's", "Lorem", "Ipsum", "Dolor"]
-    @chart_run.brand_search.each do |b|
-      if b.first(2) == "- "
-        @brands_collection[@brands_collection.index{|bc| bc == b[2..(b.length - 1)]}] = b
+    if @chart_run.brand_search.any?
+      @chart_run.brand_search.each do |b|
+        if b.first(2) == "- "
+          @brands_collection[@brands_collection.index{|bc| bc == b[2..(b.length - 1)]}] = b
+        end
       end
     end
-    logger.info @brands_collection
+    @styles_collection = ["Skinny Jeans", "Trench Coat", "Jean Jacket", "Blazer", "Polo Shirt"]
+    if @chart_run.style_search.any?
+      @chart_run.style_search.each do |s|
+        if s.first(2) == "- "
+          @styles_collection[@styles_collection.index{|sc| sc == s[2..(s.length - 1)]}] = s
+        end
+      end
+    end
   end
 
   def trends2
