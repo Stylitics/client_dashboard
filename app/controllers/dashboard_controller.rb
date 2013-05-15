@@ -39,13 +39,13 @@ class DashboardController < ApplicationController
       @chart_run[:start_date_txt] = 6.months.ago.strftime("%Y-%m-%d")
       @chart_run[:end_date_txt] = Time.now.strftime("%Y-%m-%d")
 
-      @chart_run[:brand_search] = ""
-      @chart_run[:retailer_search] = ""
-      @chart_run[:style_search] = ""
-      @chart_run[:color_search] = ""
-      @chart_run[:pattern_search] = ""
-      @chart_run[:fabric_search] = ""
-      @chart_run[:event_type_search] = ""
+      @chart_run[:brand_search] = []
+      @chart_run[:retailer_search] = []
+      @chart_run[:style_search] = []
+      @chart_run[:color_search] = []
+      @chart_run[:pattern_search] = []
+      @chart_run[:fabric_search] = []
+      @chart_run[:event_type_search] = []
 
       @chart_run[:search_string_join] = ""
       @chart_run[:search_string_cond] = ""
