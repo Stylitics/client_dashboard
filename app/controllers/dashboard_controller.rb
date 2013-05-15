@@ -51,6 +51,14 @@ class DashboardController < ApplicationController
       @chart_run[:search_string_cond] = ""
       @chart.runs << @chart_run
     end
+
+    @brands_collection = ["All", "GAP", "Levi's", "Lorem", "Ipsum", "Dolor"]
+    @chart_run.brand_search.each do |b|
+      if b.first(2) == "- "
+        @brands_collection[@brands_collection.index{|bc| bc == b[2..(b.length - 1)]}] = b
+      end
+    end
+    logger.info @brands_collection
   end
 
   def trends2

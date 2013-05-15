@@ -45,14 +45,16 @@ $ ->
 
   # substraction tokens
 
-  $("#my-saved-segments").click()
+  # $("#my-saved-segments").click()
 
-  $(document).on "keyup", "#chart_run_brand_search_chzn .default", (e) ->
+  # I'll refactor these later too
+
+  $(document).on "keyup", '#chart_run_brand_search_chzn input[type="text"]', (e) ->
     if e.keyCode == 189
       $("#chart_run_brand_search option").each () ->
         o = $(this)
-        if o.html() != "" && o.html() != "All"
-          o.value = "- " + o.html()
+        if o.html() != "" && o.html() != "All" && !o.is(":selected")
+          o.val("- " + o.html())
           o.html("- " + o.html())
       $('#chart_run_brand_search').trigger 'liszt:updated'
 
@@ -60,6 +62,23 @@ $ ->
     $("#chart_run_brand_search option").each () ->
       r = $(this)
       if r.html().substring(0, 2) == "- " && !r.is(":selected")
-        r.value = r.html().substring(2)
+        r.val(r.html().substring(2))
         r.html(r.html().substring(2))
     $('#chart_run_brand_search').trigger 'liszt:updated'
+
+  $(document).on "keyup", '#chart_run_style_search_chzn input[type="text"]', (e) ->
+    if e.keyCode == 189
+      $("#chart_run_style_search option").each () ->
+        o = $(this)
+        if o.html() != "" && o.html() != "All" && !o.is(":selected")
+          o.val("- " + o.html())
+          o.html("- " + o.html())
+      $('#chart_run_style_search').trigger 'liszt:updated'
+
+  $(document).on "change", "#chart_run_style_search", () ->
+    $("#chart_run_style_search option").each () ->
+      r = $(this)
+      if r.html().substring(0, 2) == "- " && !r.is(":selected")
+        r.val(r.html().substring(2))
+        r.html(r.html().substring(2))
+    $('#chart_run_style_search').trigger 'liszt:updated'
