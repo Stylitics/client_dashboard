@@ -2,8 +2,10 @@ class TrendLineWorker
   include Sidekiq::Worker
 
   def perform(chart_run_id)
-    chart_run = ChartRun.find(chart_run_id)
-    chart = chart_run.chart
+    chart = Chart.frst
+    chart_run = chart.last_run
+    # chart_run = ChartRun.find(chart_run_id)
+    # chart = chart_run.chart
     chart.update_attribute :is_running, true
 
     code = chart.r_script.code
