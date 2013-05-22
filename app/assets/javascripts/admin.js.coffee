@@ -31,3 +31,5 @@ $ ->
     input = $(label).find("input")
     input.insertBefore(label)
     $(label).attr("for", input.attr("id"))
+
+  $(".nav-tabs").tab()

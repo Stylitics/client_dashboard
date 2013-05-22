@@ -10,23 +10,40 @@
   <%= link_to 'Destroy', admin_r_script_path(@r_script), method: :delete, confirm: 'Are you sure you wanna destroy this script?', class: 'btn btn-danger' %>
 </div>
 
-<% if @r_script.runs.last.present? %>
-  <h3>Status</h3>
-  <div class="well">
-    <pre class="brush: plain"><%= @r_script.runs.last.err %></pre>
-  </div>
-  <h3>Output</h3>
-  <div class="well">
-    <pre class="brush: js"><%= @r_script.runs.last.output %></pre>
-  </div>
-  <h3>Generated Run</h3>
-  <%= link_to "View RAW file", preview_admin_r_script_path(@r_script), target: "_blank", class: "btn" %><br><br>
-  <div class="well">
-    <pre class="brush: js"><%= @r_script.runs.last.generated_script %></pre>
-  </div>
-<% end %>
+<ul class="nav nav-tabs" data-tabs="tabs">
+  <li class="active"><a href="#status" data-toggle="tab">Status</a></li>
+  <li><a href="#output" data-toggle="tab">Output</a></li>
+  <li><a href="#raw" data-toggle="tab">Generated Run</a></li>
+  <li><a href="#template" data-toggle="tab">Template</a></li>
+</ul>
 
-<pre class="brush: r"><%= @r_script.code %></pre>
+<div class="tab-content">
+  <div class="tab-pane active" id="status">
+    <% if @r_script.runs.last.present? %>
+      <pre class="brush: plain"><%= @r_script.runs.last.err %></pre>
+    <% else %>
+      Not ran yet!
+    <% end %>
+  </div>
+  <div class="tab-pane" id="output">
+    <% if @r_script.runs.last.present? %>
+      <pre class="brush: js"><%= @r_script.runs.last.output %></pre>
+    <% else %>
+      Not ran yet!
+    <% end %>
+  </div>
+  <div class="tab-pane" id="raw">
+    <% if @r_script.runs.last.present? %>
+      <%= link_to "View RAW file", preview_admin_r_script_path(@r_script), target: "_blank", class: "btn" %><br><br>
+      <pre class="brush: js"><%= @r_script.runs.last.generated_script %></pre>
+    <% else %>
+      Not ran yet!
+    <% end %>
+  </div>
+  <div class="tab-pane" id="template">
+    <pre class="brush: r"><%= @r_script.code %></pre>
+  </div>
+</div>
 
 <%= content_for :sidebar do %>
   <div class="form-styled">
