@@ -40,7 +40,7 @@ class @VanilaTrendLineChart
             bgClass = "odd"
           addedPercentage.push [parseDate(d.date), d.addedPercentage]
           wornPercentage.push [parseDate(d.date), d.wornPercentage]
-          bg.append("rect").attr("width", 920 / (data.length - 1)).attr("height", screenHeight).attr("transform", "translate(" + ((920 / (data.length - 1)) * i - 1) + ", 0)").attr("class", bgClass).attr()
+          bg.append("rect").attr("width", screenWidth / (data.length - 1)).attr("height", screenHeight).attr("transform", "translate(" + ((screenWidth / (data.length - 1)) * i - 1) + ", 0)").attr("class", bgClass).attr()
 
         x.domain d3.extent(addedPercentage, (d) ->
           d[0]
