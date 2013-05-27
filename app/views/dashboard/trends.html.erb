@@ -78,18 +78,18 @@
     </div>
     <div class="filter-small-element">
       <h3>Color</h3>
-      <%= f.input :color_add_opt, as: :select, collection: @color_add_collection, label: false, input_html: { class: "chosen", multiple:"" } %>
-      <%= f.input :color_sub_opt, as: :select, collection: @color_sub_collection, label: false, input_html: { class: "chosen", multiple:"" } %>
+      <%= f.input :color_add_opt, as: :select, collection: ["All"] + @color_collection, label: false, input_html: { class: "chosen", multiple:"" } %>
+      <%= f.input :color_sub_opt, as: :select, collection: @color_collection, label: false, input_html: { class: "chosen", multiple:"" } %>
     </div>
     <div class="filter-small-element">
       <h3>Pattern</h3>
-      <%= f.input :pattern_add_opt, as: :select, collection: @pattern_add_collection, label: false, input_html: { class: "chosen", multiple:"" } %>
-      <%= f.input :pattern_sub_opt, as: :select, collection: @pattern_sub_collection, label: false, input_html: { class: "chosen", multiple:"" } %>
+      <%= f.input :pattern_add_opt, as: :select, collection: ["All"] + @pattern_collection, label: false, input_html: { class: "chosen", multiple:"" } %>
+      <%= f.input :pattern_sub_opt, as: :select, collection: @pattern_collection, label: false, input_html: { class: "chosen", multiple:"" } %>
     </div>
     <div class="filter-small-element">
       <h3>Fabric</h3>
-      <%= f.input :fabric_add_opt, as: :select, collection: @fabric_add_collection, label: false, input_html: { class: "chosen", multiple:"" } %>
-      <%= f.input :fabric_sub_opt, as: :select, collection: @fabric_sub_collection, label: false, input_html: { class: "chosen", multiple:"" } %>
+      <%= f.input :fabric_add_opt, as: :select, collection: ["All"] + @fabric_collection, label: false, input_html: { class: "chosen", multiple:"" } %>
+      <%= f.input :fabric_sub_opt, as: :select, collection: @fabric_collection, label: false, input_html: { class: "chosen", multiple:"" } %>
     </div>
     <div class="filter-small-element">
       <h3>Sort</h3>
@@ -119,27 +119,27 @@
       </div>
       <div class="filter-big-element">
         <div class="label-text"><h3>Brand</h3></div>
-        <%= f.input :brand_add_opt, as: :select, collection: @brand_add_collection, label: false, input_html: { class: "chosen", multiple:"" } %>
+        <%= f.input :brand_add_opt, as: :select, collection: ["All"] + @brand_collection, label: false, input_html: { class: "chosen", multiple:"" } %>
       </div>
       <div class="filter-big-element">
         <div class="label-text"><h3></h3></div>
-        <%= f.input :brand_sub_opt, as: :select, collection: @brand_sub_collection, label: false, input_html: { class: "chosen", multiple:"" } %>
+        <%= f.input :brand_sub_opt, as: :select, collection: @brand_collection, label: false, input_html: { class: "chosen", multiple:"" } %>
       </div>
       <div class="filter-big-element">
         <div class="label-text"><h3>Retailer</h3></div>
-        <%= f.input :retailer_add_opt, as: :select, collection: @retailer_add_collection, label: false, input_html: { class: "chosen", multiple:"" } %>
+        <%= f.input :retailer_add_opt, as: :select, collection: ["All"] + @retailer_collection, label: false, input_html: { class: "chosen", multiple:"" } %>
       </div>
       <div class="filter-big-element">
         <div class="label-text"><h3></h3></div>
-        <%= f.input :retailer_sub_opt, as: :select, collection: @retailer_sub_collection, label: false, input_html: { class: "chosen", multiple:"" } %>
+        <%= f.input :retailer_sub_opt, as: :select, collection: @retailer_collection, label: false, input_html: { class: "chosen", multiple:"" } %>
       </div>
       <div class="filter-big-element">
         <div class="label-text"><h3>Style</h3></div>
-        <%= f.input :style_add_opt, as: :select, collection: @style_add_collection, label: false, input_html: { class: "chosen", multiple:"" } %>
+        <%= f.input :style_add_opt, as: :select, collection: ["All"] + @style_collection, label: false, input_html: { class: "chosen", multiple:"" } %>
       </div>
       <div class="filter-big-element">
         <div class="label-text"><h3></h3></div>
-        <%= f.input :style_sub_opt, as: :select, collection: @style_sub_collection, label: false, input_html: { class: "chosen", multiple:"" } %>
+        <%= f.input :style_sub_opt, as: :select, collection: @style_collection, label: false, input_html: { class: "chosen", multiple:"" } %>
       </div>
       <div class="filter-big-element" id="price-filter">
         <div class="label-text"><h3>Price</h3></div>
@@ -167,51 +167,51 @@
     <h2>Only show</h2>
     <div class="filter-big-element">
       <div class="label-text"><h3>Brand</h3></div>
-      <%= f.input :brand_add_search, as: :select, collection: @brand_add_collection, label: false, input_html: { class: "chosen", multiple:"" }, include_blank: true %>
+      <%= f.input :brand_add_search, as: :select, collection: ["All"] + @brand_collection, label: false, input_html: { class: "chosen", multiple:"" }, include_blank: true %>
     </div>
     <div class="filter-big-element">
       <div class="label-text"><h3></h3></div>
-      <%= f.input :brand_sub_search, as: :select, collection: @brand_sub_collection, label: false, input_html: { class: "chosen", multiple:"" }, include_blank: true %>
+      <%= f.input :brand_sub_search, as: :select, collection: @brand_collection, label: false, input_html: { class: "chosen", multiple:"" }, include_blank: true %>
     </div>
     <div class="filter-big-element">
       <div class="label-text"><h3>Retailer</h3></div>
-      <%= f.input :retailer_add_search, as: :select, collection: @retailer_add_collection, label: false, input_html: { class: "chosen", multiple:"" }, include_blank: true %>
+      <%= f.input :retailer_add_search, as: :select, collection: ["All"] + @retailer_collection, label: false, input_html: { class: "chosen", multiple:"" }, include_blank: true %>
     </div>
     <div class="filter-big-element">
       <div class="label-text"><h3></h3></div>
-      <%= f.input :retailer_sub_search, as: :select, collection: @retailer_sub_collection, label: false, input_html: { class: "chosen", multiple:"" }, include_blank: true %>
+      <%= f.input :retailer_sub_search, as: :select, collection: @retailer_collection, label: false, input_html: { class: "chosen", multiple:"" }, include_blank: true %>
     </div>
     <div class="filter-big-element">
       <div class="label-text"><h3>Style</h3></div>
-      <%= f.input :style_add_search, as: :select, collection: @style_add_collection, label: false, input_html: { class: "chosen", multiple:"" }, include_blank: true %>
+      <%= f.input :style_add_search, as: :select, collection: ["All"] + @style_collection, label: false, input_html: { class: "chosen", multiple:"" }, include_blank: true %>
     </div>
     <div class="filter-big-element">
       <div class="label-text"><h3></h3></div>
-      <%= f.input :style_sub_search, as: :select, collection: @style_sub_collection, label: false, input_html: { class: "chosen", multiple:"" }, include_blank: true %>
+      <%= f.input :style_sub_search, as: :select, collection: @style_collection, label: false, input_html: { class: "chosen", multiple:"" }, include_blank: true %>
     </div>
     <div class="filter-big-element">
       <div class="label-text"><h3>Color</h3></div>
-      <%= f.input :color_add_search, as: :select, collection: @color_add_collection, label: false, input_html: { class: "chosen", multiple:"" }, include_blank: true %>
+      <%= f.input :color_add_search, as: :select, collection: ["All"] + @color_collection, label: false, input_html: { class: "chosen", multiple:"" }, include_blank: true %>
     </div>
     <div class="filter-big-element">
       <div class="label-text"><h3></h3></div>
-      <%= f.input :color_sub_search, as: :select, collection: @color_sub_collection, label: false, input_html: { class: "chosen", multiple:"" }, include_blank: true %>
+      <%= f.input :color_sub_search, as: :select, collection: @color_collection, label: false, input_html: { class: "chosen", multiple:"" }, include_blank: true %>
     </div>
     <div class="filter-big-element">
       <div class="label-text"><h3>Pattern</h3></div>
-      <%= f.input :pattern_add_search, as: :select, collection: @pattern_add_collection, label: false, input_html: { class: "chosen", multiple:"" }, include_blank: true %>
+      <%= f.input :pattern_add_search, as: :select, collection: ["All"] + @pattern_collection, label: false, input_html: { class: "chosen", multiple:"" }, include_blank: true %>
     </div>
     <div class="filter-big-element">
       <div class="label-text"><h3></h3></div>
-      <%= f.input :pattern_sub_search, as: :select, collection: @pattern_sub_collection, label: false, input_html: { class: "chosen", multiple:"" }, include_blank: true %>
+      <%= f.input :pattern_sub_search, as: :select, collection: @pattern_collection, label: false, input_html: { class: "chosen", multiple:"" }, include_blank: true %>
     </div>
     <div class="filter-big-element">
       <div class="label-text"><h3>Fabric</h3></div>
-      <%= f.input :fabric_sub_search, as: :select, collection: @fabric_add_collection, label: false, input_html: { class: "chosen", multiple:"" }, include_blank: true %>
+      <%= f.input :fabric_sub_search, as: :select, collection: ["All"]  + @fabric_collection, label: false, input_html: { class: "chosen", multiple:"" }, include_blank: true %>
     </div>
     <div class="filter-big-element">
       <div class="label-text"><h3></h3></div>
-      <%= f.input :fabric_sub_search, as: :select, collection: @fabric_sub_collection, label: false, input_html: { class: "chosen", multiple:"" }, include_blank: true %>
+      <%= f.input :fabric_sub_search, as: :select, collection: @fabric_collection, label: false, input_html: { class: "chosen", multiple:"" }, include_blank: true %>
     </div>
     <div class="filter-big-element">
       <div class="label-text"><h3>Event</h3></div>

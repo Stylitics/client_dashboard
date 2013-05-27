@@ -37,7 +37,7 @@ class ChartRunsController < ApplicationController
       :fabric_add_search,
       :fabric_sub_search
     ].each do |p|
-      params[:chart_run][p] = params[:chart_run][p].reject{|l| l.blank?}.join(",") if params[:chart_run][p].present?
+      params[:chart_run][p] = params[:chart_run][p].reject{|l| l.blank?} if params[:chart_run][p].present?
     end
 
     chart_run.update_attributes params[:chart_run]

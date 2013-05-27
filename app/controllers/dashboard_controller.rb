@@ -58,18 +58,12 @@ class DashboardController < ApplicationController
       @chart.runs << @chart_run
     end
 
-    @brand_add_collection = ["All", "GAP", "Levi's", "Lorem", "Ipsum", "Dolor"]
-    @brand_sub_collection = ["- GAP", "- Levi's", "- Lorem", "- Ipsum", "- Dolor"]
-    @retailer_add_collection = ["All", "Levi's", "Retailer 1"]
-    @retailer_sub_collection = ["- Levi's", "- Retailer 1"]
-    @style_add_collection = ["All", "Skinny Jeans", "Trench Coat", "Jean Jacket", "Blazer", "Polo Shirt"]
-    @style_sub_collection = ["- Skinny Jeans", "- Trench Coat", "- Jean Jacket", "- Blazer", "- Polo Shirt"]
-    @color_add_collection = ["All", "Blue", "Black", "Red"]
-    @color_sub_collection = ["- Blue", "- Black", "- Red"]
-    @pattern_add_collection = ["All", "Pattern 1", "Pattern 2", "Pattern 3"]
-    @pattern_sub_collection = ["- Pattern 1", "- Pattern 2", "- Pattern 3"]
-    @fabric_add_collection = ["All", "Fabric 1", "Fabric 2", "Fabric 3"]
-    @fabric_sub_collection = ["- Fabric 1", "- Fabric 2", "- Fabric 3"]
+    @brand_collection = ["GAP", "Levi's", "Lorem", "Ipsum", "Dolor"]
+    @retailer_collection = ["Levi's", "Retailer 1"]
+    @style_collection = ["Skinny Jeans", "Trench Coat", "Jean Jacket", "Blazer", "Polo Shirt"]
+    @color_collection = ["Blue", "Black", "Red"]
+    @pattern_collection = ["Pattern 1", "Pattern 2", "Pattern 3"]
+    @fabric_collection = ["Fabric 1", "Fabric 2", "Fabric 3"]
   end
 
   def brandshare
