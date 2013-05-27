@@ -236,6 +236,7 @@ fieldset {
 				.filter-small-element {
 					@include column(8);
 					margin-bottom: 20px;
+					clear: both;
 
 					&:after {
 						content: ".";

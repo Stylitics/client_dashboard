@@ -21,6 +21,7 @@
   <div class="tab-pane active" id="status">
     <% if @r_script.runs.last.present? %>
       <pre class="brush: plain"><%= @r_script.runs.last.err %></pre>
+      <p>Note: if false is return, please download the RAW file, change your credentials and debug it locally for more detailed errors.</p>
     <% else %>
       Not ran yet!
     <% end %>

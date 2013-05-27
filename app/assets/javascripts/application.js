@@ -23,5 +23,4 @@
 //= require scripts
 //= require vanila_trend_line_chart
 //= require weather_chart
-//= require trend_line_chart
 //= require dashboard
