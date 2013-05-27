@@ -303,7 +303,7 @@
   </div>
 <% end %>
 
-<div class="big_chart" id="trend-line-chart" data-json="<%= chart_path("trend-line", format: :json) %>" data-pattern-odd="<%= asset_path "pattern.png" %>" data-pattern-even="<%= asset_path "pattern-d.png" %>" style="margin-bottom: 100px">
+<div class="big_chart" id="trend-line-chart" data-json="/trend-default-json.json" data-pattern-odd="<%= asset_path "pattern.png" %>" data-pattern-even="<%= asset_path "pattern-d.png" %>" style="margin-bottom: 100px">
   <h1><%= yield :title %></h1>
   <div id="trend-chart-placeholder" class="hide alert alert-warning">No data yet available... Try again in a few moments.</div>
   <div id="trend-chart-toggles">
