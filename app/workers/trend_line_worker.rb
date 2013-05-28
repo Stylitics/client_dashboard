@@ -19,11 +19,12 @@ class TrendLineWorker
     # end SQL connection
 
     code.scan(/\{\{(.*?)\}\}/).each do |v|
-      begin
-        code.gsub!("{{#{v[0].camelize(:lower)}}}", chart_run[v[0].camelize(:lower).underscore.to_sym])
-      rescue
-        logger.info v[0]
-      end
+      code.gsub!("{{#{v[0].camelize(:lower)}}}", chart_run[v[0].camelize(:lower).underscore.to_sym].to_a.join(","))
+      # begin
+      #   code.gsub!("{{#{v[0].camelize(:lower)}}}", chart_run[v[0].camelize(:lower).underscore.to_sym])
+      # rescue
+      #   logger.info v[0]
+      # end
     end
 
     code.gsub!('{#json_output#}', "#{Rails.root}/tmp/runs/#{chart_run.id}.json")
