@@ -8,8 +8,6 @@ class ChartRunsController < ApplicationController
 
     chart_run.accessible = :all
 
-    # this is ugly at this moment. will refactor better later
-
     [
       :location_opt,
       :brand_add_opt,
@@ -24,6 +22,8 @@ class ChartRunsController < ApplicationController
       :pattern_sub_opt,
       :fabric_add_opt,
       :fabric_sub_opt,
+      :occasion_add_opt,
+      :occasion_sub_opt,
       :brand_add_search,
       :brand_sub_search,
       :retailer_add_search,
@@ -35,7 +35,9 @@ class ChartRunsController < ApplicationController
       :pattern_add_search,
       :pattern_sub_search,
       :fabric_add_search,
-      :fabric_sub_search
+      :fabric_sub_search,
+      :occasion_add_search,
+      :occasion_sub_search
     ].each do |p|
       params[:chart_run][p] = params[:chart_run][p].reject{|l| l.blank?} if params[:chart_run][p].present?
     end

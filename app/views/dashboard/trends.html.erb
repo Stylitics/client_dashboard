@@ -73,8 +73,9 @@
       <%= f.input :staff_opt, as: :radio_buttons, collection: ["Include", "Exclude"], label: false %>
     </div>
     <div class="filter-small-element">
-      <h3>Event</h3>
-      <%= f.input :event_opt, as: :radio_buttons, collection: ["All", "Bought", "Addings", "Worn", "Last Worn"], label: false %>
+      <h3>Occasion</h3>
+      <%= f.input :occasion_add_opt, as: :select, collection: ["All"] + @occasion_collection, label: false, input_html: { class: "chosen", multiple:"" }, include_blank: true %>
+      <%= f.input :occasion_sub_opt, as: :select, collection: @occasion_collection, label: false, input_html: { class: "chosen", multiple:"" }, include_blank: true %>
     </div>
     <div class="filter-small-element">
       <h3>Color</h3>
@@ -115,7 +116,7 @@
           <div id="who-3">
           </div>
         </div>
-        <%= f.input :who, as: :hidden %>
+        <%= f.input :event_opt, as: :hidden %>
       </div>
       <div class="filter-big-element">
         <div class="label-text"><h3>Brand</h3></div>
@@ -214,8 +215,12 @@
       <%= f.input :fabric_sub_search, as: :select, collection: @fabric_collection, label: false, input_html: { class: "chosen", multiple:"" }, include_blank: true %>
     </div>
     <div class="filter-big-element">
-      <div class="label-text"><h3>Event</h3></div>
-      <%= f.input :event_search, as: :select, collection: ["", "All", "Bought", "Addings", "Worn", "Last Worn"], label: false, input_html: { class: "chosen", multiple:"" }, include_blank: true %>
+      <div class="label-text"><h3>Occasion</h3></div>
+      <%= f.input :occasion_add_search, as: :select, collection: ["All"] + @occasion_collection, label: false, input_html: { class: "chosen", multiple:"" }, include_blank: true %>
+    </div>
+    <div class="filter-big-element">
+      <div class="label-text"><h3></h3></div>
+      <%= f.input :occasion_sub_search, as: :select, collection: @occasion_collection, label: false, input_html: { class: "chosen", multiple:"" }, include_blank: true %>
     </div>
   </div>
 </div>
@@ -303,11 +308,6 @@
   </div>
 <% end %>
 
-<div class="big_chart" id="trend-line-chart" data-json="/trend-default-json.json" data-pattern-odd="<%= asset_path "pattern.png" %>" data-pattern-even="<%= asset_path "pattern-d.png" %>" style="margin-bottom: 100px">
-  <h1><%= yield :title %></h1>
+<div class="big_chart" id="trend-line-chart" data-json="<%= chart_path("trend-line", format: :json) %>" data-pattern-odd="<%= asset_path "pattern.png" %>" data-pattern-even="<%= asset_path "pattern-d.png" %>" style="margin-bottom: 100px">
   <div id="trend-chart-placeholder" class="hide alert alert-warning">No data yet available... Try again in a few moments.</div>
-  <div id="trend-chart-toggles">
-    <input name="selector1" class="green" type="checkbox" id="selector1" value="selector1" checked="checked" data-id="0" /> <label for="selector1"><span></span>Worn</label>
-  <input name="selector2" class="blue" type="checkbox" id="selector2" value="selector2" checked="checked" data-id="1" /> <label for="selector2"><span></span>Added</label>
-  </div>
 </div>

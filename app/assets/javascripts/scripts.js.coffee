@@ -37,7 +37,7 @@ $ ->
   $("#who").tabs()
 
   $(".who").click ->
-      $('#chart_run_who').val($(this).html())
+      $('#chart_run_event_opt').val($(this).html())
 
   $(".chosen").chosen()
 
