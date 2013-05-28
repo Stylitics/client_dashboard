@@ -1,12 +1,12 @@
 class @VanilaTrendLineChart
   constructor: () ->
-    screenWidth = 920
+    screenWidth = 870
     screenHeight = 400
     svg = d3.select("#trend-line-chart").append("svg").attr("width", screenWidth).attr("height", screenHeight)
 
-    svg.append('svg:defs').append('svg:pattern').attr('id', 'pattern').attr('patternUnits', 'userSpaceOnUse').attr('width', '6').attr('height', '6').append('svg:image').attr('xlink:href', $("#trend-line-chart").data("pattern-odd")).attr('x', 0).attr('y', 0).attr('width', 6).attr('height', 6)
+    svg.append('svg:defs').append('svg:pattern').attr('id', 'pattern').attr('patternUnits', 'userSpaceOnUse').attr('width', '10').attr('height', '10').append('svg:image').attr('xlink:href', $("#trend-line-chart").data("pattern-odd")).attr('x', 0).attr('y', 0).attr('width', 10).attr('height', 10)
 
-    svg.append('svg:defs').append('svg:pattern').attr('id', 'pattern-d').attr('patternUnits', 'userSpaceOnUse').attr('width', '6').attr('height', '6').append('svg:image').attr('xlink:href', $("#trend-line-chart").data("pattern-even")).attr('x', 0).attr('y', 0).attr('width', 6).attr('height', 6)
+    svg.append('svg:defs').append('svg:pattern').attr('id', 'pattern-d').attr('patternUnits', 'userSpaceOnUse').attr('width', '10').attr('height', '10').append('svg:image').attr('xlink:href', $("#trend-line-chart").data("pattern-even")).attr('x', 0).attr('y', 0).attr('width', 10).attr('height', 10)
 
     x = d3.time.scale().range([0, screenWidth])
     y = d3.scale.linear().range([screenHeight, 0])
@@ -31,7 +31,7 @@ class @VanilaTrendLineChart
       if data.data != "empty"
         xAxis.ticks(data.length)
 
-        bg = svg.append("g").attr("width", 920).attr("height", screenHeight)
+        bg = svg.append("g").attr("width", screenWidth).attr("height", screenHeight)
 
         data.forEach (d, i) ->
           if i % 2 == 0
@@ -40,7 +40,7 @@ class @VanilaTrendLineChart
             bgClass = "odd"
           addedPercentage.push [parseDate(d.date), d.addedPercentage]
           wornPercentage.push [parseDate(d.date), d.wornPercentage]
-          bg.append("rect").attr("width", 920 / (data.length - 1)).attr("height", screenHeight).attr("transform", "translate(" + ((920 / (data.length - 1)) * i - 1) + ", 0)").attr("class", bgClass).attr()
+          bg.append("rect").attr("width", screenWidth / (data.length - 1)).attr("height", screenHeight).attr("transform", "translate(" + ((screenWidth / (data.length - 1)) * i - 1) + ", 0)").attr("class", bgClass).attr()
 
         x.domain d3.extent(addedPercentage, (d) ->
           d[0]
