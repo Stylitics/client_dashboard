@@ -10,6 +10,8 @@ class TrendLineWorker
 
     code = chart.r_script.code
 
+    # this is dupplicate. will refactor later on
+
     # SQL connection
     code.gsub!("{!hostVar!}", SQL_HOST)
     code.gsub!("{!portVar!}", SQL_PORT.to_s)
@@ -19,13 +21,12 @@ class TrendLineWorker
     # end SQL connection
 
     code.scan(/\{\{(.*?)\}\}/).each do |v|
-      code.gsub!("{{#{v[0].camelize(:lower)}}}", chart_run[v[0].camelize(:lower).underscore.to_sym].to_a.join(","))
-      # begin
-      #   code.gsub!("{{#{v[0].camelize(:lower)}}}", chart_run[v[0].camelize(:lower).underscore.to_sym])
-      # rescue
-      #   logger.info v[0]
-      # end
+      injected_value = chart_run[v[0].camelize(:lower).underscore.to_sym].to_a.join(",")
+      injected_value = "NULL" if injected_value.blank?
+      code.gsub!("{{#{v[0].camelize(:lower)}}}", injected_value)
     end
+    # remove "NULL"s
+    code.gsub!("NULL", NULL)
 
     code.gsub!('{#json_output#}', "#{Rails.root}/tmp/runs/#{chart_run.id}.json")
     File.open("#{Rails.root}/tmp/runs/#{chart_run.id}.r", 'w') {|f| f.write(code) }

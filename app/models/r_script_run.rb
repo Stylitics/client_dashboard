@@ -14,6 +14,8 @@ class RScriptRun
   def generate_script
     code = r_script.code
 
+    # this is dupplicate. will refactor later on
+
     # SQL connection
     code.gsub!("{!hostVar!}", SQL_HOST)
     code.gsub!("{!portVar!}", SQL_PORT.to_s)
@@ -23,8 +25,12 @@ class RScriptRun
     # end SQL connection
 
     code.scan(/\{\{(.*?)\}\}/).each do |v|
-      code.gsub!("{{#{v[0].camelize(:lower)}}}", self[v[0].camelize(:lower).underscore.to_sym])
+      injected_value = self[v[0].camelize(:lower).underscore.to_sym].to_a.join(",")
+      injected_value = "NULL" if injected_value.blank? and v[0].camelize(:lower).include?("_sub_")
+      code.gsub!("{{#{v[0].camelize(:lower)}}}", injected_value)
     end
+    # remove "NULL"s
+    code.gsub!("NULL", NULL)
     code.gsub!('{#json_output#}', "#{Rails.root}/tmp/runs/#{r_script.id}.json")
     File.open("#{Rails.root}/tmp/runs/#{r_script.id}.r", 'w') {|f| f.write(code) }
   end
