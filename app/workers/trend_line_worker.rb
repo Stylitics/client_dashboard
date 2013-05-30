@@ -26,7 +26,7 @@ class TrendLineWorker
       code.gsub!("{{#{v[0].camelize(:lower)}}}", injected_value)
     end
     # remove "NULL"s
-    code.gsub!("NULL", NULL)
+    code.gsub!('"NULL"', "NULL")
 
     code.gsub!('{#json_output#}', "#{Rails.root}/tmp/runs/#{chart_run.id}.json")
     File.open("#{Rails.root}/tmp/runs/#{chart_run.id}.r", 'w') {|f| f.write(code) }

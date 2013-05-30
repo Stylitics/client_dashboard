@@ -30,7 +30,7 @@ class RScriptRun
       code.gsub!("{{#{v[0].camelize(:lower)}}}", injected_value)
     end
     # remove "NULL"s
-    code.gsub!("NULL", NULL)
+    code.gsub!('"NULL"', "NULL")
     code.gsub!('{#json_output#}', "#{Rails.root}/tmp/runs/#{r_script.id}.json")
     File.open("#{Rails.root}/tmp/runs/#{r_script.id}.r", 'w') {|f| f.write(code) }
   end
