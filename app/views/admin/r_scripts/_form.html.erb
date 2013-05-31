@@ -1,8 +1,8 @@
-<%= f.input :name, label: false, input_html: { placeholder: 'Name' } %>
-
-<ul id="r-script-sources">
-  <%= f.fields_for :sources do |s| %>
-    <%= render 'source_fields', f: s %>
-  <% end %>
-</ul>
-<%= link_to_add_fields 'Add new source', f, :sources %>
+<fieldset>
+  <div class="fieldset-left">
+    <%= f.input :name, label: false, input_html: { placeholder: 'Name' } %>
+  </div>
+  <div class="fieldset-right">
+    <%= f.input :code, as: :text, label: false, input_html: { placeholder: 'Code', rows: 40 } %>
+  </div>
+</fieldset>

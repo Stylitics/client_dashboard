@@ -64,29 +64,5 @@
         <%= link_to 'Clear all runs', clear_admin_r_script_path(@r_script), method: :delete, confirm: 'This will clear all runs for this script.', class: 'btn btn-danger' %>
       </div>
     <% end %>
-    <% if @r_script.sources.any? %>
-      <hr>
-      <h2>Sources</h2>
-      <ul id="sources">
-        <% @r_script.sources.each_with_index do |source, index| %>
-          <li id="source_<%= index %>">
-            &bull;
-            <%= link_to source.name, "#code-#{source.id}", data: { toggle: 'modal' } %>
-            <div id="code-<%= source.id %>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h3 id="myModalLabel"><%= source.name %></h3>
-              </div>
-              <div class="modal-body">
-                <pre class="brush: r"><%= source.code %></pre>
-              </div>
-              <div class="modal-footer">
-                <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-              </div>
-            </div>
-          </li>
-        <% end %>
-      </ul>
-    <% end %>
   </div>
 <% end %>

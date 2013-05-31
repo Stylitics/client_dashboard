@@ -11,19 +11,14 @@ class RScript
 
   validates_presence_of :name, :code
 
-  attr_accessible :name, :code, :running_code, :status, :sources_attributes
+  attr_accessible :name, :code, :running_code, :status
 
   default_scope order_by(name: :asc)
 
   has_many :runs, :class_name => 'RScriptRun'
   has_many :charts
 
-  embeds_many :sources, class_name: 'RScriptSource'
-  accepts_nested_attributes_for :sources, allow_destroy: true
-
   slug :name
-
-  before_validation :update_code_from_sources
 
   def variables
     code.scan(/\{\{(.*?)\}\}/).collect{|v| v[0].underscore}
@@ -38,14 +33,5 @@ class RScript
 
   def activate!(mode = true)
     self.update_attribute :running_code, mode == true ? code : nil
-  end
-
-private
-
-  def update_code_from_sources
-    self.code = ''
-    sources.each do |s|
-      self.code << s.code + "\n"
-    end
   end
 end

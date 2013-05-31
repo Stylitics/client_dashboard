@@ -58,15 +58,15 @@
     </div>
     <div class="filter-small-element">
       <h3>Student</h3>
-      <%= f.input :student_opt, as: :radio_buttons, collection: ["NULL", "TRUE", "FALSE"], label: false %>
+      <%= f.input :student_opt, as: :radio_buttons, collection: [["NULL", "All"], ["TRUE", "Yes"], ["FALSE", "No"]], label: false %>
     </div>
     <div class="filter-small-element">
       <h3>Location</h3>
       <%= f.input :location_opt, as: :check_boxes, collection: ["All", "NYC", "LA", "DC", "SF", "Dallas", "Chicago"], label: false %>
     </div>
     <div class="filter-small-element">
-      <h3>Staff</h3>
-      <%= f.input :staff_opt, as: :radio_buttons, collection: ["NULL", "TRUE", "FALSE"], label: false %>
+      <h3>Influencer</h3>
+      <%= f.input :influencer_opt, as: :radio_buttons, collection: [["NULL", "All"], ["TRUE", "Yes"], ["FALSE", "No"]], label: false %>
     </div>
     <div class="filter-small-element">
       <h3>Occasion</h3>

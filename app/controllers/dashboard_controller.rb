@@ -16,12 +16,12 @@ class DashboardController < ApplicationController
       @chart_run[:gender_opt] = "All"
       @chart_run[:low_age_opt] = 10.to_s
       @chart_run[:high_age_opt] = 100.to_s
-      @chart_run[:student_opt] = "All"
+      @chart_run[:student_opt] = "NULL"
       @chart_run[:location_opt] = ["All"]
       @chart_run[:low_price_opt] = 0.to_s
       @chart_run[:high_price_opt] = 100000.to_s
       @chart_run[:no_price_opt] = "TRUE"
-      @chart_run[:staff_opt] = "Include"
+      @chart_run[:influencer_opt] = "NULL"
       @chart_run[:sort_opt] = "User ID"
       @chart_run[:brand_add_opt] = ["All"]
       @chart_run[:brand_sub_opt] = [""]
