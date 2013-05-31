@@ -58,7 +58,7 @@
     </div>
     <div class="filter-small-element">
       <h3>Student</h3>
-      <%= f.input :student_opt, as: :radio_buttons, collection: [["NULL", "All"], ["TRUE", "Yes"], ["FALSE", "No"]], label: false %>
+      <%= f.input :student_opt, as: :radio_buttons, collection: [["All", "NULL"], ["Yes", "TRUE"], ["No", "FALSE"]], label: false %>
     </div>
     <div class="filter-small-element">
       <h3>Location</h3>
@@ -66,7 +66,7 @@
     </div>
     <div class="filter-small-element">
       <h3>Influencer</h3>
-      <%= f.input :influencer_opt, as: :radio_buttons, collection: [["NULL", "All"], ["TRUE", "Yes"], ["FALSE", "No"]], label: false %>
+      <%= f.input :influencer_opt, as: :radio_buttons, collection: [["All", "NULL"], ["Yes", "TRUE"], ["No", "FALSE"]], label: false %>
     </div>
     <div class="filter-small-element">
       <h3>Occasion</h3>
