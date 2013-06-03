@@ -1,560 +1,570 @@
 fieldset {
-	@include column(43,true);
-	border: none;
-	border-top: 1px solid #CCCCCC;
-	margin: 0;
-	padding: 10px 0px;
+  @include column(43,true);
+  border: none;
+  border-top: 1px solid #CCCCCC;
+  margin: 0;
+  padding: 10px 0px;
 }
 
 .fieldset-left {
-	@include column(14);
+  @include column(14);
 }
 
 .fieldset-right {
-	@include column(29, true);
-	textarea {
-		width: span(27);
-		// height: 200px;
-	}
+  @include column(29, true);
+  textarea {
+    width: span(27);
+    // height: 200px;
+  }
 }
 
 .container {
-	@include container;
+  @include container;
 }
 
 .big_chart {
-	width: span(44);
-	height: 400px;
+  width: span(44);
+  height: 400px;
+}
+
+.big_chart_zoom {
+  width: span(44);
+  height: 80px;
+  margin-top: 20px;
+
+  line, .domain {
+    display: none;
+  }
 }
 
 .small_chart {
-	width: span(44);
-	height: 100px;
+  width: span(44);
+  height: 100px;
 }
 
 .big-number {
-	@include opacity(0.3);
-	font-family:"proxima_novabold";
-	font-size:48px;
+  @include opacity(0.3);
+  font-family:"proxima_novabold";
+  font-size:48px;
 }
 .big-percent {
-	@include opacity(0.3);
-	font-size:24px;
+  @include opacity(0.3);
+  font-size:24px;
 }
 
 .bar-container {
-	margin-top:10px;
-	width:98%;
-	height:10px;
-	background:#999999;
+  margin-top:10px;
+  width:98%;
+  height:10px;
+  background:#999999;
 }
 
 .bar {
-	height:10px;
-	background:#333333;
+  height:10px;
+  background:#333333;
 }
 
 .header {
-	@include column(60,true);
-	padding:0px 20px 0px 0px;
+  @include column(60,true);
+  padding:0px 20px 0px 0px;
 
-	.logo {
-		@include column(10);
-		background: image-url("stylitics-logo.png") no-repeat right;
-		height: 60px;
-		float:right;
-	}
-	.menu {
-		@include column(50, true);
-		margin-top:25px;
+  .logo {
+    @include column(10);
+    background: image-url("stylitics-logo.png") no-repeat right;
+    height: 60px;
+    float:right;
+  }
+  .menu {
+    @include column(50, true);
+    margin-top:25px;
 
-		i {
-			height:10px;
-		}
-		li {
-			@include background-image(linear-gradient(#3a3a3a, #1f1f1f));
-			float: left;
-			border: 1px solid #333333;
-			border-bottom: none;
-			color:#FFFFFF;
-			text-transform: uppercase;
-			margin-right: 10px;
-			font-size: 14px;
+    i {
+      height:10px;
+    }
+    li {
+      @include background-image(linear-gradient(#3a3a3a, #1f1f1f));
+      float: left;
+      border: 1px solid #333333;
+      border-bottom: none;
+      color:#FFFFFF;
+      text-transform: uppercase;
+      margin-right: 10px;
+      font-size: 14px;
 
-			&:hover {
-				background:#FFFFFF;
-				color: #333333;
-			}
+      &:hover {
+        background:#FFFFFF;
+        color: #333333;
+      }
 
-			&.active {
-				background:#FFFFFF;
-				color: #333333;
-			}
+      &.active {
+        background:#FFFFFF;
+        color: #333333;
+      }
 
-			a {
-				font-family: "proxima_novalight";
-				display:block;
-				padding: 10px 20px;
-			}
-		}
-	}
+      a {
+        font-family: "proxima_novalight";
+        display:block;
+        padding: 10px 20px;
+      }
+    }
+  }
 }
 
 .container {
-	overflow:visible;
+  overflow:visible;
 }
 .btn {
-	border-radius:0px;
+  border-radius:0px;
 }
 
 .inner-content-small {
-	@include column(12,true);
-	background:#FFFFFF;
-	padding:10px 20px 10px 20px;
-	position:relative;
-	float:right;
+  @include column(12,true);
+  background:#FFFFFF;
+  padding:10px 20px 10px 20px;
+  position:relative;
+  float:right;
 }
 
 .filters-zone {
-	@include column(58,true);
-	background: #f0f0f0;
-	margin-bottom: 20px;
+  @include column(58,true);
+  background: #f0f0f0;
+  margin-bottom: 20px;
 
-	.title-container {
-		@include column(58,true);
+  .title-container {
+    @include column(58,true);
 
 
-		.title {
-			@include column(37);
-			padding: 20px 0px 20px 20px;
-		}
+    .title {
+      @include column(37);
+      padding: 20px 0px 20px 20px;
+    }
 
-		.title-buttons {
-			@include column(20,true);
+    .title-buttons {
+      @include column(20,true);
 
-			.change-filters {
-				@include column(8,true);
+      .change-filters {
+        @include column(8,true);
 
-				padding: 20px 0px 20px 0px;
-				border-right:1px solid #999999;
-			}
+        padding: 20px 0px 20px 0px;
+        border-right:1px solid #999999;
+      }
 
-			.my-saved-segments {
-				@include column(12,true);
+      .my-saved-segments {
+        @include column(12,true);
 
-				@include background-image(linear-gradient(#ededed, #d4d4d4));
-				text-align: center;
-				padding: 20px 7px 20px 0px;
-				border: 1px solid #CCCCCC;
-				border-left: 1px solid #FFFFFF;
-				cursor: pointer;
-			}
-		}
-	}
+        @include background-image(linear-gradient(#ededed, #d4d4d4));
+        text-align: center;
+        padding: 20px 7px 20px 0px;
+        border: 1px solid #CCCCCC;
+        border-left: 1px solid #FFFFFF;
+        cursor: pointer;
+      }
+    }
+  }
 
-	.filters-container {
-		display: none;
+  .filters-container {
+    display: none;
 
-		.define-your-segment{
-			@include column(36,true);
-			padding: 20px 20px 20px 20px;
-			background:#CCCCCC;
-		}
+    .define-your-segment{
+      @include column(36,true);
+      padding: 20px 20px 20px 20px;
+      background:#CCCCCC;
+    }
 
-		.filter-your-results {
-			@include column(20,true);
-			padding: 20px 0px 20px 10px;
-			background:#bdbdbd;
-		}
+    .filter-your-results {
+      @include column(20,true);
+      padding: 20px 0px 20px 10px;
+      background:#bdbdbd;
+    }
 
-		.segment {
-			@include column(58,true);
-			padding: 20px 20px 20px 20px;
+    .segment {
+      @include column(58,true);
+      padding: 20px 20px 20px 20px;
 
-			.segment-content {
-				@include column(17,true);
-				padding-right:20px;
+      .segment-content {
+        @include column(17,true);
+        padding-right:20px;
 
-				&:first-child{
-					@include column(16);
-					border-right: 1px solid #CCCCCC;
-				}
+        &:first-child{
+          @include column(16);
+          border-right: 1px solid #CCCCCC;
+        }
 
-				.filter-element {
-					@include column(16,true);
-					margin-bottom: 20px;
-				}
+        .filter-element {
+          @include column(16,true);
+          margin-bottom: 20px;
+        }
 
-				.filter-big-element {
-					@include column(18,true);
-					margin-bottom: 20px;
+        .filter-big-element {
+          @include column(18,true);
+          margin-bottom: 20px;
 
-					.label-text {
-						@include column(4);
+          .label-text {
+            @include column(4);
 
-						h2 {
-							margin-top: 14px;
-						}
+            h2 {
+              margin-top: 14px;
+            }
 
-						h3 {
-							margin-top: 4px;
-						}
-					}
+            h3 {
+              margin-top: 4px;
+            }
+          }
 
-					.content-value {
-						width: 260px;
-						float: left;
-						margin: 10px 0px 0px 6px;
-					}
+          .content-value {
+            width: 260px;
+            float: left;
+            margin: 10px 0px 0px 6px;
+          }
 
-					.control-group {
-						float: left;
-						width: 130px;
+          .control-group {
+            float: left;
+            width: 130px;
 
-						label {
-							float: left;
-							margin-right: 10px;
-							width: 20px;
-							margin-top: 10px;
-						}
-					}
+            label {
+              float: left;
+              margin-right: 10px;
+              width: 20px;
+              margin-top: 10px;
+            }
+          }
 
-					.controls {
-						float: left;
-						width: 100px;
+          .controls {
+            float: left;
+            width: 100px;
 
-						input {
-							width: 100px;
-						}
-					}
+            input {
+              width: 100px;
+            }
+          }
 
-					#who {
-						float:left;
-					}
-				}
+          #who {
+            float:left;
+          }
+        }
 
-				.filter-small-element {
-					@include column(8);
-					margin-bottom: 20px;
-					clear: both;
+        .filter-small-element {
+          @include column(8);
+          margin-bottom: 20px;
+          clear: both;
 
-					&:after {
-						content: ".";
-					    display: block;
-					    height: 0;
-					    clear: both;
-					    visibility: hidden;
-					}
-				}
-			}
-		}
-		.last-segment {
-			margin-left: 30px;
-		}
-	}
+          &:after {
+            content: ".";
+              display: block;
+              height: 0;
+              clear: both;
+              visibility: hidden;
+          }
+        }
+      }
+    }
+    .last-segment {
+      margin-left: 30px;
+    }
+  }
 }
 
 .inner-content {
-	@include column(58,true);
-	background:#FFFFFF;
-	min-height:400px;
-	padding:10px 20px 10px 20px;
-	position:relative;
+  @include column(58,true);
+  background:#FFFFFF;
+  min-height:400px;
+  padding:10px 20px 10px 20px;
+  position:relative;
 
-	.left-controls {
-		@include column(2);
-		position:absolute;
-		left:-50px;
-	}
+  .left-controls {
+    @include column(2);
+    position:absolute;
+    left:-50px;
+  }
 
-	.left {
-		@include column(14, true);
-		position:absolute;
-		display:none;
+  .left {
+    @include column(14, true);
+    position:absolute;
+    display:none;
 
-		.sidebar {
-			@include column(13,true);
-			display:none;
-			background: #f0f0f0;
-			padding: 10px;
-			overflow-y:scroll;
-			overflow-x:hidden;
-			height:600px;
-		}
+    .sidebar {
+      @include column(13,true);
+      display:none;
+      background: #f0f0f0;
+      padding: 10px;
+      overflow-y:scroll;
+      overflow-x:hidden;
+      height:600px;
+    }
 
-		.title {
-			@include column(13, true);
-			margin-bottom:20px;
-		}
-		.filters {
-			@include column(13, true);
-			margin-bottom:20px;
-		}
-	}
-	.center {
-		@include column(31);
-	}
-	.wide {
-		@include column(45);
-	}
-	.half {
-		@include column(28, true);
+    .title {
+      @include column(13, true);
+      margin-bottom:20px;
+    }
+    .filters {
+      @include column(13, true);
+      margin-bottom:20px;
+    }
+  }
+  .center {
+    @include column(31);
+  }
+  .wide {
+    @include column(45);
+  }
+  .half {
+    @include column(28, true);
 
-		h2 {
-			text-align: center;
-			margin-bottom: 20px;
-		}
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
 
-		&:first-child {
-			border-right:1px solid #CCCCCC;
-		}
-	}
-	.third {
-		@include column(19, true);
+    &:first-child {
+      border-right:1px solid #CCCCCC;
+    }
+  }
+  .third {
+    @include column(19, true);
 
-		h1 {
-			text-align: center;
-			margin-bottom: 20px;
-		}
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
 
-		&:first-child {
-			@include column(20, true);
-			border-right:1px solid #CCCCCC;
-		}
+    &:first-child {
+      @include column(20, true);
+      border-right:1px solid #CCCCCC;
+    }
 
-		&:nth-child(2) {
-			border-right:1px solid #CCCCCC;
-		}
-	}
-	.wide3 {
-		@include column(60, true);
-	}
-	.wide2 {
-		@include column(44, true);
-		margin-top:10px;
+    &:nth-child(2) {
+      border-right:1px solid #CCCCCC;
+    }
+  }
+  .wide3 {
+    @include column(60, true);
+  }
+  .wide2 {
+    @include column(44, true);
+    margin-top:10px;
 
-		.bottom-container {
-			@include column(14);
-			background:#f7f7f7;
-			border: 1px solid #999999;
-			border-bottom: none;
-			margin-right:20px;
+    .bottom-container {
+      @include column(14);
+      background:#f7f7f7;
+      border: 1px solid #999999;
+      border-bottom: none;
+      margin-right:20px;
 
-			&:last-child {
-				margin-right:0px;
-			}
+      &:last-child {
+        margin-right:0px;
+      }
 
-			.bottom-title {
-				@include column(14,true);
-				border-bottom:1px solid #999999;
+      .bottom-title {
+        @include column(14,true);
+        border-bottom:1px solid #999999;
 
-				h2 {
-					margin-top:18px;
-				}
-			}
+        h2 {
+          margin-top:18px;
+        }
+      }
 
-			.bottom-content {
-				@include column(14,true);
-				border-bottom:1px solid #999999;
-				padding:20px 0 20px 0;
-				background:#FFFFFF;
+      .bottom-content {
+        @include column(14,true);
+        border-bottom:1px solid #999999;
+        padding:20px 0 20px 0;
+        background:#FFFFFF;
 
-				.bottom-label {
-					@include column(7,true);
-					margin-left:10px;
-					padding-top:3px;
-				}
+        .bottom-label {
+          @include column(7,true);
+          margin-left:10px;
+          padding-top:3px;
+        }
 
-				.bottom-value {
-					@include column(6,true);
-					float:right;
-					text-align:right;
-					margin-right:10px;
-					font-size:18px;
-				}
-			}
-		}
-	}
+        .bottom-value {
+          @include column(6,true);
+          float:right;
+          text-align:right;
+          margin-right:10px;
+          font-size:18px;
+        }
+      }
+    }
+  }
 
-	.full {
-		.outfit-container {
-			width: 400px;
+  .full {
+    .outfit-container {
+      width: 400px;
 
-			.outfit-title {
-				text-align:center;
-			}
+      .outfit-title {
+        text-align:center;
+      }
 
-			.outfit-content {
-				margin: 0 auto;
-				height: 500px;
-				width: 380px;
-				background: #333333;
-			}
-		}
-	}
-	.right {
-		@include column(13,true);
+      .outfit-content {
+        margin: 0 auto;
+        height: 500px;
+        width: 380px;
+        background: #333333;
+      }
+    }
+  }
+  .right {
+    @include column(13,true);
 
-		.sidebar {
-			@include column(12,true);
-			background: #f0f0f0;
-			padding: 10px;
-			margin-top: 10px;
-		}
-		.stats {
-			@include column(6);
-			text-align:center;
+    .sidebar {
+      @include column(12,true);
+      background: #f0f0f0;
+      padding: 10px;
+      margin-top: 10px;
+    }
+    .stats {
+      @include column(6);
+      text-align:center;
 
-			&:last-child {
-				@include column(6,true);
-			}
-		}
+      &:last-child {
+        @include column(6,true);
+      }
+    }
 
-		.sidebar-form, .sidebar-stats {
-			@include column(12,true);
-			margin-top:10px;
-			margin-bottom:10px;
-		}
+    .sidebar-form, .sidebar-stats {
+      @include column(12,true);
+      margin-top:10px;
+      margin-bottom:10px;
+    }
 
-		.textarea-container {
-			@include column(12,true);
-			background:#cfcfcf;
-			margin-top:10px;
+    .textarea-container {
+      @include column(12,true);
+      background:#cfcfcf;
+      margin-top:10px;
 
-			textarea {
-				width:208px;
-				border-radius:0;
-			}
+      textarea {
+        width:208px;
+        border-radius:0;
+      }
 
-			.textarea-base1 {
-				@include column(6,true);
-				padding:4px 0 0 4px;
-			}
+      .textarea-base1 {
+        @include column(6,true);
+        padding:4px 0 0 4px;
+      }
 
-			.textarea-base2 {
-				@include column(6,true);
-				float:right;
-				text-align:right;
-			}
-		}
-	}
+      .textarea-base2 {
+        @include column(6,true);
+        float:right;
+        text-align:right;
+      }
+    }
+  }
 }
 
 .form-styled {
-	background: #f0f0f0;
-	padding: 10px;
+  background: #f0f0f0;
+  padding: 10px;
 
-	.actions {
-		margin-top:20px;
-	}
+  .actions {
+    margin-top:20px;
+  }
 }
 
 .syntaxhighlighter {
-	.toolbar {
-		display:none;
-	}
+  .toolbar {
+    display:none;
+  }
 }
 
 .map-usa {
-	background: image-url("map-usa.png") no-repeat center;
-	width:569px;
-	height:362px;
+  background: image-url("map-usa.png") no-repeat center;
+  width:569px;
+  height:362px;
 }
 
 rect {
-	fill: #1d8898;
+  fill: #1d8898;
 }
 
 .chzn-container {
-	width:270px !important;
+  width:270px !important;
 }
 
 .custom-tabs.ui-tabs{
-	border: 0;
-	background:none;
+  border: 0;
+  background:none;
 
-	.ui-tabs-nav {
-		background: none;
-		border: 0;
-		margin:0 auto;
-		float:none;
-		display:table;
-	}
+  .ui-tabs-nav {
+    background: none;
+    border: 0;
+    margin:0 auto;
+    float:none;
+    display:table;
+  }
 
-	.ui-state-default {
-		border: 1px solid #c0c0c0;
-		border-left:none;
-		border-radius: 0;
-		@include background-image(linear-gradient(#d7d8d8, #efefef));
-		margin: 0em;
+  .ui-state-default {
+    border: 1px solid #c0c0c0;
+    border-left:none;
+    border-radius: 0;
+    @include background-image(linear-gradient(#d7d8d8, #efefef));
+    margin: 0em;
 
-		&.ui-state-active {
-			background:#6db2df;
-			border: 1px solid #144463;
-		}
+    &.ui-state-active {
+      background:#6db2df;
+      border: 1px solid #144463;
+    }
 
-		&:first-child {
-			@include border-top-left-radius(20px);
-			@include border-bottom-left-radius(20px);
-			border-left: 1px solid #c0c0c0;
-		}
+    &:first-child {
+      @include border-top-left-radius(20px);
+      @include border-bottom-left-radius(20px);
+      border-left: 1px solid #c0c0c0;
+    }
 
-		&:last-child {
-			@include border-top-right-radius(20px);
-			@include border-bottom-right-radius(20px);
-		}
+    &:last-child {
+      @include border-top-right-radius(20px);
+      @include border-bottom-right-radius(20px);
+    }
 
-		&:first-child, &:last-child {
-			&.ui-state-active {
-				background:#6db2df;
-				border: 1px solid #144463;
-			}
-		}
+    &:first-child, &:last-child {
+      &.ui-state-active {
+        background:#6db2df;
+        border: 1px solid #144463;
+      }
+    }
 
-		a {
-			color: #093f68;
-		}
-	}
+    a {
+      color: #093f68;
+    }
+  }
 }
 
 .third {
-	.top-item {
-		background: #efefef;
-		height:50px;
-		margin:10px;
-		padding: 10px;
+  .top-item {
+    background: #efefef;
+    height:50px;
+    margin:10px;
+    padding: 10px;
 
-		.icon {
-			float:left;
-			width: 60px;
-			height: 50px;
-		}
-		.text {
-			height: 50px;
-			display:table-cell;
-			vertical-align:middle;
-		}
-	}
+    .icon {
+      float:left;
+      width: 60px;
+      height: 50px;
+    }
+    .text {
+      height: 50px;
+      display:table-cell;
+      vertical-align:middle;
+    }
+  }
 }
 
 .half {
-	.top-item {
-		background: #efefef;
-		height:100px;
-		margin:10px;
-		padding: 10px;
+  .top-item {
+    background: #efefef;
+    height:100px;
+    margin:10px;
+    padding: 10px;
 
-		.icon {
-			float:left;
-			width: 110px;
-			height: 100px;
-		}
-		.text {
-			height: 100px;
-			display:table-cell;
-			vertical-align:middle;
-		}
-	}
+    .icon {
+      float:left;
+      width: 110px;
+      height: 100px;
+    }
+    .text {
+      height: 100px;
+      display:table-cell;
+      vertical-align:middle;
+    }
+  }
 }
 
 

@@ -1,16 +1,53 @@
 class @TrendLineChart
   constructor: () ->
-    screenWidth = $("#trend-line-chart").data("width")
-    screenHeight = $("#trend-line-chart").data("height")
-    svg = d3.select("#trend-line-chart").append("svg").attr("width", screenWidth).attr("height", screenHeight)
-
-    svg.append('svg:defs').append('svg:pattern').attr('id', 'pattern').attr('patternUnits', 'userSpaceOnUse').attr('width', '10').attr('height', '10').append('svg:image').attr('xlink:href', $("#trend-line-chart").data("pattern-odd")).attr('x', 0).attr('y', 0).attr('width', 10).attr('height', 10)
-
-    svg.append('svg:defs').append('svg:pattern').attr('id', 'pattern-d').attr('patternUnits', 'userSpaceOnUse').attr('width', '10').attr('height', '10').append('svg:image').attr('xlink:href', $("#trend-line-chart").data("pattern-even")).attr('x', 0).attr('y', 0).attr('width', 10).attr('height', 10)
-
-    x = d3.time.scale().range([0, screenWidth])
-    y = d3.scale.linear().range([screenHeight, 0])
-
+    chart = @
+    @screenWidth = $("#trend-line-chart").data("width")
+    @screenHeight = $("#trend-line-chart").data("height")
+    @zoomWidth  = $("#trend-line-chart-zoom").data("width")
+    @zoomHeight = $("#trend-line-chart-zoom").data("height")
+    @totalLength = 0
+    @pathAdded = null
+    @pathAddedZoom = null
+    @pathWorn = null
+    @pathWornZoom = null
+    @pathBought = null
+    @pathBoughtZoom = null
+    @addedPercentage = []
+    @wornPercentage = []
+    @boughtPercentage = []
+    @JSON = null
+    @svg = null
+    @zoom = null
+    @readJSON(chart)
+  readJSON: (chart) ->
+    d3.json $("#trend-line-chart").data('json'), (data) ->
+      if data.data != "empty"
+        chart.JSON = data
+        chart.drawChart(chart)
+  drawChart: (chart) ->
+    chart.svg = d3.select("#trend-line-chart").append("svg").attr("width", chart.screenWidth).attr("height", chart.screenHeight)
+    chart.svg.append('svg:defs').append('svg:pattern').attr('id', 'pattern').attr('patternUnits', 'userSpaceOnUse').attr('width', '10').attr('height', '10').append('svg:image').attr('xlink:href', $("#trend-line-chart").data("pattern-odd")).attr('x', 0).attr('y', 0).attr('width', 10).attr('height', 10)
+    chart.svg.append('svg:defs').append('svg:pattern').attr('id', 'pattern-d').attr('patternUnits', 'userSpaceOnUse').attr('width', '10').attr('height', '10').append('svg:image').attr('xlink:href', $("#trend-line-chart").data("pattern-even")).attr('x', 0).attr('y', 0).attr('width', 10).attr('height', 10)
+    bg = chart.svg.append("g").attr("class", "grid").attr("width", chart.screenWidth).attr("height", chart.screenHeight)
+    parseDate = d3.time.format("%Y-%m-%d").parse
+    chart.JSON.forEach (d, i) ->
+      if i % 2 == 0
+        bgClass = "even"
+      else
+        bgClass = "odd"
+      chart.addedPercentage.push [parseDate(d.date), d.addedPercentage]
+      chart.wornPercentage.push [parseDate(d.date), d.wornPercentage]
+      chart.boughtPercentage.push [parseDate(d.date), d.boughtPercentage]
+      bg.append("rect").attr("width", chart.screenWidth / (chart.JSON.length - 1)).attr("height", chart.screenHeight).attr("transform", "translate(" + ((chart.screenWidth / (chart.JSON.length - 1)) * i - 1) + ", 0)").attr("class", bgClass).attr()
+    chart.drawZoomUI(chart)
+    chart.render(chart, chart.addedPercentage)
+    chart.renderZoomUI(chart, chart.addedPercentage)
+    chart.centerChart(chart)
+  drawZoomUI: (chart) ->
+    chart.svgZoom = d3.select("#trend-line-chart-zoom").append("svg").attr("width", chart.zoomWidth).attr("height", chart.zoomHeight)
+  render: (chart, values) ->
+    x = d3.time.scale().range([0, chart.screenWidth])
+    y = d3.scale.linear().range([chart.screenHeight, 0])
     xAxis = d3.svg.axis().scale(x).orient("bottom")
     xAxis.tickFormat (f) ->
       fD = getMonday(f)
@@ -24,67 +61,62 @@ class @TrendLineChart
         null
       else
         f
-
-    parseDate = d3.time.format("%Y-%m-%d").parse
-
     line = d3.svg.line().interpolate("linear").x((d) ->
       x d[0]
     ).y((d) ->
       y d[1]
     )
+    xAxis.ticks(6)
+    x.domain d3.extent(values, (d) ->
+      d[0]
+    )
+    y.domain [0, d3.max(values, (d) ->
+      d[1]
+    ) * 1.2]
+    chart.svg.append("g").attr("class", "x axis").attr("transform", "translate(0, " + (chart.screenHeight - 1) + ")").call(xAxis).selectAll("text").style("text-anchor", "end").attr("dx", "3em").attr("dy", "1em")
+    chart.svg.append("g").attr("class", "y axis").call yAxis
+    chart.pathAdded = chart.svg.append("g").attr("class", "trendline").append("path").datum(values).attr("class", "line line-blue").attr("d", line)
+    chart.totalLength = chart.pathAdded.node().getTotalLength()
+    chart.pathAdded.attr("stroke-dasharray", chart.totalLength + " " + chart.totalLength).attr("stroke-dashoffset", chart.totalLength).transition().duration(1000).ease("linear").attr "stroke-dashoffset", 0
+  renderZoomUI: (chart, values) ->
+    x = d3.time.scale().range([0, chart.zoomWidth])
+    y = d3.scale.linear().range([chart.zoomHeight, 0])
+    xAxis = d3.svg.axis().scale(x).orient("bottom")
+    xAxis.tickFormat (f) ->
+      format = d3.time.format("%B")
+      format(f)
+    yAxis = d3.svg.axis().scale(y).orient("left")
+    yAxis.tickFormat (f) ->
+      null
+    line = d3.svg.line().interpolate("linear").x((d) ->
+      x d[0]
+    ).y((d) ->
+      y d[1]
+    )
+    xAxis.ticks(6)
+    x.domain d3.extent(values, (d) ->
+      d[0]
+    )
+    y.domain [0, d3.max(values, (d) ->
+      d[1]
+    ) * 1.2]
+    chart.svgZoom.append("g").attr("transform", "translate(0, " + (chart.zoomHeight - 20) + ")").attr("class", "xZ axis").call(xAxis).selectAll("text").style("text-anchor", "end").attr("dx", "3em").attr("dy", "1em")
+    chart.svgZoom.append("g").attr("transform", "translate(-1, 0)").attr("class", "yZ axis").call(yAxis)
+    chart.pathAddedZoom = chart.svgZoom.append("g").attr("class", "trendlineZ zoomUI").append("path").datum(values).attr("class", "line line-blue").attr("d", line)
+    chart.totalLength = chart.pathAddedZoom.node().getTotalLength()
+    chart.pathAddedZoom.attr("stroke-dasharray", chart.totalLength + " " + chart.totalLength).attr("stroke-dashoffset", chart.totalLength).transition().duration(1000).ease("linear").attr "stroke-dashoffset", 0
+  centerChart: (chart) ->
+    d3.select(".x").attr("transform", "translate(0, " + (chart.screenHeight - 20) + ")")
+    d3.select(".y").attr("transform", "translate(0, -20)")
+    d3.select(".grid").attr("transform", "translate(0, -20)")
+    d3.select(".trendline").attr("transform", "translate(0, -20)")
+    d3.select(".xZ").attr("transform", "translate(0, " + (chart.zoomHeight - 20) + ")")
+    d3.select(".yZ").attr("transform", "translate(-1, -20)")
+    d3.select(".trendlineZ").attr("transform", "translate(0, -20)")
+    # tick line still present
+    $(d3.select(".x.axis .tick.major")[0]).remove()
 
-    totalLength = 0
-    pathB = null
-    pathG = null
-    addedPercentage = []
-    wornPercentage = []
-    d3.json $("#trend-line-chart").data('json'), (data) ->
-      if data.data != "empty"
-        xAxis.ticks(6)
-
-        bg = svg.append("g").attr("class", "grid").attr("width", screenWidth).attr("height", screenHeight)
-
-        data.forEach (d, i) ->
-          if i % 2 == 0
-            bgClass = "even"
-          else
-            bgClass = "odd"
-          addedPercentage.push [parseDate(d.date), d.addedPercentage]
-          wornPercentage.push [parseDate(d.date), d.wornPercentage]
-          bg.append("rect").attr("width", screenWidth / (data.length - 1)).attr("height", screenHeight).attr("transform", "translate(" + ((screenWidth / (data.length - 1)) * i - 1) + ", 0)").attr("class", bgClass).attr()
-
-        x.domain d3.extent(addedPercentage, (d) ->
-          d[0]
-        )
-
-        # sort Y values
-        allY = addedPercentage.concat(wornPercentage)
-        allY.sort (a, b) ->
-          a - b
-
-        y.domain [0, d3.max(addedPercentage, (d) ->
-          d[1]
-        ) * 1.2]
-
-        svg.append("g").attr("class", "x axis").attr("transform", "translate(0, " + (screenHeight - 1) + ")").call(xAxis).selectAll("text").style("text-anchor", "end").attr("dx", "3em").attr("dy", "1em")
-        svg.append("g").attr("class", "y axis").call yAxis
-
-        pathB = svg.append("g").attr("class", "trendline").append("path").datum(addedPercentage).attr("class", "line line-blue").attr("d", line)
-
-        # pathG = svg.append("g").append("path").datum(wornPercentage).attr("class", "line line-green").attr("d", line)
-
-        totalLength = pathB.node().getTotalLength()
-
-        pathB.attr("stroke-dasharray", totalLength + " " + totalLength).attr("stroke-dashoffset", totalLength).transition().duration(1000).ease("linear").attr "stroke-dashoffset", 0
-
-        d3.select(".x").attr("transform", "translate(0, 380)")
-        d3.select(".y").attr("transform", "translate(0, -20)")
-        d3.select(".grid").attr("transform", "translate(0, -20)")
-        d3.select(".trendline").attr("transform", "translate(0, -20)")
-        # tick line still present
-        $(d3.select(".x.axis .tick.major")[0]).remove()
-
-        # pathG.attr("stroke-dasharray", totalLength + " " + totalLength).attr("stroke-dashoffset", totalLength).transition().duration(1000).ease("linear").attr "stroke-dashoffset", 0
+    # pathG.attr("stroke-dasharray", totalLength + " " + totalLength).attr("stroke-dashoffset", totalLength).transition().duration(1000).ease("linear").attr "stroke-dashoffset", 0
 
     # $('#selector1').click () ->
     #   if $(this).is(':checked') == true
@@ -97,3 +129,4 @@ class @TrendLineChart
     #     pathB.attr("stroke-dasharray", totalLength + " " + totalLength).attr("stroke-dashoffset", totalLength).transition().duration(500).ease("linear").attr "stroke-dashoffset", 0
     #   else
     #     pathB.transition().duration(100).ease("linear").attr "stroke-dashoffset", totalLength
+
