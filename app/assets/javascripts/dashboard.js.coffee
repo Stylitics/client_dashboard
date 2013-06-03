@@ -4,7 +4,7 @@
 
 $ ->
   if $('#trend-line-chart').length
-    trend_line_chart = new VanilaTrendLineChart()
+    trend_line_chart = new TrendLineChart()
 
     $("label.radio").prepend("<span></span>")
     $("label.radio").each (i, label) ->

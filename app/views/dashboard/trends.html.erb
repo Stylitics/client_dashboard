@@ -149,7 +149,7 @@
       </div>
       <div class="filter-small-element">
         <h3>No Price</h3>
-        <%= f.input :no_price_opt, as: :radio_buttons, collection: ["TRUE", "FALSE"], label: false %>
+        <%= f.input :no_price_opt, as: :radio_buttons, collection: [["Include", "TRUE"], ["Exclude", "FALSE"]], label: false %>
       </div>
       <div class="filter-big-element">
         <div class="label-text"><h3>When</h3></div>
@@ -304,6 +304,6 @@
   </div>
 <% end %>
 
-<div class="big_chart" id="trend-line-chart" data-json="<%= chart_path("trend-line", format: :json) %>" data-pattern-odd="<%= asset_path "pattern.png" %>" data-pattern-even="<%= asset_path "pattern-d.png" %>" style="margin-bottom: 100px">
+<div class="big_chart" id="trend-line-chart" data-json="/temp.json" data-pattern-odd="<%= asset_path "pattern.png" %>" data-pattern-even="<%= asset_path "pattern-d.png" %>" style="margin-bottom: 100px" data-width="870" data-height="400">
   <div id="trend-chart-placeholder" class="hide alert alert-warning">No data yet available... Try again in a few moments.</div>
 </div>
