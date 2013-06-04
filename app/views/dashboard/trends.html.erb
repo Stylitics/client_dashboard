@@ -149,7 +149,7 @@
       </div>
       <div class="filter-small-element">
         <h3>No Price</h3>
-        <%= f.input :no_price_opt, as: :radio_buttons, collection: [["Include", "TRUE"], ["Exclude", "FALSE"]], label: false %>
+        <%= f.input :no_price_opt, as: :radio_buttons, collection: [["NULL", "NULL"], ["Include", "TRUE"], ["Exclude", "FALSE"]], label: false %>
       </div>
       <div class="filter-big-element">
         <div class="label-text"><h3>When</h3></div>
@@ -204,7 +204,7 @@
     </div>
     <div class="filter-big-element">
       <div class="label-text"><h3>Fabric</h3></div>
-      <%= f.input :fabric_sub_search, as: :select, collection: ["All"]  + @fabric_collection, label: false, input_html: { class: "chosen", multiple:"" }, include_blank: true %>
+      <%= f.input :fabric_add_search, as: :select, collection: ["All"]  + @fabric_collection, label: false, input_html: { class: "chosen", multiple:"" }, include_blank: true %>
     </div>
     <div class="filter-big-element">
       <div class="label-text"><h3></h3></div>

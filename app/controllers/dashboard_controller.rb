@@ -20,7 +20,7 @@ class DashboardController < ApplicationController
       @chart_run[:location_opt] = ["All"]
       @chart_run[:low_price_opt] = 0.to_s
       @chart_run[:high_price_opt] = 100000.to_s
-      @chart_run[:no_price_opt] = "TRUE"
+      @chart_run[:no_price_opt] = "NULL"
       @chart_run[:influencer_opt] = "NULL"
       @chart_run[:sort_opt] = "User ID"
       @chart_run[:brand_add_opt] = ["All"]
@@ -59,7 +59,7 @@ class DashboardController < ApplicationController
       @chart.runs << @chart_run
     end
 
-    @brand_collection = ["GAP", "Levi's", "Lorem", "Ipsum", "Dolor"]
+    @brand_collection = ["Gap", "Levi's", "Lorem", "Ipsum", "Dolor"]
     @retailer_collection = ["Levi's", "Retailer 1"]
     @style_collection = ["Skinny Jeans", "Trench Coat", "Jean Jacket", "Blazer", "Polo Shirt"]
     @color_collection = ["Blue", "Black", "Red"]
