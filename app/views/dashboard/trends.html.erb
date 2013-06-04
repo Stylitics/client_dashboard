@@ -39,7 +39,7 @@
 <% end %>
 
 <%= content_for :segment do %>
-<%= simple_form_for [@chart, @chart_run], html: { remote: true, data: { id: @chart_run.id.to_s }, id: "trend-chart-filter-form" } do |f| %>
+<%= simple_form_for [@chart, @chart_run], html: { data: { id: @chart_run.id.to_s }, id: "trend-chart-filter-form" } do |f| %>
 <div class="segment-content">
   <div class="filters">
     <div class="filter-element">
