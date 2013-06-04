@@ -105,6 +105,19 @@ class @TrendLineChart
     chart.pathAddedZoom = chart.svgZoom.append("g").attr("class", "trendlineZ zoomUI").append("path").datum(values).attr("class", "line line-blue").attr("d", line)
     chart.totalLength = chart.pathAddedZoom.node().getTotalLength()
     chart.pathAddedZoom.attr("stroke-dasharray", chart.totalLength + " " + chart.totalLength).attr("stroke-dashoffset", chart.totalLength).transition().duration(1000).ease("linear").attr "stroke-dashoffset", 0
+    # Start working on brush
+    # brush = d3.svg.brush().x(x).extent(x).on("brushstart", ->
+    #   chart.svgZoom.classed("selecting", true)
+    # circle = chart.svgZoom.append("g").selectAll("circle").data(x).enter().append("circle").attr("transform", (d) ->
+    #   "translate(" + x(d) + "," + y() + ")"
+    # ).attr("r", 3.5)
+    # ).on("brush", ->
+    #   s = brush.extent()
+    #   circle.classed "selected", (d) ->
+    #     s[0] <= d and d <= s[1]
+    # ).on("brushend", ->
+    #   chart.svgZoom.classed("selecting", !d3.event.target.empty())
+    # )
   centerChart: (chart) ->
     d3.select(".x").attr("transform", "translate(0, " + (chart.screenHeight - 20) + ")")
     d3.select(".y").attr("transform", "translate(0, -20)")
