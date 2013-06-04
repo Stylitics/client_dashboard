@@ -43,6 +43,7 @@ class ChartRunsController < ApplicationController
     end
 
     chart_run.update_attributes params[:chart_run]
+    chart.update_attribute :is_running, true
 
     TrendLineWorker.perform_async(chart_run.id)
 
