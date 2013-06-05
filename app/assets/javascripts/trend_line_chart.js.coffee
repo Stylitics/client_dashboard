@@ -18,6 +18,8 @@ class @TrendLineChart
     @JSON = null
     @svg = null
     @zoom = null
+    @circle = null
+    @brush = null
     @readJSON(chart)
   readJSON: (chart) ->
     d3.json $("#trend-line-chart").data('json'), (data) ->
@@ -43,8 +45,6 @@ class @TrendLineChart
     chart.render(chart, chart.addedPercentage)
     chart.renderZoomUI(chart, chart.addedPercentage)
     chart.centerChart(chart)
-  drawZoomUI: (chart) ->
-    chart.svgZoom = d3.select("#trend-line-chart-zoom").append("svg").attr("width", chart.zoomWidth).attr("height", chart.zoomHeight)
   render: (chart, values) ->
     x = d3.time.scale().range([0, chart.screenWidth])
     y = d3.scale.linear().range([chart.screenHeight, 0])
@@ -78,6 +78,8 @@ class @TrendLineChart
     chart.pathAdded = chart.svg.append("g").attr("class", "trendline").append("path").datum(values).attr("class", "line line-blue").attr("d", line)
     chart.totalLength = chart.pathAdded.node().getTotalLength()
     chart.pathAdded.attr("stroke-dasharray", chart.totalLength + " " + chart.totalLength).attr("stroke-dashoffset", chart.totalLength).transition().duration(1000).ease("linear").attr "stroke-dashoffset", 0
+  drawZoomUI: (chart) ->
+    chart.svgZoom = d3.select("#trend-line-chart-zoom").append("svg").attr("width", chart.zoomWidth).attr("height", chart.zoomHeight)
   renderZoomUI: (chart, values) ->
     x = d3.time.scale().range([0, chart.zoomWidth])
     y = d3.scale.linear().range([chart.zoomHeight, 0])
@@ -100,24 +102,42 @@ class @TrendLineChart
     y.domain [0, d3.max(values, (d) ->
       d[1]
     ) * 1.2]
+
     chart.svgZoom.append("g").attr("transform", "translate(0, " + (chart.zoomHeight - 20) + ")").attr("class", "xZ axis").call(xAxis).selectAll("text").style("text-anchor", "end").attr("dx", "3em").attr("dy", "1em")
     chart.svgZoom.append("g").attr("transform", "translate(-1, 0)").attr("class", "yZ axis").call(yAxis)
     chart.pathAddedZoom = chart.svgZoom.append("g").attr("class", "trendlineZ zoomUI").append("path").datum(values).attr("class", "line line-blue").attr("d", line)
     chart.totalLength = chart.pathAddedZoom.node().getTotalLength()
     chart.pathAddedZoom.attr("stroke-dasharray", chart.totalLength + " " + chart.totalLength).attr("stroke-dashoffset", chart.totalLength).transition().duration(1000).ease("linear").attr "stroke-dashoffset", 0
-    # Start working on brush
-    # brush = d3.svg.brush().x(x).extent(x).on("brushstart", ->
-    #   chart.svgZoom.classed("selecting", true)
-    # circle = chart.svgZoom.append("g").selectAll("circle").data(x).enter().append("circle").attr("transform", (d) ->
-    #   "translate(" + x(d) + "," + y() + ")"
-    # ).attr("r", 3.5)
-    # ).on("brush", ->
-    #   s = brush.extent()
-    #   circle.classed "selected", (d) ->
-    #     s[0] <= d and d <= s[1]
-    # ).on("brushend", ->
-    #   chart.svgZoom.classed("selecting", !d3.event.target.empty())
-    # )
+    
+    console.log(chart.addedPercentage[0][0]);
+    console.log(chart.addedPercentage[chart.addedPercentage.length-1][0]);
+
+    circle = chart.svgZoom.append("g").selectAll("circle").data(x).enter().append("circle").attr("transform", (d) ->
+      "translate(" + x(d) + "," + y() + ")"
+    ).attr("r", 3.5)
+
+    brush = d3.svg.brush().x(x).extent([chart.addedPercentage[0][0],chart.addedPercentage[chart.addedPercentage.length-1][0]]).on("brushstart", ->
+      chart.svgZoom.classed("selecting", true)
+    ).on("brush", ->
+      s = brush.extent()
+      #AICI SUNT VALORILE
+      console.log(s)
+      circle.classed "selected", (d) ->
+       s[0] <= d and d <= s[1]
+    ).on("brushend", ->
+      chart.svgZoom.classed("selecting", !d3.event.target.empty())
+    )
+    
+    arc = d3.svg.arc().outerRadius(chart.zoomHeight / 2).startAngle(0).endAngle((d, i) ->
+      (if i then -Math.PI else Math.PI)
+    )
+
+    console.log(chart)
+    brushg = chart.svgZoom.append("g").attr("class", "brush").call(brush)
+    brushg.selectAll(".resize").append("path").attr("transform", "translate(0," + chart.zoomHeight / 2 + ")").attr "d", arc
+    brushg.selectAll("rect").attr "height", chart.zoomHeight
+
+
   centerChart: (chart) ->
     d3.select(".x").attr("transform", "translate(0, " + (chart.screenHeight - 20) + ")")
     d3.select(".y").attr("transform", "translate(0, -20)")
