@@ -16,9 +16,7 @@ Dashboard::Application.routes.draw do
   end
 
   resources :charts do
-    resources :chart_runs do
-      get :check, on: :member
-    end
+    resources :chart_runs
   end
 
   get "/trends" => "dashboard#trends", as: :trends

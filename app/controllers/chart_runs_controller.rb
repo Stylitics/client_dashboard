@@ -43,10 +43,6 @@ class ChartRunsController < ApplicationController
     end
 
     chart_run.update_attributes params[:chart_run]
-    # chart.update_attribute :is_running, true
-
-    # chart_run = ChartRun.find(chart_run_id)
-    # chart = chart_run.chart
 
     code = chart.r_script.code
 
@@ -86,18 +82,5 @@ class ChartRunsController < ApplicationController
     chart_run.save
 
     redirect_to trends_path
-
-    # chart.update_attribute :is_running, false
-
-    # TrendLineWorker.perform_async(chart_run.id)
-
-    # respond_to do |format|
-    #   format.js
-    # end
-  end
-
-  def check
-    @chart_run = ChartRun.find(params[:id])
-    @chart = @chart_run.chart
   end
 end

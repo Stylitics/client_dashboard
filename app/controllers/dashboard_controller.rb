@@ -59,13 +59,15 @@ class DashboardController < ApplicationController
       @chart.runs << @chart_run
     end
 
-    @brand_collection = ["Gap", "Levi's", "Lorem", "Ipsum", "Dolor"]
-    @retailer_collection = ["Levi's", "Retailer 1"]
-    @style_collection = ["Skinny Jeans", "Trench Coat", "Jean Jacket", "Blazer", "Polo Shirt"]
-    @color_collection = ["Blue", "Black", "Red"]
-    @pattern_collection = ["Pattern 1", "Pattern 2", "Pattern 3"]
-    @fabric_collection = ["Fabric 1", "Fabric 2", "Fabric 3"]
-    @occasion_collection = ["Occasion 1", "Occasion 2", "Occasion 3", "Occasion 4", "Occasion 5"]
+    %w(brand_collection retailer_collection style_collection color_collection pattern_collection fabric_collection occasion_collection).each do |v|
+      file = open("#{Rails.root}/app/data/#{v}.json")
+      json = JSON.parse(file.read)
+      ar = []
+      json.each do |v|
+        ar << v["name"]
+      end
+      instance_variable_set("@#{v}", ar)
+    end
   end
 
   def brandshare

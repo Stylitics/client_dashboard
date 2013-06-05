@@ -1,3 +1,13 @@
+maxY = (values, q) ->
+  # sort Y values and return the maximum value
+  allY = []
+  $.each(values, (k, v) ->
+    allY.push(v[1])
+  )
+  allY.sort (a, b) ->
+    a - b
+  allY[allY.length - 1] * q
+
 class @TrendLineChart
   constructor: () ->
     chart = @
@@ -70,9 +80,7 @@ class @TrendLineChart
     x.domain d3.extent(values, (d) ->
       d[0]
     )
-    y.domain [0, d3.max(values, (d) ->
-      d[1]
-    ) * 1.2]
+    y.domain [0, maxY(values, 1.1)]
     chart.svg.append("g").attr("class", "x axis").attr("transform", "translate(0, " + (chart.screenHeight - 1) + ")").call(xAxis).selectAll("text").style("text-anchor", "end").attr("dx", "3em").attr("dy", "1em")
     chart.svg.append("g").attr("class", "y axis").call yAxis
     chart.pathAdded = chart.svg.append("g").attr("class", "trendline").append("path").datum(values).attr("class", "line line-blue").attr("d", line)
@@ -99,18 +107,15 @@ class @TrendLineChart
     x.domain d3.extent(values, (d) ->
       d[0]
     )
-    y.domain [0, d3.max(values, (d) ->
-      d[1]
-    ) * 1.2]
-
+    y.domain [0, maxY(values, 1.5)]
     chart.svgZoom.append("g").attr("transform", "translate(0, " + (chart.zoomHeight - 20) + ")").attr("class", "xZ axis").call(xAxis).selectAll("text").style("text-anchor", "end").attr("dx", "3em").attr("dy", "1em")
     chart.svgZoom.append("g").attr("transform", "translate(-1, 0)").attr("class", "yZ axis").call(yAxis)
     chart.pathAddedZoom = chart.svgZoom.append("g").attr("class", "trendlineZ zoomUI").append("path").datum(values).attr("class", "line line-blue").attr("d", line)
     chart.totalLength = chart.pathAddedZoom.node().getTotalLength()
     chart.pathAddedZoom.attr("stroke-dasharray", chart.totalLength + " " + chart.totalLength).attr("stroke-dashoffset", chart.totalLength).transition().duration(1000).ease("linear").attr "stroke-dashoffset", 0
-    
-    console.log(chart.addedPercentage[0][0]);
-    console.log(chart.addedPercentage[chart.addedPercentage.length-1][0]);
+
+    # console.log(chart.addedPercentage[0][0]);
+    # console.log(chart.addedPercentage[chart.addedPercentage.length-1][0]);
 
     circle = chart.svgZoom.append("g").selectAll("circle").data(x).enter().append("circle").attr("transform", (d) ->
       "translate(" + x(d) + "," + y() + ")"
@@ -127,12 +132,12 @@ class @TrendLineChart
     ).on("brushend", ->
       chart.svgZoom.classed("selecting", !d3.event.target.empty())
     )
-    
+
     arc = d3.svg.arc().outerRadius(chart.zoomHeight / 2).startAngle(0).endAngle((d, i) ->
       (if i then -Math.PI else Math.PI)
     )
 
-    console.log(chart)
+    # console.log(chart)
     brushg = chart.svgZoom.append("g").attr("class", "brush").call(brush)
     brushg.selectAll(".resize").append("path").attr("transform", "translate(0," + chart.zoomHeight / 2 + ")").attr "d", arc
     brushg.selectAll("rect").attr "height", chart.zoomHeight
