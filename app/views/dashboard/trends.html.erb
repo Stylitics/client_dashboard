@@ -1,5 +1,18 @@
 <% title "Trends" %>
 
+<%= content_for :title do %>
+  Currently Viewing: <span class="title_placeholder">
+    <%= @chart_run.gender_opt %>,
+    <% if @chart_run.student_opt == "TRUE" %>
+      Students,
+    <% end %>
+    Ages <%= @chart_run.low_age_opt %>-<%= @chart_run.high_age_opt %>
+    <% if @chart_run.location_opt != ["All"] %>
+      , in <%= @chart_run.location_opt.to_sentence %>
+    <% end %>
+    </span>
+<% end %>
+
 <%= content_for :sidebar_r do %>
   <div class="icon-l">&nbsp;</div>
   <div class="icon-d">&nbsp;</div>
@@ -44,7 +57,6 @@
   <div class="filters">
     <div class="filter-element">
       <input type="submit" class="bck-pink" id="show-me" value="Show me" />
-      <span id="filter-loading" class="hide">Loading...</span>
     </div>
     <div class="filter-element">
       <h3>Gender</h3>
@@ -149,7 +161,7 @@
       </div>
       <div class="filter-small-element">
         <h3>No Price</h3>
-        <%= f.input :no_price_opt, as: :radio_buttons, collection: [["NULL", "NULL"], ["Include", "TRUE"], ["Exclude", "FALSE"]], label: false %>
+        <%= f.input :no_price_opt, as: :radio_buttons, collection: [["All", "NULL"], ["Include", "TRUE"], ["Exclude", "FALSE"]], label: false %>
       </div>
       <div class="filter-big-element">
         <div class="label-text"><h3>When</h3></div>
