@@ -114,9 +114,6 @@ class @TrendLineChart
     chart.totalLength = chart.pathAddedZoom.node().getTotalLength()
     chart.pathAddedZoom.attr("stroke-dasharray", chart.totalLength + " " + chart.totalLength).attr("stroke-dashoffset", chart.totalLength).transition().duration(1000).ease("linear").attr "stroke-dashoffset", 0
 
-    # console.log(chart.addedPercentage[0][0]);
-    # console.log(chart.addedPercentage[chart.addedPercentage.length-1][0]);
-
     circle = chart.svgZoom.append("g").selectAll("circle").data(x).enter().append("circle").attr("transform", (d) ->
       "translate(" + x(d) + "," + y() + ")"
     ).attr("r", 3.5)
@@ -132,15 +129,14 @@ class @TrendLineChart
     ).on("brushend", ->
       chart.svgZoom.classed("selecting", !d3.event.target.empty())
     )
-
-    arc = d3.svg.arc().outerRadius(chart.zoomHeight / 2).startAngle(0).endAngle((d, i) ->
+    
+    arc = d3.svg.arc().outerRadius((chart.zoomHeight-15) / 2).startAngle(0).endAngle((d, i) ->
       (if i then -Math.PI else Math.PI)
     )
 
-    # console.log(chart)
     brushg = chart.svgZoom.append("g").attr("class", "brush").call(brush)
-    brushg.selectAll(".resize").append("path").attr("transform", "translate(0," + chart.zoomHeight / 2 + ")").attr "d", arc
-    brushg.selectAll("rect").attr "height", chart.zoomHeight
+    brushg.selectAll(".resize").append("path").attr("transform", "translate(0," + (chart.zoomHeight-15) / 2 + ")").attr "d"
+    brushg.selectAll("rect").attr "height", (chart.zoomHeight-15)
 
 
   centerChart: (chart) ->
