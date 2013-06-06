@@ -122,8 +122,15 @@ class @TrendLineChart
       chart.svgZoom.classed("selecting", true)
     ).on("brush", ->
       s = brush.extent()
-      #AICI SUNT VALORILE
-      console.log(s)
+      selectedInterval = new Array()
+      dateStart = new Date(s[0])
+      dateEnd = new Date(s[1])
+      console.log "======BEGINING======"
+      for i of chart.addedPercentage
+        currentDate = new Date(chart.addedPercentage[i][0])
+        if (currentDate.getTime() - dateStart.getTime())>=0 and (currentDate.getTime() - dateEnd.getTime())<=0
+          selectedInterval.push chart.addedPercentage[i]
+      chart.render(chart, selectedInterval)
       circle.classed "selected", (d) ->
        s[0] <= d and d <= s[1]
     ).on("brushend", ->
