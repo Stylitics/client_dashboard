@@ -52,10 +52,12 @@ class @TrendLineChart
       chart.boughtPercentage.push [parseDate(d.date), d.boughtPercentage]
       bg.append("rect").attr("width", chart.screenWidth / (chart.JSON.length - 1)).attr("height", chart.screenHeight).attr("transform", "translate(" + ((chart.screenWidth / (chart.JSON.length - 1)) * i - 1) + ", 0)").attr("class", bgClass).attr()
     chart.drawZoomUI(chart)
-    chart.render(chart, chart.addedPercentage)
+    chart.render(chart, chart.addedPercentage, false)
     chart.renderZoomUI(chart, chart.addedPercentage)
     chart.centerChart(chart)
-  render: (chart, values) ->
+  remove: (chart, selector) ->
+    chart.svg.selectAll(selector).data([]).exit().remove()
+  render: (chart, values, update) ->
     x = d3.time.scale().range([0, chart.screenWidth])
     y = d3.scale.linear().range([chart.screenHeight, 0])
     xAxis = d3.svg.axis().scale(x).orient("bottom")
@@ -80,9 +82,12 @@ class @TrendLineChart
     x.domain d3.extent(values, (d) ->
       d[0]
     )
-    y.domain [0, maxY(values, 1.1)]
-    chart.svg.append("g").attr("class", "x axis").attr("transform", "translate(0, " + (chart.screenHeight - 1) + ")").call(xAxis).selectAll("text").style("text-anchor", "end").attr("dx", "3em").attr("dy", "1em")
-    chart.svg.append("g").attr("class", "y axis").call yAxis
+    y.domain [0, d3.max(values, (d) ->
+      d[1]
+    ) * 1.2]
+    chart.svg.append("g").attr("class", "x axis xaxis").attr("transform", "translate(0, " + (chart.screenHeight - 1) + ")").call(xAxis).selectAll("text").style("text-anchor", "end").attr("dx", "3em").attr("dy", "1em")
+    chart.svg.append("g").attr("class", "y axis yaxis").call yAxis
+
     chart.pathAdded = chart.svg.append("g").attr("class", "trendline").append("path").datum(values).attr("class", "line line-blue").attr("d", line)
     chart.totalLength = chart.pathAdded.node().getTotalLength()
     chart.pathAdded.attr("stroke-dasharray", chart.totalLength + " " + chart.totalLength).attr("stroke-dashoffset", chart.totalLength).transition().duration(1000).ease("linear").attr "stroke-dashoffset", 0
@@ -114,9 +119,6 @@ class @TrendLineChart
     chart.totalLength = chart.pathAddedZoom.node().getTotalLength()
     chart.pathAddedZoom.attr("stroke-dasharray", chart.totalLength + " " + chart.totalLength).attr("stroke-dashoffset", chart.totalLength).transition().duration(1000).ease("linear").attr "stroke-dashoffset", 0
 
-    # console.log(chart.addedPercentage[0][0]);
-    # console.log(chart.addedPercentage[chart.addedPercentage.length-1][0]);
-
     circle = chart.svgZoom.append("g").selectAll("circle").data(x).enter().append("circle").attr("transform", (d) ->
       "translate(" + x(d) + "," + y() + ")"
     ).attr("r", 3.5)
@@ -125,22 +127,31 @@ class @TrendLineChart
       chart.svgZoom.classed("selecting", true)
     ).on("brush", ->
       s = brush.extent()
-      #AICI SUNT VALORILE
-      console.log(s)
+      selectedInterval = new Array()
+      dateStart = new Date(s[0])
+      dateEnd = new Date(s[1])
+      for i of chart.addedPercentage
+        currentDate = new Date(chart.addedPercentage[i][0])
+        if (currentDate.getTime() - dateStart.getTime())>=0 and (currentDate.getTime() - dateEnd.getTime())<=0
+          selectedInterval.push chart.addedPercentage[i]
+      chart.remove(chart,".trendline")
+      chart.remove(chart,".xaxis")
+      chart.remove(chart,".yaxis")
+      chart.render(chart, selectedInterval, true)
+      chart.centerChart(chart)
       circle.classed "selected", (d) ->
        s[0] <= d and d <= s[1]
     ).on("brushend", ->
       chart.svgZoom.classed("selecting", !d3.event.target.empty())
     )
-
-    arc = d3.svg.arc().outerRadius(chart.zoomHeight / 2).startAngle(0).endAngle((d, i) ->
+    
+    arc = d3.svg.arc().outerRadius((chart.zoomHeight-15) / 2).startAngle(0).endAngle((d, i) ->
       (if i then -Math.PI else Math.PI)
     )
 
-    # console.log(chart)
     brushg = chart.svgZoom.append("g").attr("class", "brush").call(brush)
-    brushg.selectAll(".resize").append("path").attr("transform", "translate(0," + chart.zoomHeight / 2 + ")").attr "d", arc
-    brushg.selectAll("rect").attr "height", chart.zoomHeight
+    brushg.selectAll(".resize").append("path").attr("transform", "translate(0," + (chart.zoomHeight-15) / 2 + ")").attr "d"
+    brushg.selectAll("rect").attr "height", (chart.zoomHeight-15)
 
 
   centerChart: (chart) ->
