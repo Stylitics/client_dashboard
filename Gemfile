@@ -11,10 +11,6 @@ gem 'multi_json'
 gem 'unicorn'
 gem 'foreman'
 
-gem 'sidekiq'
-gem 'sinatra', require: false
-gem 'slim'
-
 gem 'jquery-rails'
 
 gem 'turbolinks'

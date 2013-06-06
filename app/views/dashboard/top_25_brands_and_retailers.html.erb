@@ -1,4 +1,13 @@
-<% title 'Top 25 Retailers' %>
+<% title 'Top 25 Brands & Retailers' %>
+
+<%= content_for :title do %>
+  <%= render partial: "title" %>
+<% end %>
+
+<%= content_for :segment do %>
+  <%= render partial: "filter" %>
+<% end %>
+
 <%= content_for :half_1 do %>
 	<h2>People who own my brand also own</h2>
 	<div class="top-item">

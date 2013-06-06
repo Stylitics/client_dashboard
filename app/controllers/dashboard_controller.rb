@@ -1,10 +1,48 @@
 class DashboardController < ApplicationController
-  def index
+  before_filter :setup_filter
+
+  def trends
+    chart = Chart.find("trend-line")
+    setup_chart(chart)
+  end
+
+  def brand_share
 
   end
 
-  def trends
-    @chart = Chart.find("trend-line")
+  def top_25_brands_and_retailers
+    chart = Chart.find("top-25-brands-and-retailers")
+    setup_chart(chart)
+  end
+
+  def top_10
+
+  end
+
+  def outfit_stream
+
+  end
+
+  def weather
+
+  end
+
+private
+
+  def setup_filter
+    %w(brand_collection retailer_collection style_collection color_collection pattern_collection fabric_collection occasion_collection).each do |v|
+      file = open("#{Rails.root}/app/data/#{v}.json")
+      json = JSON.parse(file.read)
+      ar = []
+      json.each do |v|
+        ar << v["name"]
+      end
+      instance_variable_set("@#{v}", ar)
+    end
+  end
+
+  def setup_chart(chart)
+    @chart = chart
     if @chart.last_run
       @chart_run = @chart.last_run
     else
@@ -58,39 +96,5 @@ class DashboardController < ApplicationController
 
       @chart.runs << @chart_run
     end
-
-    %w(brand_collection retailer_collection style_collection color_collection pattern_collection fabric_collection occasion_collection).each do |v|
-      file = open("#{Rails.root}/app/data/#{v}.json")
-      json = JSON.parse(file.read)
-      ar = []
-      json.each do |v|
-        ar << v["name"]
-      end
-      instance_variable_set("@#{v}", ar)
-    end
-  end
-
-  def brandshare
-
-  end
-
-  def top25brands
-
-  end
-
-  def top25retailers
-
-  end
-
-  def top10colorspatternsstyles
-
-  end
-
-  def outfitstreamlookup
-
-  end
-
-  def weathervizualizations
-
   end
 end

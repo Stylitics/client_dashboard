@@ -18,13 +18,9 @@
   <div class="header">
     <div class="menu">
       <ul>
-        <li class="<%= "active" if request[:action] == "trends" %>"><%= link_to "Trends", trends_path %></li>
-        <li class="<%= "active" if request[:action] == "brandshare" %>"><%= link_to "BrndShr", brandshare_path %></li>
-        <li class="<%= "active" if request[:action] == "top25brands" %>"><%= link_to "25Brnds", top25brands_path %></li>
-        <li class="<%= "active" if request[:action] == "top25retailers" %>"><%= link_to "25Ret", top25retailers_path %></li>
-        <li class="<%= "active" if request[:action] == "top10colorspatternsstyles" %>"><%= link_to "Top 10", top10colorspatternsstyles_path %></li>
-        <li class="<%= "active" if request[:action] == "outfitstreamlookup" %>"><%= link_to "Outfit stream", outfitstreamlookup_path %></li>
-        <li class="<%= "active" if request[:action] == "weathervisualizations" %>"><%= link_to "Weather", weathervisualizations_path %></li>
+        <% %w(trends brand-share top-25-brands-and-retailers top-10 outfit-stream weather).each do |r| %>
+          <li class="<%= "active" if request[:action] == r.underscore %>"><%= link_to r.titleize.gsub("And", "&"), send("#{r.underscore}_path") %></li>
+        <% end %>
       </ul>
     </div>
     <div class="logo">

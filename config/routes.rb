@@ -1,5 +1,3 @@
-require 'sidekiq/web'
-
 Dashboard::Application.routes.draw do
   devise_for :users
 
@@ -19,15 +17,9 @@ Dashboard::Application.routes.draw do
     resources :chart_runs
   end
 
-  get "/trends" => "dashboard#trends", as: :trends
-  get "/brand-share" => "dashboard#brandshare", as: :brandshare
-  get "/top-25-brands" => "dashboard#top25brands", as: :top25brands
-  get "/top-25-retailers" => "dashboard#top25retailers", as: :top25retailers
-  get "/top-10-colors-patterns-styles" => "dashboard#top10colorspatternsstyles", as: :top10colorspatternsstyles
-  get "/outfit-stream-lookup" => "dashboard#outfitstreamlookup", as: :outfitstreamlookup
-  get "/weather-visualizations" => "dashboard#weathervisualizations", as: :weathervisualizations
+  %w(trends brand-share top-25-brands-and-retailers top-10 outfit-stream weather).each do |r|
+    get "/#{r}" => "dashboard##{r.underscore}", as: r.underscore.to_sym
+  end
 
   root :to => 'dashboard#trends'
-
-  mount Sidekiq::Web, at: '/sidekiq'
 end
