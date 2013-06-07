@@ -46,7 +46,7 @@ $ ->
   $("#show-me").click () ->
     $("#show-me").val("Loading...")
 
-    $("label.radio").prepend("<span></span>")
+  $("label.radio").prepend("<span></span>")
   $("label.radio").each (i, label) ->
     input = $(label).find("input")
     input.insertBefore(label)
