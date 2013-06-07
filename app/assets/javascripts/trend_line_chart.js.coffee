@@ -33,6 +33,7 @@ class @TrendLineChart
     @readJSON(chart)
   readJSON: (chart) ->
     d3.json $("#trend-line-chart").data('json'), (data) ->
+    #d3.json "temp.json", (data) ->
       if data.data != "empty"
         chart.JSON = data
         chart.drawChart(chart)
