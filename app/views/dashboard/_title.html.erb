@@ -1,10 +1,1 @@
-Currently Viewing: <span class="title_placeholder">
-  <%= @chart_run.gender_opt %>,
-  <% if @chart_run.student_opt == "TRUE" %>
-    Students,
-  <% end %>
-  Ages <%= @chart_run.low_age_opt %>-<%= @chart_run.high_age_opt %>
-  <% if @chart_run.location_opt != ["All"] %>
-    , in <%= @chart_run.location_opt.to_sentence %>
-  <% end %>
-  </span>
+Currently Viewing: <span class="title_placeholder"><%=raw @title.join(", ") %></span>

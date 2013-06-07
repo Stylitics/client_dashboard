@@ -137,6 +137,12 @@ fieldset {
     .title {
       @include column(37);
       padding: 20px 0px 20px 20px;
+
+      .title_placeholder {
+        span {
+          text-decoration: underline;
+        }
+      }
     }
 
     .title-buttons {
