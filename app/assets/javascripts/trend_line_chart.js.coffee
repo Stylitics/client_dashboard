@@ -9,7 +9,7 @@ maxY = (values, q) ->
   allY[allY.length - 1] * q
 
 class @TrendLineChart
-  constructor: () ->
+  constructor: (type) ->
     chart = @
     @screenWidth = $("#trend-line-chart").data("width")
     @screenHeight = $("#trend-line-chart").data("height")
@@ -25,12 +25,33 @@ class @TrendLineChart
     @addedPercentage = []
     @wornPercentage = []
     @boughtPercentage = []
+    @percentage=[]
+    @currentType = type
     @JSON = null
     @svg = null
     @zoom = null
     @circle = null
     @brush = null
     @readJSON(chart)
+
+  setCurrentType: (type) ->
+    this.currentType = type
+
+  setType: (chart) ->
+    switch chart.currentType
+      when "Added"
+        chart.percentage = chart.addedPercentage
+      when "Worn"
+        chart.percentage = chart.wornPercentage
+      when "Bought"
+        chart.percentage = chart.Percentage
+      else
+        chart.percentage = chart.addedPercentage
+
+  updateChart: () ->
+      this.render(this, this.percentage, true)
+      this.centerChart(this)
+
   readJSON: (chart) ->
     d3.json $("#trend-line-chart").data('json'), (data) ->
     #d3.json "temp.json", (data) ->
@@ -52,6 +73,7 @@ class @TrendLineChart
       chart.wornPercentage.push [parseDate(d.date), d.wornPercentage]
       chart.boughtPercentage.push [parseDate(d.date), d.boughtPercentage]
       bg.append("rect").attr("width", chart.screenWidth / (chart.JSON.length - 1)).attr("height", chart.screenHeight).attr("transform", "translate(" + ((chart.screenWidth / (chart.JSON.length - 1)) * i - 1) + ", 0)").attr("class", bgClass).attr()
+    chart.setType(chart)
     chart.drawZoomUI(chart)
     chart.render(chart, chart.addedPercentage, false)
     chart.renderZoomUI(chart, chart.addedPercentage)
@@ -59,6 +81,10 @@ class @TrendLineChart
   remove: (chart, selector) ->
     chart.svg.selectAll(selector).data([]).exit().remove()
   render: (chart, values, update) ->
+    if update is true
+      chart.remove(chart,".trendline")
+      chart.remove(chart,".xaxis")
+      chart.remove(chart,".yaxis")
     x = d3.time.scale().range([0, chart.screenWidth])
     y = d3.scale.linear().range([chart.screenHeight, 0])
     xAxis = d3.svg.axis().scale(x).orient("bottom")
@@ -135,9 +161,6 @@ class @TrendLineChart
         currentDate = new Date(chart.addedPercentage[i][0])
         if (currentDate.getTime() - dateStart.getTime())>=0 and (currentDate.getTime() - dateEnd.getTime())<=0
           selectedInterval.push chart.addedPercentage[i]
-      chart.remove(chart,".trendline")
-      chart.remove(chart,".xaxis")
-      chart.remove(chart,".yaxis")
       chart.render(chart, selectedInterval, true)
       chart.centerChart(chart)
       circle.classed "selected", (d) ->

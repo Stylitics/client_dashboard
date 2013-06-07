@@ -1,4 +1,5 @@
 $ ->
+
   $("#open-filters").click (e) ->
     e.preventDefault()
     if $(".left").is(":visible")
@@ -34,10 +35,6 @@ $ ->
       $(this).find('#icon').addClass('icon-chevron-up')
 
   $("#maps").tabs()
-  $("#who").tabs()
-
-  $(".who").click ->
-      $('#chart_run_event_opt').val($(this).html())
 
   $(".chosen").chosen()
 
