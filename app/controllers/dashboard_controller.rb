@@ -93,6 +93,9 @@ private
       @chart_run[:fabric_sub_search] = []
       @chart_run[:occasion_add_search] = []
       @chart_run[:occasion_sub_search] = []
+      @chart_run[:low_price_search] = 0.to_s
+      @chart_run[:high_price_search] = 100000.to_s
+      @chart_run[:no_price_search] = []
 
       @chart.runs << @chart_run
     end
@@ -111,7 +114,7 @@ private
     @title << "<span>Retailer</span> #{@chart_run.retailer_add_opt.join(", ")}"
     @title << "- #{@chart_run.retailer_sub_opt.join(", ")}" if @chart_run.retailer_sub_opt.any?
     @title << "<span>Color</span> #{@chart_run.color_add_opt.join(", ")}"
-    @title <<-" + #{@chart_run.color_sub_opt.join(", ")}" if @chart_run.color_sub_opt.any?
+    @title << " + #{@chart_run.color_sub_opt.join(", ")}" if @chart_run.color_sub_opt.any?
     @title << "<span>Style</span> #{@chart_run.style_add_opt.join(", ")}"
     @title << "- #{@chart_run.style_sub_opt.join(", ")}" if @chart_run.style_sub_opt.any?
     @title << "<span>Pattern</span> #{@chart_run.pattern_add_opt.join(", ")}"

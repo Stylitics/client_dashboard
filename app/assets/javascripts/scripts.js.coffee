@@ -63,25 +63,41 @@ $ ->
     max: 100
     values: [$("#chart_run_low_age_opt").val(), $("#chart_run_high_age_opt").val()]
     slide: (event, ui) ->
-      $("#age-filter #min").html(ui.values[0])
-      $("#age-filter #max").html(ui.values[1])
-      $("#chart_run_low_age_opt").val(ui.values[0])
-      $("#chart_run_high_age_opt").val(ui.values[1])
+      parent=$(this).parent().parent()
+      parent.find("#min").html(ui.values[0])
+      parent.find("#max").html(ui.values[1])
+      parent.find("#chart_run_low_age_opt").val(ui.values[0])
+      parent.find("#chart_run_high_age_opt").val(ui.values[1])
 
-  $("#price-filter #min").html($("#chart_run_low_price_opt").val())
-  $("#price-filter #max").html($("#chart_run_high_age_opt").val())
-  $("#price-filter .slider").slider
+  $("#price-filter-opt #min").html(accounting.formatMoney($("#chart_run_low_price_opt").val(), "$", 0))
+  $("#price-filter-opt #max").html(accounting.formatMoney($("#chart_run_high_price_opt").val(), "$", 0))
+  $("#price-filter-opt .slider").slider
     range: true
     min: 0
     max: 100000
     values: [$("#chart_run_low_price_opt").val(), $("#chart_run_high_price_opt").val()]
     slide: (event, ui) ->
-      $("#price-filter #min").html(accounting.formatMoney(ui.values[0], "$", 0))
-      $("#price-filter #max").html(accounting.formatMoney(ui.values[1], "$", 0))
-      $("#chart_run_low_price_opt").val(ui.values[0])
-      $("#chart_run_high_price_opt").val(ui.values[1])
-  $("#price-filter #min").html(accounting.formatMoney(0, "$", 0))
-  $("#price-filter #max").html(accounting.formatMoney(100000, "$", 0))
+      parent=$(this).parent().parent()
+      element=$(this)
+      parent.find("#min").html(accounting.formatMoney(ui.values[0], "$", 0))
+      parent.find("#max").html(accounting.formatMoney(ui.values[1], "$", 0))
+      parent.find("#"+element.data("min-input")).val(ui.values[0])
+      parent.find("#"+element.data("max-input")).val(ui.values[1])
+
+  $("#price-filter-search #min").html(accounting.formatMoney($("#chart_run_low_price_search").val(), "$", 0))
+  $("#price-filter-search #max").html(accounting.formatMoney($("#chart_run_high_price_search").val(), "$", 0))
+  $("#price-filter-search .slider").slider
+    range: true
+    min: 0
+    max: 100000
+    values: [$("#chart_run_low_price_search").val(), $("#chart_run_high_price_search").val()]
+    slide: (event, ui) ->
+      parent=$(this).parent().parent()
+      element=$(this)
+      parent.find("#min").html(accounting.formatMoney(ui.values[0], "$", 0))
+      parent.find("#max").html(accounting.formatMoney(ui.values[1], "$", 0))
+      parent.find("#"+element.data("min-input")).val(ui.values[0])
+      parent.find("#"+element.data("max-input")).val(ui.values[1])
 
   $(".datepicker").datepicker
     dateFormat: "yy-mm-dd"
