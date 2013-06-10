@@ -14,8 +14,7 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require d3
-//= require crossfilter
-//= require dc
+//= require mustache
 //= require accounting
 //= require bootstrap-alert
 //= require chosen
@@ -23,5 +22,6 @@
 //= require date_helper
 //= require scripts
 //= require trend_line_chart
+//= require top_25_brands_and_retailers
 //= require weather_chart
 //= require dashboard

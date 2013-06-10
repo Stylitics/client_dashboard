@@ -4,26 +4,6 @@ class DashboardController < ApplicationController
   def trends
     chart = Chart.find("trend-line")
     setup_chart(chart)
-    @title = []
-    @title << @chart_run.gender_opt
-    @title << "<span>Students</span>" if @chart_run.student_opt == "TRUE"
-    @title << "<span>Ages</span> #{@chart_run.low_age_opt}-#{@chart_run.high_age_opt}"
-    @title << "<span>Prices</span> #{@chart_run.low_price_opt}-#{@chart_run.high_price_opt}"
-    @title << "in #{@chart_run.location_opt.to_sentence}" if @chart_run.location_opt != ["All"]
-    @title << "<span>Brand</span> #{@chart_run.brand_add_opt.join(", ")}"
-    @title << "- #{@chart_run.brand_sub_opt.join(", ")}" if @chart_run.brand_sub_opt.any?
-    @title << "<span>Retailer</span> #{@chart_run.retailer_add_opt.join(", ")}"
-    @title << "- #{@chart_run.retailer_sub_opt.join(", ")}" if @chart_run.retailer_sub_opt.any?
-    @title << "<span>Color</span> #{@chart_run.color_add_opt.join(", ")}"
-    @title <<-" + #{@chart_run.color_sub_opt.join(", ")}" if @chart_run.color_sub_opt.any?
-    @title << "<span>Style</span> #{@chart_run.style_add_opt.join(", ")}"
-    @title << "- #{@chart_run.style_sub_opt.join(", ")}" if @chart_run.style_sub_opt.any?
-    @title << "<span>Pattern</span> #{@chart_run.pattern_add_opt.join(", ")}"
-    @title << "- #{@chart_run.pattern_sub_opt.join(", ")}" if @chart_run.pattern_sub_opt.any?
-    @title << "<span>Fabric</span> #{@chart_run.fabric_add_opt.join(", ")}"
-    @title << "- #{@chart_run.fabric_sub_opt.join(", ")}" if @chart_run.fabric_sub_opt.any?
-    @title << "<span>Occasion</span> #{@chart_run.occasion_add_opt.join(", ")}"
-    @title << "- #{@chart_run.occasion_sub_opt.join(", ")}" if @chart_run.occasion_sub_opt.any?
   end
 
   def brand_share
@@ -116,5 +96,29 @@ private
 
       @chart.runs << @chart_run
     end
+    setup_title
+  end
+
+  def setup_title
+    @title = []
+    @title << @chart_run.gender_opt
+    @title << "<span>Students</span>" if @chart_run.student_opt == "TRUE"
+    @title << "<span>Ages</span> #{@chart_run.low_age_opt}-#{@chart_run.high_age_opt}"
+    @title << "<span>Prices</span> #{@chart_run.low_price_opt}-#{@chart_run.high_price_opt}"
+    @title << "in #{@chart_run.location_opt.to_sentence}" if @chart_run.location_opt != ["All"]
+    @title << "<span>Brand</span> #{@chart_run.brand_add_opt.join(", ")}"
+    @title << "- #{@chart_run.brand_sub_opt.join(", ")}" if @chart_run.brand_sub_opt.any?
+    @title << "<span>Retailer</span> #{@chart_run.retailer_add_opt.join(", ")}"
+    @title << "- #{@chart_run.retailer_sub_opt.join(", ")}" if @chart_run.retailer_sub_opt.any?
+    @title << "<span>Color</span> #{@chart_run.color_add_opt.join(", ")}"
+    @title <<-" + #{@chart_run.color_sub_opt.join(", ")}" if @chart_run.color_sub_opt.any?
+    @title << "<span>Style</span> #{@chart_run.style_add_opt.join(", ")}"
+    @title << "- #{@chart_run.style_sub_opt.join(", ")}" if @chart_run.style_sub_opt.any?
+    @title << "<span>Pattern</span> #{@chart_run.pattern_add_opt.join(", ")}"
+    @title << "- #{@chart_run.pattern_sub_opt.join(", ")}" if @chart_run.pattern_sub_opt.any?
+    @title << "<span>Fabric</span> #{@chart_run.fabric_add_opt.join(", ")}"
+    @title << "- #{@chart_run.fabric_sub_opt.join(", ")}" if @chart_run.fabric_sub_opt.any?
+    @title << "<span>Occasion</span> #{@chart_run.occasion_add_opt.join(", ")}"
+    @title << "- #{@chart_run.occasion_sub_opt.join(", ")}" if @chart_run.occasion_sub_opt.any?
   end
 end

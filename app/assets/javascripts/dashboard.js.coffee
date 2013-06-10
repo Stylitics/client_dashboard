@@ -5,6 +5,8 @@
 $ ->
   if $('#trend-line-chart').length
     trend_line_chart = new TrendLineChart()
+  if $('#top-25-brands-and-retailers-chart').length
+    top_25_brands_and_retailers = new Top25BrandsAndRetailers()
 
   $("#who").tabs()
   $(".who").click ->

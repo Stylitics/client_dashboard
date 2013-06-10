@@ -10,39 +10,20 @@
 
 <%= content_for :half_1 do %>
 	<h2>People who own my brand also own</h2>
-	<div class="top-item">
-		<div class="icon">
-			<img src="/assets/samples/brands/levis.png" border="0" />
-		</div>
-		<div class="text">
-			<h3>Levi's - 33% Own</h3>
-		</div>
-	</div>
-	<div class="top-item">
-		<div class="icon">
-			<img src="/assets/samples/brands/levis.png" border="0" />
-		</div>
-		<div class="text">
-			<h3>Levi's - 33% Own</h3>
-		</div>
+	<div id="top-25-brands-and-retailers-chart" data-json="<%= chart_path(@chart, t: Time.now.to_i) %>" class="own_25">
 	</div>
 <% end %>
 <%= content_for :half_2 do %>
 	<h2>People who own my brand also shop at</h2>
-	<div class="top-item">
-		<div class="icon">
-			<img src="/assets/samples/brands/levis.png" border="0" />
-		</div>
-		<div class="text">
-			<h3>Levi's - 33% Own</h3>
-		</div>
-	</div>
-	<div class="top-item">
-		<div class="icon">
-			<img src="/assets/samples/brands/levis.png" border="0" />
-		</div>
-		<div class="text">
-			<h3>Levi's - 33% Own</h3>
-		</div>
+	<div class="shop_at_25">
 	</div>
 <% end %>
+
+<div class="top-item hide" id="top-item-template">
+	<div class="icon">
+		<img src="{{url}}" border="0" />
+	</div>
+	<div class="text">
+		<h3>{{name}} - {{percentage}}% Own</h3>
+	</div>
+</div>
