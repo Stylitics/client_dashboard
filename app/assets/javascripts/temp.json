@@ -1,0 +1,310 @@
+[
+  {
+    "own": [
+      {
+        "name": "forever 21",
+        "logo": "http://s3.amazonaws.com/stylitics.production/images/brand/102/small.jpg",
+        "percentage": "15.64",
+        "trend": ""
+      },
+      {
+        "name": "american eagle outfitters",
+        "logo": "http://s3.amazonaws.com/stylitics.production/images/brand/604/small.jpg",
+        "percentage": "5.86",
+        "trend": ""
+      },
+      {
+        "name": "old navy",
+        "logo": "http://s3.amazonaws.com/stylitics.production/images/brand/167/small.jpg",
+        "percentage": "5.38",
+        "trend": ""
+      },
+      {
+        "name": "aeropostale",
+        "logo": "http://s3.amazonaws.com/stylitics.production/images/brand/213/small.jpg",
+        "percentage": "5.37",
+        "trend": ""
+      },
+      {
+        "name": "j.crew",
+        "logo": "http://s3.amazonaws.com/stylitics.production/images/brand/112/small.jpg",
+        "percentage": "4.97",
+        "trend": ""
+      },
+      {
+        "name": "h&m",
+        "logo": "http://s3.amazonaws.com/stylitics.production/images/brand/110/small.jpg",
+        "percentage": "4.63",
+        "trend": ""
+      },
+      {
+        "name": "mango",
+        "logo": "http://s3.amazonaws.com/stylitics.production/images/brand/111/small.jpg",
+        "percentage": "4.43",
+        "trend": ""
+      },
+      {
+        "name": "hollister co.",
+        "logo": "http://s3.amazonaws.com/stylitics.production.assets/assets/brands/brand_default_icon.jpg",
+        "percentage": "3.79",
+        "trend": ""
+      },
+      {
+        "name": "gap",
+        "logo": "http://s3.amazonaws.com/stylitics.production/images/brand/5/small.jpg",
+        "percentage": "3.57",
+        "trend": ""
+      },
+      {
+        "name": "abercrombie & fitch",
+        "logo": "http://s3.amazonaws.com/stylitics.production/images/brand/151/small.jpg",
+        "percentage": "3.53",
+        "trend": ""
+      },
+      {
+        "name": "target",
+        "logo": "http://s3.amazonaws.com/stylitics.production/images/brand/432/small.jpg",
+        "percentage": "2.68",
+        "trend": ""
+      },
+      {
+        "name": "express",
+        "logo": "http://s3.amazonaws.com/stylitics.production/images/brand/126/small.jpg",
+        "percentage": "2.51",
+        "trend": ""
+      },
+      {
+        "name": "banana republic",
+        "logo": "http://s3.amazonaws.com/stylitics.production/images/brand/3/small.jpg",
+        "percentage": "2.51",
+        "trend": ""
+      },
+      {
+        "name": "charlotte russe",
+        "logo": "http://s3.amazonaws.com/stylitics.production/images/brand/254/small.jpg",
+        "percentage": "2.32",
+        "trend": ""
+      },
+      {
+        "name": "zara",
+        "logo": "http://s3.amazonaws.com/stylitics.production/images/brand/114/small.jpg",
+        "percentage": "2.24",
+        "trend": ""
+      },
+      {
+        "name": "victoria's secret",
+        "logo": "http://s3.amazonaws.com/stylitics.production/images/brand/176/small.jpg",
+        "percentage": "2.06",
+        "trend": ""
+      },
+      {
+        "name": "topshop",
+        "logo": "http://s3.amazonaws.com/stylitics.production/images/brand/378/small.jpg",
+        "percentage": "1.82",
+        "trend": ""
+      },
+      {
+        "name": "delia's",
+        "logo": "http://s3.amazonaws.com/stylitics.production/images/brand/267/small.jpg",
+        "percentage": "1.73",
+        "trend": ""
+      },
+      {
+        "name": "loft",
+        "logo": "http://s3.amazonaws.com/stylitics.production/images/brand/635/small.jpg",
+        "percentage": "1.54",
+        "trend": ""
+      },
+      {
+        "name": "wet seal",
+        "logo": "http://s3.amazonaws.com/stylitics.production/images/brand/390/small.jpg",
+        "percentage": "1.53",
+        "trend": ""
+      },
+      {
+        "name": "mossimo",
+        "logo": "http://s3.amazonaws.com/stylitics.production/images/brand/470/small.jpg",
+        "percentage": "1.42",
+        "trend": ""
+      },
+      {
+        "name": "abercrombie kids",
+        "logo": "http://s3.amazonaws.com/stylitics.production/images/brand/794/small.jpg",
+        "percentage": "1.34",
+        "trend": ""
+      },
+      {
+        "name": "rue 21",
+        "logo": "http://s3.amazonaws.com/stylitics.production/images/brand/756/small.jpg",
+        "percentage": "1.3",
+        "trend": ""
+      },
+      {
+        "name": "american eagle",
+        "logo": "http://s3.amazonaws.com/stylitics.production/images/brand/784/small.jpg",
+        "percentage": "1.3",
+        "trend": ""
+      },
+      {
+        "name": "mossimo supply co.",
+        "logo": "http://s3.amazonaws.com/stylitics.production.assets/assets/brands/brand_default_icon.jpg",
+        "percentage": "1.24",
+        "trend": ""
+      }
+    ]
+  },
+  {
+    "shop_at": [
+      {
+        "name": "nordstrom",
+        "logo": "http://s3.amazonaws.com/stylitics.production/images/brand/64/small.jpg",
+        "percentage": "1.71",
+        "trend": ""
+      },
+      {
+        "name": "target",
+        "logo": "http://s3.amazonaws.com/stylitics.production/images/brand/4/small.jpg",
+        "percentage": "1.66",
+        "trend": ""
+      },
+      {
+        "name": "mango",
+        "logo": "http://s3.amazonaws.com/stylitics.production.assets/assets/brands/brand_default_icon.jpg",
+        "percentage": "1.63",
+        "trend": ""
+      },
+      {
+        "name": "macy's",
+        "logo": "http://s3.amazonaws.com/stylitics.production/images/brand/5/small.jpg",
+        "percentage": "1.21",
+        "trend": ""
+      },
+      {
+        "name": "forever 21",
+        "logo": "http://s3.amazonaws.com/stylitics.production/images/brand/1/small.jpg",
+        "percentage": "1.03",
+        "trend": ""
+      },
+      {
+        "name": "h&m",
+        "logo": "http://s3.amazonaws.com/stylitics.production.assets/assets/brands/brand_default_icon.jpg",
+        "percentage": "0.78",
+        "trend": ""
+      },
+      {
+        "name": "urban outfitters",
+        "logo": "http://s3.amazonaws.com/stylitics.production/images/brand/35/small.jpg",
+        "percentage": "0.75",
+        "trend": ""
+      },
+      {
+        "name": "j.crew",
+        "logo": "http://s3.amazonaws.com/stylitics.production.assets/assets/brands/brand_default_icon.jpg",
+        "percentage": "0.74",
+        "trend": ""
+      },
+      {
+        "name": "bloomingdale's",
+        "logo": "http://s3.amazonaws.com/stylitics.production/images/brand/11/small.jpg",
+        "percentage": "0.56",
+        "trend": ""
+      },
+      {
+        "name": "kohls",
+        "logo": "http://s3.amazonaws.com/stylitics.production/images/brand/145/small.jpg",
+        "percentage": "0.52",
+        "trend": ""
+      },
+      {
+        "name": "asos.com",
+        "logo": "http://s3.amazonaws.com/stylitics.production/images/brand/178/small.jpg",
+        "percentage": "0.45",
+        "trend": ""
+      },
+      {
+        "name": "2b bebe outlet",
+        "logo": "http://s3.amazonaws.com/stylitics.production/images/brand/514/small.jpg",
+        "percentage": "0.42",
+        "trend": ""
+      },
+      {
+        "name": "marshalls",
+        "logo": "http://s3.amazonaws.com/stylitics.production/images/brand/111/small.jpg",
+        "percentage": "0.41",
+        "trend": ""
+      },
+      {
+        "name": "old navy",
+        "logo": "http://s3.amazonaws.com/stylitics.production.assets/assets/brands/brand_default_icon.jpg",
+        "percentage": "0.41",
+        "trend": ""
+      },
+      {
+        "name": "anthropologie",
+        "logo": "http://s3.amazonaws.com/stylitics.production/images/brand/15/small.jpg",
+        "percentage": "0.41",
+        "trend": ""
+      },
+      {
+        "name": "tj maxx",
+        "logo": "http://s3.amazonaws.com/stylitics.production/images/brand/170/small.jpg",
+        "percentage": "0.4",
+        "trend": ""
+      },
+      {
+        "name": "zara",
+        "logo": "http://s3.amazonaws.com/stylitics.production/images/brand/20/small.jpg",
+        "percentage": "0.4",
+        "trend": ""
+      },
+      {
+        "name": "ebay",
+        "logo": "http://s3.amazonaws.com/stylitics.production.assets/assets/brands/brand_default_icon.jpg",
+        "percentage": "0.39",
+        "trend": ""
+      },
+      {
+        "name": "www.socialbutterflyhouse.com",
+        "logo": "http://s3.amazonaws.com/stylitics.production.assets/assets/brands/brand_default_icon.jpg",
+        "percentage": "0.39",
+        "trend": ""
+      },
+      {
+        "name": "saks fifth avenue ",
+        "logo": "http://s3.amazonaws.com/stylitics.production/images/brand/360/small.jpg",
+        "percentage": "0.38",
+        "trend": ""
+      },
+      {
+        "name": "modcloth.com",
+        "logo": "http://s3.amazonaws.com/stylitics.production/images/brand/203/small.jpg",
+        "percentage": "0.37",
+        "trend": ""
+      },
+      {
+        "name": "walmart",
+        "logo": "http://s3.amazonaws.com/stylitics.production/images/brand/445/small.jpg",
+        "percentage": "0.36",
+        "trend": ""
+      },
+      {
+        "name": "gap",
+        "logo": "http://s3.amazonaws.com/stylitics.production.assets/assets/brands/brand_default_icon.jpg",
+        "percentage": "0.36",
+        "trend": ""
+      },
+      {
+        "name": "amazon.com",
+        "logo": "http://s3.amazonaws.com/stylitics.production/images/brand/70/small.jpg",
+        "percentage": "0.35",
+        "trend": ""
+      },
+      {
+        "name": "jc penney",
+        "logo": "http://s3.amazonaws.com/stylitics.production.assets/assets/brands/brand_default_icon.jpg",
+        "percentage": "0.34",
+        "trend": ""
+      }
+    ]
+  }
+]

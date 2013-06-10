@@ -1,115 +1,64 @@
-<% title 'Top 10 Colors/Patterns, Item Styles' %>
+<% title 'Top 10' %>
+
+<%= content_for :title do %>
+  <%= render partial: "title" %>
+<% end %>
+
+<%= content_for :segment do %>
+  <%= render partial: "filter" %>
+<% end %>
+
 <%= content_for :third_1 do %>
-	<h1>Top Colors</h1>
-	<div class="top-item">
-		<div class="icon">
-			<img src="/assets/samples/colors/pink.png" border="0" />
-		</div>
-		<div class="text">
-			<h3>33% Own - Pink</h3>
-		</div>
-	</div>
-
-	<div class="top-item">
-		<div class="icon">
-			<img src="/assets/samples/colors/pink.png" border="0" />
-		</div>
-		<div class="text">
-			<h3>33% Own - Pink</h3>
-		</div>
-	</div>
-
-	<div class="top-item">
-		<div class="icon">
-			<img src="/assets/samples/colors/pink.png" border="0" />
-		</div>
-		<div class="text">
-			<h3>33% Own - Pink</h3>
-		</div>
-	</div>
-
-	<div class="top-item">
-		<div class="icon">
-			<img src="/assets/samples/colors/pink.png" border="0" />
-		</div>
-		<div class="text">
-			<h3>33% Own - Pink</h3>
-		</div>
-	</div>
-
-	<div class="top-item">
-		<div class="icon">
-			<img src="/assets/samples/colors/pink.png" border="0" />
-		</div>
-		<div class="text">
-			<h3>33% Own - Pink</h3>
-		</div>
-	</div>
-
-	<div class="top-item">
-		<div class="icon">
-			<img src="/assets/samples/colors/pink.png" border="0" />
-		</div>
-		<div class="text">
-			<h3>33% Own - Pink</h3>
-		</div>
-	</div>
-
-	<div class="top-item">
-		<div class="icon">
-			<img src="/assets/samples/colors/pink.png" border="0" />
-		</div>
-		<div class="text">
-			<h3>33% Own - Pink</h3>
-		</div>
-	</div>
-
-	<div class="top-item">
-		<div class="icon">
-			<img src="/assets/samples/colors/pink.png" border="0" />
-		</div>
-		<div class="text">
-			<h3>33% Own - Pink</h3>
-		</div>
-	</div>
-
-	<div class="top-item">
-		<div class="icon">
-			<img src="/assets/samples/colors/pink.png" border="0" />
-		</div>
-		<div class="text">
-			<h3>33% Own - Pink</h3>
-		</div>
-	</div>
-
-	<div class="top-item">
-		<div class="icon">
-			<img src="/assets/samples/colors/pink.png" border="0" />
-		</div>
-		<div class="text">
-			<h3>33% Own - Pink</h3>
-		</div>
-	</div>
+  <h1>Top Colors</h1>
+  <div id="top-10" data-json="<%= chart_path(@chart, t: Time.now.to_i) %>" class="color">
+  </div>
 <% end %>
 <%= content_for :third_2 do %>
-	<h1>Top Patterns</h1>
-	<div class="top-item">
-		<div class="icon">
-			<img src="/assets/samples/colors/pink.png" border="0" />
-		</div>
-		<div class="text">
-			<h3>33% Own - Pink</h3>
-		</div>
-	</div>
+  <h1>Top Patterns</h1>
+  <div class="pattern">
+  </div>
 <% end %>
 <%= content_for :third_3 do %>
-	<h1>Top Itemstyle</h1>
-	<div class="top-item">
-		<div class="icon">
-			<img src="/assets/samples/colors/pink.png" border="0" />
-		</div>
-		<div class="text">
-			<h3>33% Own - Pink</h3>
-		</div>
-	</div>
+  <h1>Top Itemstyle</h1>
+  <div class="style">
+  </div>
 <% end %>
+
+<script type="text/template" id="top-item-template-color">
+  {{#color}}
+    <div class="top-item">
+      <div class="icon">
+        <img src="{{url}}" border="0" />
+      </div>
+      <div class="text">
+        <h3>{{percentage}}% Own - {{name}}</h3>
+      </div>
+    </div>
+  {{/color}}
+</script>
+
+<script type="text/template" id="top-item-template-pattern">
+  {{#pattern}}
+    <div class="top-item">
+      <div class="icon">
+        <img src="{{url}}" border="0" />
+      </div>
+      <div class="text">
+        <h3>{{percentage}}% Own - {{name}}</h3>
+      </div>
+    </div>
+  {{/pattern}}
+</script>
+
+<script type="text/template" id="top-item-template-style">
+  {{#style}}
+    <div class="top-item">
+      <div class="icon">
+        <img src="{{url}}" border="0" />
+      </div>
+      <div class="text">
+        <h3>{{percentage}}% Own - {{name}}</h3>
+      </div>
+    </div>
+  {{/style}}
+</script>

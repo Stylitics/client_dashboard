@@ -16,7 +16,8 @@ class DashboardController < ApplicationController
   end
 
   def top_10
-
+    chart = Chart.find("top-10")
+    setup_chart(chart)
   end
 
   def outfit_stream
@@ -114,7 +115,7 @@ private
     @title << "<span>Retailer</span> #{@chart_run.retailer_add_opt.join(", ")}"
     @title << "- #{@chart_run.retailer_sub_opt.join(", ")}" if @chart_run.retailer_sub_opt.any?
     @title << "<span>Color</span> #{@chart_run.color_add_opt.join(", ")}"
-    @title << " + #{@chart_run.color_sub_opt.join(", ")}" if @chart_run.color_sub_opt.any?
+    @title << "- #{@chart_run.color_sub_opt.join(", ")}" if @chart_run.color_sub_opt.any?
     @title << "<span>Style</span> #{@chart_run.style_add_opt.join(", ")}"
     @title << "- #{@chart_run.style_sub_opt.join(", ")}" if @chart_run.style_sub_opt.any?
     @title << "<span>Pattern</span> #{@chart_run.pattern_add_opt.join(", ")}"

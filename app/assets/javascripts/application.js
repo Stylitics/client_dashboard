@@ -23,5 +23,6 @@
 //= require scripts
 //= require trend_line_chart
 //= require top_25_brands_and_retailers
+//= require top_10
 //= require weather_chart
 //= require dashboard

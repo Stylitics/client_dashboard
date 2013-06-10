@@ -1,0 +1,164 @@
+[
+  {
+    "color": [
+      {
+        "name": "color 1",
+        "url": "http://s3.amazonaws.com/stylitics.production/images/brand/102/small.jpg",
+        "percentage": "15.64"
+      },
+      {
+        "name": "color 2",
+        "url": "http://s3.amazonaws.com/stylitics.production/images/brand/102/small.jpg",
+        "percentage": "15.64"
+      },
+      {
+        "name": "color 3",
+        "url": "http://s3.amazonaws.com/stylitics.production/images/brand/102/small.jpg",
+        "percentage": "15.64"
+      },
+      {
+        "name": "color 4",
+        "url": "http://s3.amazonaws.com/stylitics.production/images/brand/102/small.jpg",
+        "percentage": "15.64"
+      },
+      {
+        "name": "color 5",
+        "url": "http://s3.amazonaws.com/stylitics.production/images/brand/102/small.jpg",
+        "percentage": "15.64"
+      },
+      {
+        "name": "color 6",
+        "url": "http://s3.amazonaws.com/stylitics.production/images/brand/102/small.jpg",
+        "percentage": "15.64"
+      },
+      {
+        "name": "color 7",
+        "url": "http://s3.amazonaws.com/stylitics.production/images/brand/102/small.jpg",
+        "percentage": "15.64"
+      },
+      {
+        "name": "color 8",
+        "url": "http://s3.amazonaws.com/stylitics.production/images/brand/102/small.jpg",
+        "percentage": "15.64"
+      },
+      {
+        "name": "color 9",
+        "url": "http://s3.amazonaws.com/stylitics.production/images/brand/102/small.jpg",
+        "percentage": "15.64"
+      },
+      {
+        "name": "color 10",
+        "url": "http://s3.amazonaws.com/stylitics.production/images/brand/102/small.jpg",
+        "percentage": "15.64"
+      }
+    ]
+  },
+  {
+    "pattern": [
+      {
+        "name": "pattern 1",
+        "url": "http://s3.amazonaws.com/stylitics.production/images/brand/102/small.jpg",
+        "percentage": "15.64"
+      },
+      {
+        "name": "pattern 2",
+        "url": "http://s3.amazonaws.com/stylitics.production/images/brand/102/small.jpg",
+        "percentage": "15.64"
+      },
+      {
+        "name": "pattern 3",
+        "url": "http://s3.amazonaws.com/stylitics.production/images/brand/102/small.jpg",
+        "percentage": "15.64"
+      },
+      {
+        "name": "pattern 4",
+        "url": "http://s3.amazonaws.com/stylitics.production/images/brand/102/small.jpg",
+        "percentage": "15.64"
+      },
+      {
+        "name": "pattern 5",
+        "url": "http://s3.amazonaws.com/stylitics.production/images/brand/102/small.jpg",
+        "percentage": "15.64"
+      },
+      {
+        "name": "pattern 6",
+        "url": "http://s3.amazonaws.com/stylitics.production/images/brand/102/small.jpg",
+        "percentage": "15.64"
+      },
+      {
+        "name": "pattern 7",
+        "url": "http://s3.amazonaws.com/stylitics.production/images/brand/102/small.jpg",
+        "percentage": "15.64"
+      },
+      {
+        "name": "pattern 8",
+        "url": "http://s3.amazonaws.com/stylitics.production/images/brand/102/small.jpg",
+        "percentage": "15.64"
+      },
+      {
+        "name": "pattern 9",
+        "url": "http://s3.amazonaws.com/stylitics.production/images/brand/102/small.jpg",
+        "percentage": "15.64"
+      },
+      {
+        "name": "pattern 10",
+        "url": "http://s3.amazonaws.com/stylitics.production/images/brand/102/small.jpg",
+        "percentage": "15.64"
+      }
+    ]
+  },
+  {
+    "style": [
+      {
+        "name": "style 1",
+        "url": "http://s3.amazonaws.com/stylitics.production/images/brand/102/small.jpg",
+        "percentage": "15.64"
+      },
+      {
+        "name": "style 2",
+        "url": "http://s3.amazonaws.com/stylitics.production/images/brand/102/small.jpg",
+        "percentage": "15.64"
+      },
+      {
+        "name": "style 3",
+        "url": "http://s3.amazonaws.com/stylitics.production/images/brand/102/small.jpg",
+        "percentage": "15.64"
+      },
+      {
+        "name": "style 4",
+        "url": "http://s3.amazonaws.com/stylitics.production/images/brand/102/small.jpg",
+        "percentage": "15.64"
+      },
+      {
+        "name": "style 5",
+        "url": "http://s3.amazonaws.com/stylitics.production/images/brand/102/small.jpg",
+        "percentage": "15.64"
+      },
+      {
+        "name": "style 6",
+        "url": "http://s3.amazonaws.com/stylitics.production/images/brand/102/small.jpg",
+        "percentage": "15.64"
+      },
+      {
+        "name": "style 7",
+        "url": "http://s3.amazonaws.com/stylitics.production/images/brand/102/small.jpg",
+        "percentage": "15.64"
+      },
+      {
+        "name": "style 8",
+        "url": "http://s3.amazonaws.com/stylitics.production/images/brand/102/small.jpg",
+        "percentage": "15.64"
+      },
+      {
+        "name": "style 9",
+        "url": "http://s3.amazonaws.com/stylitics.production/images/brand/102/small.jpg",
+        "percentage": "15.64"
+      },
+      {
+        "name": "style 10",
+        "url": "http://s3.amazonaws.com/stylitics.production/images/brand/102/small.jpg",
+        "percentage": "15.64"
+      }
+    ]
+  }
+]

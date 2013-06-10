@@ -19,11 +19,28 @@
 	</div>
 <% end %>
 
-<div class="top-item hide" id="top-item-template">
-	<div class="icon">
-		<img src="{{url}}" border="0" />
-	</div>
-	<div class="text">
-		<h3>{{name}} - {{percentage}}% Own</h3>
-	</div>
-</div>
+<script type="text/template" id="top-item-template-own">
+	{{#own}}
+		<div class="top-item">
+			<div class="icon">
+				<img src="{{logo}}" border="0" />
+			</div>
+			<div class="text">
+				<h3>{{name}} - {{percentage}}% Own</h3>
+			</div>
+		</div>
+	{{/own}}
+</script>
+
+<script type="text/template" id="top-item-template-shop">
+	{{#shop_at}}
+		<div class="top-item">
+			<div class="icon">
+				<img src="{{logo}}" border="0" />
+			</div>
+			<div class="text">
+				<h3>{{name}} - {{percentage}}% Own</h3>
+			</div>
+		</div>
+	{{/shop_at}}
+</script>
