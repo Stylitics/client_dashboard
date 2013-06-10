@@ -96,10 +96,10 @@
         <div class="label-text"><h3></h3></div>
         <%= f.input :style_sub_opt, as: :select, collection: @style_collection, label: false, input_html: { class: "chosen", multiple:"" } %>
       </div>
-      <div class="filter-big-element" id="price-filter">
+      <div class="filter-big-element" id="price-filter-opt">
         <div class="label-text"><h3>Price</h3></div>
         <div class="content-value">
-          <div class="slider"></div>
+          <div class="slider" data-min-input="chart_run_low_price_opt" data-max-input="chart_run_high_price_opt"></div>
           <%= f.input :low_price_opt, as: :hidden %>
           <%= f.input :high_price_opt, as: :hidden %>
         </div>
@@ -176,6 +176,19 @@
       <div class="label-text"><h3></h3></div>
       <%= f.input :occasion_sub_search, as: :select, collection: @occasion_collection, label: false, input_html: { class: "chosen", multiple:"" }, include_blank: true %>
     </div>
+    <div class="filter-big-element" id="price-filter-search">
+        <div class="label-text"><h3>Price</h3></div>
+        <div class="content-value">
+          <div class="slider" data-min-input="chart_run_low_price_search" data-max-input="chart_run_high_price_search"></div>
+          <%= f.input :low_price_search, as: :hidden %>
+          <%= f.input :high_price_search, as: :hidden %>
+        </div>
+        <h3><span class="col-pink"><span id="min"></span> - <span id="max"></span></span></h3>
+      </div>
+      <div class="filter-small-element">
+        <h3>No Price</h3>
+        <%= f.input :no_price_search, as: :radio_buttons, collection: [["All", "NULL"], ["Include", "TRUE"], ["Exclude", "FALSE"]], label: false %>
+      </div>
   </div>
 </div>
 <% end %>

@@ -37,7 +37,10 @@ class ChartRunsController < ApplicationController
       :fabric_add_search,
       :fabric_sub_search,
       :occasion_add_search,
-      :occasion_sub_search
+      :occasion_sub_search,
+      :low_price_search,
+      :high_price_search,
+      :no_price_search
     ].each do |p|
       params[:chart_run][p] = params[:chart_run][p].reject{|l| l.blank?} if params[:chart_run][p].present?
     end
