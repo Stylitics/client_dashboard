@@ -37,10 +37,7 @@ class ChartRunsController < ApplicationController
       :fabric_add_search,
       :fabric_sub_search,
       :occasion_add_search,
-      :occasion_sub_search,
-      :low_price_search,
-      :high_price_search,
-      :no_price_search
+      :occasion_sub_search
     ].each do |p|
       params[:chart_run][p] = params[:chart_run][p].reject{|l| l.blank?} if params[:chart_run][p].present?
     end
@@ -84,6 +81,6 @@ class ChartRunsController < ApplicationController
     chart_run.output = JSON.pretty_generate(JSON.parse(json_output))
     chart_run.save
 
-    redirect_to trends_path
+    redirect_to :back
   end
 end

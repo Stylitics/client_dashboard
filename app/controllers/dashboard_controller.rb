@@ -50,7 +50,7 @@ private
       @chart_run = ChartRun.new
       @chart_run.accessible = :all
 
-      @chart_run[:event_opt] = "Addings"
+      @chart_run[:event_opt] = "Added"
 
       @chart_run[:gender_opt] = "All"
       @chart_run[:low_age_opt] = 10.to_s
@@ -96,7 +96,7 @@ private
       @chart_run[:occasion_sub_search] = []
       @chart_run[:low_price_search] = 0.to_s
       @chart_run[:high_price_search] = 100000.to_s
-      @chart_run[:no_price_search] = []
+      @chart_run[:no_price_search] = "NULL"
 
       @chart.runs << @chart_run
     end
