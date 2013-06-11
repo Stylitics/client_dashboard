@@ -1,0 +1,487 @@
+.beige {
+@include circle('#f5f5dc');
+}
+
+.black {
+@include circle('#000000');
+}
+
+.burgundy {
+@include circle('#800020');
+}
+
+.navy {
+@include circle('UNKNOWN');
+}
+
+.brown {
+@include circle('#a52a2a');
+}
+
+.camel {
+@include circle('#c19a6b');
+}
+
+.denim {
+@include circle('#1560bd');
+}
+
+.gray {
+@include circle('#808080');
+}
+
+.green {
+@include circle('#00ff00');
+}
+
+.ivory {
+@include circle('#fffff0');
+}
+
+.khaki {
+@include circle('#c3b091');
+}
+
+.metallics {
+@include circle('UNKNOWN');
+}
+
+.multi-color {
+@include circle('#ffffff');
+}
+
+.orange {
+@include circle('#ffa500');
+}
+
+.nude {
+@include circle('UNKNOWN');
+}
+
+.pink {
+@include circle('#ffc0cb');
+}
+
+.purple {
+@include circle('#800080');
+}
+
+.red {
+@include circle('#ff0000');
+}
+
+.white {
+@include circle('#ffffff');
+}
+
+.yellow {
+@include circle('#ffff00');
+}
+
+.blue {
+@include circle('#0000ff');
+}
+
+.gold {
+@include circle('#ffd700');
+}
+
+.silver {
+@include circle('#c0c0c0');
+}
+
+.other {
+@include circle('UNKNOWN');
+}
+
+.lilac {
+@include circle('#c8a2c8');
+}
+
+.rust {
+@include circle('#b7410e');
+}
+
+.cream {
+@include circle('#fffdd0');
+}
+
+.hot-pink {
+@include circle('#ff69b4');
+}
+
+.light-pink {
+@include circle('#ffb6c1');
+}
+
+.dark-red {
+@include circle('#8b0000');
+}
+
+.rose {
+@include circle('#ff007f');
+}
+
+.salmon {
+@include circle('#ff8c69');
+}
+
+.raspberry {
+@include circle('#e30b5d');
+}
+
+.burnt-orange {
+@include circle('#cc5500');
+}
+
+.pumpkin {
+@include circle('#ff7518');
+}
+
+.peach {
+@include circle('#ffe5b4');
+}
+
+.slate {
+@include circle('UNKNOWN');
+}
+
+.amber {
+@include circle('#ffbf00');
+}
+
+.coffee {
+@include circle('#6f4e37');
+}
+
+.copper {
+@include circle('#b87333');
+}
+
+.tan {
+@include circle('#d2b48c');
+}
+
+.light-gray {
+@include circle('#d3d3d3');
+}
+
+.dark-green {
+@include circle('#013220');
+}
+
+.mint {
+@include circle('#3eb489');
+}
+
+.kelly-green {
+@include circle('#4cbb17');
+}
+
+.teal {
+@include circle('#008080');
+}
+
+.olive {
+@include circle('#808000');
+}
+
+.espresso {
+@include circle('UNKNOWN');
+}
+
+.caramel {
+@include circle('UNKNOWN');
+}
+
+.sand {
+@include circle('#c2b280');
+}
+
+.ash-gray {
+@include circle('#808080');
+}
+
+.charcoal {
+@include circle('#36454f');
+}
+
+.heather-gray {
+@include circle('#808080');
+}
+
+.dark-yellow {
+@include circle('#ffff00');
+}
+
+.blue-gray {
+@include circle('#6699cc');
+}
+
+.baby-blue {
+@include circle('#89cff0');
+}
+
+.dark-blue {
+@include circle('#00008b');
+}
+
+.midnight-blue {
+@include circle('#191970');
+}
+
+.royal-blue {
+@include circle('#4169e1');
+}
+
+.eggplant {
+@include circle('#614051');
+}
+
+.indigo {
+@include circle('#4b0082');
+}
+
+.maroon {
+@include circle('#800000');
+}
+
+.fuchsia {
+@include circle('#ff00ff');
+}
+
+.pearl {
+@include circle('#eae0c8');
+}
+
+.ecru {
+@include circle('#c2b280');
+}
+
+.turquoise {
+@include circle('#30d5c8');
+}
+
+.mustard-yellow {
+@include circle('#ffdb58');
+}
+
+.magenta {
+@include circle('#ff00ff');
+}
+
+.orange-red {
+@include circle('#ffffff');
+}
+
+.light-yellow {
+@include circle('#ffffed');
+}
+
+.sepia {
+@include circle('#704214');
+}
+
+.lime-green {
+@include circle('#32cd32');
+}
+
+.forest-green {
+@include circle('#228b22');
+}
+
+.avocado {
+@include circle('UNKNOWN');
+}
+
+.carolina-blue {
+@include circle('#99badd');
+}
+
+.violet {
+@include circle('#ee82ee');
+}
+
+.plum {
+@include circle('#dda0dd');
+}
+
+.lavender {
+@include circle('#e6e6fa');
+}
+
+.light-blue {
+@include circle('#add8e6');
+}
+
+.chestnut {
+@include circle('#cd5c5c');
+}
+
+.stone-gray {
+@include circle('#808080');
+}
+
+.various {
+@include circle('UNKNOWN');
+}
+
+.chocolate {
+@include circle('#d2691e');
+}
+
+.light-brown {
+@include circle('#b5651d');
+}
+
+.neon-green {
+@include circle('#39ff14');
+}
+
+.off-white {
+@include circle('#ffffff');
+}
+
+.coral {
+@include circle('#ff7f50');
+}
+
+.papaya {
+@include circle('UNKNOWN');
+}
+
+.dark-gray {
+@include circle('#a9a9a9');
+}
+
+.graphite {
+@include circle('UNKNOWN');
+}
+
+.dark-brown {
+@include circle('#654321');
+}
+
+.taupe {
+@include circle('#483c32');
+}
+
+.pale-blue {
+@include circle('#afeeee');
+}
+
+.army-green {
+@include circle('#4b5320');
+}
+
+.oatmeal {
+@include circle('UNKNOWN');
+}
+
+.light-green {
+@include circle('#90ee90');
+}
+
+.white-gold {
+@include circle('#ffffff');
+}
+
+.cognac {
+@include circle('UNKNOWN');
+}
+
+.saddle-brown {
+@include circle('#8b4513');
+}
+
+.cordovan {
+@include circle('#893f45');
+}
+
+.ruby {
+@include circle('#e0115f');
+}
+
+.clear {
+@include circle('UNKNOWN');
+}
+
+.neon-yellow {
+@include circle('#ffff00');
+}
+
+.neon-blue {
+@include circle('#0000ff');
+}
+
+.neon-pink {
+@include circle('#ffc0cb');
+}
+
+.neon-purple {
+@include circle('#800080');
+}
+
+.neon-orange {
+@include circle('#ffa500');
+}
+
+.tangerine {
+@include circle('#f28500');
+}
+
+.aqua {
+@include circle('#00ffff');
+}
+
+.pastel-blue {
+@include circle('#aec6cf');
+}
+
+.pastel-green {
+@include circle('#77dd77');
+}
+
+.pastel-pink {
+@include circle('#ffd1dc');
+}
+
+.pastel-purple {
+@include circle('#b39eb5');
+}
+
+.pastel-yellow {
+@include circle('#fdfd96');
+}
+
+.pastel-orange {
+@include circle('#ffb347');
+}
+
+.pastel-red {
+@include circle('#ff6961');
+}
+
+.unknown {
+@include circle('UNKNOWN');
+}
+
+.dark-orange {
+@include circle('#ff8c00');
+}
+
+.dark-purple {
+@include circle('#800080');
+}
+
+.rose-gold {
+@include circle('#b76e79');
+}
+
+.diamond {
+@include circle('UNKNOWN');
+}
+
+.emerald {
+@include circle('#50c878');
+}

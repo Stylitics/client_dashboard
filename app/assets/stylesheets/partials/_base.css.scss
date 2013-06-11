@@ -33,6 +33,13 @@ $color_pink: #b61c52;
 	margin-right: $mr;
 }
 
+@mixin circle($color) {
+	background:$color;
+	border-radius: 50%;
+	width: 80px;
+	height: 80px;
+}
+
 body {
 	background: image-url("background.png") repeat-x top center $color_background;
 	font-family: "proxima_novaregular";
