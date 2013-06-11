@@ -37,15 +37,27 @@ fieldset {
   }
 }
 
-.medium_chart {
-  width: span(22);
+.medium-chart {
+  width: span(27);
   height: 400px;
 }
 
-.medium_chart_legend {
-  width: span(22);
-  height: 20px;
-  background: image-url("pattern-d.png")
+.medium-chart-legend {
+  width: span(30);
+  margin-left: 10px;
+  margin-bottom:40px;  
+
+  .medium-chart-gradient {
+    @include background(linear-gradient(left, #ffffff 0%,#1c8392 100%), image-url("pattern-d.png"));
+    height: 22px;
+    margin-bottom:10px;
+    border:1px solid #CCCCCC;
+  }
+}
+
+.medium-chart-pics {
+  width: span(30);
+  margin-left: 10px;
 }
 
 .small_chart {

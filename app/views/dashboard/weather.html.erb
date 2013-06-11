@@ -1,12 +1,21 @@
 <% title 'Weather visualizations' %>
 
 <%= content_for :half_1 do %>
-	<div class="medium_chart" id="weather-chart" data-json="<%= chart_path(@chart, t: Time.now.to_i) %>" data-pattern="<%= asset_path "pattern.png" %>" data-width="400" data-height="400">
+	<div class="medium-chart" id="weather-chart" data-json="<%= chart_path(@chart, t: Time.now.to_i) %>" data-pattern="<%= asset_path "pattern.png" %>" data-width="400" data-height="400">
   <div id="weather-placeholder" class="hide alert alert-warning">No data yet available... Try again in a few moments.</div>
 </div>
 <% end %>
 
 <%= content_for :half_2 do %>
-	<div class="medium_chart_legend" id="weather-chart-legend"></div>
-	6 pictures
+	<div class="medium-chart-legend" id="weather-chart-legend">
+		<div class="medium-chart-gradient">
+
+		</div>
+		<div class="medium-chart-text">
+			123...
+		</div>
+	</div>
+	<div class="medium-chart-pics" id="weather-chart-pics">
+		6 pictures
+	</div>
 <% end %>
