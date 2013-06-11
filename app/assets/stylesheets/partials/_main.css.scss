@@ -37,6 +37,17 @@ fieldset {
   }
 }
 
+.medium_chart {
+  width: span(22);
+  height: 400px;
+}
+
+.medium_chart_legend {
+  width: span(22);
+  height: 20px;
+  background: image-url("pattern-d.png")
+}
+
 .small_chart {
   width: span(44);
   height: 100px;

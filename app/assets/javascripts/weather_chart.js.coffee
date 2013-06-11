@@ -3,4 +3,12 @@ class @WeatherChart
     chart = @
     @readJSON(chart)
   readJSON: (chart) ->
-    console.log "JSON"
+    d3.json $("#weather-chart").data('json'), (data) ->
+      if data.data != "empty"
+        chart.JSON = data
+        chart.drawChart(chart)
+        chart.drawLegend(chart)
+  drawChart: (chart) ->
+    console.log "draw"
+  drawLegend: (chart) ->
+    console.log "draw legend"
