@@ -9,9 +9,10 @@ $ ->
     top_25_brands_and_retailers = new Top25BrandsAndRetailers()
   if $('#top-10').length
     top_10 = new Top10()
+  if $('#brand-share-chart').length
+    brand_share_chart = new BrandShareChart()
 
   $("#who").tabs()
   $(".who").click ->
     $('#chart_run_event_opt').val($(this).html())
     trend_line_chart.setCurrentType($(this).html())
-    trend_line_chart.updateChart()

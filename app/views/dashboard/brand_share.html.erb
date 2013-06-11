@@ -1,7 +1,11 @@
 <% title 'Brand Share of Closet over time' %>
 
-<%= content_for :segment_left do %>
-  
+<%= content_for :title do %>
+  <%= render partial: "title" %>
+<% end %>
+
+<%= content_for :segment do %>
+  <%= render partial: "filter" %>
 <% end %>
 
 <%= content_for :sidebar_r do %>
@@ -44,38 +48,6 @@
 
 <%= content_for :bottom do %>
   <div class="wide3">
-    <div class="bottom-container">
-      <div class="bottom-title">
-        <div class="icon-c">&nbsp;</div>
-        <h2>Addings</h2>
-      </div>
-      <div class="bottom-content">
-        <table id="top-asid" class="table table-hover">
-          <thead>
-            <tr>
-              <th>Date</th>
-              <th>Value</th>
-            </tr>
-          </thead>
-        </table>
-      </div>
-    </div>
-    <div class="bottom-container">
-      <div class="bottom-title">
-        <div class="icon-sty">&nbsp;</div>
-        <h2>Wearings</h2>
-      </div>
-      <div class="bottom-content">
-        <table id="top-asw" class="table table-hover">
-          <thead>
-            <tr>
-              <th>Date</th>
-              <th>Value</th>
-            </tr>
-          </thead>
-        </table>
-      </div>
-    </div>
     <div class="bottom-container">
       <div class="bottom-title">
         <div class="icon-seg">&nbsp;</div>
@@ -155,8 +127,7 @@
   </div>
 <% end %>
 
-<div class="big_chart">
-  
+<div class="big_chart" id="brand-share-chart" data-json="<%= chart_path(@chart, t: Time.now.to_i) %>" data-pattern-odd="<%= asset_path "pattern.png" %>" data-pattern-even="<%= asset_path "pattern-d.png" %>" data-width="870" data-height="400">
+  <div id="trend-chart-placeholder" class="hide alert alert-warning">No data yet available... Try again in a few moments.</div>
 </div>
-<div class="small_chart" id="weekly-chart" style="margin-top: 10px"></div>
-
+<div class="big_chart_zoom" id="brand-share-chart-zoom" data-width="870" data-height="80"></div>

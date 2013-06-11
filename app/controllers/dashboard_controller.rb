@@ -7,7 +7,8 @@ class DashboardController < ApplicationController
   end
 
   def brand_share
-
+    chart = Chart.find("brand-share")
+    setup_chart(chart)
   end
 
   def top_25_brands_and_retailers

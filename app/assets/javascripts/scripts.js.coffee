@@ -1,5 +1,14 @@
-$ ->
+@maxY = (values, q) ->
+  # sort Y values and return the maximum value
+  allY = []
+  $.each(values, (k, v) ->
+    allY.push(v[1])
+  )
+  allY.sort (a, b) ->
+    a - b
+  allY[allY.length - 1] * q
 
+$ ->
   $("#open-filters").click (e) ->
     e.preventDefault()
     if $(".left").is(":visible")

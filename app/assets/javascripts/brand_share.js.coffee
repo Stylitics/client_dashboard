@@ -1,20 +1,10 @@
-maxY = (values, q) ->
-  # sort Y values and return the maximum value
-  allY = []
-  $.each(values, (k, v) ->
-    allY.push(v[1])
-  )
-  allY.sort (a, b) ->
-    a - b
-  allY[allY.length - 1] * q
-
-class @TrendLineChart
+class @BrandShareChart
   constructor: (type) ->
     chart = @
-    @screenWidth = $("#trend-line-chart").data("width")
-    @screenHeight = $("#trend-line-chart").data("height")
-    @zoomWidth  = $("#trend-line-chart-zoom").data("width")
-    @zoomHeight = $("#trend-line-chart-zoom").data("height")
+    @screenWidth = $("#brand-share-chart").data("width")
+    @screenHeight = $("#brand-share-chart").data("height")
+    @zoomWidth  = $("#brand-share-chart-zoom").data("width")
+    @zoomHeight = $("#brand-share-chart-zoom").data("height")
     @totalLength = 0
     @pathAdded = null
     @pathAddedZoom = null
@@ -37,14 +27,14 @@ class @TrendLineChart
       this.centerChart(this)
 
   readJSON: (chart) ->
-    d3.json $("#trend-line-chart").data('json'), (data) ->
+    d3.json $("#brand-share-chart").data('json'), (data) ->
       if data.data != "empty"
         chart.JSON = data
         chart.drawChart(chart)
   drawChart: (chart) ->
-    chart.svg = d3.select("#trend-line-chart").append("svg").attr("width", chart.screenWidth).attr("height", chart.screenHeight)
-    chart.svg.append('svg:defs').append('svg:pattern').attr('id', 'pattern').attr('patternUnits', 'userSpaceOnUse').attr('width', '10').attr('height', '10').append('svg:image').attr('xlink:href', $("#trend-line-chart").data("pattern-odd")).attr('x', 0).attr('y', 0).attr('width', 10).attr('height', 10)
-    chart.svg.append('svg:defs').append('svg:pattern').attr('id', 'pattern-d').attr('patternUnits', 'userSpaceOnUse').attr('width', '10').attr('height', '10').append('svg:image').attr('xlink:href', $("#trend-line-chart").data("pattern-even")).attr('x', 0).attr('y', 0).attr('width', 10).attr('height', 10)
+    chart.svg = d3.select("#brand-share-chart").append("svg").attr("width", chart.screenWidth).attr("height", chart.screenHeight)
+    chart.svg.append('svg:defs').append('svg:pattern').attr('id', 'pattern').attr('patternUnits', 'userSpaceOnUse').attr('width', '10').attr('height', '10').append('svg:image').attr('xlink:href', $("#brand-share-chart").data("pattern-odd")).attr('x', 0).attr('y', 0).attr('width', 10).attr('height', 10)
+    chart.svg.append('svg:defs').append('svg:pattern').attr('id', 'pattern-d').attr('patternUnits', 'userSpaceOnUse').attr('width', '10').attr('height', '10').append('svg:image').attr('xlink:href', $("#brand-share-chart").data("pattern-even")).attr('x', 0).attr('y', 0).attr('width', 10).attr('height', 10)
     bg = chart.svg.append("g").attr("class", "grid").attr("width", chart.screenWidth).attr("height", chart.screenHeight)
     parseDate = d3.time.format("%Y-%m-%d").parse
     chart.JSON.forEach (d, i) ->
@@ -79,7 +69,7 @@ class @TrendLineChart
       if f == 0
         null
       else
-        f
+        parseInt(f, 10) + "%"
     line = d3.svg.line().interpolate("linear").x((d) ->
       x d[0]
     ).y((d) ->
@@ -99,7 +89,7 @@ class @TrendLineChart
     chart.totalLength = chart.pathAdded.node().getTotalLength()
     chart.pathAdded.attr("stroke-dasharray", chart.totalLength + " " + chart.totalLength).attr("stroke-dashoffset", chart.totalLength).transition().duration(1000).ease("linear").attr "stroke-dashoffset", 0
   drawZoomUI: (chart) ->
-    chart.svgZoom = d3.select("#trend-line-chart-zoom").append("svg").attr("width", chart.zoomWidth).attr("height", chart.zoomHeight)
+    chart.svgZoom = d3.select("#brand-share-chart-zoom").append("svg").attr("width", chart.zoomWidth).attr("height", chart.zoomHeight)
   renderZoomUI: (chart, values) ->
     x = d3.time.scale().range([0, chart.zoomWidth])
     y = d3.scale.linear().range([chart.zoomHeight, 0])
