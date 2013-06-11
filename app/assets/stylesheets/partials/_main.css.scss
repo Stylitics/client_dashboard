@@ -48,9 +48,13 @@ fieldset {
   margin-bottom:40px;  
 
   .medium-chart-gradient {
-    @include background(linear-gradient(left, #ffffff 0%,#1c8392 100%), image-url("pattern-d.png"));
+    @include background(linear-gradient(left, #ffffff 0%,#1c8392 100%));
     height: 22px;
     margin-bottom:10px;
+  }
+  .medium-chart-grid {
+    background: image-url("pattern_grid.png");
+    height: 20px;
     border:1px solid #CCCCCC;
   }
 }
