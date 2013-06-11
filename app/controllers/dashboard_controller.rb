@@ -26,7 +26,8 @@ class DashboardController < ApplicationController
   end
 
   def weather
-
+    chart = Chart.find("weather")
+    setup_chart(chart)
   end
 
 private

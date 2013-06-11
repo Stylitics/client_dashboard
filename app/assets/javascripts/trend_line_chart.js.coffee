@@ -1,13 +1,3 @@
-maxY = (values, q) ->
-  # sort Y values and return the maximum value
-  allY = []
-  $.each(values, (k, v) ->
-    allY.push(v[1])
-  )
-  allY.sort (a, b) ->
-    a - b
-  allY[allY.length - 1] * q
-
 class @TrendLineChart
   constructor: (type) ->
     chart = @

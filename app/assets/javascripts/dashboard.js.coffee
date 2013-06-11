@@ -11,6 +11,8 @@ $ ->
     top_10 = new Top10()
   if $('#brand-share-chart').length
     brand_share_chart = new BrandShareChart()
+  if $('#weather-chart').length
+    weather_chart = new WeatherChart()
 
   $("#who").tabs()
   $(".who").click ->
