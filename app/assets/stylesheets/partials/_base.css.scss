@@ -34,10 +34,10 @@ $color_pink: #b61c52;
 }
 
 @mixin circle($color) {
-	background:$color;
+	background-color: $color;
 	border-radius: 50%;
-	width: 80px;
-	height: 80px;
+	width: 50px;
+	height: 50px;
 }
 
 body {
