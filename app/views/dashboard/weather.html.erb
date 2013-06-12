@@ -1,7 +1,7 @@
 <% title 'Weather visualizations' %>
 
 <%= content_for :half_1 do %>
-<div class="medium-chart" id="weather-chart" data-json="<%= chart_path(@chart, t: Time.now.to_i) %>" data-pattern="<%= asset_path "pattern.png" %>" data-width="400" data-height="400">
+<div class="weather" id="weather-chart" data-json="<%= chart_path(@chart, t: Time.now.to_i) %>" data-pattern="<%= asset_path "pattern.png" %>" data-width="400" data-height="400">
   <div id="weather-placeholder" class="hide alert alert-warning">No data yet available... Try again in a few moments.</div>
   <div class="weather-y-tooltips-container">
   	<div class="weather-y-tooltips">
@@ -54,17 +54,17 @@
 <% end %>
 
 <%= content_for :half_2 do %>
-	<div class="medium-chart-legend" id="weather-chart-legend">
-		<div class="medium-chart-gradient">
-			<div class="medium-chart-grid">
+	<div class="weather-legend" id="weather-chart-legend">
+		<div class="weather-gradient">
+			<div class="weather-grid">
 
 			</div>
 		</div>
-		<div class="medium-chart-text">
+		<div class="weather-text">
 			123...
 		</div>
 	</div>
-	<div class="medium-chart-pics" id="weather-chart-pics">
+	<div class="weather-pics" id="weather-chart-pics">
 		<div class="weather-pic"><img src="assets/dummy/weather-pic.png" border="0" /></div>
 		<div class="weather-pic"><img src="assets/dummy/weather-pic.png" border="0" /></div>
 		<div class="weather-pic"><img src="assets/dummy/weather-pic.png" border="0" /></div>

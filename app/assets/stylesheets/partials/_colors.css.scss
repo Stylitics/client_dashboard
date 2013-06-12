@@ -11,7 +11,7 @@
 }
 
 .navy {
-@include circle(UNKNOWN);
+@include circle(#000000);
 }
 
 .brown {
@@ -43,7 +43,7 @@
 }
 
 .metallics {
-@include circle(UNKNOWN);
+@include circle(#000000);
 }
 
 .multi-color {
@@ -55,7 +55,7 @@
 }
 
 .nude {
-@include circle(UNKNOWN);
+@include circle(#000000);
 }
 
 .pink {
@@ -91,7 +91,7 @@
 }
 
 .other {
-@include circle(UNKNOWN);
+@include circle(#000000);
 }
 
 .lilac {
@@ -143,7 +143,7 @@
 }
 
 .slate {
-@include circle(UNKNOWN);
+@include circle(#000000);
 }
 
 .amber {
@@ -187,11 +187,11 @@
 }
 
 .espresso {
-@include circle(UNKNOWN);
+@include circle(#000000);
 }
 
 .caramel {
-@include circle(UNKNOWN);
+@include circle(#000000);
 }
 
 .sand {
@@ -291,7 +291,7 @@
 }
 
 .avocado {
-@include circle(UNKNOWN);
+@include circle(#000000);
 }
 
 .carolina-blue {
@@ -323,7 +323,7 @@
 }
 
 .various {
-@include circle(UNKNOWN);
+@include circle(#000000);
 }
 
 .chocolate {
@@ -347,7 +347,7 @@
 }
 
 .papaya {
-@include circle(UNKNOWN);
+@include circle(#000000);
 }
 
 .dark-gray {
@@ -355,7 +355,7 @@
 }
 
 .graphite {
-@include circle(UNKNOWN);
+@include circle(#000000);
 }
 
 .dark-brown {
@@ -375,7 +375,7 @@
 }
 
 .oatmeal {
-@include circle(UNKNOWN);
+@include circle(#000000);
 }
 
 .light-green {
@@ -387,7 +387,7 @@
 }
 
 .cognac {
-@include circle(UNKNOWN);
+@include circle(#000000);
 }
 
 .saddle-brown {
@@ -403,7 +403,7 @@
 }
 
 .clear {
-@include circle(UNKNOWN);
+@include circle(#000000);
 }
 
 .neon-yellow {
@@ -463,7 +463,7 @@
 }
 
 .unknown {
-@include circle(UNKNOWN);
+@include circle(#000000);
 }
 
 .dark-orange {
@@ -479,7 +479,7 @@
 }
 
 .diamond {
-@include circle(UNKNOWN);
+@include circle(#000000);
 }
 
 .emerald {
