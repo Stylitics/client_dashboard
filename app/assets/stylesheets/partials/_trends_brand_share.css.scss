@@ -1,0 +1,96 @@
+//TRENDS
+//BRAND SHARE
+.action-trends, .action-brand_share {
+  .wide2 {
+    @include column(44, true);
+    margin-top:10px;
+
+    .bottom-container {
+      @include column(14);
+      background:#f7f7f7;
+      border: 1px solid #999999;
+      border-bottom: none;
+      margin-right:20px;
+
+      &:last-child {
+        margin-right:0px;
+      }
+
+      .bottom-title {
+        @include column(14,true);
+        border-bottom:1px solid #999999;
+
+        h2 {
+          margin-top:18px;
+        }
+      }
+
+      .bottom-content {
+        @include column(14,true);
+        border-bottom:1px solid #999999;
+        padding:20px 0 20px 0;
+        background:#FFFFFF;
+
+        .bottom-label {
+          @include column(7,true);
+          margin-left:10px;
+          padding-top:3px;
+        }
+
+        .bottom-value {
+          @include column(6,true);
+          float:right;
+          text-align:right;
+          margin-right:10px;
+          font-size:18px;
+        }
+      }
+    }
+  }
+  .right {
+    @include column(13,true);
+
+    .sidebar {
+      @include column(12,true);
+      background: #f0f0f0;
+      padding: 10px;
+      margin-top: 10px;
+    }
+    .stats {
+      @include column(6);
+      text-align:center;
+
+      &:last-child {
+        @include column(6,true);
+      }
+    }
+
+    .sidebar-form, .sidebar-stats {
+      @include column(12,true);
+      margin-top:10px;
+      margin-bottom:10px;
+    }
+
+    .textarea-container {
+      @include column(12,true);
+      background:#cfcfcf;
+      margin-top:10px;
+
+      textarea {
+        width:208px;
+        border-radius:0;
+      }
+
+      .textarea-base1 {
+        @include column(6,true);
+        padding:4px 0 0 4px;
+      }
+
+      .textarea-base2 {
+        @include column(6,true);
+        float:right;
+        text-align:right;
+      }
+    }
+  }
+}
