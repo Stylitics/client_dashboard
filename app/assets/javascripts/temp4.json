@@ -1,0 +1,60 @@
+[
+  {
+    "warm": [
+      {
+        "sunny": 20
+      },
+      {
+        "overcast": 3
+      },
+      {
+        "rainy": 55
+      },
+      {
+        "snow": 32
+      }
+    ],
+    "hot": [
+      {
+        "sunny": 20
+      },
+      {
+        "overcast": 3
+      },
+      {
+        "rainy": 55
+      },
+      {
+        "snow": 32
+      }
+    ],
+    "cold": [
+      {
+        "sunny": 20
+      },
+      {
+        "overcast": 3
+      },
+      {
+        "rainy": 55
+      },
+      {
+        "snow": 32
+      }
+    ],
+    "freezing": [
+      {
+        "sunny": 20
+      },
+      {
+        "overcast": 3
+      },
+      {
+        "rainy": 55
+      },
+      {
+        "snow": 32
+      }
+    ]
+  }
+]

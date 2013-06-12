@@ -4,8 +4,12 @@ class ChartsController < ApplicationController
       temp = "temp"
     elsif params[:id] == "top-10"
       temp = "temp2"
-    else
+    elsif params[:id] == "trend-line"
       temp = "temp3"
+    elsif params[:id] == "brand-share"
+      temp = "temp3"
+    else
+      temp = "temp4"
     end
     render file: "#{Rails.root}/app/assets/javascripts/#{temp}.json"
     # @chart = Chart.find(params[:id])
