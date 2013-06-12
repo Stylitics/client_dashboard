@@ -42,6 +42,58 @@ fieldset {
   height: 400px;
 }
 
+.weather-container {
+  margin-left:30px;
+
+  .weather-box-container {
+    @include single-box-shadow(#999999, 2px, 2px, 120px, 0px, inset);
+    width: 120px;
+    height: 120px;
+    float: left;
+    background: image-url("pattern-grid.png");
+
+    .weather-box {
+      @include opacity(0.7);
+      width: 120px;
+      height: 120px;
+      background-color: #1c8392;
+
+      &:hover {
+      border:1px solid #333333;
+      width: 118px;
+      height: 118px;
+    }
+    }
+  }
+
+  .weather-x-tooltip {
+    margin-top:10px;
+    width: 90px;
+    float: left;
+    padding: 5px 15px;
+    text-align:center;
+  }
+}
+
+.weather-y-tooltips-container {
+  position:relative;
+
+  .weather-y-tooltips {
+    position:absolute;
+    left: 0px;
+    top: 40px;
+    z-index: 100;
+
+    .weather-y-tooltip {
+      @include opacity(0.7);
+      background: #FFFFFF;
+      margin-bottom:90px;
+      text-align:center;
+      padding:5px 15px;
+    }
+  }
+}
+
 .medium-chart-legend {
   width: span(30);
   margin-left: 10px;
@@ -62,6 +114,17 @@ fieldset {
 .medium-chart-pics {
   width: span(30);
   margin-left: 10px;
+
+  .weather-pic {
+    width: 180px;
+    height: 180px;
+    margin-right: 14px;
+    margin-bottom: 10px;
+    float:left;
+    background: #CCCCCC;
+    border: 1px solid #FFFFFF;
+    @include single-box-shadow(#999999, 2px, 2px, 6px, 0px);
+  }
 }
 
 .small_chart {
@@ -346,10 +409,6 @@ fieldset {
     h2 {
       text-align: center;
       margin-bottom: 20px;
-    }
-
-    &:first-child {
-      border-right:1px solid #CCCCCC;
     }
   }
   .third {
