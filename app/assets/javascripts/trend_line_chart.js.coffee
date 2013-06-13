@@ -56,8 +56,9 @@ class @TrendLineChart
       else
         chart.dataShowPercentage.push [d[0], d[1]]
       bg.append("rect").attr("width", chart.screenWidth / (collection.length - 1)).attr("height", chart.screenHeight).attr("transform", "translate(" + ((chart.screenWidth / (collection.length - 1)) * i - 1) + ", 0)").attr("class", bgClass).attr()
-    chart.drawZoomUI(chart)
+    
     if obj is null
+      chart.drawZoomUI(chart)
       chart.render(chart, chart.dataShowPercentage, false)
       chart.renderZoomUI(chart, chart.dataShowPercentage)
       chart.centerChart(chart)
@@ -106,6 +107,7 @@ class @TrendLineChart
     chart.totalLength = chart.pathAdded.node().getTotalLength()
     chart.pathAdded.attr("stroke-dasharray", chart.totalLength + " " + chart.totalLength).attr("stroke-dashoffset", chart.totalLength).transition().duration(1000).ease("linear").attr "stroke-dashoffset", 0
   drawZoomUI: (chart) ->
+    $("#trend-line-chart-zoom>svg").remove()
     chart.svgZoom = d3.select("#trend-line-chart-zoom").append("svg").attr("width", chart.zoomWidth).attr("height", chart.zoomHeight)
   renderZoomUI: (chart, values) ->
     x = d3.time.scale().range([0, chart.zoomWidth])
