@@ -119,6 +119,9 @@ fieldset {
       margin-bottom:20px;
     }
   }
+  .right {
+    @include column(13,true);
+  }
   .center {
     @include column(31);
   }
