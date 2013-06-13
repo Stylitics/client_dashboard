@@ -30,19 +30,19 @@ class @WeatherChart
       # ugly but good
       c = v[0]["sunny"]
       p = c / chart.last_step
-      $("." + k + ".sunny").css backgroundColor: "rgb(" + parseInt(r_m - (r_m - r_M) * p) + ", " + parseInt(g_m - (g_m - g_M) * p) + ", " + parseInt(b_m - (b_m - b_M) * p) + ")"
+      $("." + k + ".sunny .weather-box").css backgroundColor: "rgb(" + parseInt(r_m - (r_m - r_M) * p) + ", " + parseInt(g_m - (g_m - g_M) * p) + ", " + parseInt(b_m - (b_m - b_M) * p) + ")"
 
       c = v[1]["overcast"]
       p = c / chart.last_step
-      $("." + k + ".overcast").css backgroundColor: "rgb(" + parseInt(r_m - (r_m - r_M) * p) + ", " + parseInt(g_m - (g_m - g_M) * p) + ", " + parseInt(b_m - (b_m - b_M) * p) + ")"
+      $("." + k + ".overcast .weather-box").css backgroundColor: "rgb(" + parseInt(r_m - (r_m - r_M) * p) + ", " + parseInt(g_m - (g_m - g_M) * p) + ", " + parseInt(b_m - (b_m - b_M) * p) + ")"
 
       c = v[2]["rainy"]
       p = c / chart.last_step
-      $("." + k + ".rainy").css backgroundColor: "rgb(" + parseInt(r_m - (r_m - r_M) * p) + ", " + parseInt(g_m - (g_m - g_M) * p) + ", " + parseInt(b_m - (b_m - b_M) * p) + ")"
+      $("." + k + ".rainy .weather-box").css backgroundColor: "rgb(" + parseInt(r_m - (r_m - r_M) * p) + ", " + parseInt(g_m - (g_m - g_M) * p) + ", " + parseInt(b_m - (b_m - b_M) * p) + ")"
 
       c = v[3]["snow"]
       p = c / chart.last_step
-      $("." + k + ".snow").css backgroundColor: "rgb(" + parseInt(r_m - (r_m - r_M) * p) + ", " + parseInt(g_m - (g_m - g_M) * p) + ", " + parseInt(b_m - (b_m - b_M) * p) + ")"
+      $("." + k + ".snow .weather-box").css backgroundColor: "rgb(" + parseInt(r_m - (r_m - r_M) * p) + ", " + parseInt(g_m - (g_m - g_M) * p) + ", " + parseInt(b_m - (b_m - b_M) * p) + ")"
   drawLegend: (chart) ->
     $legend = $('#weather-legend-text')
     $legend.append "<span class=\"weather-text-number\">" + 0 + "</span>"
