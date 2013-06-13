@@ -19,3 +19,6 @@ class @WeatherChart
       ticks.push v[2]["rainy"]
       ticks.push v[3]["snow"]
     console.log ticks
+    ticks.sort (a, b) ->
+      a - b
+    console.log ticks[ticks.length - 1]
