@@ -22,8 +22,8 @@ class @WeatherChart
       a - b
     $legend = $('#weather-legend-text')
     last_step = ticks[ticks.length - 1]
-    $legend.append "<span style=\"margin: 0 10px 0 0; display: inline-block;\">" + 0 + "</span>"
-    $legend.append "<span style=\"margin: 0 10px; display: inline-block;\">" + parseInt(last_step / 4) + "</span>"
-    $legend.append "<span style=\"margin: 0 10px; display: inline-block;\">" + parseInt(last_step / 2) + "</span>"
-    $legend.append "<span style=\"margin: 0 10px; display: inline-block;\">" + parseInt(parseInt(last_step / 2) + parseInt(last_step / 4)) + "</span>"
-    $legend.append "<span style=\"margin: 0 0 0 10px; display: inline-block;\">" + last_step + "</span>"
+    $legend.append "<span class=\"weather-text-number\">" + 0 + "</span>"
+    $legend.append "<span class=\"weather-text-number\">" + parseInt(last_step / 4) + "</span>"
+    $legend.append "<span class=\"weather-text-number\">" + parseInt(last_step / 2) + "</span>"
+    $legend.append "<span class=\"weather-text-number\">" + parseInt(parseInt(last_step / 2) + parseInt(last_step / 4)) + "</span>"
+    $legend.append "<span class=\"weather-text-number\">" + last_step + "</span>"
