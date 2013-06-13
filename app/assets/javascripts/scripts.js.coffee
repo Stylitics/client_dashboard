@@ -116,3 +116,5 @@ $ ->
     dateFormat: "yy-mm-dd"
     showAnim: "fadeIn"
 
+  $("span.title_placeholder").html($("span.title_placeholder").html().replace /, - /g, "")
+
