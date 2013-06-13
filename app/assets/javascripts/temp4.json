@@ -16,13 +16,13 @@
     ],
     "hot": [
       {
-        "sunny": 20
+        "sunny": 17
       },
       {
-        "overcast": 3
+        "overcast": 50
       },
       {
-        "rainy": 55
+        "rainy": 40
       },
       {
         "snow": 32
@@ -36,7 +36,7 @@
         "overcast": 3
       },
       {
-        "rainy": 55
+        "rainy": 27
       },
       {
         "snow": 32
@@ -44,16 +44,16 @@
     ],
     "freezing": [
       {
-        "sunny": 20
+        "sunny": 1
       },
       {
-        "overcast": 3
+        "overcast": 22
       },
       {
         "rainy": 55
       },
       {
-        "snow": 32
+        "snow": 0
       }
     ]
   }

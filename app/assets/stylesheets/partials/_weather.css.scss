@@ -14,7 +14,6 @@
         @include opacity(0.7);
         width: 120px;
         height: 120px;
-        background-color: #1c8392;
 
         &:hover {
         border:1px solid #333333;
@@ -55,7 +54,7 @@
   .weather-legend {
     width: span(30);
     margin-left: 10px;
-    margin-bottom:40px;  
+    margin-bottom:40px;
 
     .weather-gradient {
       @include background(linear-gradient(left, #ffffff 0%,#1c8392 100%));

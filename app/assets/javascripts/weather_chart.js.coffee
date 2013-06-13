@@ -2,28 +2,51 @@ class @WeatherChart
   constructor: (type) ->
     chart = @
     @JSON = null
+    @ticks = []
+    @last_step = 0
     @readJSON(chart)
   readJSON: (chart) ->
     d3.json $("#weather-chart").data('json'), (data) ->
       if data.data != "empty"
         chart.JSON = data
+        $.each chart.JSON[0], (k, v) ->
+          chart.ticks.push v[0]["sunny"]
+          chart.ticks.push v[1]["overcast"]
+          chart.ticks.push v[2]["rainy"]
+          chart.ticks.push v[3]["snow"]
+        chart.ticks.sort (a, b) ->
+          a - b
+        chart.last_step = chart.ticks[chart.ticks.length - 1]
         chart.drawChart(chart)
         chart.drawLegend(chart)
   drawChart: (chart) ->
-    console.log "draw"
-  drawLegend: (chart) ->
-    ticks = []
+    r_m = 255
+    g_m = 255
+    b_m = 255
+    r_M = 28
+    g_M = 131
+    b_M = 146
     $.each chart.JSON[0], (k, v) ->
-      ticks.push v[0]["sunny"]
-      ticks.push v[1]["overcast"]
-      ticks.push v[2]["rainy"]
-      ticks.push v[3]["snow"]
-    ticks.sort (a, b) ->
-      a - b
+      # ugly but good
+      c = v[0]["sunny"]
+      p = c / chart.last_step
+      $("." + k + ".sunny").css backgroundColor: "rgb(" + parseInt(r_m - (r_m - r_M) * p) + ", " + parseInt(g_m - (g_m - g_M) * p) + ", " + parseInt(b_m - (b_m - b_M) * p) + ")"
+
+      c = v[1]["overcast"]
+      p = c / chart.last_step
+      $("." + k + ".overcast").css backgroundColor: "rgb(" + parseInt(r_m - (r_m - r_M) * p) + ", " + parseInt(g_m - (g_m - g_M) * p) + ", " + parseInt(b_m - (b_m - b_M) * p) + ")"
+
+      c = v[2]["rainy"]
+      p = c / chart.last_step
+      $("." + k + ".rainy").css backgroundColor: "rgb(" + parseInt(r_m - (r_m - r_M) * p) + ", " + parseInt(g_m - (g_m - g_M) * p) + ", " + parseInt(b_m - (b_m - b_M) * p) + ")"
+
+      c = v[3]["snow"]
+      p = c / chart.last_step
+      $("." + k + ".snow").css backgroundColor: "rgb(" + parseInt(r_m - (r_m - r_M) * p) + ", " + parseInt(g_m - (g_m - g_M) * p) + ", " + parseInt(b_m - (b_m - b_M) * p) + ")"
+  drawLegend: (chart) ->
     $legend = $('#weather-legend-text')
-    last_step = ticks[ticks.length - 1]
     $legend.append "<span class=\"weather-text-number\">" + 0 + "</span>"
-    $legend.append "<span class=\"weather-text-number\">" + parseInt(last_step / 4) + "</span>"
-    $legend.append "<span class=\"weather-text-number\">" + parseInt(last_step / 2) + "</span>"
-    $legend.append "<span class=\"weather-text-number\">" + parseInt(parseInt(last_step / 2) + parseInt(last_step / 4)) + "</span>"
-    $legend.append "<span class=\"weather-text-number\">" + last_step + "</span>"
+    $legend.append "<span class=\"weather-text-number\">" + parseInt(chart.last_step / 4) + "</span>"
+    $legend.append "<span class=\"weather-text-number\">" + parseInt(chart.last_step / 2) + "</span>"
+    $legend.append "<span class=\"weather-text-number\">" + parseInt(parseInt(chart.last_step / 2) + parseInt(chart.last_step / 4)) + "</span>"
+    $legend.append "<span class=\"weather-text-number\">" + chart.last_step + "</span>"
