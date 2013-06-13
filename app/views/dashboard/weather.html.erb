@@ -1,5 +1,13 @@
 <% title 'Weather visualizations' %>
 
+<%= content_for :title do %>
+  <%= render partial: "title" %>
+<% end %>
+
+<%= content_for :segment do %>
+  <%= render partial: "filter" %>
+<% end %>
+
 <%= content_for :half_1 do %>
 <div class="weather" id="weather-chart" data-json="<%= chart_path(@chart, t: Time.now.to_i) %>" data-pattern="<%= asset_path "pattern.png" %>" data-width="400" data-height="400">
   <div id="weather-placeholder" class="hide alert alert-warning">No data yet available... Try again in a few moments.</div>
@@ -60,8 +68,8 @@
 
 			</div>
 		</div>
-		<div class="weather-text">
-			123...
+		<div class="weather-text" id="weather-legend-text">
+			<!--  -->
 		</div>
 	</div>
 	<div class="weather-pics" id="weather-chart-pics">

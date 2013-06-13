@@ -18,7 +18,12 @@ class @WeatherChart
       ticks.push v[1]["overcast"]
       ticks.push v[2]["rainy"]
       ticks.push v[3]["snow"]
-    console.log ticks
     ticks.sort (a, b) ->
       a - b
-    console.log ticks[ticks.length - 1]
+    $legend = $('#weather-legend-text')
+    last_step = ticks[ticks.length - 1]
+    $legend.append "<span style=\"margin: 0 10px 0 0; display: inline-block;\">" + 0 + "</span>"
+    $legend.append "<span style=\"margin: 0 10px; display: inline-block;\">" + parseInt(last_step / 4) + "</span>"
+    $legend.append "<span style=\"margin: 0 10px; display: inline-block;\">" + parseInt(last_step / 2) + "</span>"
+    $legend.append "<span style=\"margin: 0 10px; display: inline-block;\">" + parseInt(parseInt(last_step / 2) + parseInt(last_step / 4)) + "</span>"
+    $legend.append "<span style=\"margin: 0 0 0 10px; display: inline-block;\">" + last_step + "</span>"
