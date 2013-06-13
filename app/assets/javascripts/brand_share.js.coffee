@@ -13,6 +13,7 @@ class @BrandShareChart
     @pathBought = null
     @pathBoughtZoom = null
     @dataPercentage = []
+    @dataShowPercentage = []
     @percentage=[]
     @currentType = type
     @JSON = null
@@ -30,24 +31,40 @@ class @BrandShareChart
     d3.json $("#brand-share-chart").data('json'), (data) ->
       if data.data != "empty"
         chart.JSON = data
-        chart.drawChart(chart)
-  drawChart: (chart) ->
+        chart.drawChart(chart,null)
+  drawChart: (chart,obj) ->
+    $("#brand-share-chart>svg").remove()
     chart.svg = d3.select("#brand-share-chart").append("svg").attr("width", chart.screenWidth).attr("height", chart.screenHeight)
     chart.svg.append('svg:defs').append('svg:pattern').attr('id', 'pattern').attr('patternUnits', 'userSpaceOnUse').attr('width', '10').attr('height', '10').append('svg:image').attr('xlink:href', $("#brand-share-chart").data("pattern-odd")).attr('x', 0).attr('y', 0).attr('width', 10).attr('height', 10)
     chart.svg.append('svg:defs').append('svg:pattern').attr('id', 'pattern-d').attr('patternUnits', 'userSpaceOnUse').attr('width', '10').attr('height', '10').append('svg:image').attr('xlink:href', $("#brand-share-chart").data("pattern-even")).attr('x', 0).attr('y', 0).attr('width', 10).attr('height', 10)
     bg = chart.svg.append("g").attr("class", "grid").attr("width", chart.screenWidth).attr("height", chart.screenHeight)
     parseDate = d3.time.format("%Y-%m-%d").parse
-    chart.JSON.forEach (d, i) ->
+
+    if obj is null
+      collection = chart.JSON
+      chart.dataShowPercentage = chart.dataPercentage
+    else
+      collection = obj
+      chart.dataShowPercentage = []
+
+    collection.forEach (d, i) ->
       if i % 2 == 0
         bgClass = "even"
       else
         bgClass = "odd"
-      chart.dataPercentage.push [parseDate(d.date), d.percentage]
-      bg.append("rect").attr("width", chart.screenWidth / (chart.JSON.length - 1)).attr("height", chart.screenHeight).attr("transform", "translate(" + ((chart.screenWidth / (chart.JSON.length - 1)) * i - 1) + ", 0)").attr("class", bgClass).attr()
+      if obj is null
+        chart.dataPercentage.push [parseDate(d.date), d.percentage]
+      else
+        chart.dataShowPercentage.push [d[0], d[1]]
+      bg.append("rect").attr("width", chart.screenWidth / (collection.length - 1)).attr("height", chart.screenHeight).attr("transform", "translate(" + ((chart.screenWidth / (collection.length - 1)) * i - 1) + ", 0)").attr("class", bgClass).attr()
     chart.drawZoomUI(chart)
-    chart.render(chart, chart.dataPercentage, false)
-    chart.renderZoomUI(chart, chart.dataPercentage)
-    chart.centerChart(chart)
+    if obj is null
+      chart.render(chart, chart.dataShowPercentage, false)
+      chart.renderZoomUI(chart, chart.dataShowPercentage)
+      chart.centerChart(chart)
+    else
+      chart.render(chart, chart.dataShowPercentage, true)
+      chart.centerChart(chart)
   remove: (chart, selector) ->
     chart.svg.selectAll(selector).data([]).exit().remove()
   render: (chart, values, update) ->
@@ -131,8 +148,7 @@ class @BrandShareChart
         currentDate = new Date(chart.dataPercentage[i][0])
         if (currentDate.getTime() - dateStart.getTime())>=0 and (currentDate.getTime() - dateEnd.getTime())<=0
           selectedInterval.push chart.dataPercentage[i]
-      chart.render(chart, selectedInterval, true)
-      chart.centerChart(chart)
+      chart.drawChart(chart, selectedInterval)
       circle.classed "selected", (d) ->
        s[0] <= d and d <= s[1]
     ).on("brushend", ->
