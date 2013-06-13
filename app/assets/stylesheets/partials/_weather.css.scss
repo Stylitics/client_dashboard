@@ -11,9 +11,10 @@
       background: image-url("pattern-grid.png");
 
       .weather-box {
-        @include opacity(0.7);
+        opacity: 0.7;
         width: 120px;
         height: 120px;
+        background-color: #1c8392;
 
         &:hover {
         border:1px solid #333333;
@@ -72,7 +73,18 @@
 
       .weather-text-number {
         display: table-cell;
-        text-align: center;
+        text-align: right;
+        padding-right: 80px;
+
+        &:first-child {
+          text-align:left;
+          padding-right: 0px;
+        }
+
+        &:last-child {
+          text-align:right;
+          padding-right: 0px;
+        }
       }
     }
   }
