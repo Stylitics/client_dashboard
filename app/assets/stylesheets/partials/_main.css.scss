@@ -121,6 +121,10 @@ fieldset {
   }
   .right {
     @include column(13,true);
+
+    input[type=text], input[type=password] {
+      width:200px;
+    }
   }
   .center {
     @include column(31);
