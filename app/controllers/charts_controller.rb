@@ -1,7 +1,7 @@
 class ChartsController < ApplicationController
   def show
     @chart = Chart.find(params[:id])
-    if @chart.r_script.running_code.present?
+    if @chart.r_script.status == true
       if @chart.last_run.output.present?
         render json: @chart.last_run.output
       else

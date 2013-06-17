@@ -7,11 +7,11 @@ class RScript
 
   field :name, type: String
   field :code, type: String
-  field :running_code, type: String
+  field :status, type: Boolean
 
   validates_presence_of :name, :code
 
-  attr_accessible :name, :code, :running_code, :status
+  attr_accessible :name, :code, :status
 
   default_scope order_by(name: :asc)
 
@@ -31,7 +31,7 @@ class RScript
     runs.last
   end
 
-  def activate!(mode = true)
-    self.update_attribute :running_code, mode == true ? code : nil
+  def activate(mode = true)
+    self.update_attribute :status, mode
   end
 end

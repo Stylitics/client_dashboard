@@ -17,4 +17,3 @@ $ ->
   $("#who").tabs()
   $(".who").click ->
     $('#chart_run_event_opt').val($(this).html())
-    trend_line_chart.setCurrentType($(this).html())

@@ -39,8 +39,8 @@ class Admin::RScriptsController < AdminController
   def activate
     @r_script = RScript.find(params[:id])
     m = true if params[:m].blank?
-    @r_script.activate!(m)
-    redirect_to :back, notice: 'This script have been activated.'
+    @r_script.activate(m)
+    redirect_to :back, notice: m == true ? 'This script have been activated.' : 'This script have been de-activated.'
   end
 
   def edit
